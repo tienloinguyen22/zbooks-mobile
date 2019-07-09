@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android --variant debug",
+    "android": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android",
     "android:alpha": "bundle exec fastlane android alpha",
     "android:beta": "bundle exec fastlane android beta",
     "android:build": "bundle exec fastlane android build",
@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "react": "16.8.6",
-    "react-native": "0.60.0"
+    "react-native": "0.60.0",
+    "react-native-navigation": "3.0.0-alpha.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
