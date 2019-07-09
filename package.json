@@ -1,0 +1,54 @@
+{
+  "name": "mobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android --variant debug",
+    "android:alpha": "bundle exec fastlane android alpha",
+    "android:beta": "bundle exec fastlane android beta",
+    "android:build": "bundle exec fastlane android build",
+    "android:codepush": "appcenter codepush release-react -a app-name-android",
+    "android:codepush:prod": "appcenter codepush promote -a app-name-android -s Staging -d Production ",
+    "android:emulator": "${HOME}/Library/Android/sdk/emulator/emulator -avd android-emulator",
+    "android:production": "bundle exec fastlane android production",
+    "android:release": "cd android && ./gradlew assembleRelease --stacktrace && cd ..",
+    "android:release-test": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android --variant release",
+    "ios": "react-native run-ios",
+    "ios:build": "bundle exec fastlane ios build",
+    "ios:codepush": "code-push release-react app-name-android",
+    "ios:codepush:prod": "appcenter codepush promote -a app-name-ios -s Staging -d Production ",
+    "ios:emulator": "open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/",
+    "ios:production": "bundle exec fastlane ios production",
+    "ios:release-test": "react-native run-ios --simulator=\"iPhone X\" --configuration Release",
+    "ios:testflight": "bundle exec fastlane ios uploadToTestflight",
+    "job": "ts-node job.ts",
+    "lint": "tslint src/**/*.ts{,x}",
+    "start": "yarn lint && node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "update-version": "ts-node job.ts update-version",
+    "updateIcon": "yo rn-toolbox:assets --icon ./src/assets/images/appIcon.png"
+  },
+  "dependencies": {
+    "react": "16.8.6",
+    "react-native": "0.60.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.2",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
+    "@types/react-test-renderer": "^16.8.2",
+    "babel-jest": "^24.8.0",
+    "eslint": "^6.0.1",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.55.0",
+    "react-test-renderer": "16.8.6",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
