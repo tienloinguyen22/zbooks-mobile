@@ -1,6 +1,6 @@
 {
-  "name": "mobile",
-  "version": "0.0.1",
+  "name": "react-native-starter-kit",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "android": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android",
