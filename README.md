@@ -1,6 +1,6 @@
-# **react-native-starter-kit (ver 0.1.0)**
+# react-native-starter-kit (ver 0.1.0)
 
-## **Why React Native Starter Kit?**
+## Why React Native Starter Kit?
 As I have worked on many React native projects for my company, I have struggles doing repetitive tasks for setting up the projects, integrating 3rd-party libraries (very time-consuming and sometimes very painful :( ) and deployment. So I made this starter kit to help myself, my teammates and you guys save our precious time to focus on the business and make best apps. 
 
 What this starter kit provides:
@@ -11,11 +11,11 @@ What this starter kit provides:
   - **Automation scripts** of building Android/iOS apps & deploying to Playstore Alpha channel and Appstore Testflight usign Travis-ci
   - And **more** described in below sections
 
-## **1. Project structure**
+## 1. Project structure
 [View wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki/Project-structure)
 
-## **2. Preferences of 3rd-party libraries**
+## 2. Preferences of 3rd-party libraries
 [View wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki/3rd-party-libraries-(&-why-to-choose-them))
 
-## **3. Some issues & solutions when adding 3rd-party libraries
+## 3. Some issues & solutions when adding 3rd-party libraries
 [View wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki/Some-issues-&-solutions-when-adding-3rd-party-libraries)
