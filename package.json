@@ -17,7 +17,6 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",
-    "lint-staged": "^9.2.0",
     "metro-react-native-babel-preset": "^0.55.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
@@ -28,17 +27,11 @@
   "jest": {
     "preset": "react-native"
   },
-  "lint-staged": {
-    "*": [
-      "git add"
-    ]
-  },
   "name": "react-native-starter-kit",
   "pre-commit": [
     "lint",
     "code-check",
-    "test",
-    "lint-staged"
+    "test"
   ],
   "private": true,
   "repository": {
