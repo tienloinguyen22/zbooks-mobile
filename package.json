@@ -16,26 +16,20 @@
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "husky": ">=1",
     "jest": "^24.8.0",
-    "lint-staged": ">=8",
+    "lint-staged": "^9.2.0",
     "metro-react-native-babel-preset": "^0.55.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "react-test-renderer": "16.8.6",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && yarn code-check"
-    }
   },
   "jest": {
     "preset": "react-native"
   },
   "lint-staged": {
     "*": [
-      "prettier --write '{src,__{tests,mocks}__}/**/*.tsx'",
       "git add"
     ]
   },
@@ -68,5 +62,11 @@
     "update-version": "ts-node job.ts update-version",
     "updateIcon": "yo rn-toolbox:assets --icon ./src/assets/images/appIcon.png"
   },
+  "pre-commit": [
+    "lint",
+    "code-check",
+    "test",
+    "lint-staged"
+  ],
   "version": "0.1.0"
 }
