@@ -20,6 +20,7 @@ import {
 
 const App = () => {
   var a = '';
+  var b = '';
   return (
     <Fragment>
       <StatusBar barStyle='dark-content' />
