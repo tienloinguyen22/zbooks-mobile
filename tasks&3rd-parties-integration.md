@@ -35,6 +35,7 @@
     keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android => debug SHA1 android
     keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64 => debug android
     keytool -exportcert -alias app -keystore android/app/app.keystore | openssl sha1 -binary | openssl base64
+    https://facebook.github.io/react-native/docs/signed-apk-android
 14. logging  (checking render error as well - done)
 15. react-native-root-toast 
 16. rematch 
