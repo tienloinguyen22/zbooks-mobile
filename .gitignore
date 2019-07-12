@@ -18,6 +18,7 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.hmap
+*.dSYM.zip
 *.ipa
 *.xcuserstate
 project.xcworkspace
@@ -44,7 +45,7 @@ yarn-error.log
 # BUCK
 buck-out/
 \.buckd/
-*.keystore
+android/**/*.keystore
 
 # fastlane
 #
@@ -53,9 +54,15 @@ buck-out/
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
-*/fastlane/report.xml
-*/fastlane/Preview.html
-*/fastlane/screenshots
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/README.md
 
 # Bundle artifact
 *.jsbundle
+
+environments/production
+googlePlaySecretKey.json
+ios/**/GoogleService-Info.plist
+android/**/google-services.json

@@ -1,0 +1,31 @@
+{
+  "android": {
+    "appName": "ReactNativeStarterKit",
+    "applicationId": "pro.thinhtran.treactnativestarterkit",
+    "codePush": {
+      "productionKey": "",
+      "stagingKey": ""
+    },
+    "version": "0.1.1",
+    "versionCode": 2
+  },
+  "fb": {
+    "id": ""
+  },
+  "i18n": {
+    "defaultLang": "en",
+    "en": "en",
+    "vn": "vn"
+  },
+  "ios": {
+    "appName": "ReactNativeStarterKit",
+    "build": 1,
+    "bundleId": "pro.thinhtran.treactnativestarterkit",
+    "codePush": {
+      "productionKey": "",
+      "stagingKey": ""
+    },
+    "version": "0.1.0"
+  },
+  "signInOptions": ["email", "phone", "facebook", "google"]
+}

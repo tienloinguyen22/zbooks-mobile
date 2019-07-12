@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "lodash": "^4.17.14",
     "react": "16.8.6",
     "react-native": "0.60.0",
     "react-native-navigation": "3.0.0-alpha.2"
@@ -9,6 +10,8 @@
     "@babel/runtime": "^7.5.2",
     "@react-native-community/eslint-config": "^0.0.5",
     "@types/jest": "^24.0.15",
+    "@types/lodash": "^4.14.136",
+    "@types/node": "^12.6.2",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.0",
     "@types/react-test-renderer": "^16.8.2",
@@ -21,6 +24,7 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "react-test-renderer": "16.8.6",
+    "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
@@ -38,16 +42,15 @@
     "type": "git"
   },
   "scripts": {
-    "android": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android",
+    "android": "react-native run-android",
     "android:alpha": "bundle exec fastlane android alpha",
-    "android:beta": "bundle exec fastlane android beta",
     "android:build": "bundle exec fastlane android build",
     "android:codepush": "appcenter codepush release-react -a app-name-android",
     "android:codepush:prod": "appcenter codepush promote -a app-name-android -s Staging -d Production ",
     "android:emulator": "${HOME}/Library/Android/sdk/emulator/emulator -avd android-emulator",
     "android:production": "bundle exec fastlane android production",
-    "android:release": "cd android && ./gradlew assembleRelease --stacktrace && cd ..",
-    "android:release-test": "ANDROID_HOME=$HOME/Library/Android/Sdk react-native run-android --variant release",
+    "android:release": "cd android && ./gradlew bundleRelease --stacktrace && cd ..",
+    "android:release-test": "react-native run-android --variant release",
     "code-check": "tsc && rm -rf dist",
     "ios": "react-native run-ios",
     "ios:build": "bundle exec fastlane ios build",
@@ -55,7 +58,7 @@
     "ios:codepush:prod": "appcenter codepush promote -a app-name-ios -s Staging -d Production ",
     "ios:emulator": "open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/",
     "ios:production": "bundle exec fastlane ios production",
-    "ios:release-test": "react-native run-ios --simulator=\"iPhone X\" --configuration Release",
+    "ios:release-test": "react-native run-ios --configuration Release",
     "ios:testflight": "bundle exec fastlane ios uploadToTestflight",
     "job": "ts-node job.ts",
     "lint": "prettier --check '{src,__{tests,mocks}__}/**/*.tsx'",
