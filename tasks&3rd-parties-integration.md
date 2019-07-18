@@ -47,5 +47,5 @@
 ***21: check latest version (pending)
     https://github.com/kimxogus/react-native-version-check
 21: travis ci
-    zip -r production.zip app_configuration/environments/production
+    zip -r production.zip environments/production
     unzip production.zip

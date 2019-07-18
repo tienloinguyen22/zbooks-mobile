@@ -62,7 +62,9 @@ fastlane/README.md
 # Bundle artifact
 *.jsbundle
 
+# credential files
 environments/production
 googlePlaySecretKey.json
 ios/**/GoogleService-Info.plist
 android/**/google-services.json
+production.zip
