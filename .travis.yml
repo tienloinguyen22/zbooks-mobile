@@ -70,6 +70,7 @@ jobs:
         - ln -s lib/android . && ln -s lib/ios .
         - cd ../..
       script: yarn job production &&
+        yarn job update-version &&
         yarn android:build
     - stage: Release Android to Alpha
       if: branch = master OR branch = travis
@@ -97,4 +98,5 @@ jobs:
         - ln -s lib/android . && ln -s lib/ios .
         - cd ../..
       script: yarn job production &&
+        yarn job update-version &&
         yarn android:alpha
