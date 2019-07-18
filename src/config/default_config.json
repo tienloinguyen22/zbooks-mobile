@@ -6,8 +6,8 @@
       "productionKey": "",
       "stagingKey": ""
     },
-    "version": "0.1.2",
-    "versionCode": 3
+    "version": "0.1.4",
+    "versionCode": 5
   },
   "fb": {
     "id": ""
@@ -19,13 +19,13 @@
   },
   "ios": {
     "appName": "ReactNativeStarterKit",
-    "build": 3,
+    "build": 5,
     "bundleId": "pro.thinhtran.treactnativestarterkit",
     "codePush": {
       "productionKey": "",
       "stagingKey": ""
     },
-    "version": "0.1.2"
+    "version": "0.1.4"
   },
   "signInOptions": ["email", "phone", "facebook", "google"]
 }

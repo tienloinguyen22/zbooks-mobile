@@ -1,12 +1,15 @@
- # only build develop, master & travis branch
- # automatically publish to Playstore Alpha & Appstore Testflight after master build completes
- branches:
+# only build develop, master & travis branch
+# automatically publish to Playstore Alpha & Appstore Testflight after master build completes
+branches:
   only:
     - master
     - develop
-    - travis
+    - android-alpha
+    - ios-testflight
+language: node_js
+node_js: 10.16.0
 before_install:
-  - nvm install 8.5.0
+  - nvm install 10.16.0
   # apply production configuration
   - openssl aes-256-cbc -K $encrypted_178f17f19164_key -iv $encrypted_178f17f19164_iv -in production.zip.enc -out production.zip -d
   - unzip -o production.zip
@@ -14,14 +17,11 @@ install: yarn
 jobs:
   include:
     - stage: Lint & Test
-      language: node_js
-      node_js: 8.5.0
       script: yarn job production &&
         yarn lint &&
         yarn test
     - stage: Build iOS
-      language: node_js
-      node_js: 8.5.0
+      if: branch = master OR branch = develop
       os: osx
       osx_image: xcode10.2
       before_script:
@@ -30,9 +30,7 @@ jobs:
       script: yarn job production &&
         yarn ios:build
     - stage: Release iOS to Testflight
-      if: branch = master OR branch = travis
-      language: node_js
-      node_js: 8.5.0
+      if: branch = ios-testflight
       os: osx
       osx_image: xcode10.2
       before_script:
@@ -41,10 +39,11 @@ jobs:
       script:
         # itms is needed, otherwise altool will not work correctly
         yarn job production &&
+        yarn job update-version &&
         yarn ios:build &&
         ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool" /usr/local/bin/altool &&
         ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms" /usr/local/bin/itms &&
-        altool --upload-app -f "mobile.ipa" -u $PILOT_USERNAME -p $FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD
+        altool --upload-app -f "mobile.ipa" -u $APPLE_USERNAME -p $APPLE_APPLICATION_SPECIFIC_PASSWORD
     - stage: Build Android
       language: android
       jdk: oraclejdk8
@@ -64,16 +63,11 @@ jobs:
         # https://stackoverflow.com/questions/54273412/failed-to-install-the-following-android-sdk-packages-as-some-licences-have-not-b
         - mkdir "$ANDROID_HOME/licenses" || true
         - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
-        # https://github.com/wix/react-native-interactable/issues/146
-        - cd node_modules/react-native-interactable
-        - rm -rf \{ios\,android\} && rm -rf android && rm -rf ios
-        - ln -s lib/android . && ln -s lib/ios .
-        - cd ../..
       script: yarn job production &&
         yarn job update-version &&
         yarn android:build
     - stage: Release Android to Alpha
-      if: branch = master OR branch = travis
+      if: branch = android-alpha
       language: android
       jdk: oraclejdk8
       dist: trusty
@@ -92,11 +86,6 @@ jobs:
         # https://stackoverflow.com/questions/54273412/failed-to-install-the-following-android-sdk-packages-as-some-licences-have-not-b
         - mkdir "$ANDROID_HOME/licenses" || true
         - echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
-        # https://github.com/wix/react-native-interactable/issues/146
-        - cd node_modules/react-native-interactable
-        - rm -rf \{ios\,android\} && rm -rf android && rm -rf ios
-        - ln -s lib/android . && ln -s lib/ios .
-        - cd ../..
       script: yarn job production &&
         yarn job update-version &&
         yarn android:alpha
