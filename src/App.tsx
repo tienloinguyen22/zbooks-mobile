@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 import {
   Header,
@@ -17,8 +17,13 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <Fragment>
       <StatusBar barStyle='dark-content' />

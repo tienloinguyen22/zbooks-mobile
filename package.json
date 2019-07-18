@@ -3,7 +3,8 @@
     "lodash": "^4.17.14",
     "react": "16.8.6",
     "react-native": "0.60.0",
-    "react-native-navigation": "3.0.0-alpha.2"
+    "react-native-navigation": "3.0.0-alpha.2",
+    "react-native-splash-screen": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",

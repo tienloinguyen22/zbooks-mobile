@@ -30,6 +30,8 @@ target 'mobile' do
 
   pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing
