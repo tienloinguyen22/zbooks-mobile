@@ -45,6 +45,7 @@ jobs:
         ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms" /usr/local/bin/itms &&
         altool --upload-app -f "mobile.ipa" -u $APPLE_USERNAME -p $APPLE_APPLICATION_SPECIFIC_PASSWORD
     - stage: Build Android
+      if: branch = master OR branch = develop
       language: android
       jdk: oraclejdk8
       dist: trusty
