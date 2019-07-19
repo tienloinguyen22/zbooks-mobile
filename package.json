@@ -2,13 +2,13 @@
   "dependencies": {
     "lodash": "^4.17.14",
     "react": "16.8.6",
-    "react-native": "0.60.0",
+    "react-native": "0.60.4",
     "react-native-navigation": "3.0.0-alpha.2",
     "react-native-splash-screen": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.0",
-    "@babel/runtime": "^7.5.2",
+    "@babel/core": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
     "@react-native-community/eslint-config": "^0.0.5",
     "@types/jest": "^24.0.15",
     "@types/lodash": "^4.14.136",
@@ -26,7 +26,6 @@
     "prettier": "^1.18.2",
     "react-test-renderer": "16.8.6",
     "ts-node": "^8.3.0",
-    "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
   "jest": {
@@ -51,6 +50,7 @@
     "android:emulator": "${HOME}/Library/Android/sdk/emulator/emulator -avd android-emulator",
     "android:production": "bundle exec fastlane android production",
     "android:release": "cd android && ./gradlew bundleRelease --stacktrace && cd ..",
+    "android:release-apk": "cd android && ./gradlew assembleRelease --stacktrace && cd ..",
     "android:release-test": "react-native run-android --variant release",
     "code-check": "tsc && rm -rf dist",
     "ios": "react-native run-ios",
