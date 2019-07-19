@@ -20,9 +20,7 @@ import {
 import SplashScreen from 'react-native-splash-screen';
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
+  scrollView: { backgroundColor: Colors.lighter },
   engine: {
     position: 'absolute',
     right: 0,
