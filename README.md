@@ -12,20 +12,10 @@ As I have worked on many React native projects for my company, I have struggles 
 
 What this starter kit provides:
   - **Authentication** (using Firebase) with Facebook, Google, email and phone no. 
-  - **Code-push** integration for OTA update (production lifesaver).  
-  - **Rematch** as the state manager - Redux best practices without the boilerplate
+  - **[CodePush](https://github.com/microsoft/react-native-code-push)** integration for OTA update (production lifesaver).  
+  - **[Rematch](https://github.com/thinhtran3588/react-native-starter-kit/wiki)** as the state manager - Redux best practices without the boilerplate
   - **Well-defined structure** for aim-to-scale apps
-  - **Automation scripts** of building Android/iOS apps & deploying to Playstore Alpha channel and Appstore Testflight usign Travis-ci
-  - And **more** described in below sections
+  - **Automation scripts** of building Android/iOS apps & deploying to Playstore Alpha channel and Appstore Testflight using [Travis-ci](https://travis-ci.com/)
+  - And **more**
 
-## 1. Project structure
-
-[View wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki/Project-structure)
-
-## 2. Preferences of 3rd-party libraries
-
-[View wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki/3rd-party-libraries-(&-why-to-choose-them))
-
-## 3. Some issues & solutions when adding 3rd-party libraries
-
-[View wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki/Some-issues-&-solutions-when-adding-3rd-party-libraries)
+View [wiki page](https://github.com/thinhtran3588/react-native-starter-kit/wiki) for details

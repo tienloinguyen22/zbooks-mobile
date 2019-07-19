@@ -6,6 +6,7 @@ module.exports = {
     'plugin:prettier/recommended', // enables eslint-plugin-prettier and eslint-config-prettier
     'prettier/react', // disables react-specific linting rules that conflict with prettier
     '@react-native-community',
+    'airbnb-base',
   ],
   parserOptions: {
     ecmaVersion: 2018,  // Allows for the parsing of modern ECMAScript features
@@ -17,6 +18,10 @@ module.exports = {
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 2],
+    'max-len': ["error", 120],
+    'object-curly-newline': ["error", { "multiline": true }], // let prettier do its job
   },
   settings: {
     react: {
