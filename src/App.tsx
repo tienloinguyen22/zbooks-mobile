@@ -9,7 +9,7 @@
  */
 
 import React, { Fragment, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform } from 'react-native';
 import {
   Header,
   LearnMoreLinks,
@@ -18,6 +18,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
+import { config } from '@app/config';
 
 const styles = StyleSheet.create({
   scrollView: { backgroundColor: Colors.lighter },
@@ -69,6 +70,11 @@ const App = (): JSX.Element => {
             </View>
           )}
           <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>
+                Version: {Platform.OS === 'android' ? config.android.version : config.ios.version}
+              </Text>
+            </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>

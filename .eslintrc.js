@@ -21,7 +21,8 @@ module.exports = {
     "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
     'max-len': ["error", 120],
-    'object-curly-newline': ["error", { "multiline": true }], // let prettier do its job
+    'object-curly-newline': ["error", { "multiline": true }], // let prettier do its job,
+    'import/no-unresolved': [2, { ignore: ['@app'] }],
   },
   settings: {
     react: {
