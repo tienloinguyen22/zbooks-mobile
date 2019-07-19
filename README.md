@@ -6,6 +6,10 @@ master: [![Build Status](https://travis-ci.org/thinhtran3588/react-native-starte
 
 develop: [![Build Status](https://travis-ci.org/thinhtran3588/react-native-starter-kit.svg?branch=develop)](https://travis-ci.org/thinhtran3588/react-native-starter-kit)
 
+android-alpha: [![Build Status](https://travis-ci.org/thinhtran3588/react-native-starter-kit.svg?branch=android-alpha)](https://travis-ci.org/thinhtran3588/react-native-starter-kit)
+
+ios-testflight: [![Build Status](https://travis-ci.org/thinhtran3588/react-native-starter-kit.svg?branch=ios-testflight)](https://travis-ci.org/thinhtran3588/react-native-starter-kit)
+
 ## Why React Native Starter Kit?
 
 As I have worked on many React native projects for my company, I have struggles doing repetitive tasks for setting up the projects, integrating 3rd-party libraries (very time-consuming and sometimes very painful :( ) and deployment. So I made this starter kit to help myself, my teammates and you guys save our precious time to focus on the business and make best apps. 
