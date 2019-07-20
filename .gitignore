@@ -62,6 +62,9 @@ fastlane/README.md
 # Bundle artifact
 *.jsbundle
 
+# Jest coverage
+coverage
+
 Gemfile.lock
 
 # credential files
