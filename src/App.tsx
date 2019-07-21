@@ -8,15 +8,9 @@
  * @format
  */
 
-import React, { Fragment, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform } from 'react-native';
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import React, { Fragment, useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform, Button } from 'react-native';
+import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
 
@@ -54,9 +48,15 @@ const styles = StyleSheet.create({
 });
 
 const App = (): JSX.Element => {
+  const [effectLoaded, setEffectLoaded] = useState(false);
+  const [showHello, setShowHello] = useState(false);
+
   useEffect((): void => {
+    setEffectLoaded(true);
     SplashScreen.hide();
   }, []);
+
+  const onPressHello = (): void => setShowHello(true);
 
   return (
     <Fragment>
@@ -71,34 +71,22 @@ const App = (): JSX.Element => {
           )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>
+              <Text style={styles.sectionTitle}>Effect loaded: {effectLoaded ? 'true' : 'false'}</Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle} testID=''>
                 Version: {Platform.OS === 'android' ? config.android.version : config.ios.version}
               </Text>
             </View>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then come back to see your
-                edits.
-              </Text>
+              <Text style={styles.sectionTitle}>Platform: {Platform.OS}</Text>
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>Read the docs to discover what to do next:</Text>
-            </View>
-            <LearnMoreLinks />
+            <Button title='Hello' onPress={onPressHello} />
+            {showHello && (
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionTitle}>Hello world</Text>
+              </View>
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
