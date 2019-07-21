@@ -34,7 +34,7 @@ local.properties
 
 # Visual Studio Code
 #
-.vscode/
+# .vscode/
 
 # node.js
 #
@@ -61,6 +61,9 @@ fastlane/README.md
 
 # Bundle artifact
 *.jsbundle
+
+# Jest coverage
+coverage
 
 Gemfile.lock
 
