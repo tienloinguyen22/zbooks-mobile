@@ -16,10 +16,9 @@ before_install:
 install: yarn
 jobs:
   include:
-    - stage: Lint & Test
+    - stage: Validate
       script: yarn job production &&
-        yarn lint &&
-        yarn test
+        yarn validate
     - stage: Build Android
       if: branch = master OR branch = develop
       language: android
