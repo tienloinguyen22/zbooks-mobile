@@ -128,7 +128,7 @@ exports[`<App/> renders correctly on android platform 1`] = `
               testID=""
             >
               Version: 
-              0.2.2
+              0.3.0
             </Text>
           </View>
           <View
@@ -313,7 +313,7 @@ exports[`<App/> renders correctly with hermes engine 1`] = `
               testID=""
             >
               Version: 
-              0.2.2
+              0.3.0
             </Text>
           </View>
           <View
@@ -475,7 +475,7 @@ exports[`<App/> renders successfully with effect 1`] = `
               testID=""
             >
               Version: 
-              0.2.2
+              0.3.0
             </Text>
           </View>
           <View
