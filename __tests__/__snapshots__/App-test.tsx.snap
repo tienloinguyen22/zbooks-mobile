@@ -127,6 +127,47 @@ exports[`<App/> renders correctly on android platform 1`] = `
               }
               testID=""
             >
+              Icon: 
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 30,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "marginTop": 32,
+                "paddingHorizontal": 24,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "fontWeight": "600",
+                }
+              }
+              testID=""
+            >
               Version: 
               0.3.0
             </Text>
@@ -312,6 +353,47 @@ exports[`<App/> renders correctly with hermes engine 1`] = `
               }
               testID=""
             >
+              Icon: 
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 30,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "marginTop": 32,
+                "paddingHorizontal": 24,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "fontWeight": "600",
+                }
+              }
+              testID=""
+            >
               Version: 
               0.3.0
             </Text>
@@ -454,6 +536,47 @@ exports[`<App/> renders successfully with effect 1`] = `
             >
               Effect loaded: 
               true
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "marginTop": 32,
+                "paddingHorizontal": 24,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#000",
+                  "fontSize": 24,
+                  "fontWeight": "600",
+                }
+              }
+              testID=""
+            >
+              Icon: 
+              <Text
+                allowFontScaling={false}
+                style={
+                  Array [
+                    Object {
+                      "color": undefined,
+                      "fontSize": 30,
+                    },
+                    undefined,
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
             </Text>
           </View>
           <View

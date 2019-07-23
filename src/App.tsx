@@ -13,6 +13,7 @@ import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform, 
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
+import { Icon } from '@app/components';
 
 const styles = StyleSheet.create({
   scrollView: { backgroundColor: Colors.lighter },
@@ -72,6 +73,11 @@ const App = (): JSX.Element => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Effect loaded: {effectLoaded ? 'true' : 'false'}</Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle} testID=''>
+                Icon: <Icon name='home' size={30} />
+              </Text>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle} testID=''>
