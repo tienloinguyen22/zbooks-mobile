@@ -1,0 +1,9 @@
+{
+  "common": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "home": {
+    "hello": "Hello"
+  }
+}

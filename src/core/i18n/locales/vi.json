@@ -1,0 +1,9 @@
+{
+  "common": {
+    "home": "Trang chủ",
+    "settings": "Cài đặt"
+  },
+  "home": {
+    "hello": "Xin chào"
+  }
+}

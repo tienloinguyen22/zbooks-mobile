@@ -14,6 +14,7 @@ import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
 import { Icon, Button } from '@app/components';
+import { useTranslation } from 'react-i18next';
 
 const styles = StyleSheet.create({
   scrollView: { backgroundColor: Colors.lighter },
@@ -46,9 +47,14 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  menu: {
+    fontSize: 20,
+    color: 'red',
+  },
 });
 
 const App = (): JSX.Element => {
+  const { t } = useTranslation();
   const [effectLoaded, setEffectLoaded] = useState(false);
   const [showHello, setShowHello] = useState(false);
 
@@ -78,7 +84,7 @@ const App = (): JSX.Element => {
               <Text style={styles.sectionTitle} testID=''>
                 Icon
                 <Icon name='home' />
-                <Icon ios='ios-menu' android='md-menu' name='home' style={{ fontSize: 20, color: 'red' }} />
+                <Icon ios='ios-menu' android='md-menu' name='home' style={styles.menu} />
                 <Icon type='FontAwesome' name='home' />
               </Text>
             </View>
@@ -91,7 +97,7 @@ const App = (): JSX.Element => {
               <Text style={styles.sectionTitle}>Platform: {Platform.OS}</Text>
             </View>
             <Button success onPress={onPressHello}>
-              <Text> Hello </Text>
+              <Text>{t('home.hello')}</Text>
             </Button>
             {showHello && (
               <View style={styles.sectionContainer}>

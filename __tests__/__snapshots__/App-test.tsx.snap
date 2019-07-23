@@ -321,7 +321,7 @@ exports[`<App/> renders correctly on android platform 1`] = `
               success={true}
             >
               <Text>
-                 Hello 
+                Hello
               </Text>
             </View>
           </DummyTouchableNativeFeedback>
@@ -650,7 +650,7 @@ exports[`<App/> renders correctly with hermes engine 1`] = `
             success={true}
           >
             <Text>
-               Hello 
+              Hello
             </Text>
           </TouchableOpacity>
         </View>
@@ -955,7 +955,7 @@ exports[`<App/> renders successfully with effect 1`] = `
             success={true}
           >
             <Text>
-               Hello 
+              Hello
             </Text>
           </TouchableOpacity>
         </View>

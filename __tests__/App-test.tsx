@@ -2,10 +2,15 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import App from '@app/App';
 import { Platform } from 'react-native';
+import { i18n } from '@app/core';
 
 jest.mock('react-native-splash-screen', () => ({
   hide: jest.fn(),
 }));
+
+beforeAll(() => {
+  i18n.initialize();
+});
 
 describe('<App/>', () => {
   beforeEach(() => {
@@ -16,17 +21,6 @@ describe('<App/>', () => {
     const { getByText, baseElement } = render(<App />);
 
     expect(getByText('Effect loaded: true')).toBeDefined();
-    // const famousWomanInHistory = 'Ada Lovelace';
-
-    // const input = getByTestId('input');
-    // fireEvent.changeText(input, famousWomanInHistory);
-
-    // const button = getByText('Print Username');
-    // fireEvent.press(button);
-
-    // await wait(() => expect(queryByTestId('printed-username')).toBeTruthy());
-
-    // expect(getByTestId('printed-username').props.children).toBe(famousWomanInHistory);
     expect(baseElement).toMatchSnapshot();
   });
 
@@ -45,7 +39,7 @@ describe('<App/>', () => {
     expect(getByText('Engine: Hermes')).toBeDefined();
     expect(baseElement).toMatchSnapshot();
   });
-  it('shows "Hellow world" when clicking Hello button', async () => {
+  it('shows "Hello world" when clicking Hello button', async () => {
     const { getByText } = render(<App />);
     const button = getByText('Hello');
     fireEvent.press(button);
