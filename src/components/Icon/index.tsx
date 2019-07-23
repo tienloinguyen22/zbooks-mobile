@@ -1,3 +1,3 @@
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Icon } from 'native-base';
 
 export { Icon };

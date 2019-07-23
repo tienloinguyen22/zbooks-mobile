@@ -9,11 +9,11 @@
  */
 
 import React, { Fragment, useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform, Button } from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform } from 'react-native';
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
-import { Icon } from '@app/components';
+import { Icon, Button } from '@app/components';
 
 const styles = StyleSheet.create({
   scrollView: { backgroundColor: Colors.lighter },
@@ -76,7 +76,10 @@ const App = (): JSX.Element => {
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle} testID=''>
-                Icon: <Icon name='home' size={30} />
+                Icon
+                <Icon name='home' />
+                <Icon ios='ios-menu' android='md-menu' name='home' style={{ fontSize: 20, color: 'red' }} />
+                <Icon type='FontAwesome' name='home' />
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -87,7 +90,9 @@ const App = (): JSX.Element => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Platform: {Platform.OS}</Text>
             </View>
-            <Button title='Hello' onPress={onPressHello} />
+            <Button success onPress={onPressHello}>
+              <Text> Hello </Text>
+            </Button>
             {showHello && (
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Hello world</Text>
