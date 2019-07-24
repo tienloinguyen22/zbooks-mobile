@@ -4,10 +4,6 @@ import App from '@app/App';
 import { Platform } from 'react-native';
 import { i18n } from '@app/core';
 
-jest.mock('react-native-splash-screen', () => ({
-  hide: jest.fn(),
-}));
-
 jest.mock('react-native-splash-screen');
 
 beforeAll(() => {
