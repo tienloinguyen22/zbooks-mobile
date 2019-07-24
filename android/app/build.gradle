@@ -80,6 +80,7 @@ project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
 ]
 
+// apply from: "../../node_modules/react-native/react.gradle"
 apply from: "./react.gradle"
 
 /**
@@ -95,7 +96,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = true
+def enableProguardInReleaseBuilds = false
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -177,8 +178,8 @@ android {
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
 
+        }
     }
-}
 
     packagingOptions {
         pickFirst '**/armeabi-v7a/libc++_shared.so'
