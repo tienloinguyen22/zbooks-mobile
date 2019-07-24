@@ -3,6 +3,9 @@
     "home": "Home",
     "settings": "Settings"
   },
+  "error": {
+    "somethingWentWrong": "Something went wrong"
+  },
   "home": {
     "hello": "Hello"
   }

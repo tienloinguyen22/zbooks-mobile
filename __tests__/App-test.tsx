@@ -8,6 +8,8 @@ jest.mock('react-native-splash-screen', () => ({
   hide: jest.fn(),
 }));
 
+jest.mock('react-native-splash-screen');
+
 beforeAll(() => {
   i18n.initialize();
 });
