@@ -19,6 +19,30 @@ jobs:
     - stage: Validate
       script: yarn job production &&
         yarn validate
+    - stage: Build iOS
+      if: branch = master OR branch = develop
+      os: osx
+      osx_image: xcode10.2
+      before_script:
+        - bundle install
+        - cd ios && pod install --repo-update && cd ..
+      script: yarn job production &&
+        yarn ios:build
+    - stage: Release iOS to Testflight
+      if: branch = ios-testflight
+      os: osx
+      osx_image: xcode10.2
+      before_script:
+        - bundle install
+        - cd ios && pod install --repo-update && cd ..
+      script:
+        # itms is needed, otherwise altool will not work correctly
+        yarn job production &&
+        yarn job update-version &&
+        yarn ios:build &&
+        ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool" /usr/local/bin/altool &&
+        ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms" /usr/local/bin/itms &&
+        altool --upload-app -f "mobile.ipa" -u $APPLE_USERNAME -p $APPLE_APPLICATION_SPECIFIC_PASSWORD
     - stage: Build Android
       if: branch = master OR branch = develop
       language: android
@@ -65,27 +89,3 @@ jobs:
       script: yarn job production &&
         yarn job update-version &&
         yarn android:alpha
-    - stage: Build iOS
-      if: branch = master OR branch = develop
-      os: osx
-      osx_image: xcode10.2
-      before_script:
-        - bundle install
-        - cd ios && pod install --repo-update && cd ..
-      script: yarn job production &&
-        yarn ios:build
-    - stage: Release iOS to Testflight
-      if: branch = ios-testflight
-      os: osx
-      osx_image: xcode10.2
-      before_script:
-        - bundle install
-        - cd ios && pod install --repo-update && cd ..
-      script:
-        # itms is needed, otherwise altool will not work correctly
-        yarn job production &&
-        yarn job update-version &&
-        yarn ios:build &&
-        ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool" /usr/local/bin/altool &&
-        ln -s "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/itms" /usr/local/bin/itms &&
-        altool --upload-app -f "mobile.ipa" -u $APPLE_USERNAME -p $APPLE_APPLICATION_SPECIFIC_PASSWORD
