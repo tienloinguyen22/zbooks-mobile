@@ -83,6 +83,7 @@ platform :ios do
       storage_mode: 'git',
       keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
       keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+      username: ENV['APPLE_USERNAME'],
       app_identifier: ENV['IOS_APPLICATION_ID']
     )
   end
