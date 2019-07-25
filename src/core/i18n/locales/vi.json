@@ -3,6 +3,9 @@
     "home": "Trang chủ",
     "settings": "Cài đặt"
   },
+  "error": {
+    "somethingWentWrong": "Có lỗi xảy ra"
+  },
   "home": {
     "hello": "Xin chào"
   }

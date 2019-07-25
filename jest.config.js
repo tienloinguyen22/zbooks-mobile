@@ -6,7 +6,7 @@ module.exports = {
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
   setupFilesAfterEnv: [
     '@testing-library/react-native/cleanup-after-each',
-    '<rootDir>/jest.ignore_yellow_box_warning.js',
+    '<rootDir>/jest.setup.js',
     // ... other setup files ...
   ],
 };
