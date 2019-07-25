@@ -4,6 +4,7 @@ import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 // import { navigationService } from '@app/services';
 import { BaseLayout, Text, Button } from '@app/components';
+import { styles } from './styles';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
@@ -18,17 +19,17 @@ export const Screen = ({
   return (
     <BaseLayout>
       <Text>Sharks: {sharks.count}</Text>
-      <Button onPress={incrementShark}>
+      <Button onPress={incrementShark} style={styles.button}>
         <Text>Raise shark</Text>
       </Button>
-      <Button onPress={incrementSharkAsync}>
+      <Button onPress={incrementSharkAsync} style={styles.button}>
         <Text>Raise shark async</Text>
       </Button>
       <Text>Dolphins: {dolphins.count}</Text>
-      <Button onPress={incrementDolphin}>
+      <Button onPress={incrementDolphin} style={styles.button}>
         <Text>Raise dolphin</Text>
       </Button>
-      <Button onPress={incrementDolphinAsync}>
+      <Button onPress={incrementDolphinAsync} style={styles.button}>
         <Text>Raise dolphin async</Text>
       </Button>
     </BaseLayout>
