@@ -8,5 +8,8 @@
   },
   "home": {
     "hello": "Xin chào"
+  },
+  "settings": {
+    "settings": "Cài đặt"
   }
 }

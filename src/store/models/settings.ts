@@ -1,4 +1,4 @@
-import { createModel } from '@rematch/core';
+import { createModel, ModelConfig } from '@rematch/core';
 import produce from 'immer';
 import { LanguageType, i18n } from '@app/core';
 import i18next from 'i18next';
@@ -6,10 +6,10 @@ import { navigationService } from '@app/services';
 
 export interface SettingsState {
   appLoaded: boolean;
-  lang: string;
+  lang: LanguageType;
 }
 
-export const settings = createModel<SettingsState>({
+export const settings: ModelConfig<SettingsState> = createModel<SettingsState>({
   state: {
     appLoaded: false,
     lang: i18n.LANGUAGE_EN,

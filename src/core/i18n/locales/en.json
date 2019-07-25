@@ -8,5 +8,8 @@
   },
   "home": {
     "hello": "Hello"
+  },
+  "settings": {
+    "settings": "settings"
   }
 }
