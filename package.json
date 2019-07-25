@@ -23,6 +23,7 @@
     "@babel/runtime": "^7.5.5",
     "@react-native-community/eslint-config": "^0.0.5",
     "@testing-library/react-native": "^4.0.7",
+    "@types/bluebird": "^3.5.27",
     "@types/jest": "^24.0.15",
     "@types/lodash": "^4.14.136",
     "@types/node": "^12.6.2",

@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -46,7 +47,8 @@ public class MainApplication extends NavigationApplication {
           // eg. new VectorIconsPackage()
           new SplashScreenReactPackage(),
           new VectorIconsPackage(),
-          new AsyncStoragePackage()
+          new AsyncStoragePackage(),
+          new ReactNativeExceptionHandlerPackage()
       );
   }
 

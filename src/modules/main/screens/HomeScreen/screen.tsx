@@ -18,6 +18,14 @@ export const Screen = ({
   incrementDolphinAsync,
 }: Props) => {
   const { t } = useTranslation();
+
+  const crashTest = () => (null as any).crash();
+
+  const crashTestAsync = async () => {
+    console.log('crashTestAsync');
+    (null as any).crash();
+  };
+
   return (
     <BaseLayout>
       <Text>{t('home.hello')}</Text>
@@ -34,6 +42,12 @@ export const Screen = ({
       </Button>
       <Button onPress={incrementDolphinAsync} style={styles.button}>
         <Text>Raise dolphin async</Text>
+      </Button>
+      <Button onPress={crashTest} style={styles.button}>
+        <Text>Crash Test</Text>
+      </Button>
+      <Button onPress={crashTestAsync} style={styles.button}>
+        <Text>Crash Test Async</Text>
       </Button>
     </BaseLayout>
   );

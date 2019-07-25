@@ -1,10 +1,13 @@
 {
   "common": {
     "home": "Trang chủ",
+    "ok": "Xác nhận",
     "settings": "Cài đặt"
   },
   "error": {
-    "somethingWentWrong": "Có lỗi xảy ra"
+    "somethingWentWrong": "Có lỗi xảy ra",
+    "unexpectedErrorOccurred": "Có lỗi xảy ra",
+    "unexpectedErrorOccurredMessage": "Chúng tôi đã báo cáo lỗi cho đội phát triển! Vui lòng đóng ứng dụng và bắt đầu lại!"
   },
   "home": {
     "hello": "Xin chào"
