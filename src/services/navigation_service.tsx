@@ -18,7 +18,7 @@ const navigateTo = ({
 }: {
   screenName: string;
   componentId: string;
-  options: NavigationOption;
+  options?: NavigationOption;
 }) => {
   Navigation.push(componentId, {
     component: {
@@ -27,11 +27,19 @@ const navigateTo = ({
   });
 };
 
+const changeTab = ({ componentId, tabIndex }: { componentId: string; tabIndex: number }) => {
+  Navigation.mergeOptions(componentId, {
+    bottomTabs: {
+      currentTabIndex: tabIndex,
+    },
+  });
+};
+
 const goBack = ({ componentId }: { componentId: string }) => {
   Navigation.pop(componentId);
 };
 
-const initializeNavigation = () => {
+const initialize = () => {
   Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setDefaultOptions({
       topBar: {
@@ -120,10 +128,11 @@ const setRootHome = async (currentTabIndex?: number) => {
 };
 
 export const navigationService = {
-  initializeNavigation,
+  initialize,
   setRootAppLoader,
   setRootHome,
   setRootLogin,
   navigateTo,
   goBack,
+  changeTab,
 };

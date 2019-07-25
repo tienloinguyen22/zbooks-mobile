@@ -1,8 +1,8 @@
 import React from 'react';
-import { ScreenProps } from '@app/core';
+import { ScreenProps, screenNames } from '@app/core';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
-// import { navigationService } from '@app/services';
+import { navigationService } from '@app/services';
 import { BaseLayout, Text, Button } from '@app/components';
 import { styles } from './styles';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
 export const Screen = ({
+  componentId,
   sharks,
   dolphins,
   incrementShark,
@@ -24,6 +25,20 @@ export const Screen = ({
   const crashTestAsync = async () => {
     console.log('crashTestAsync');
     (null as any).crash();
+  };
+
+  const pushNewScreen = () => {
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.NewScreen,
+    });
+  };
+
+  const changeTab = () => {
+    navigationService.changeTab({
+      componentId,
+      tabIndex: 1,
+    });
   };
 
   return (
@@ -48,6 +63,12 @@ export const Screen = ({
       </Button>
       <Button onPress={crashTestAsync} style={styles.button}>
         <Text>Crash Test Async</Text>
+      </Button>
+      <Button onPress={pushNewScreen} style={styles.button}>
+        <Text>Push New Screen</Text>
+      </Button>
+      <Button onPress={changeTab} style={styles.button}>
+        <Text>Change Tab Settings</Text>
       </Button>
     </BaseLayout>
   );

@@ -7,6 +7,6 @@ catchAndLog(
     handleGlobalErrors();
     await i18n.initialize();
     registerModules();
-    navigationService.initializeNavigation();
+    navigationService.initialize();
   },
 )();

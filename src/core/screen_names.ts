@@ -3,4 +3,5 @@ export const screenNames = {
   AppLoaderScreen: 'AppLoaderScreen',
   SettingsScreen: 'SettingsScreen',
   HomeScreen: 'HomeScreen',
+  NewScreen: 'NewScreen',
 };
