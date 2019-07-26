@@ -12,6 +12,9 @@
   "home": {
     "hello": "Hello"
   },
+  "loginScreen": {
+    "loginWith": "Login with"
+  },
   "settings": {
     "settings": "settings"
   }

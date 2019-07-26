@@ -7,13 +7,14 @@ import { useTranslation } from 'react-i18next';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ changeLanguage }: Props) => {
+export const Screen = ({ changeLanguage, currentUser }: Props) => {
   const { t } = useTranslation();
   const changeToVietnamese = () => changeLanguage(i18n.LANGUAGE_VI);
   const changeToEnglish = () => changeLanguage(i18n.LANGUAGE_EN);
   return (
     <BaseLayout>
       <Text>{t('settings.settings')}</Text>
+      <Text>User: ${currentUser.displayName}</Text>
       <Button onPress={changeToVietnamese}>
         <Text>Change to Vietnames</Text>
       </Button>

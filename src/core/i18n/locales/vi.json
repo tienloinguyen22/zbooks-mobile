@@ -12,6 +12,9 @@
   "home": {
     "hello": "Xin chào"
   },
+  "loginScreen": {
+    "loginWith": "Đăng nhập với"
+  },
   "settings": {
     "settings": "Cài đặt"
   }

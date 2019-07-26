@@ -1,5 +1,6 @@
 export * from './View';
 export * from './Icon';
+export * from './MaterialIcon';
 export * from './VectorIcon';
 export * from './Toast';
 export * from './Button';

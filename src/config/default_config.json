@@ -12,6 +12,10 @@
   "fb": {
     "id": ""
   },
+  "google": {
+    "iosClientId": "",
+    "webClientId": ""
+  },
   "i18n": {
     "defaultLang": "en",
     "en": "en",

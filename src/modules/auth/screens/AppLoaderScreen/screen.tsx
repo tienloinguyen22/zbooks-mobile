@@ -9,25 +9,21 @@ import { navigationService } from '@app/services';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ appLoaded, language }: Props) => {
+export const Screen = ({ appLoaded, language, isLoggedIn }: Props) => {
   useEffect(() => {
     if (!appLoaded) {
       return;
     }
     i18next.changeLanguage(language);
 
+    if (isLoggedIn) {
+      navigationService.setRootHome();
+      SplashScreen.hide();
+      return;
+    }
+
     navigationService.setRootLogin();
     SplashScreen.hide();
-
-    // check firebase to see if user is logged in or not
-    // const unsubscribe = auth().onAuthStateChanged(async (_user) => {
-    //   await navigationService.setRootHome();
-    //   SplashScreen.hide();
-    // });
-
-    return () => {
-      // unsubscribe();
-    };
   }, [appLoaded]);
   return <></>;
 };

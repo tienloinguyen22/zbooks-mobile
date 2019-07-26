@@ -4,5 +4,5 @@ import { mapDispatchToProps } from './map_dispatch_to_props';
 import { connect } from 'react-redux';
 export const LoginScreen = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps as any,
 )(Screen);
