@@ -1,4 +1,4 @@
-import { recordError } from '@app/core';
+import { recordError } from './record_error';
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 import { Alert } from 'react-native';
 import i18next from 'i18next';

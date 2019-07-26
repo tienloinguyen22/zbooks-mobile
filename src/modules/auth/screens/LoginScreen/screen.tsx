@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BaseLayout, View, Image, Button, Text, MaterialIcon } from '@app/components';
-// import { navigationService } from '@app/services';
+import { navigationService } from '@app/services';
 import { ScreenProps, images, catchAndLog, LoginType, LOGIN_TYPE } from '@app/core';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
@@ -8,11 +8,11 @@ import { styles } from './styles';
 import { useTranslation } from 'react-i18next';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
-// import auth, { Auth } from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({  }: Props) => {
+export const Screen = ({ login }: Props) => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -27,8 +27,7 @@ export const Screen = ({  }: Props) => {
       // handle this however suites the flow of your app
       throw new Error('Something went wrong obtaining the users access token');
     }
-    // return firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-    return null;
+    return auth.FacebookAuthProvider.credential(data.accessToken);
   };
 
   const loginGoogleAndGetCredential = async () => {
@@ -36,8 +35,7 @@ export const Screen = ({  }: Props) => {
       await GoogleSignin.signIn();
       const { idToken, accessToken } = await GoogleSignin.getTokens();
       console.log(idToken, accessToken);
-      return null;
-      // return auth.GoogleAuthProvider.credential(idToken, accessToken);
+      return auth.GoogleAuthProvider.credential(idToken, accessToken);
     } catch (error) {
       console.log(error);
       if (
@@ -48,7 +46,6 @@ export const Screen = ({  }: Props) => {
       }
       throw error;
     }
-    return null;
   };
 
   const performLogin = catchAndLog(
@@ -72,14 +69,15 @@ export const Screen = ({  }: Props) => {
       }
 
       // login with credential
-      // const { user } = await auth().signInWithCredential(credential!);
-      // login({
-      //   id: user.uid,
-      //   displayName: user.displayName,
-      //   avatarUrl: user.photoURL,
-      //   isLoggedIn: true,
-      // });
-      // navigationService.setRootHome();
+      const { user } = await auth().signInWithCredential(credential!);
+      console.log(user);
+      login({
+        id: user.uid,
+        displayName: user.displayName,
+        avatarUrl: user.photoURL,
+        isLoggedIn: true,
+      });
+      navigationService.setRootHome();
     },
     async () => setIsBusy(false),
   );

@@ -7,6 +7,8 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
@@ -52,7 +54,9 @@ public class MainApplication extends NavigationApplication {
           new AsyncStoragePackage(),
           new ReactNativeExceptionHandlerPackage(),
           new FBSDKPackage(),
-          new RNGoogleSigninPackage()
+          new RNGoogleSigninPackage(),
+          new ReactNativeFirebaseAppPackage(),
+          new ReactNativeFirebaseAuthPackage()
       );
   }
 

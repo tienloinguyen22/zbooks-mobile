@@ -135,6 +135,7 @@ android {
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
         versionCode 3145737
         versionName "0.3.0"
+        multiDexEnabled true
     }
     splits {
         abi {
@@ -201,6 +202,8 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':@react-native-firebase_auth')
+    implementation project(':@react-native-firebase_app')
     implementation project(':react-native-google-signin')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-exception-handler')

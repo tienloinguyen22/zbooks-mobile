@@ -11,6 +11,8 @@ export const Screen = ({ changeLanguage, currentUser }: Props) => {
   const { t } = useTranslation();
   const changeToVietnamese = () => changeLanguage(i18n.LANGUAGE_VI);
   const changeToEnglish = () => changeLanguage(i18n.LANGUAGE_EN);
+
+  const logout = () => {};
   return (
     <BaseLayout>
       <Text>{t('settings.settings')}</Text>
@@ -20,6 +22,9 @@ export const Screen = ({ changeLanguage, currentUser }: Props) => {
       </Button>
       <Button onPress={changeToEnglish}>
         <Text>Change to English</Text>
+      </Button>
+      <Button onPress={logout}>
+        <Text>Logout</Text>
       </Button>
     </BaseLayout>
   );

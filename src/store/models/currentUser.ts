@@ -16,8 +16,8 @@ export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUse
     isLoggedIn: false,
   },
   reducers: {
-    login: produce((_draftState: CurrentUserState, payload: CurrentUserState) => {
-      _draftState = payload;
+    login: produce((draftState: CurrentUserState, payload: CurrentUserState) => {
+      Object.assign(draftState, payload);
     }),
   },
   effects: {},
