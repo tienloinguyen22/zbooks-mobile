@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScreenProps, screenNames } from '@app/core';
+import { ScreenProps, screenNames, showNotification } from '@app/core';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import { navigationService } from '@app/services';
@@ -41,6 +41,10 @@ export const Screen = ({
     });
   };
 
+  const showMessage = () => {
+    showNotification({ type: 'success', message: 'Hello' });
+  };
+
   return (
     <BaseLayout>
       <Text>{t('home.hello')}</Text>
@@ -69,6 +73,9 @@ export const Screen = ({
       </Button>
       <Button onPress={changeTab} style={styles.button}>
         <Text>Change Tab Settings</Text>
+      </Button>
+      <Button onPress={showMessage} style={styles.button}>
+        <Text>Show notification</Text>
       </Button>
     </BaseLayout>
   );
