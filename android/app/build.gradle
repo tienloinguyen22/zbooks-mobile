@@ -201,6 +201,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-google-signin')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-exception-handler')
     implementation project(':@react-native-community_async-storage')
@@ -229,3 +230,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+apply plugin: 'com.google.gms.google-services'

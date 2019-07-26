@@ -7,7 +7,7 @@ import { mapDispatchToProps } from './map_dispatch_to_props';
 import { styles } from './styles';
 import { useTranslation } from 'react-i18next';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
-// import { GoogleSignin } from 'react-native-google-signin';
+import { GoogleSignin } from 'react-native-google-signin';
 // import auth, { Auth } from '@react-native-firebase/auth';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
@@ -27,27 +27,27 @@ export const Screen = ({  }: Props) => {
       // handle this however suites the flow of your app
       throw new Error('Something went wrong obtaining the users access token');
     }
-
-    console.log(data);
     // return firebase.auth.FacebookAuthProvider.credential(data.accessToken);
     return null;
   };
 
   const loginGoogleAndGetCredential = async () => {
-    // try {
-    //   await GoogleSignin.signIn();
-    //   const { idToken, accessToken } = await GoogleSignin.getTokens();
-    //   return auth.GoogleAuthProvider.credential(idToken, accessToken);
-    // } catch (error) {
-    //   console.log(error);
-    //   if (
-    //     error.message.indexOf('The user canceled the sign in request') > -1 ||
-    //     error.message.indexOf('Sign in action cancelled') > -1
-    //   ) {
-    //     return null;
-    //   }
-    //   throw error;
-    // }
+    try {
+      await GoogleSignin.signIn();
+      const { idToken, accessToken } = await GoogleSignin.getTokens();
+      console.log(idToken, accessToken);
+      return null;
+      // return auth.GoogleAuthProvider.credential(idToken, accessToken);
+    } catch (error) {
+      console.log(error);
+      if (
+        error.message.indexOf('The user canceled the sign in request') > -1 ||
+        error.message.indexOf('Sign in action cancelled') > -1
+      ) {
+        return null;
+      }
+      throw error;
+    }
     return null;
   };
 

@@ -24,6 +24,7 @@
 		2E4F9B3C2700449FAC3D7A11 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6944F0EC37D04B029930851C /* MaterialIcons.ttf */; };
 		31CB52885C45468786348B13 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDC5D2B2D9B440E3A5C760DD /* MaterialCommunityIcons.ttf */; };
 		3C82054ED43B631E2FC11C62 /* libPods-mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC8C4D952BFBF24D0FECD15 /* libPods-mobile-tvOSTests.a */; };
+		4A6E817C22EAC95100E2CE74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E817B22EAC95100E2CE74 /* GoogleService-Info.plist */; };
 		4CD97AB96921446F8ED2B62B /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEF42D17CE8E4E709B4ADD77 /* Feather.ttf */; };
 		56DBFFF431A24879B8126437 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 872FE7BD808F445B880A979A /* SimpleLineIcons.ttf */; };
 		63F495B13BC345FAA0D6B6A1 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD6062EC3EF848A384AEB3A6 /* Foundation.ttf */; };
@@ -81,6 +82,7 @@
 		3BBFAD0CC24A45AE86D472D5 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		44517AC920AE4015BD1C0566 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		47A84DD82E05749803A72ADC /* libPods-mobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A6E817B22EAC95100E2CE74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "mobile/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4BEB0C415CF58742CD535118 /* Pods-mobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileTests.debug.xcconfig"; path = "Target Support Files/Pods-mobileTests/Pods-mobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C9FF94998894BA2994685C4 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		4F2722445DA84FE1B66985E7 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		13B07FAE1A68108700A75B9A /* mobile */ = {
 			isa = PBXGroup;
 			children = (
+				4A6E817B22EAC95100E2CE74 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -457,6 +460,7 @@
 				1C99F60502ED446994C21067 /* Roboto_medium.ttf in Resources */,
 				11DF457B57774DC7A0DE76DE /* Roboto.ttf in Resources */,
 				E70CA60CAE01421C96595186 /* rubicon-icon-font.ttf in Resources */,
+				4A6E817C22EAC95100E2CE74 /* GoogleService-Info.plist in Resources */,
 				56DBFFF431A24879B8126437 /* SimpleLineIcons.ttf in Resources */,
 				DCB1D3860769428D83F4F5CA /* Zocial.ttf in Resources */,
 			);
@@ -516,6 +520,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mobile/Pods-mobile-resources.sh",
 				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -536,6 +541,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",

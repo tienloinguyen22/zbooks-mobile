@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
@@ -50,7 +51,8 @@ public class MainApplication extends NavigationApplication {
           new VectorIconsPackage(),
           new AsyncStoragePackage(),
           new ReactNativeExceptionHandlerPackage(),
-          new FBSDKPackage()
+          new FBSDKPackage(),
+          new RNGoogleSigninPackage()
       );
   }
 

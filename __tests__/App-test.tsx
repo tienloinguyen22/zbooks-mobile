@@ -5,6 +5,7 @@ import { Platform } from 'react-native';
 import { i18n } from '@app/core';
 
 jest.mock('react-native-splash-screen');
+jest.mock('react-native-google-signin', () => {});
 
 beforeAll(() => {
   i18n.initialize();
