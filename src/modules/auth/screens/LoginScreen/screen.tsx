@@ -17,11 +17,6 @@ export const Screen = ({  }: Props) => {
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
   const loginFacebookAndGetCredential = async () => {
-    console.log(LoginManager, LoginManager.logInWithPermissions);
-    if (LoginManager && LoginManager.logInWithPermissions) {
-      console.log('not null');
-      LoginManager.logInWithPermissions(['public_profile', 'email']);
-    }
     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
     if (result.isCancelled) {
       return undefined;

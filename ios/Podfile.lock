@@ -1,6 +1,16 @@
 PODS:
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
+  - FBSDKCoreKit (5.2.3):
+    - FBSDKCoreKit/Basics (= 5.2.3)
+    - FBSDKCoreKit/Core (= 5.2.3)
+  - FBSDKCoreKit/Basics (5.2.3)
+  - FBSDKCoreKit/Core (5.2.3):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.2.3):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKShareKit (5.2.3):
+    - FBSDKCoreKit (~> 5.0)
   - Folly (2018.10.22.00):
     - boost-for-react-native
     - DoubleConversion
@@ -57,6 +67,20 @@ PODS:
     - React-cxxreact (= 0.60.4)
     - React-jsi (= 0.60.4)
   - React-jsinspector (0.60.4)
+  - react-native-fbsdk (1.0.0-rc.5):
+    - React
+    - react-native-fbsdk/Core (= 1.0.0-rc.5)
+    - react-native-fbsdk/Login (= 1.0.0-rc.5)
+    - react-native-fbsdk/Share (= 1.0.0-rc.5)
+  - react-native-fbsdk/Core (1.0.0-rc.5):
+    - FBSDKCoreKit (~> 5.0)
+    - React
+  - react-native-fbsdk/Login (1.0.0-rc.5):
+    - FBSDKLoginKit (~> 5.0)
+    - React
+  - react-native-fbsdk/Share (1.0.0-rc.5):
+    - FBSDKShareKit (~> 5.0)
+    - React
   - react-native-splash-screen (3.2.0):
     - React
   - React-RCTActionSheet (0.60.4):
@@ -95,6 +119,9 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - FBSDKCoreKit (~> 5.2.0)
+  - FBSDKLoginKit (~> 5.2.0)
+  - FBSDKShareKit (~> 5.2.0)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - React (from `../node_modules/react-native/`)
@@ -105,6 +132,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -125,6 +153,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -149,6 +180,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-fbsdk:
+    :path: "../node_modules/react-native-fbsdk"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   React-RCTActionSheet:
@@ -185,6 +218,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
+  FBSDKCoreKit: 5154c35d9058fd7dfa0445ba19e194c4b172fc32
+  FBSDKLoginKit: dc98b6bf12334f1a42f28d0457fffc9aa3d1eca5
+  FBSDKShareKit: 6f9c622f9a5d051f43f2dab6f753d5198422b89c
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   React: ff7ee2ae5ee1c1d9ae2183b4111045b25294bb01
@@ -195,6 +231,7 @@ SPEC CHECKSUMS:
   React-jsi: 21d3153b1153fbf6510a92b6b11e33e725cb7432
   React-jsiexecutor: 7549641e48bafae7bfee3f3ea19bf4901639c5de
   React-jsinspector: 73f24a02fa684ed6a2b828ba116874a2191ded88
+  react-native-fbsdk: 1bd77128b223a25ff3dad3aca2423aab9d4fac92
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 9f71d7ae3e8fb10e08d162cbf14c621349dbfab3
   React-RCTAnimation: 981d8c95b0e30918a9832ccac32af83562a27fae
@@ -212,6 +249,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: c2c050f6ae6e222534760cc82f559b89214b67e2
 
-PODFILE CHECKSUM: aab9047e7e2d5b100f5e44af7630545d5cd0d5d7
+PODFILE CHECKSUM: db006ac3e4ea15333b6f4b9a5f403db7d43ec8b5
 
 COCOAPODS: 1.7.4

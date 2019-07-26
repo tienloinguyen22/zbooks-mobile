@@ -5694,10 +5694,9 @@ react-native-exception-handler@^2.10.8:
   resolved "https://registry.yarnpkg.com/react-native-exception-handler/-/react-native-exception-handler-2.10.8.tgz#1a7f846592d888d23adaf797e31802585f1d9ff0"
   integrity sha512-ZN+jwpADRkCUNdad/50k0mZdMoICGrGdtaxgvRU+pNcWRRBAXJhuo4+jY0eQaoVpx1ghycGE6tBu9ka8gL2NOQ==
 
-react-native-fbsdk@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-0.10.1.tgz#b3ed4237b1322956f2260c716d49c2ce08514741"
-  integrity sha512-/TfpiT7wLdP1ABWk46DhpadbOSXdizWEvrNhLABe+9jK8/ljaCL7nwHj+Xp0Yd6KBnW88in67ukAy2kbfbfZ+A==
+"react-native-fbsdk@git+https://github.com/facebook/react-native-fbsdk.git":
+  version "1.0.0-rc.5"
+  resolved "git+https://github.com/facebook/react-native-fbsdk.git#b1a624bb8453c1fdf6b610a7f91f0178796e71a3"
 
 react-native-iphone-x-helper@^1.0.3:
   version "1.2.1"
