@@ -8,7 +8,7 @@ const showAndRecordError = (error: Error, _isFatal: boolean = false) => {
   recordError(error);
   if (!__DEV__) {
     Alert.alert(i18next.t('error.unexpectedErrorOccurred'), i18next.t('error.unexpectedErrorOccurredMessage'), [
-      { text: i18next.t('common.ok') },
+      { text: i18next.t('common.close') },
     ]);
   }
 };

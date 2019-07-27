@@ -1,3 +1,3 @@
-import { iRootState } from '@app/store';
+import { RootState } from '@app/store';
 
-export const mapStateToProps = (_state: iRootState) => ({});
+export const mapStateToProps = (_state: RootState) => ({});

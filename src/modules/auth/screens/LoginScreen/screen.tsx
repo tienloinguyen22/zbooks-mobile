@@ -68,10 +68,13 @@ export const Screen = ({ login }: Props) => {
 
       // login with credential
       const { user } = await auth().signInWithCredential(credential!);
+      console.log(user, user.providerId, user.photoURL);
+      const avatarUrl =
+        user.photoURL && user.photoURL.indexOf('facebook') > -1 ? `${user.photoURL}?height=500` : user.photoURL;
       login({
         id: user.uid,
         displayName: user.displayName,
-        avatarUrl: user.photoURL,
+        avatarUrl,
         isLoggedIn: true,
       });
       navigationService.setRootHome();

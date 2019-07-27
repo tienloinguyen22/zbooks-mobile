@@ -17,6 +17,18 @@ export const LANGUAGES = [
   },
 ];
 
+const getLanguageName = (id: LanguageType) => {
+  const language = i18n.LANGUAGES.find((lang) => lang.id === id);
+  return language ? language.name : undefined;
+};
+
+const getLanguageByName = (name: string) => {
+  const language = i18n.LANGUAGES.find((lang) => lang.name === name);
+  return language;
+};
+
+const LANGUAGE_TEXTS = LANGUAGES.map((lang) => lang.name);
+
 const initialize = async () => {
   const languageDetector = {
     type: 'languageDetector',
@@ -47,5 +59,8 @@ export const i18n = {
   LANGUAGE_VI,
   LANGUAGE_EN,
   LANGUAGES,
+  LANGUAGE_TEXTS,
+  getLanguageName,
+  getLanguageByName,
   initialize,
 };

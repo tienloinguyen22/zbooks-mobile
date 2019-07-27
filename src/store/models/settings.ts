@@ -3,6 +3,7 @@ import produce from 'immer';
 import { LanguageType, i18n } from '@app/core';
 import i18next from 'i18next';
 import { navigationService } from '@app/services';
+import { RootState } from '..';
 
 export interface SettingsState {
   appLoaded: boolean;
@@ -23,10 +24,13 @@ export const settings: ModelConfig<SettingsState> = createModel<SettingsState>({
     }),
   },
   effects: {
-    async changeLanguageWithI18next(payload: LanguageType): Promise<void> {
+    async changeLanguageWithI18next(payload: LanguageType, rootState: RootState): Promise<void> {
+      if (payload === rootState.settings.language) {
+        return;
+      }
       await i18next.changeLanguage(payload);
       this.changeLanguage(payload);
-      navigationService.setRootHome(1);
+      navigationService.setRootHome(1); // refresh & go to Settings tab
     },
   },
 });

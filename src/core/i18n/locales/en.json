@@ -1,7 +1,11 @@
 {
   "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
     "home": "Home",
     "ok": "OK",
+    "select": "Select",
     "settings": "Settings"
   },
   "error": {

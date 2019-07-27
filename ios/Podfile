@@ -51,6 +51,8 @@ target 'mobile' do
 
   pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
 
+  pod 'Picker', :path => '../node_modules/react-native-picker'
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing

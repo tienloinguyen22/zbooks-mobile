@@ -1,7 +1,11 @@
 {
   "common": {
+    "cancel": "Huỷ",
+    "close": "Đóng",
+    "confirm": "Xác nhận",
     "home": "Trang chủ",
     "ok": "Xác nhận",
+    "select": "Lựa chọn",
     "settings": "Cài đặt"
   },
   "error": {

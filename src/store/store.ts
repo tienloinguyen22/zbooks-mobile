@@ -26,4 +26,4 @@ export const persistor = persistStore(store, undefined, () => {
 
 export type Store = typeof store;
 export type Dispatch = typeof store.dispatch;
-export type iRootState = RematchRootState<typeof models>;
+export type RootState = RematchRootState<typeof models>;
