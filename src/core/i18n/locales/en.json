@@ -16,6 +16,11 @@
     "loginWith": "Login with"
   },
   "settings": {
-    "settings": "settings"
+    "about": "About",
+    "author": "Author",
+    "language": "Language",
+    "logout": "Logout",
+    "settings": "Settings",
+    "version": "Version"
   }
 }

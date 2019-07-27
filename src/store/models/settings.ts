@@ -6,20 +6,20 @@ import { navigationService } from '@app/services';
 
 export interface SettingsState {
   appLoaded: boolean;
-  lang: LanguageType;
+  language: LanguageType;
 }
 
 export const settings: ModelConfig<SettingsState> = createModel<SettingsState>({
   state: {
     appLoaded: false,
-    lang: i18n.LANGUAGE_EN,
+    language: i18n.LANGUAGE_EN,
   },
   reducers: {
     finishLoadingApp: produce((draftState: SettingsState) => {
       draftState.appLoaded = true;
     }),
     changeLanguage: produce((draftState: SettingsState, payload: LanguageType) => {
-      draftState.lang = payload;
+      draftState.language = payload;
     }),
   },
   effects: {

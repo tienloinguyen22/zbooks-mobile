@@ -5,7 +5,7 @@ import storage from '@react-native-community/async-storage';
 import { persistStore } from 'redux-persist';
 
 const persistPlugin = createRematchPersist({
-  whitelist: ['settings', 'sharks'],
+  whitelist: ['currentUser', 'settings', 'sharks'],
   throttle: 1000,
   version: 1,
   storage,

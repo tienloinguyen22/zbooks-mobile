@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BaseLayout, View, Image, Button, Text, MaterialIcon } from '@app/components';
+import { BaseLayout, View, Image, Button, Text, MaterialIcon, Loading } from '@app/components';
 import { navigationService } from '@app/services';
 import { ScreenProps, images, catchAndLog, LoginType, LOGIN_TYPE } from '@app/core';
 import { mapStateToProps } from './map_state_to_props';
@@ -34,10 +34,8 @@ export const Screen = ({ login }: Props) => {
     try {
       await GoogleSignin.signIn();
       const { idToken, accessToken } = await GoogleSignin.getTokens();
-      console.log(idToken, accessToken);
       return auth.GoogleAuthProvider.credential(idToken, accessToken);
     } catch (error) {
-      console.log(error);
       if (
         error.message.indexOf('The user canceled the sign in request') > -1 ||
         error.message.indexOf('Sign in action cancelled') > -1
@@ -70,7 +68,6 @@ export const Screen = ({ login }: Props) => {
 
       // login with credential
       const { user } = await auth().signInWithCredential(credential!);
-      console.log(user);
       login({
         id: user.uid,
         displayName: user.displayName,
@@ -86,15 +83,25 @@ export const Screen = ({ login }: Props) => {
 
   const loginGoogle = () => performLogin(LOGIN_TYPE.GOOGLE);
 
+  if (isBusy) {
+    return (
+      <BaseLayout>
+        <View center centerVertical>
+          <Loading />
+        </View>
+      </BaseLayout>
+    );
+  }
+
   return (
     <BaseLayout>
       <View center centerVertical>
         <Image style={styles.appIcon} source={images.appIcon} />
-        <Button disabled={isBusy} rounded onPress={loginFacebook} style={[styles.button, styles.buttonFacebook]}>
+        <Button rounded onPress={loginFacebook} style={[styles.button, styles.buttonFacebook]}>
           <MaterialIcon name='facebook' />
           <Text>{t('loginScreen.loginWith')} Facebook</Text>
         </Button>
-        <Button disabled={isBusy} rounded onPress={loginGoogle} style={[styles.button, styles.buttonGoogle]}>
+        <Button rounded onPress={loginGoogle} style={[styles.button, styles.buttonGoogle]}>
           <MaterialIcon name='google' />
           <Text>{t('loginScreen.loginWith')} Google</Text>
         </Button>

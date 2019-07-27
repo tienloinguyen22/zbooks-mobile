@@ -16,6 +16,11 @@
     "loginWith": "Đăng nhập với"
   },
   "settings": {
-    "settings": "Cài đặt"
+    "about": "Thông tin",
+    "author": "Tác giả",
+    "language": "Ngôn ngữ",
+    "logout": "Đăng xuất",
+    "settings": "Cài đặt",
+    "version": "Phiên bản"
   }
 }
