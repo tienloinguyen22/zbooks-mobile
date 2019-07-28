@@ -10,10 +10,6 @@
   "fb": {
     "id": "341544560115835"
   },
-  "google": {
-    "iosClientId": "427332936076-mk0jer7ivc9gpeg9u4m7eleavos5ds5n.apps.googleusercontent.com",
-    "webClientId": "427332936076-c22ms2lj79m5eqen7so118fgko9m4h7e.apps.googleusercontent.com"
-  },
   "ios": {
     "appName": "React Native Starter Kit",
     "bundleId": "pro.thinhtran.treactnativestarterkit",
