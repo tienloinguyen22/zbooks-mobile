@@ -1,0 +1,30 @@
+{
+  "common": {
+    "cancel": "Huỷ",
+    "close": "Đóng",
+    "confirm": "Xác nhận",
+    "home": "Trang chủ",
+    "ok": "Xác nhận",
+    "select": "Lựa chọn",
+    "settings": "Cài đặt"
+  },
+  "error": {
+    "somethingWentWrong": "Có lỗi xảy ra",
+    "unexpectedErrorOccurred": "Có lỗi xảy ra",
+    "unexpectedErrorOccurredMessage": "Chúng tôi đã báo cáo lỗi cho đội phát triển! Vui lòng đóng ứng dụng và bắt đầu lại!"
+  },
+  "home": {
+    "hello": "Xin chào"
+  },
+  "loginScreen": {
+    "loginWith": "Đăng nhập với"
+  },
+  "settings": {
+    "about": "Thông tin",
+    "author": "Tác giả",
+    "language": "Ngôn ngữ",
+    "logout": "Đăng xuất",
+    "settings": "Cài đặt",
+    "version": "Phiên bản"
+  }
+}

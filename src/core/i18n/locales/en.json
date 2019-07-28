@@ -1,0 +1,30 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "home": "Home",
+    "ok": "OK",
+    "select": "Select",
+    "settings": "Settings"
+  },
+  "error": {
+    "somethingWentWrong": "Something went wrong",
+    "unexpectedErrorOccurred": "Unexpected error occurred",
+    "unexpectedErrorOccurredMessage": "We have reported this to our team.! Please close the app and start again!"
+  },
+  "home": {
+    "hello": "Hello"
+  },
+  "loginScreen": {
+    "loginWith": "Login with"
+  },
+  "settings": {
+    "about": "About",
+    "author": "Author",
+    "language": "Language",
+    "logout": "Logout",
+    "settings": "Settings",
+    "version": "Version"
+  }
+}

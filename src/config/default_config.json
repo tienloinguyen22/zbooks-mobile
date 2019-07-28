@@ -6,9 +6,10 @@
       "productionKey": "",
       "stagingKey": ""
     },
-    "version": "0.2.2",
-    "versionCode": 9
+    "version": "0.3.1",
+    "versionCode": 3145738
   },
+  "author": "Thinh Tran",
   "fb": {
     "id": ""
   },
@@ -19,13 +20,13 @@
   },
   "ios": {
     "appName": "ReactNativeStarterKit",
-    "build": 9,
+    "build": 3145738,
     "bundleId": "pro.thinhtran.treactnativestarterkit",
     "codePush": {
       "productionKey": "",
       "stagingKey": ""
     },
-    "version": "0.2.2"
+    "version": "0.3.1"
   },
   "signInOptions": ["email", "phone", "facebook", "google"]
 }

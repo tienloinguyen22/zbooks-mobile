@@ -80,6 +80,7 @@ project.ext.react = [
     enableHermes: true,  // clean and rebuild if changing
 ]
 
+// apply from: "../../node_modules/react-native/react.gradle"
 apply from: "./react.gradle"
 
 /**
@@ -95,7 +96,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = true
+def enableProguardInReleaseBuilds = false
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -132,8 +133,9 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
-        versionCode 9
-        versionName "0.2.2"
+        versionCode 3145738
+        versionName "0.3.1"
+        multiDexEnabled true
     }
     splits {
         abi {
@@ -177,8 +179,8 @@ android {
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
 
+        }
     }
-}
 
     packagingOptions {
         pickFirst '**/armeabi-v7a/libc++_shared.so'
@@ -200,6 +202,14 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-picker')
+    implementation project(':@react-native-firebase_auth')
+    implementation project(':@react-native-firebase_app')
+    implementation project(':react-native-google-signin')
+    implementation project(':react-native-fbsdk')
+    implementation project(':react-native-exception-handler')
+    implementation project(':@react-native-community_async-storage')
+    implementation project(':react-native-vector-icons')
     implementation project(':react-native-splash-screen')
     implementation project(':react-native-navigation')
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -224,3 +234,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+apply plugin: 'com.google.gms.google-services'

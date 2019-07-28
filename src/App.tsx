@@ -9,10 +9,12 @@
  */
 
 import React, { Fragment, useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform, Button } from 'react-native';
+import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform } from 'react-native';
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
+import { Icon, Button } from '@app/components';
+import { useTranslation } from 'react-i18next';
 
 const styles = StyleSheet.create({
   scrollView: { backgroundColor: Colors.lighter },
@@ -45,9 +47,14 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
+  menu: {
+    fontSize: 20,
+    color: 'red',
+  },
 });
 
 const App = (): JSX.Element => {
+  const { t } = useTranslation();
   const [effectLoaded, setEffectLoaded] = useState(false);
   const [showHello, setShowHello] = useState(false);
 
@@ -75,13 +82,23 @@ const App = (): JSX.Element => {
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle} testID=''>
+                Icon
+                <Icon name='home' />
+                <Icon ios='ios-menu' android='md-menu' name='home' style={styles.menu} />
+                <Icon type='FontAwesome' name='home' />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle} testID=''>
                 Version: {Platform.OS === 'android' ? config.android.version : config.ios.version}
               </Text>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Platform: {Platform.OS}</Text>
             </View>
-            <Button title='Hello' onPress={onPressHello} />
+            <Button success onPress={onPressHello}>
+              <Text>{t('home.hello')}</Text>
+            </Button>
             {showHello && (
               <View style={styles.sectionContainer}>
                 <Text style={styles.sectionTitle}>Hello world</Text>

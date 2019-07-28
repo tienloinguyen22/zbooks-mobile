@@ -7,6 +7,14 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.beefe.picker.PickerViewPackage;
+import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -42,7 +50,15 @@ public class MainApplication extends NavigationApplication {
       // No need to add RnnPackage and MainReactPackage
       return Arrays.<ReactPackage>asList(
           // eg. new VectorIconsPackage()
-          new SplashScreenReactPackage()
+          new SplashScreenReactPackage(),
+          new VectorIconsPackage(),
+          new AsyncStoragePackage(),
+          new ReactNativeExceptionHandlerPackage(),
+          new FBSDKPackage(),
+          new RNGoogleSigninPackage(),
+          new ReactNativeFirebaseAppPackage(),
+          new ReactNativeFirebaseAuthPackage(),
+          new PickerViewPackage()
       );
   }
 

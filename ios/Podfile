@@ -28,9 +28,30 @@ target 'mobile' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'FBSDKCoreKit', '~> 5.2.0'
+  pod 'FBSDKLoginKit', '~> 5.2.0'
+  pod 'FBSDKShareKit', '~> 5.2.0'
+  pod 'GoogleSignIn', '~> 4.4.0'
+
   pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  pod 'ReactNativeExceptionHandler', :path => '../node_modules/react-native-exception-handler'
+
+  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
+  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
+
+  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
+
+  pod 'Picker', :path => '../node_modules/react-native-picker'
 
   target 'mobileTests' do
     inherit! :search_paths
