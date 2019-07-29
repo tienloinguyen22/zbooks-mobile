@@ -8,16 +8,22 @@ export interface CurrentUserState {
   isLoggedIn: boolean;
 }
 
+const defaultUser: CurrentUserState = {
+  id: '',
+  displayName: '',
+  avatarUrl: '',
+  isLoggedIn: false,
+};
+
 export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUserState>({
-  state: {
-    id: '',
-    displayName: '',
-    avatarUrl: '',
-    isLoggedIn: false,
-  },
+  state: defaultUser,
   reducers: {
     login: produce((draftState: CurrentUserState, payload: CurrentUserState) => {
       Object.assign(draftState, payload);
+    }),
+    logout: produce((draftState: CurrentUserState) => {
+      console.log('logout');
+      Object.assign(draftState, defaultUser);
     }),
   },
   effects: {},

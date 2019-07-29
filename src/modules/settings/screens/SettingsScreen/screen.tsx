@@ -13,11 +13,11 @@ import { styles } from './styles';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ changeLanguage, language, currentUser }: Props) => {
+export const Screen = ({ changeLanguage, language, currentUser, logout }: Props) => {
   const { t } = useTranslation();
   const appVersion = Platform.OS == 'android' ? config.android.version : config.ios.version;
 
-  const logout = catchAndLog(async () => {
+  const performLogout = catchAndLog(async () => {
     if (auth().currentUser) {
       const user = auth().currentUser!;
       if (
@@ -32,6 +32,7 @@ export const Screen = ({ changeLanguage, language, currentUser }: Props) => {
       await auth().signOut();
     }
     navigationService.setRootLogin();
+    logout();
   });
 
   const selectLanguage = () => {
@@ -59,12 +60,12 @@ export const Screen = ({ changeLanguage, language, currentUser }: Props) => {
     { title: t('settings.about'), isHeader: true },
     { title: t('settings.author'), isHeader: false, value: config.author },
     { title: t('settings.version'), isHeader: false, value: appVersion },
-    { title: t('settings.logout'), isHeader: false, showIcon: true, onPress: logout },
+    { title: t('settings.logout'), isHeader: false, showIcon: true, onPress: performLogout },
   ];
 
   return (
     <BaseLayout>
-      <Image source={{ uri: currentUser.avatarUrl }} style={styles.avatar} />
+      {!!currentUser.avatarUrl && <Image source={{ uri: currentUser.avatarUrl }} style={styles.avatar} />}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
       <List data={data} />
     </BaseLayout>
