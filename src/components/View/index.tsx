@@ -8,6 +8,10 @@ interface Props extends ViewProps {
   centerVertical?: boolean;
   safeArea?: boolean;
   flex?: boolean;
+  row?: boolean;
+  column?: boolean;
+  rowReverse?: boolean;
+  columnReverse?: boolean;
 }
 
 export class View extends Component<Props> {
@@ -19,6 +23,10 @@ export class View extends Component<Props> {
     let viewStyle = addStyles(styles.default, this.props.style);
     viewStyle = this.props.center ? addStyles(viewStyle, styles.center) : viewStyle;
     viewStyle = this.props.centerVertical ? addStyles(viewStyle, styles.centerVertical) : viewStyle;
+    viewStyle = this.props.row ? addStyles(viewStyle, styles.row) : viewStyle;
+    viewStyle = this.props.column ? addStyles(viewStyle, styles.column) : viewStyle;
+    viewStyle = this.props.rowReverse ? addStyles(viewStyle, styles.rowReverse) : viewStyle;
+    viewStyle = this.props.columnReverse ? addStyles(viewStyle, styles.columnReverse) : viewStyle;
 
     if (!this.props.safeArea) {
       return (

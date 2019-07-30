@@ -108,6 +108,7 @@ const setRootHome = async (currentTabIndex?: number) => {
         options: {
           bottomTabs: {
             currentTabIndex: currentTabIndex || 0,
+            titleDisplayMode: 'alwaysShow',
           },
         },
         children: [

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BaseLayout, View, Image, Button, Text, MaterialIcon, Loading } from '@app/components';
+import { View, Image, Button, Text, MaterialIcon, Loading, Container } from '@app/components';
 import { navigationService } from '@app/services';
 import { ScreenProps, images, catchAndLog, LoginType, LOGIN_TYPE } from '@app/core';
 import { mapStateToProps } from './map_state_to_props';
@@ -88,16 +88,16 @@ export const Screen = ({ login }: Props) => {
 
   if (isBusy) {
     return (
-      <BaseLayout>
+      <Container>
         <View center centerVertical>
           <Loading />
         </View>
-      </BaseLayout>
+      </Container>
     );
   }
 
   return (
-    <BaseLayout>
+    <Container>
       <View center centerVertical>
         <Image style={styles.appIcon} source={images.appIcon} />
         <Button rounded onPress={loginFacebook} style={[styles.button, styles.buttonFacebook]}>
@@ -109,6 +109,6 @@ export const Screen = ({ login }: Props) => {
           <Text>{t('loginScreen.loginWith')} Google</Text>
         </Button>
       </View>
-    </BaseLayout>
+    </Container>
   );
 };

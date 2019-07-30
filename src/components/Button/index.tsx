@@ -1,26 +1,22 @@
-import React, { Component } from 'react';
+import React, { ReactNode } from 'react';
 import { Button as NativeBaseButton, NativeBase } from 'native-base';
 import { addStyles } from '@app/core';
 import { styles } from './styles';
+import { ViewStyle } from 'react-native';
 
 interface Props extends NativeBase.Button {
-  centerContent?: boolean;
-  safeArea?: boolean;
-  flex?: boolean;
+  children?: ReactNode;
 }
 
-export class Button extends Component<NativeBase.Button> {
-  constructor(props: Props) {
-    super(props);
+export const Button = (props: Props) => {
+  let buttonStyle = addStyles(styles.button, props.style);
+  if (props.transparent) {
+    buttonStyle = addStyles<ViewStyle>(styles.button, { backgroundColor: 'transparent' });
   }
 
-  render() {
-    let buttonStyle = addStyles(styles.button, this.props.style);
-
-    return (
-      <NativeBaseButton {...this.props} style={buttonStyle}>
-        {this.props.children}
-      </NativeBaseButton>
-    );
-  }
-}
+  return (
+    <NativeBaseButton {...props} style={buttonStyle}>
+      {props.children}
+    </NativeBaseButton>
+  );
+};

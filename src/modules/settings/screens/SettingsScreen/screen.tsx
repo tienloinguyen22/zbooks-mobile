@@ -3,7 +3,7 @@ import { ScreenProps, i18n, catchAndLog } from '@app/core';
 import { config } from '@app/config';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
-import { BaseLayout, List, ListItemData, Picker, Image, Text } from '@app/components';
+import { List, ListItemData, Picker, Image, Text, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import { Platform } from 'react-native';
 import auth from '@react-native-firebase/auth';
@@ -64,10 +64,10 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
   ];
 
   return (
-    <BaseLayout>
+    <Container>
       {!!currentUser.avatarUrl && <Image source={{ uri: currentUser.avatarUrl }} style={styles.avatar} />}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
       <List data={data} />
-    </BaseLayout>
+    </Container>
   );
 };

@@ -1,6 +1,9 @@
-import { ViewStyle, StyleProp } from 'react-native';
+import { ViewStyle, StyleProp, TextStyle } from 'react-native';
 
-export const addStyles = (sourceStyle: StyleProp<ViewStyle>, newStyle: StyleProp<ViewStyle>): StyleProp<ViewStyle> => {
+export const addStyles = <T extends ViewStyle | TextStyle>(
+  sourceStyle: StyleProp<T>,
+  newStyle: StyleProp<T>,
+): StyleProp<T> => {
   if (!newStyle) {
     return sourceStyle;
   }

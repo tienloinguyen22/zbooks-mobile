@@ -9,4 +9,16 @@ export const styles = StyleSheet.create({
   center: {
     alignItems: 'center',
   },
+  row: {
+    flexDirection: 'row',
+  },
+  rowReverse: {
+    flexDirection: 'row-reverse',
+  },
+  column: {
+    flexDirection: 'column',
+  },
+  columnReverse: {
+    flexDirection: 'column-reverse',
+  },
 });
