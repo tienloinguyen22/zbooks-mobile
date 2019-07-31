@@ -12,7 +12,7 @@ export const NotificationSample = ({  }: Props) => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text>Notification</Text>
+        <Text primary>Notification</Text>
       </CardItem>
       <CardItem bordered>
         <View flex column>

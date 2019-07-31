@@ -14,7 +14,7 @@ export const CrashSample = ({  }: Props) => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text>Crash Handle (open debugger to view console)</Text>
+        <Text primary>Crash Handle (open debugger to view console)</Text>
       </CardItem>
       <CardItem bordered>
         <View flex column>

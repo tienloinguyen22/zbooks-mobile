@@ -11,7 +11,7 @@ export const NavigationSample = ({ pushNewScreen, changeTab }: Props) => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text>Navigation</Text>
+        <Text primary>Navigation</Text>
       </CardItem>
       <CardItem bordered>
         <View flex column>

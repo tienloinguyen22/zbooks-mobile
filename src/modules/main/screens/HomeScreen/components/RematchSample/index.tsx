@@ -24,7 +24,7 @@ export const RematchSample = ({
     <>
       <Card>
         <CardItem header bordered>
-          <Text>Rematch with redux-persist</Text>
+          <Text primary>Rematch with redux-persist</Text>
         </CardItem>
         <CardItem bordered>
           <View flex column>
@@ -40,7 +40,7 @@ export const RematchSample = ({
       </Card>
       <Card>
         <CardItem header bordered>
-          <Text>Rematch without redux-persist</Text>
+          <Text primary>Rematch without redux-persist</Text>
         </CardItem>
         <CardItem bordered>
           <View flex column>

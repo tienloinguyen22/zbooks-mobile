@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { View as ReactNativeView, ViewProps, SafeAreaView } from 'react-native';
+import { View as ReactNativeView, ViewProps } from 'react-native';
 import { addStyles } from '@app/core';
 import { styles } from './styles';
 
 interface Props extends ViewProps {
   center?: boolean;
   centerVertical?: boolean;
-  safeArea?: boolean;
   flex?: boolean;
   row?: boolean;
   column?: boolean;
@@ -28,20 +27,10 @@ export class View extends Component<Props> {
     viewStyle = this.props.rowReverse ? addStyles(viewStyle, styles.rowReverse) : viewStyle;
     viewStyle = this.props.columnReverse ? addStyles(viewStyle, styles.columnReverse) : viewStyle;
 
-    if (!this.props.safeArea) {
-      return (
-        <ReactNativeView {...this.props} style={viewStyle}>
-          {this.props.children}
-        </ReactNativeView>
-      );
-    }
-
     return (
-      <SafeAreaView style={styles.default}>
-        <ReactNativeView {...this.props} style={viewStyle}>
-          {this.props.children}
-        </ReactNativeView>
-      </SafeAreaView>
+      <ReactNativeView {...this.props} style={viewStyle}>
+        {this.props.children}
+      </ReactNativeView>
     );
   }
 }

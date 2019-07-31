@@ -1,6 +1,4 @@
 import React, { ReactNode } from 'react';
-import { Container as NBContainer } from 'native-base';
-import { Header } from '../Header';
 import { Left } from '../Left';
 import { Button } from '../Button';
 import { MaterialIcon } from '../MaterialIcon';
@@ -10,6 +8,9 @@ import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { View } from '../View';
 import { navigationService } from '@app/services';
+import { colors } from '@app/core';
+import { styles } from './styles';
+import { StatusBar, SafeAreaView } from 'react-native';
 
 interface Props {
   componentId?: string;
@@ -22,28 +23,33 @@ export const Container = ({ children, showHeader, showBackButton, headerTitle, c
   const goBack = () => {
     componentId && navigationService.goBack({ componentId });
   };
+  console.log(showHeader ? 'light-content' : 'dark-content');
   return (
-    <View safeArea={!showHeader}>
-      <ErrorBoundary>
-        <NBContainer>
-          {showHeader && (
-            <Header>
-              {showBackButton && (
+    <>
+      <SafeAreaView style={{ flex: 0, backgroundColor: colors.primary }} />
+      <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+        <ErrorBoundary>
+          <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
+          <View style={styles.container}>
+            {showHeader && (
+              <View style={styles.header}>
                 <Left>
-                  <Button transparent onPress={goBack}>
-                    <MaterialIcon name='chevron-left' />
-                  </Button>
+                  {showBackButton && (
+                    <Button transparent onPress={goBack}>
+                      <MaterialIcon name='chevron-left' color={colors.white} style={styles.icon} />
+                    </Button>
+                  )}
                 </Left>
-              )}
-              <Body>
-                <Title>{headerTitle}</Title>
-              </Body>
-              <Right />
-            </Header>
-          )}
-          {children}
-        </NBContainer>
-      </ErrorBoundary>
-    </View>
+                <Body>
+                  <Title style={styles.title}>{headerTitle}</Title>
+                </Body>
+                <Right />
+              </View>
+            )}
+            <View style={styles.body}>{children}</View>
+          </View>
+        </ErrorBoundary>
+      </SafeAreaView>
+    </>
   );
 };

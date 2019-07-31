@@ -267,42 +267,51 @@ exports[`<App/> renders correctly on android platform 1`] = `
               android
             </Text>
           </View>
-          <DummyTouchableNativeFeedback
-            background={Object {}}
+          <View
             style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "#007bff",
-                "borderBottomWidth": null,
-                "borderColor": "#007aff",
-                "borderLeftWidth": null,
-                "borderRadius": 5,
-                "borderRightWidth": null,
-                "borderTopWidth": null,
-                "borderWidth": undefined,
-                "elevation": 2,
-                "flexDirection": "row",
-                "height": 45,
-                "justifyContent": "space-between",
-                "paddingBottom": 6,
-                "paddingTop": 6,
-                "shadowColor": undefined,
-                "shadowOffset": undefined,
-                "shadowOpacity": undefined,
-                "shadowRadius": undefined,
-              }
-            }
-            success={true}
-          >
-            <View
-              style={
+              Array [
+                Object {
+                  "maxHeight": 45,
+                },
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "#007bff",
+                  "backgroundColor": "#f7331e",
                   "borderBottomWidth": null,
                   "borderColor": "#007aff",
                   "borderLeftWidth": null,
-                  "borderRadius": 5,
+                  "borderRadius": 57,
+                  "borderRightWidth": null,
+                  "borderTopWidth": null,
+                  "borderWidth": undefined,
+                  "elevation": 2,
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "space-between",
+                  "paddingBottom": 6,
+                  "paddingTop": 6,
+                  "shadowColor": undefined,
+                  "shadowOffset": undefined,
+                  "shadowOpacity": undefined,
+                  "shadowRadius": undefined,
+                },
+                Object {
+                  "paddingBottom": undefined,
+                  "paddingTop": undefined,
+                },
+              ]
+            }
+          >
+            <DummyTouchableNativeFeedback
+              background={Object {}}
+              rounded={true}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#f7331e",
+                  "borderBottomWidth": null,
+                  "borderColor": "#007aff",
+                  "borderLeftWidth": null,
+                  "borderRadius": 57,
                   "borderRightWidth": null,
                   "borderTopWidth": null,
                   "borderWidth": undefined,
@@ -320,11 +329,30 @@ exports[`<App/> renders correctly on android platform 1`] = `
               }
               success={true}
             >
-              <Text>
-                Hello
-              </Text>
-            </View>
-          </DummyTouchableNativeFeedback>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "flexShrink": 1,
+                      "justifyContent": "center",
+                    },
+                    Object {
+                      "flexGrow": undefined,
+                      "height": 45,
+                      "paddingBottom": 6,
+                      "paddingTop": 6,
+                    },
+                  ]
+                }
+              >
+                <Text>
+                  Hello
+                </Text>
+              </View>
+            </DummyTouchableNativeFeedback>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -624,14 +652,15 @@ exports[`<App/> renders correctly with hermes engine 1`] = `
           </View>
           <TouchableOpacity
             activeOpacity={0.5}
+            rounded={true}
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#007bff",
+                "backgroundColor": "#f7331e",
                 "borderBottomWidth": null,
                 "borderColor": "#007aff",
                 "borderLeftWidth": null,
-                "borderRadius": 5,
+                "borderRadius": 57,
                 "borderRightWidth": null,
                 "borderTopWidth": null,
                 "borderWidth": undefined,
@@ -929,14 +958,15 @@ exports[`<App/> renders successfully with effect 1`] = `
           </View>
           <TouchableOpacity
             activeOpacity={0.5}
+            rounded={true}
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#007bff",
+                "backgroundColor": "#f7331e",
                 "borderBottomWidth": null,
                 "borderColor": "#007aff",
                 "borderLeftWidth": null,
-                "borderRadius": 5,
+                "borderRadius": 57,
                 "borderRightWidth": null,
                 "borderTopWidth": null,
                 "borderWidth": undefined,

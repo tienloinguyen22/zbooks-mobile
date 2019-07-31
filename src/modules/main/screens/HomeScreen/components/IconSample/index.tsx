@@ -7,7 +7,7 @@ export const IconSample = ({  }: Props) => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text>Icons</Text>
+        <Text primary>Icons</Text>
       </CardItem>
       <CardItem bordered>
         <View flex column>

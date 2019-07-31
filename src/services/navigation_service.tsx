@@ -42,6 +42,10 @@ const goBack = ({ componentId }: { componentId: string }) => {
 const initialize = () => {
   Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setDefaultOptions({
+      statusBar: {
+        backgroundColor: colors.primary,
+        style: 'light',
+      },
       topBar: {
         drawBehind: true,
         visible: false,

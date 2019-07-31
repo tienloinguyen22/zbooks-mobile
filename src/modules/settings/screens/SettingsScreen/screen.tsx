@@ -63,8 +63,9 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
     { title: t('settings.logout'), isHeader: false, showIcon: true, onPress: performLogout },
   ];
 
+  console.log('render settings');
   return (
-    <Container>
+    <Container showHeader headerTitle={'Settings'}>
       {!!currentUser.avatarUrl && <Image source={{ uri: currentUser.avatarUrl }} style={styles.avatar} />}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
       <List data={data} />
