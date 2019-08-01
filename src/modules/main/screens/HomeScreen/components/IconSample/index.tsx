@@ -10,7 +10,7 @@ export const IconSample = ({  }: Props) => {
         <Text primary>Icons</Text>
       </CardItem>
       <CardItem bordered>
-        <View flex column>
+        <View>
           <MaterialVectorIcon name='face-profile' size={60} color='red' />
           <Icon name='ios-analytics' style={{ fontSize: 30, color: 'red' }} />
         </View>

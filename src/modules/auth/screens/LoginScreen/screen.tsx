@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Button, Text, MaterialIcon, Loading, Container } from '@app/components';
 import { navigationService } from '@app/services';
-import { ScreenProps, images, catchAndLog, LoginType, LOGIN_TYPE } from '@app/core';
+import { ScreenProps, images, catchAndLog, LoginType, LOGIN_TYPE, screenNames } from '@app/core';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import { styles } from './styles';
@@ -12,7 +12,7 @@ import auth from '@react-native-firebase/auth';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ login }: Props) => {
+export const Screen = ({ login, componentId }: Props) => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -68,7 +68,6 @@ export const Screen = ({ login }: Props) => {
 
       // login with credential
       const { user } = await auth().signInWithCredential(credential!);
-      console.log(user, user.providerId, user.photoURL);
       const avatarUrl =
         user.photoURL && user.photoURL.indexOf('facebook') > -1 ? `${user.photoURL}?height=500` : user.photoURL;
       login({
@@ -86,6 +85,9 @@ export const Screen = ({ login }: Props) => {
 
   const loginGoogle = () => performLogin(LOGIN_TYPE.GOOGLE);
 
+  const registerByEmail = () =>
+    navigationService.navigateTo({ componentId, screenName: screenNames.EmailRegisterScreen });
+
   if (isBusy) {
     return (
       <Container>
@@ -100,13 +102,26 @@ export const Screen = ({ login }: Props) => {
     <Container>
       <View center centerVertical>
         <Image style={styles.appIcon} source={images.appIcon} />
-        <Button rounded onPress={loginFacebook} style={[styles.button, styles.buttonFacebook]}>
+        <Button full rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
           <MaterialIcon name='facebook' />
           <Text>{t('loginScreen.loginWith')} Facebook</Text>
         </Button>
-        <Button rounded onPress={loginGoogle} style={[styles.button, styles.buttonGoogle]}>
+        <Button full rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
           <MaterialIcon name='google' />
           <Text>{t('loginScreen.loginWith')} Google</Text>
+        </Button>
+        <Button full rounded onPress={loginGoogle} style={[styles.button]}>
+          <Text>{t('loginScreen.loginWithEmail')}</Text>
+        </Button>
+        <Button full rounded onPress={loginGoogle} style={[styles.button]}>
+          <Text>{t('loginScreen.loginWithPhoneNo')}</Text>
+        </Button>
+        <Text style={styles.notHaveAccountText}>{t('loginScreen.notHaveAccount')}</Text>
+        <Button full rounded onPress={registerByEmail} style={styles.button}>
+          <Text>{t('loginScreen.registerByEmail')}</Text>
+        </Button>
+        <Button full rounded onPress={registerByEmail} style={styles.button}>
+          <Text>{t('loginScreen.registerByPhoneNo')}</Text>
         </Button>
       </View>
     </Container>

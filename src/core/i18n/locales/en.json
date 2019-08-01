@@ -8,7 +8,19 @@
     "select": "Select",
     "settings": "Settings"
   },
+  "emailRegisterScreen": {
+    "accountHasBeenCreated": "Account has been created",
+    "back": "Back",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordDoesNotMatch": "Confirm Password does not match",
+    "email": "Email",
+    "emailHasBeenAlreadyRegistered": "Email has been already registered",
+    "password": "Password",
+    "register": "Register"
+  },
   "error": {
+    "invalid": "{{field}} is invalid",
+    "required": "{{field}} is required",
     "somethingWentWrong": "Something went wrong",
     "unexpectedErrorOccurred": "Unexpected error occurred",
     "unexpectedErrorOccurredMessage": "We have reported this to our team.! Please close the app and start again!"
@@ -17,7 +29,12 @@
     "hello": "Hello"
   },
   "loginScreen": {
-    "loginWith": "Login with"
+    "loginWith": "Login with",
+    "loginWithEmail": "Login with email",
+    "loginWithPhoneNo": "Login with phone no",
+    "notHaveAccount": "Don't Have an Account?",
+    "registerByEmail": "Register by email",
+    "registerByPhoneNo": "Register by phone no"
   },
   "settings": {
     "about": "About",

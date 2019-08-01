@@ -14,7 +14,7 @@ export const NavigationSample = ({ pushNewScreen, changeTab }: Props) => {
         <Text primary>Navigation</Text>
       </CardItem>
       <CardItem bordered>
-        <View flex column>
+        <View column>
           <Button onPress={pushNewScreen} style={styles.button}>
             <Text>Push New Screen</Text>
           </Button>

@@ -30,7 +30,7 @@ export const Container = ({ children, showHeader, showBackButton, headerTitle, c
       <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
         <ErrorBoundary>
           <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
-          <View style={styles.container}>
+          <View column style={styles.container}>
             {showHeader && (
               <View style={styles.header}>
                 <Left>

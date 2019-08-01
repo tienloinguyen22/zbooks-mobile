@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import { TextStyle } from 'react-native';
 import { Text } from '../Text';
+import { addStyles } from '@app/core';
+import { styles } from './styles';
 
 interface Props {
   children: ReactNode;
@@ -8,6 +10,10 @@ interface Props {
 }
 
 export const ErrorText = (props: Props) => {
-  const style = props.style ? props.style : {};
-  return <Text style={{ color: 'red', fontSize: 12, ...style }}>{props.children}</Text>;
+  let style = addStyles<TextStyle>(styles.error, props.style);
+  return (
+    <Text {...props} style={style}>
+      {props.children}
+    </Text>
+  );
 };

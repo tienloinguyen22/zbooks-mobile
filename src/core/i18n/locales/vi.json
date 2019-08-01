@@ -8,7 +8,19 @@
     "select": "Lựa chọn",
     "settings": "Cài đặt"
   },
+  "emailRegisterScreen": {
+    "accountHasBeenCreated": "Tài khoản đã được tạo",
+    "back": "Quay lại",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "confirmPasswordDoesNotMatch": "Xác nhận mật khẩu không trùng khớp",
+    "email": "Email",
+    "emailHasBeenAlreadyRegistered": "Email đã tồn tại",
+    "password": "Mật khẩu",
+    "register": "Đăng kí"
+  },
   "error": {
+    "invalid": "{{field}} không hợp lệ",
+    "required": "{{field}} bắt buộc",
     "somethingWentWrong": "Có lỗi xảy ra",
     "unexpectedErrorOccurred": "Có lỗi xảy ra",
     "unexpectedErrorOccurredMessage": "Chúng tôi đã báo cáo lỗi cho đội phát triển! Vui lòng đóng ứng dụng và bắt đầu lại!"
@@ -17,7 +29,12 @@
     "hello": "Xin chào"
   },
   "loginScreen": {
-    "loginWith": "Đăng nhập với"
+    "loginWith": "Đăng nhập với",
+    "loginWithEmail": "Đăng nhập với email",
+    "loginWithPhoneNo": "Đăng nhập với số điện thoại",
+    "notHaveAccount": "Chưa có tài khoản?",
+    "registerByEmail": "Đăng kí bằng email",
+    "registerByPhoneNo": "Đăng kí bằng số điện thoại"
   },
   "settings": {
     "about": "Thông tin",

@@ -27,7 +27,7 @@ export const RematchSample = ({
           <Text primary>Rematch with redux-persist</Text>
         </CardItem>
         <CardItem bordered>
-          <View flex column>
+          <View column>
             <Text>Sharks: {sharks.count}</Text>
             <Button onPress={incrementShark} style={styles.button}>
               <Text>Raise shark</Text>
@@ -43,7 +43,7 @@ export const RematchSample = ({
           <Text primary>Rematch without redux-persist</Text>
         </CardItem>
         <CardItem bordered>
-          <View flex column>
+          <View column>
             <Text>Dolphins: {dolphins.count}</Text>
             <Button onPress={incrementDolphin} style={styles.button}>
               <Text>Raise dolphin</Text>

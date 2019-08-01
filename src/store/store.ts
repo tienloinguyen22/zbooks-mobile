@@ -1,6 +1,6 @@
 import createRematchPersist from '@rematch/persist';
 import { models } from './models';
-import { init, RematchRootState } from '@rematch/core';
+import { init, RematchRootState, RematchDispatch } from '@rematch/core';
 import storage from '@react-native-community/async-storage';
 import { persistStore } from 'redux-persist';
 
@@ -25,5 +25,5 @@ export const persistor = persistStore(store, undefined, () => {
 });
 
 export type Store = typeof store;
-export type Dispatch = typeof store.dispatch;
+export type Dispatch = RematchDispatch<any>;
 export type RootState = RematchRootState<typeof models>;

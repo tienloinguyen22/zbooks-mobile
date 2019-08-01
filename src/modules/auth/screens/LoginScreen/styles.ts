@@ -10,14 +10,15 @@ export const styles = StyleSheet.create({
   button: {
     marginBottom: 20,
     width: 300,
-    // flex: 1,
-    // alignItems: 'center',
-    // height: 30,
+    alignSelf: 'center',
   },
-  buttonFacebook: {
+  facebookButton: {
     backgroundColor: colors.facebook,
   },
-  buttonGoogle: {
+  googleButton: {
     backgroundColor: colors.google,
+  },
+  notHaveAccountText: {
+    marginBottom: 20,
   },
 });

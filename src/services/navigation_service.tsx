@@ -78,7 +78,7 @@ const setRootStack = (screenName: string) => {
 
 const setRootAppLoader = () => setRootStack(screenNames.AppLoaderScreen);
 
-const setRootLogin = () => setRootStack(screenNames.LoginScreen);
+const setRootLogin = () => setRootStack(screenNames.EmailRegisterScreen);
 
 const getTabItem = ({ screenName, icon, color, text }: TabItem): LayoutBottomTabsChildren => {
   return {

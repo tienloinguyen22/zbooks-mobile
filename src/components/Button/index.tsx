@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Button as NativeBaseButton, NativeBase } from 'native-base';
-import { addStyles } from '@app/core';
+import { addStyles, colors } from '@app/core';
 import { styles } from './styles';
 import { ViewStyle } from 'react-native';
 
@@ -13,10 +13,22 @@ export const Button = (props: Props) => {
   if (props.transparent) {
     buttonStyle = addStyles<ViewStyle>(buttonStyle, { backgroundColor: 'transparent' });
   }
-
+  if (props.disabled) {
+    buttonStyle = addStyles<ViewStyle>(buttonStyle, { backgroundColor: colors.grey });
+  }
+  // work around to re-render component after changing disable state
   return (
-    <NativeBaseButton {...props} style={buttonStyle} rounded={props.rounded !== false}>
-      {props.children}
-    </NativeBaseButton>
+    <>
+      {props.disabled && (
+        <NativeBaseButton {...props} style={buttonStyle} rounded={props.rounded !== false}>
+          {props.children}
+        </NativeBaseButton>
+      )}
+      {!props.disabled && (
+        <NativeBaseButton {...props} style={buttonStyle} rounded={props.rounded !== false}>
+          {props.children}
+        </NativeBaseButton>
+      )}
+    </>
   );
 };

@@ -17,7 +17,7 @@ export const CrashSample = ({  }: Props) => {
         <Text primary>Crash Handle (open debugger to view console)</Text>
       </CardItem>
       <CardItem bordered>
-        <View flex column>
+        <View column>
           <Button onPress={crashTest} style={styles.button}>
             <Text>Crash Test</Text>
           </Button>

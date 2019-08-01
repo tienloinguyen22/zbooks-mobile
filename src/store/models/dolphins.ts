@@ -1,6 +1,7 @@
 import { createModel } from '@rematch/core';
 import { sleep } from '@app/core';
 import produce from 'immer';
+import { Dispatch } from '../store';
 
 export interface DolphinsState {
   count: number;
@@ -13,11 +14,11 @@ export const dolphins = createModel<DolphinsState>({
       draftState.count += payload;
     }),
   },
-  effects: {
+  effects: (dispatch: Dispatch) => ({
     // TODO: Optional args breaks TypeScript autocomplete (e.g. payload: number = 1)
-    async incrementAsync(payload: number): Promise<void> {
+    incrementAsync: async (payload: number) => {
       await sleep(500);
-      this.increment(payload || 1);
+      dispatch.dolphins.increment(payload || 1);
     },
-  },
+  }),
 });

@@ -15,7 +15,7 @@ export const NotificationSample = ({  }: Props) => {
         <Text primary>Notification</Text>
       </CardItem>
       <CardItem bordered>
-        <View flex column>
+        <View column>
           <Button onPress={showMessage} style={styles.button}>
             <Text>Show notification</Text>
           </Button>
