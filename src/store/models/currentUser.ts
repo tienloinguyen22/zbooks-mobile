@@ -1,15 +1,8 @@
 import { createModel, ModelConfig } from '@rematch/core';
 import produce from 'immer';
-import { LoginType, LOGIN_TYPE } from '@app/core';
+import { User } from '@app/core';
 
-export interface CurrentUserState {
-  id: string;
-  displayName?: string;
-  avatarUrl?: string;
-  isLoggedIn: boolean;
-  emailVerified?: boolean;
-  loginType: LoginType;
-}
+export type CurrentUserState = User;
 
 const defaultUser: CurrentUserState = {
   id: '',
@@ -17,7 +10,7 @@ const defaultUser: CurrentUserState = {
   avatarUrl: '',
   isLoggedIn: false,
   emailVerified: undefined,
-  loginType: LOGIN_TYPE.EMAIL,
+  loginType: 'EMAIL',
 };
 
 export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUserState>({

@@ -12,3 +12,5 @@ console.error = (...args) => {
 /* eslint-disable no-undef */
 jest.mock('react-native-splash-screen', () => ({ hide: jest.fn() }));
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage);
+jest.mock('@react-native-firebase/app', () => ({}));
+jest.mock('@react-native-firebase/auth', () => ({}));

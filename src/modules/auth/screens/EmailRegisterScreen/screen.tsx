@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { View, Button, Form, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
-import auth from '@react-native-firebase/auth';
 import * as Yup from 'yup';
 import * as _ from 'lodash';
 import { Formik, FormikProps } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, i18n, firebase } from '@app/core';
-import { navigationService } from '@app/services';
+import { catchAndLog, ScreenProps, showNotification, i18n } from '@app/core';
+import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
@@ -62,17 +61,7 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
       if (formikProps.errors.email) {
         return;
       }
-      let isEmailRegistered = false;
-      try {
-        await auth().signInWithEmailAndPassword(email, ' ');
-      } catch (error) {
-        if (error.code !== 'auth/user-not-found') {
-          isEmailRegistered = true;
-        }
-        if (!error.code) {
-          throw error;
-        }
-      }
+      const isEmailRegistered = await authService.isEmailRegistered(email);
       const message = isEmailRegistered ? t('emailRegisterScreen.emailHasBeenAlreadyRegistered') : undefined;
       formikProps.setFieldValue('isEmailRegistered', isEmailRegistered);
       formikProps.setFieldError('isEmailRegistered', (message as unknown) as string);
@@ -80,10 +69,12 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
     async () => setIsBusy(false),
   );
   const debounceValidateUniqueEmail = _.debounce(validateUniqueEmail, 500);
+
   const handleChangeEmail = (email: string): void => {
     formikProps.handleChange(fieldNames.email)(email);
     debounceValidateUniqueEmail(email);
   };
+
   const onSubmit = catchAndLog(
     async (values: FormData) => {
       setIsBusy(true);
@@ -91,13 +82,9 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
       if (!formikProps.isValid) {
         return;
       }
-      showNotification({ type: 'success', message: t('emailRegisterScreen.accountHasBeenCreated') });
-      const { user } = await auth().createUserWithEmailAndPassword(values.email, values.password);
-      await user.updateProfile({ displayName: user.email || '' });
-      await user.reload();
-      await user.sendEmailVerification();
-      showNotification({ type: 'success', message: t('emailRegisterScreen.accountHasBeenCreated') });
-      login(firebase.getUser(user));
+      const user = await authService.createUserWithEmailAndPassword(values.email, values.password);
+      showNotification({ type: 'SUCCESS', message: t('emailRegisterScreen.accountHasBeenCreated') });
+      login(user);
       navigationService.setRootHome();
     },
     async () => setIsBusy(false),

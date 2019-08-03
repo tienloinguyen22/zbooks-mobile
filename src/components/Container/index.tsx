@@ -18,10 +18,17 @@ interface Props {
   showBackButton?: boolean;
   headerTitle?: string;
   children?: ReactNode;
+  flex?: number;
+  center?: boolean;
+  centerVertical?: boolean;
+  row?: boolean;
+  column?: boolean;
+  rowReverse?: boolean;
+  columnReverse?: boolean;
 }
-export const Container = ({ children, showHeader, showBackButton, headerTitle, componentId }: Props): JSX.Element => {
+export const Container = (props: Props): JSX.Element => {
   const goBack = (): void => {
-    componentId && navigationService.goBack({ componentId });
+    props.componentId && navigationService.goBack({ componentId: props.componentId });
   };
 
   return (
@@ -30,23 +37,31 @@ export const Container = ({ children, showHeader, showBackButton, headerTitle, c
       <SafeAreaView style={styles.rootContainer}>
         <ErrorBoundary>
           <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
-          <View>
-            {showHeader && (
-              <View style={styles.header}>
-                <Left>
-                  {showBackButton && (
-                    <Button transparent onPress={goBack}>
-                      <Icon name='chevron-left' color={colors.white} style={styles.icon} />
-                    </Button>
-                  )}
-                </Left>
-                <Body>
-                  <Title style={styles.title}>{headerTitle}</Title>
-                </Body>
-                <Right />
-              </View>
-            )}
-            <View>{children}</View>
+          {props.showHeader && (
+            <View style={styles.header}>
+              <Left>
+                {props.showBackButton && (
+                  <Button transparent onPress={goBack}>
+                    <Icon name='chevron-left' color={colors.white} style={styles.icon} />
+                  </Button>
+                )}
+              </Left>
+              <Body>
+                <Title style={styles.title}>{props.headerTitle}</Title>
+              </Body>
+              <Right />
+            </View>
+          )}
+          <View
+            flex={props.flex}
+            column={props.column}
+            row={props.row}
+            columnReverse={props.columnReverse}
+            rowReverse={props.rowReverse}
+            center={props.center}
+            centerVertical={props.centerVertical}
+          >
+            {props.children}
           </View>
         </ErrorBoundary>
       </SafeAreaView>

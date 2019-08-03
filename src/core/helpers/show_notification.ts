@@ -5,15 +5,15 @@ export const showNotification = ({
   type,
   message,
 }: {
-  type: 'success' | 'warning' | 'error';
+  type: 'SUCCESS' | 'WARNING' | 'ERROR';
   message: string;
 }): void => {
   let backgroundColor: string;
   switch (type) {
-    case 'error':
+    case 'ERROR':
       backgroundColor = colors.red;
       break;
-    case 'warning':
+    case 'WARNING':
       backgroundColor = colors.yellow;
       break;
     default:
@@ -27,6 +27,6 @@ export const showNotification = ({
     animation: true,
     hideOnPress: true,
     delay: 0,
-    duration: type === 'success' ? 1000 : Toast.durations.LONG,
+    duration: type === 'SUCCESS' ? 1000 : Toast.durations.LONG,
   });
 };
