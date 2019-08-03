@@ -1,11 +1,12 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
+import { colors } from '@app/core';
 import { ListItem } from '../ListItem';
 import { Text } from '../Text';
 import { Left } from '../Left';
 import { Right } from '../Right';
 import { styles } from './styles';
-import { MaterialIcon } from '../MaterialIcon';
+import { Icon } from '../Icon';
 
 interface Props {
   data: ListItemData[];
@@ -36,7 +37,7 @@ const Item = ({ item }: { item: ListItemData }): JSX.Element => (
       <Text>{item.title}</Text>
     </Left>
     <Right style={styles.right}>
-      {item.showIcon && <MaterialIcon name={item.icon || 'chevron-right'} style={styles.icon} />}
+      {item.showIcon && <Icon name={item.icon || 'chevron-right'} color={colors.lightGrey} size={18} />}
       <Text style={styles.value}>{item.value}</Text>
     </Right>
   </ListItem>

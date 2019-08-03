@@ -25,6 +25,7 @@
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.1.0",
     "redux-persist": "^5.10.0",
+    "rn-tooltip": "^1.2.0",
     "yup": "^0.27.0"
   },
   "devDependencies": {

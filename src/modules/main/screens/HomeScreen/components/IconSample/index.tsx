@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, CardItem, Text, View, MaterialVectorIcon, Icon } from '@app/components';
-import { styles } from './styles';
+import { Card, CardItem, Text, View, Icon } from '@app/components';
 
 export const IconSample = (): JSX.Element => (
   <Card>
@@ -9,8 +8,8 @@ export const IconSample = (): JSX.Element => (
     </CardItem>
     <CardItem bordered>
       <View>
-        <MaterialVectorIcon name='face-profile' size={60} color='red' />
-        <Icon name='ios-analytics' style={styles.icon} />
+        <Icon name='face-profile' size={60} color='red' />
+        <Icon name='face-profile' />
       </View>
     </CardItem>
   </Card>

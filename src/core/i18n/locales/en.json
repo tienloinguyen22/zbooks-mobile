@@ -16,6 +16,7 @@
     "email": "Email",
     "emailHasBeenAlreadyRegistered": "Email has been already registered",
     "password": "Password",
+    "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
     "register": "Register"
   },
   "error": {
@@ -36,7 +37,7 @@
     "registerByEmail": "Register by email",
     "registerByPhoneNo": "Register by phone no"
   },
-  "settings": {
+  "settingsScreen": {
     "about": "About",
     "author": "Author",
     "language": "Language",

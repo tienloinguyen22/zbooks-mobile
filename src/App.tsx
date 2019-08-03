@@ -13,7 +13,7 @@ import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform }
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
-import { Icon, Button } from '@app/components';
+import { Button } from '@app/components';
 import { useTranslation } from 'react-i18next';
 
 export interface Hermes {
@@ -83,14 +83,6 @@ const App = (): JSX.Element => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Effect loaded: {effectLoaded ? 'true' : 'false'}</Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle} testID=''>
-                Icon
-                <Icon name='home' />
-                <Icon ios='ios-menu' android='md-menu' name='home' style={styles.menu} />
-                <Icon type='FontAwesome' name='home' />
-              </Text>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle} testID=''>

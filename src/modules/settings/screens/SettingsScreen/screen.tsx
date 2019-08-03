@@ -53,22 +53,22 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
   };
 
   const data: ListItemData[] = [
-    { title: t('settings.settings'), isHeader: true },
+    { title: t('settingsScreen.settings'), isHeader: true },
     {
-      title: t('settings.language'),
+      title: t('settingsScreen.language'),
       isHeader: false,
       value: i18n.getLanguageName(language),
       onPress: selectLanguage,
       showIcon: true,
     },
-    { title: t('settings.about'), isHeader: true },
-    { title: t('settings.author'), isHeader: false, value: config.author },
-    { title: t('settings.version'), isHeader: false, value: appVersion },
-    { title: t('settings.logout'), isHeader: false, showIcon: true, onPress: performLogout },
+    { title: t('settingsScreen.about'), isHeader: true },
+    { title: t('settingsScreen.author'), isHeader: false, value: config.author },
+    { title: t('settingsScreen.version'), isHeader: false, value: appVersion },
+    { title: t('settingsScreen.logout'), isHeader: false, showIcon: true, onPress: performLogout },
   ];
 
   return (
-    <Container showHeader headerTitle={'Settings'}>
+    <Container showHeader headerTitle={t('settingsScreen.settings')}>
       {!!currentUser.avatarUrl && <Image source={{ uri: currentUser.avatarUrl }} style={styles.avatar} />}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
       <List data={data} />

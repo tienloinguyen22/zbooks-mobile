@@ -4,13 +4,13 @@ import { colors } from '@app/core';
 import { StatusBar, SafeAreaView } from 'react-native';
 import { Left } from '../Left';
 import { Button } from '../Button';
-import { MaterialIcon } from '../MaterialIcon';
 import { Body } from '../Body';
 import { Title } from '../Title';
 import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { View } from '../View';
 import { styles } from './styles';
+import { Icon } from '../Icon';
 
 interface Props {
   componentId?: string;
@@ -30,13 +30,13 @@ export const Container = ({ children, showHeader, showBackButton, headerTitle, c
       <SafeAreaView style={styles.rootContainer}>
         <ErrorBoundary>
           <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
-          <View column style={styles.container}>
+          <View>
             {showHeader && (
               <View style={styles.header}>
                 <Left>
                   {showBackButton && (
                     <Button transparent onPress={goBack}>
-                      <MaterialIcon name='chevron-left' color={colors.white} style={styles.icon} />
+                      <Icon name='chevron-left' color={colors.white} style={styles.icon} />
                     </Button>
                   )}
                 </Left>
@@ -46,7 +46,7 @@ export const Container = ({ children, showHeader, showBackButton, headerTitle, c
                 <Right />
               </View>
             )}
-            <View style={styles.body}>{children}</View>
+            <View>{children}</View>
           </View>
         </ErrorBoundary>
       </SafeAreaView>

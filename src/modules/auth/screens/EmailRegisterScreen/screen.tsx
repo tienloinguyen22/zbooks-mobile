@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { View, Button, Form, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
-
 import auth from '@react-native-firebase/auth';
 import * as Yup from 'yup';
 import * as _ from 'lodash';
 import { Formik, FormikProps } from 'formik';
-import { catchAndLog, ScreenProps, screenNames, showNotification } from '@app/core';
+import { catchAndLog, ScreenProps, screenNames, showNotification, i18n } from '@app/core';
 import { navigationService } from '@app/services';
 import { styles } from './styles';
+import { mapStateToProps } from './map_state_to_props';
+import { mapDispatchToProps } from './map_dispatch_to_props';
+
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
 interface FormData {
   email: string;
@@ -17,7 +20,7 @@ interface FormData {
   confirmPassword: string;
 }
 
-export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
+export const Screen = ({ componentId, language }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -123,6 +126,9 @@ export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
                 showSuccess={touched.email && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
+                hasTooltip
+                tooltipText={t('emailRegisterScreen.passwordInfo')}
+                tooltipHeight={language === i18n.LANGUAGE_EN ? 140 : 100}
               />
               <Field
                 label={t('emailRegisterScreen.confirmPassword')}
@@ -134,7 +140,7 @@ export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />
-              <View style={styles.buttonContainer}>
+              <View column style={styles.buttonContainer}>
                 <Button full onPress={handleSubmit} disabled={isBusy}>
                   <Text>{t('emailRegisterScreen.register')}</Text>
                 </Button>

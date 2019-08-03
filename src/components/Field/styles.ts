@@ -26,4 +26,5 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
   },
+  tooltipIcon: { margin: 8 },
 });

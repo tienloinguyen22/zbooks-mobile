@@ -4,7 +4,7 @@ import { combineStyles } from '@app/core';
 import { styles } from './styles';
 
 interface Props extends ViewProps {
-  flex?: boolean;
+  flex?: number;
   center?: boolean;
   centerVertical?: boolean;
   row?: boolean;
@@ -18,13 +18,13 @@ export const View = (props: Props): JSX.Element => {
   const viewStyle = combineStyles(
     styles.default,
     props.style,
-    props.flex && styles.flex,
     props.center && styles.center,
     props.centerVertical && styles.centerVertical,
     props.row && styles.row,
     props.column && styles.column,
     props.rowReverse && styles.rowReverse,
     props.columnReverse && styles.columnReverse,
+    !!props.flex && { flex: props.flex },
   );
 
   return (

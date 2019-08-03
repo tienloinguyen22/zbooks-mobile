@@ -6,25 +6,16 @@ export const styles = StyleSheet.create({
     flex: 0,
     backgroundColor: colors.primary,
   },
-  rootContainer: {
-    flex: 1,
-    backgroundColor: colors.white,
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
+  rootContainer: { flex: 1 },
   header: {
     backgroundColor: colors.primary,
     height: 50,
-    flex: 0,
     flexDirection: 'row',
     alignSelf: 'flex-start',
   },
   title: { color: colors.white },
-  icon: { color: colors.white },
-  body: {
-    flex: 1,
-    alignSelf: 'stretch',
+  icon: {
+    marginLeft: 10,
+    marginRight: 10,
   },
 });

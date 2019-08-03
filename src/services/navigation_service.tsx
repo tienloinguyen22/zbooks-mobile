@@ -1,6 +1,6 @@
 import { Navigation, LayoutBottomTabsChildren } from 'react-native-navigation';
 import { colors, screenNames, Resource } from '@app/core';
-import { MaterialVectorIcon } from '@app/components/VectorIcon';
+import { getIconImageSource } from '@app/components/Icon';
 import i18next from 'i18next';
 
 interface TabItem {
@@ -75,8 +75,8 @@ const getTabItem = ({ screenName, icon, color, text }: TabItem): LayoutBottomTab
 });
 
 const setRootHome = async (currentTabIndex?: number): Promise<void> => {
-  const homeIcon = await MaterialVectorIcon.getImageSource('home', 30);
-  const moreIcon = await MaterialVectorIcon.getImageSource('dots-horizontal', 30);
+  const homeIcon = await getIconImageSource('home', 30);
+  const moreIcon = await getIconImageSource('dots-horizontal', 30);
   Navigation.setRoot({
     root: {
       bottomTabs: {

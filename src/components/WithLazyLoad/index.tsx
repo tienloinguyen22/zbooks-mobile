@@ -1,6 +1,5 @@
 import React, { Component, ReactNode } from 'react';
 import { Navigation } from 'react-native-navigation';
-import { View } from '../View';
 
 interface State {
   isAppeared: boolean;
@@ -29,7 +28,11 @@ export const WithLazyLoad = (WrappedComponent: AppComponent): AppComponent => {
     public render(): ReactNode {
       // ... and renders the wrapped component with the fresh data!
       // Notice that we pass through any additional props
-      return <View>{this.state.isAppeared && <WrappedComponent {...this.props} />}</View>;
+      if (!this.state.isAppeared) {
+        return null;
+      }
+
+      return <WrappedComponent {...this.props} />;
     }
   };
 };

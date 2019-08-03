@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Image, Button, Text, MaterialIcon, Loading, Container } from '@app/components';
+import { View, Image, Button, Text, Icon, Loading, Container } from '@app/components';
 import { navigationService } from '@app/services';
-import { ScreenProps, catchAndLog, LoginType, LOGIN_TYPE, screenNames } from '@app/core';
+import { ScreenProps, catchAndLog, LoginType, LOGIN_TYPE, screenNames, colors } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
@@ -107,11 +107,11 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
       <View center centerVertical>
         <Image style={styles.appIcon} source={appIconSource} />
         <Button full rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
-          <MaterialIcon name='facebook' />
+          <Icon name='facebook' color={colors.white} />
           <Text>{t('loginScreen.loginWith')} Facebook</Text>
         </Button>
         <Button full rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
-          <MaterialIcon name='google' />
+          <Icon name='google' color={colors.white} />
           <Text>{t('loginScreen.loginWith')} Google</Text>
         </Button>
         <Button full rounded onPress={loginGoogle} style={[styles.button]}>

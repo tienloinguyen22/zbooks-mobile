@@ -1,3 +1,3 @@
 import { RootState } from '@app/store';
 
-export const mapStateToProps = (_state: RootState): {} => ({});
+export const mapStateToProps = (state: RootState): { language: string } => ({ language: state.settings.language });
