@@ -111,6 +111,7 @@ export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
                 onChangeText={handleChangeEmail}
                 onBlur={handleBlur(fieldNames.email)}
                 showError={(touched.email && !!errors.email) || (touched.email && !!errors.isEmailRegistered)}
+                showSuccess={touched.email && !errors.email && !errors.isEmailRegistered}
                 errorMessage={touched.email && !!errors.email ? errors.email : errors.isEmailRegistered}
               />
               <Field
@@ -119,6 +120,7 @@ export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
                 showError={touched.password && !!errors.password}
+                showSuccess={touched.email && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
               />
@@ -128,6 +130,7 @@ export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
                 onChangeText={handleChange(fieldNames.confirmPassword)}
                 onBlur={handleBlur(fieldNames.confirmPassword)}
                 showError={touched.confirmPassword && !!errors.confirmPassword}
+                showSuccess={touched.email && !errors.confirmPassword}
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />
