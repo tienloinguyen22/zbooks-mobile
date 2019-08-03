@@ -16,6 +16,10 @@ import { config } from '@app/config';
 import { Icon, Button } from '@app/components';
 import { useTranslation } from 'react-i18next';
 
+export interface Hermes {
+  HermesInternal?: boolean;
+}
+
 const styles = StyleSheet.create({
   scrollView: { backgroundColor: Colors.lighter },
   engine: {
@@ -71,7 +75,7 @@ const App = (): JSX.Element => {
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior='automatic' style={styles.scrollView}>
           <Header />
-          {(global as any).HermesInternal == null ? null : ( // eslint-disable-line @typescript-eslint/no-explicit-any
+          {((global as unknown) as Hermes).HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>

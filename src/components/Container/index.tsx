@@ -1,4 +1,7 @@
 import React, { ReactNode } from 'react';
+import { navigationService } from '@app/services';
+import { colors } from '@app/core';
+import { StatusBar, SafeAreaView } from 'react-native';
 import { Left } from '../Left';
 import { Button } from '../Button';
 import { MaterialIcon } from '../MaterialIcon';
@@ -7,10 +10,7 @@ import { Title } from '../Title';
 import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { View } from '../View';
-import { navigationService } from '@app/services';
-import { colors } from '@app/core';
 import { styles } from './styles';
-import { StatusBar, SafeAreaView } from 'react-native';
 
 interface Props {
   componentId?: string;
@@ -19,15 +19,15 @@ interface Props {
   headerTitle?: string;
   children?: ReactNode;
 }
-export const Container = ({ children, showHeader, showBackButton, headerTitle, componentId }: Props) => {
-  const goBack = () => {
+export const Container = ({ children, showHeader, showBackButton, headerTitle, componentId }: Props): JSX.Element => {
+  const goBack = (): void => {
     componentId && navigationService.goBack({ componentId });
   };
-  console.log(showHeader ? 'light-content' : 'dark-content');
+
   return (
     <>
-      <SafeAreaView style={{ flex: 0, backgroundColor: colors.primary }} />
-      <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+      <SafeAreaView style={styles.rootContainerBackground} />
+      <SafeAreaView style={styles.rootContainer}>
         <ErrorBoundary>
           <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
           <View column style={styles.container}>

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock';
 
 /* eslint-disable no-console */
@@ -10,5 +9,6 @@ console.error = (...args) => {
   originalConsoleError(...args);
 };
 
+/* eslint-disable no-undef */
 jest.mock('react-native-splash-screen', () => ({ hide: jest.fn() }));
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage);

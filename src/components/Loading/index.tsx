@@ -6,6 +6,6 @@ interface Props {
   size?: 'large' | 'small';
 }
 
-export const Loading = ({ size }: Props) => {
-  return <ActivityIndicator size={size || 'large'} color={colors.primary} />;
-};
+export const Loading = ({ size }: Props): JSX.Element => (
+  <ActivityIndicator size={size || 'large'} color={colors.primary} />
+);

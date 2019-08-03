@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { View, Button, Form, Text, Field } from '@app/components';
+import { View, Button, Form, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
-import { Container } from '@app/components';
+
 import auth from '@react-native-firebase/auth';
 import * as Yup from 'yup';
 import * as _ from 'lodash';
 import { Formik, FormikProps } from 'formik';
 import { catchAndLog, ScreenProps, screenNames, showNotification } from '@app/core';
-import { styles } from './styles';
 import { navigationService } from '@app/services';
+import { styles } from './styles';
 
 interface FormData {
   email: string;
@@ -17,7 +17,7 @@ interface FormData {
   confirmPassword: string;
 }
 
-export const Screen = ({ componentId }: ScreenProps) => {
+export const Screen = ({ componentId }: ScreenProps): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -72,12 +72,12 @@ export const Screen = ({ componentId }: ScreenProps) => {
       }
       const message = isEmailRegistered ? t('emailRegisterScreen.emailHasBeenAlreadyRegistered') : undefined;
       formikProps.setFieldValue('isEmailRegistered', isEmailRegistered);
-      formikProps.setFieldError('isEmailRegistered', message as any);
+      formikProps.setFieldError('isEmailRegistered', (message as unknown) as string);
     },
     async () => setIsBusy(false),
   );
   const debounceValidateUniqueEmail = _.debounce(validateUniqueEmail, 500);
-  const handleChangeEmail = (email: string) => {
+  const handleChangeEmail = (email: string): void => {
     formikProps.handleChange(fieldNames.email)(email);
     debounceValidateUniqueEmail(email);
   };

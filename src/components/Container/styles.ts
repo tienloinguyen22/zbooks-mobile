@@ -2,6 +2,14 @@ import { StyleSheet } from 'react-native';
 import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
+  rootContainerBackground: {
+    flex: 0,
+    backgroundColor: colors.primary,
+  },
+  rootContainer: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
@@ -13,12 +21,8 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-start',
   },
-  title: {
-    color: colors.white,
-  },
-  icon: {
-    color: colors.white,
-  },
+  title: { color: colors.white },
+  icon: { color: colors.white },
   body: {
     flex: 1,
     alignSelf: 'stretch',

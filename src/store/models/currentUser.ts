@@ -3,8 +3,8 @@ import produce from 'immer';
 
 export interface CurrentUserState {
   id: string;
-  displayName: string;
-  avatarUrl: string;
+  displayName?: string;
+  avatarUrl?: string;
   isLoggedIn: boolean;
 }
 
@@ -22,7 +22,6 @@ export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUse
       Object.assign(draftState, payload);
     }),
     logout: produce((draftState: CurrentUserState) => {
-      console.log('logout');
       Object.assign(draftState, defaultUser);
     }),
   },

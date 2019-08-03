@@ -1,11 +1,8 @@
 import { StyleSheet } from 'react-native';
+
 export const styles = StyleSheet.create({
-  default: {
-    flex: 1,
-  },
-  flex: {
-    flex: 1,
-  },
+  default: { flex: 1 },
+  flex: { flex: 1 },
   centerVertical: {
     flex: 1,
     justifyContent: 'center',

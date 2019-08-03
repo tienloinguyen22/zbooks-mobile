@@ -6,6 +6,11 @@ import vi from './locales/vi.json';
 const LANGUAGE_VI = 'vi';
 const LANGUAGE_EN = 'en';
 export type LanguageType = typeof LANGUAGE_EN | typeof LANGUAGE_VI;
+export interface Language {
+  id: string;
+  name: string;
+}
+
 export const LANGUAGES = [
   {
     id: LANGUAGE_EN,
@@ -17,23 +22,20 @@ export const LANGUAGES = [
   },
 ];
 
-const getLanguageName = (id: LanguageType) => {
-  const language = i18n.LANGUAGES.find((lang) => lang.id === id);
+const getLanguageName = (id: LanguageType): string | undefined => {
+  const language = LANGUAGES.find((lang) => lang.id === id);
   return language ? language.name : undefined;
 };
 
-const getLanguageByName = (name: string) => {
-  const language = i18n.LANGUAGES.find((lang) => lang.name === name);
-  return language;
-};
+const getLanguageByName = (name: string): Language | undefined => LANGUAGES.find((lang) => lang.name === name);
 
 const LANGUAGE_TEXTS = LANGUAGES.map((lang) => lang.name);
 
-const initialize = async () => {
+const initialize = async (): Promise<void> => {
   const languageDetector = {
     type: 'languageDetector',
     async: true,
-    detect: (cb: any) => cb(LANGUAGE_EN),
+    detect: (cb: (language: string) => void) => cb(LANGUAGE_EN),
     init: () => {
       // blank
     },

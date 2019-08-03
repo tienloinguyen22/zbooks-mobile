@@ -1,5 +1,7 @@
-import { Dispatch } from '@app/store';
+import { Dispatch, CurrentUserState } from '@app/store';
 
-export const mapDispatchToProps = (dispatch: Dispatch) => ({
-  login: dispatch.currentUser.login,
-});
+interface MapDispatchToProps {
+  login: (user: CurrentUserState) => void;
+}
+
+export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({ login: dispatch.currentUser.login });

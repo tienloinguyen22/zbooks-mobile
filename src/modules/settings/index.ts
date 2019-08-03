@@ -1,12 +1,10 @@
 import { WithStore, WithLazyLoad } from '@app/components';
 import { Navigation } from 'react-native-navigation';
-import { SettingsScreen } from './screens';
 import { screenNames } from '@app/core';
+import { SettingsScreen } from './screens';
 
-const registerScreens = () => {
+const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.SettingsScreen, () => WithLazyLoad(WithStore(SettingsScreen)));
 };
 
-export default {
-  registerScreens,
-};
+export default { registerScreens };

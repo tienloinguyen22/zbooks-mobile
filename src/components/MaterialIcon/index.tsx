@@ -1,14 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Icon as NativeBaseIcon, NativeBase } from 'native-base';
 
-interface Props extends NativeBase.Icon {}
-
-export class MaterialIcon extends Component<NativeBase.Icon> {
-  constructor(props: Props) {
-    super(props);
-  }
-
-  render() {
-    return <NativeBaseIcon type={'MaterialCommunityIcons'} {...this.props} />;
-  }
-}
+export const MaterialIcon = (props: NativeBase.Icon): JSX.Element => (
+  <NativeBaseIcon type={'MaterialCommunityIcons'} {...props} />
+);

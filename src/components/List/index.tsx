@@ -21,41 +21,37 @@ export interface ListItemData {
   onPress?: () => void;
 }
 
-const HeaderItem = ({ item }: { item: ListItemData }) => {
-  return (
-    <ListItem itemDivider onPress={item.onPress}>
-      <Left>
-        <Text style={styles.header}>{item.title}</Text>
-      </Left>
-      <Right />
-    </ListItem>
-  );
-};
+const HeaderItem = ({ item }: { item: ListItemData }): JSX.Element => (
+  <ListItem itemDivider onPress={item.onPress}>
+    <Left>
+      <Text style={styles.header}>{item.title}</Text>
+    </Left>
+    <Right />
+  </ListItem>
+);
 
-const Item = ({ item }: { item: ListItemData }) => {
-  return (
-    <ListItem onPress={item.onPress}>
-      <Left>
-        <Text>{item.title}</Text>
-      </Left>
-      <Right style={styles.right}>
-        {item.showIcon && <MaterialIcon name={item.icon || 'chevron-right'} style={styles.icon} />}
-        <Text style={styles.value}>{item.value}</Text>
-      </Right>
-    </ListItem>
-  );
-};
+const Item = ({ item }: { item: ListItemData }): JSX.Element => (
+  <ListItem onPress={item.onPress}>
+    <Left>
+      <Text>{item.title}</Text>
+    </Left>
+    <Right style={styles.right}>
+      {item.showIcon && <MaterialIcon name={item.icon || 'chevron-right'} style={styles.icon} />}
+      <Text style={styles.value}>{item.value}</Text>
+    </Right>
+  </ListItem>
+);
 
-const renderItem: ListRenderItem<ListItemData> = ({ item }) => {
+const renderItem: ListRenderItem<ListItemData> = ({ item }: { item: ListItemData }): JSX.Element => {
   if (item.isHeader) {
     return <HeaderItem item={item} />;
   }
   return <Item item={item} />;
 };
 
-const getStickyHeaderIndices = (data: ListItemData[]) => {
-  let stickyHeaderIndices = [];
-  data.map((obj) => {
+const getStickyHeaderIndices = (data: ListItemData[]): number[] => {
+  const stickyHeaderIndices = [];
+  data.forEach((obj) => {
     if (obj.isHeader) {
       stickyHeaderIndices.push(data.indexOf(obj));
     }
@@ -64,8 +60,8 @@ const getStickyHeaderIndices = (data: ListItemData[]) => {
   return stickyHeaderIndices;
 };
 
-export const List = ({ data }: Props) => {
-  let stickyHeaderIndices = getStickyHeaderIndices(data);
+export const List = ({ data }: Props): JSX.Element => {
+  const stickyHeaderIndices = getStickyHeaderIndices(data);
   return (
     <FlatList
       data={data}

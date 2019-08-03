@@ -1,6 +1,6 @@
 // import firebase from 'react-native-firebase';
 
-export const recordError = (error: Error) => {
+export const recordError = (error: Error): void => {
   if (!__DEV__) {
     try {
       // if (firebase.auth().currentUser) {
@@ -12,8 +12,8 @@ export const recordError = (error: Error) => {
     } catch {
       // do nothing
     }
-    console.log(error);
   } else {
+    // eslint-disable-next-line no-console
     console.log(error);
   }
 };

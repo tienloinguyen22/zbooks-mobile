@@ -16,7 +16,7 @@ export const dolphins = createModel<DolphinsState>({
   },
   effects: (dispatch: Dispatch) => ({
     // TODO: Optional args breaks TypeScript autocomplete (e.g. payload: number = 1)
-    incrementAsync: async (payload: number) => {
+    incrementAsync: async (payload: number): Promise<void> => {
       await sleep(500);
       dispatch.dolphins.increment(payload || 1);
     },

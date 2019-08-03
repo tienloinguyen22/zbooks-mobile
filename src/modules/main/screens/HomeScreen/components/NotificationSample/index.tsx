@@ -1,12 +1,10 @@
 import React from 'react';
 import { Card, CardItem, Text, View, Button } from '@app/components';
-import { styles } from './styles';
 import { showNotification } from '@app/core';
+import { styles } from './styles';
 
-interface Props {}
-
-export const NotificationSample = ({  }: Props) => {
-  const showMessage = () => {
+export const NotificationSample = (): JSX.Element => {
+  const showMessage = (): void => {
     showNotification({ type: 'success', message: 'Hello' });
   };
   return (

@@ -1,16 +1,15 @@
 import React, { ReactNode } from 'react';
-import { TextStyle } from 'react-native';
+import { TextProps } from 'react-native';
+import { combineStyles } from '@app/core';
 import { Text } from '../Text';
-import { addStyles } from '@app/core';
 import { styles } from './styles';
 
-interface Props {
-  children: ReactNode;
-  style?: TextStyle;
+interface Props extends TextProps {
+  children?: ReactNode;
 }
 
-export const ErrorText = (props: Props) => {
-  let style = addStyles<TextStyle>(styles.error, props.style);
+export const ErrorText = (props: Props): JSX.Element => {
+  const style = combineStyles(styles.default, props.style);
   return (
     <Text {...props} style={style}>
       {props.children}

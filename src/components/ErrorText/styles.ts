@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
-  error: {
+  default: {
     fontSize: 13,
     color: colors.red,
   },

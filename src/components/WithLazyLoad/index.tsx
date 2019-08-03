@@ -5,24 +5,28 @@ import { View } from '../View';
 interface State {
   isAppeared: boolean;
 }
-export const WithLazyLoad = (WrappedComponent: any) => {
-  return class extends Component<any, State> {
-    constructor(props: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AppComponent = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Props = any;
+
+export const WithLazyLoad = (WrappedComponent: AppComponent): AppComponent => {
+  return class HOCComponent extends Component<Props, State> {
+    private constructor(props: Props) {
       super(props);
       Navigation.events().bindComponent(this);
-      this.state = {
-        isAppeared: false,
-      };
+      this.state = { isAppeared: false };
     }
-    componentDidAppear(): void {
+
+    public componentDidAppear(): void {
       this.setState({ isAppeared: true });
     }
 
-    componentDidDisappear(): void {
+    public componentDidDisappear(): void {
       // do nothing for now
     }
 
-    render(): ReactNode {
+    public render(): ReactNode {
       // ... and renders the wrapped component with the fresh data!
       // Notice that we pass through any additional props
       return <View>{this.state.isAppeared && <WrappedComponent {...this.props} />}</View>;

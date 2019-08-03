@@ -2,15 +2,15 @@ import React from 'react';
 import { Card, CardItem, Text, View, Button } from '@app/components';
 import { styles } from './styles';
 
-interface Props {}
-
-export const CrashSample = ({  }: Props) => {
-  const crashTest = () => (null as any).crash();
-
-  const crashTestAsync = async () => {
-    console.log('crashTestAsync');
-    (null as any).crash();
+export const CrashSample = (): JSX.Element => {
+  const crashTest = (): void => {
+    throw new Error('crashTestAsync');
   };
+
+  const crashTestAsync = async (): Promise<void> => {
+    throw new Error('crashTestAsync');
+  };
+
   return (
     <Card>
       <CardItem header bordered>

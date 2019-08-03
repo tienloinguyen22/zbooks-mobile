@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { View as ReactNativeView, ViewProps } from 'react-native';
-import { addStyles } from '@app/core';
+import React from 'react';
+import { View as RNVIew, ViewProps } from 'react-native';
+import { combineStyles } from '@app/core';
 import { styles } from './styles';
 
 interface Props extends ViewProps {
@@ -11,27 +11,25 @@ interface Props extends ViewProps {
   column?: boolean;
   rowReverse?: boolean;
   columnReverse?: boolean;
+  children?: React.ReactNode;
 }
 
-export class View extends Component<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
+export const View = (props: Props): JSX.Element => {
+  const viewStyle = combineStyles(
+    styles.default,
+    props.style,
+    props.flex && styles.flex,
+    props.center && styles.center,
+    props.centerVertical && styles.centerVertical,
+    props.row && styles.row,
+    props.column && styles.column,
+    props.rowReverse && styles.rowReverse,
+    props.columnReverse && styles.columnReverse,
+  );
 
-  render() {
-    let viewStyle = addStyles(styles.default, this.props.style);
-    viewStyle = this.props.flex ? addStyles(viewStyle, styles.flex) : viewStyle;
-    viewStyle = this.props.center ? addStyles(viewStyle, styles.center) : viewStyle;
-    viewStyle = this.props.centerVertical ? addStyles(viewStyle, styles.centerVertical) : viewStyle;
-    viewStyle = this.props.row ? addStyles(viewStyle, styles.row) : viewStyle;
-    viewStyle = this.props.column ? addStyles(viewStyle, styles.column) : viewStyle;
-    viewStyle = this.props.rowReverse ? addStyles(viewStyle, styles.rowReverse) : viewStyle;
-    viewStyle = this.props.columnReverse ? addStyles(viewStyle, styles.columnReverse) : viewStyle;
-
-    return (
-      <ReactNativeView {...this.props} style={viewStyle}>
-        {this.props.children}
-      </ReactNativeView>
-    );
-  }
-}
+  return (
+    <RNVIew {...props} style={viewStyle}>
+      {props.children}
+    </RNVIew>
+  );
+};

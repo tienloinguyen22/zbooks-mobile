@@ -275,7 +275,7 @@ exports[`<App/> renders correctly on android platform 1`] = `
                 },
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "#f7331e",
+                  "backgroundColor": "#79bfa7",
                   "borderBottomWidth": null,
                   "borderColor": "#007aff",
                   "borderLeftWidth": null,
@@ -307,7 +307,7 @@ exports[`<App/> renders correctly on android platform 1`] = `
               style={
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "#f7331e",
+                  "backgroundColor": "#79bfa7",
                   "borderBottomWidth": null,
                   "borderColor": "#007aff",
                   "borderLeftWidth": null,
@@ -656,7 +656,7 @@ exports[`<App/> renders correctly with hermes engine 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#f7331e",
+                "backgroundColor": "#79bfa7",
                 "borderBottomWidth": null,
                 "borderColor": "#007aff",
                 "borderLeftWidth": null,
@@ -962,7 +962,7 @@ exports[`<App/> renders successfully with effect 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "#f7331e",
+                "backgroundColor": "#79bfa7",
                 "borderBottomWidth": null,
                 "borderColor": "#007aff",
                 "borderLeftWidth": null,

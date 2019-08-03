@@ -2,8 +2,7 @@ import { StyleSheet } from 'react-native';
 import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
-  button: {
-    backgroundColor: colors.primary,
-  },
+  default: { backgroundColor: colors.primary },
+  transparent: { backgroundColor: 'transparent' },
+  disabled: { backgroundColor: colors.grey },
 });
-8;

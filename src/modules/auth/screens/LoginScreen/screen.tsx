@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { View, Image, Button, Text, MaterialIcon, Loading, Container } from '@app/components';
 import { navigationService } from '@app/services';
-import { ScreenProps, images, catchAndLog, LoginType, LOGIN_TYPE, screenNames } from '@app/core';
-import { mapStateToProps } from './map_state_to_props';
-import { mapDispatchToProps } from './map_dispatch_to_props';
-import { styles } from './styles';
+import { ScreenProps, catchAndLog, LoginType, LOGIN_TYPE, screenNames } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
-import auth from '@react-native-firebase/auth';
+import auth, { Auth } from '@react-native-firebase/auth';
+import { imageSources } from '@app/assets';
+import { styles } from './styles';
+import { mapDispatchToProps } from './map_dispatch_to_props';
+import { mapStateToProps } from './map_state_to_props';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ login, componentId }: Props) => {
+const appIconSource = imageSources.appIcon();
+
+export const Screen = ({ login, componentId }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
-  const loginFacebookAndGetCredential = async () => {
+  const loginFacebookAndGetCredential = async (): Promise<Auth.AuthCredential | undefined> => {
     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
     if (result.isCancelled) {
       return undefined;
@@ -30,7 +33,7 @@ export const Screen = ({ login, componentId }: Props) => {
     return auth.FacebookAuthProvider.credential(data.accessToken);
   };
 
-  const loginGoogleAndGetCredential = async () => {
+  const loginGoogleAndGetCredential = async (): Promise<Auth.AuthCredential | undefined> => {
     try {
       await GoogleSignin.signIn();
       const { idToken, accessToken } = await GoogleSignin.getTokens();
@@ -40,7 +43,7 @@ export const Screen = ({ login, componentId }: Props) => {
         error.message.indexOf('The user canceled the sign in request') > -1 ||
         error.message.indexOf('Sign in action cancelled') > -1
       ) {
-        return null;
+        return undefined;
       }
       throw error;
     }
@@ -49,7 +52,7 @@ export const Screen = ({ login, componentId }: Props) => {
   const performLogin = catchAndLog(
     async (loginType: LoginType) => {
       setIsBusy(true);
-      let credential: any = null;
+      let credential: Auth.AuthCredential | undefined;
       switch (loginType) {
         case LOGIN_TYPE.FACEBOOK:
           credential = await loginFacebookAndGetCredential();
@@ -67,13 +70,13 @@ export const Screen = ({ login, componentId }: Props) => {
       }
 
       // login with credential
-      const { user } = await auth().signInWithCredential(credential!);
+      const { user } = await auth().signInWithCredential(credential);
       const avatarUrl =
         user.photoURL && user.photoURL.indexOf('facebook') > -1 ? `${user.photoURL}?height=500` : user.photoURL;
       login({
         id: user.uid,
-        displayName: user.displayName,
-        avatarUrl,
+        displayName: user.displayName || undefined,
+        avatarUrl: avatarUrl || undefined,
         isLoggedIn: true,
       });
       navigationService.setRootHome();
@@ -81,12 +84,13 @@ export const Screen = ({ login, componentId }: Props) => {
     async () => setIsBusy(false),
   );
 
-  const loginFacebook = () => performLogin(LOGIN_TYPE.FACEBOOK);
+  const loginFacebook = (): Promise<void> => performLogin(LOGIN_TYPE.FACEBOOK);
 
-  const loginGoogle = () => performLogin(LOGIN_TYPE.GOOGLE);
+  const loginGoogle = (): Promise<void> => performLogin(LOGIN_TYPE.GOOGLE);
 
-  const registerByEmail = () =>
+  const registerByEmail = (): void => {
     navigationService.navigateTo({ componentId, screenName: screenNames.EmailRegisterScreen });
+  };
 
   if (isBusy) {
     return (
@@ -101,7 +105,7 @@ export const Screen = ({ login, componentId }: Props) => {
   return (
     <Container>
       <View center centerVertical>
-        <Image style={styles.appIcon} source={images.appIcon} />
+        <Image style={styles.appIcon} source={appIconSource} />
         <Button full rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
           <MaterialIcon name='facebook' />
           <Text>{t('loginScreen.loginWith')} Facebook</Text>

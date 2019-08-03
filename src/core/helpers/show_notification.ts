@@ -1,8 +1,25 @@
-import { colors } from '../themes/colors';
 import Toast from 'react-native-root-toast';
+import { colors } from '../themes/colors';
 
-export const showNotification = ({ type, message }: { type: 'success' | 'warning' | 'error'; message: string }) => {
-  const backgroundColor = type === 'error' ? colors.red : type === 'warning' ? colors.yellow : colors.green;
+export const showNotification = ({
+  type,
+  message,
+}: {
+  type: 'success' | 'warning' | 'error';
+  message: string;
+}): void => {
+  let backgroundColor: string;
+  switch (type) {
+    case 'error':
+      backgroundColor = colors.red;
+      break;
+    case 'warning':
+      backgroundColor = colors.yellow;
+      break;
+    default:
+      backgroundColor = colors.green;
+      break;
+  }
   Toast.show(message, {
     position: Toast.positions.TOP,
     backgroundColor,
