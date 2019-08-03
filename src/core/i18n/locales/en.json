@@ -8,6 +8,14 @@
     "select": "Select",
     "settings": "Settings"
   },
+  "emailLoginScreen": {
+    "email": "Email",
+    "login": "Login",
+    "password": "Password",
+    "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
+    "userDisabled": "User is disabled",
+    "wrongEmailOrPassword": "Email or password is incorrect"
+  },
   "emailRegisterScreen": {
     "accountHasBeenCreated": "Account has been created",
     "back": "Back",

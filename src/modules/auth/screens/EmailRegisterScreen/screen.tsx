@@ -5,7 +5,7 @@ import auth from '@react-native-firebase/auth';
 import * as Yup from 'yup';
 import * as _ from 'lodash';
 import { Formik, FormikProps } from 'formik';
-import { catchAndLog, ScreenProps, screenNames, showNotification, i18n } from '@app/core';
+import { catchAndLog, ScreenProps, showNotification, i18n, firebase } from '@app/core';
 import { navigationService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -20,7 +20,7 @@ interface FormData {
   confirmPassword: string;
 }
 
-export const Screen = ({ componentId, language }: Props): JSX.Element => {
+export const Screen = ({ componentId, language, login }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -92,10 +92,13 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
         return;
       }
       showNotification({ type: 'success', message: t('emailRegisterScreen.accountHasBeenCreated') });
-      const credential = await auth().createUserWithEmailAndPassword(values.email, values.password);
-      credential.user.sendEmailVerification();
+      const { user } = await auth().createUserWithEmailAndPassword(values.email, values.password);
+      await user.updateProfile({ displayName: user.email || '' });
+      await user.reload();
+      await user.sendEmailVerification();
       showNotification({ type: 'success', message: t('emailRegisterScreen.accountHasBeenCreated') });
-      navigationService.navigateTo({ componentId, screenName: screenNames.EmailVerificationScreen });
+      login(firebase.getUser(user));
+      navigationService.setRootHome();
     },
     async () => setIsBusy(false),
   );

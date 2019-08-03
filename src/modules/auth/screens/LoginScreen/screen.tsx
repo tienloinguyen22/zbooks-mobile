@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Image, Button, Text, Icon, Loading, Container } from '@app/components';
 import { navigationService } from '@app/services';
-import { ScreenProps, catchAndLog, LoginType, LOGIN_TYPE, screenNames, colors } from '@app/core';
+import { ScreenProps, catchAndLog, LoginType, LOGIN_TYPE, screenNames, colors, firebase } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
@@ -71,14 +71,7 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
 
       // login with credential
       const { user } = await auth().signInWithCredential(credential);
-      const avatarUrl =
-        user.photoURL && user.photoURL.indexOf('facebook') > -1 ? `${user.photoURL}?height=500` : user.photoURL;
-      login({
-        id: user.uid,
-        displayName: user.displayName || undefined,
-        avatarUrl: avatarUrl || undefined,
-        isLoggedIn: true,
-      });
+      login(firebase.getUser(user));
       navigationService.setRootHome();
     },
     async () => setIsBusy(false),
@@ -87,6 +80,9 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
   const loginFacebook = (): Promise<void> => performLogin(LOGIN_TYPE.FACEBOOK);
 
   const loginGoogle = (): Promise<void> => performLogin(LOGIN_TYPE.GOOGLE);
+
+  const loginEmail = (): void =>
+    navigationService.navigateTo({ componentId, screenName: screenNames.EmailLoginScreen });
 
   const registerByEmail = (): void => {
     navigationService.navigateTo({ componentId, screenName: screenNames.EmailRegisterScreen });
@@ -114,7 +110,7 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
           <Icon name='google' color={colors.white} />
           <Text>{t('loginScreen.loginWith')} Google</Text>
         </Button>
-        <Button full rounded onPress={loginGoogle} style={[styles.button]}>
+        <Button full rounded onPress={loginEmail} style={[styles.button]}>
           <Text>{t('loginScreen.loginWithEmail')}</Text>
         </Button>
         <Button full rounded onPress={loginGoogle} style={[styles.button]}>
