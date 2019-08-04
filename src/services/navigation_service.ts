@@ -11,11 +11,19 @@ interface TabItem {
 }
 
 const navigateTo = ({ screenName, componentId }: { screenName: string; componentId: string; options?: {} }): void => {
-  Navigation.push(componentId, { component: { name: screenName } });
+  Navigation.push(componentId, {
+    component: {
+      name: screenName,
+    },
+  });
 };
 
 const changeTab = ({ componentId, tabIndex }: { componentId: string; tabIndex: number }): void => {
-  Navigation.mergeOptions(componentId, { bottomTabs: { currentTabIndex: tabIndex } });
+  Navigation.mergeOptions(componentId, {
+    bottomTabs: {
+      currentTabIndex: tabIndex,
+    },
+  });
 };
 
 const goBack = ({ componentId }: { componentId: string }): void => {
@@ -26,8 +34,18 @@ const setRootStack = (screenName: string): void => {
   Navigation.setRoot({
     root: {
       stack: {
-        options: { topBar: { visible: false } },
-        children: [{ component: { name: screenName } }],
+        options: {
+          topBar: {
+            visible: false,
+          },
+        },
+        children: [
+          {
+            component: {
+              name: screenName,
+            },
+          },
+        ],
       },
     },
   });
@@ -36,6 +54,8 @@ const setRootStack = (screenName: string): void => {
 const setRootAppLoader = (): void => setRootStack(screenNames.AppLoaderScreen);
 
 const setRootLogin = (): void => setRootStack(screenNames.LoginScreen);
+
+const setRootEmailVerification = (): void => setRootStack(screenNames.EmailVerificationScreen);
 
 const initialize = (): void => {
   Navigation.events().registerAppLaunchedListener((): void => {
@@ -108,6 +128,7 @@ export const navigationService = {
   setRootAppLoader,
   setRootHome,
   setRootLogin,
+  setRootEmailVerification,
   navigateTo,
   goBack,
   changeTab,

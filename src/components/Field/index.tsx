@@ -42,14 +42,27 @@ export const Field = (props: Props): JSX.Element => {
             height={props.tooltipHeight || 50}
             backgroundColor={colors.black}
             withOverlay={false}
-            popover={<Text style={{ color: colors.white }}>{props.tooltipText}</Text>}
+            popover={
+              <Text
+                style={{
+                  color: colors.white,
+                }}
+              >
+                {props.tooltipText}
+              </Text>
+            }
           >
             <Icon name='information-outline' size={14} style={styles.tooltipIcon} />
           </Tooltip>
         )}
       </View>
       <TextInput
-        style={[styles.textInput, { borderColor }]}
+        style={[
+          styles.textInput,
+          {
+            borderColor,
+          },
+        ]}
         value={props.value}
         onChangeText={props.onChangeText}
         onBlur={props.onBlur}

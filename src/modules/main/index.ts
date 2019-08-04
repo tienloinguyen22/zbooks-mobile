@@ -8,4 +8,6 @@ const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.NewScreen, () => WithStore(NewScreen));
 };
 
-export default { registerScreens };
+export default {
+  registerScreens,
+};

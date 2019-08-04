@@ -14,11 +14,15 @@ export const WithLazyLoad = (WrappedComponent: AppComponent): AppComponent => {
     private constructor(props: Props) {
       super(props);
       Navigation.events().bindComponent(this);
-      this.state = { isAppeared: false };
+      this.state = {
+        isAppeared: false,
+      };
     }
 
     public componentDidAppear(): void {
-      this.setState({ isAppeared: true });
+      this.setState({
+        isAppeared: true,
+      });
     }
 
     public componentDidDisappear(): void {

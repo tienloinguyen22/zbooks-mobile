@@ -37,8 +37,16 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
   };
   const validationSchema = Yup.object().shape({
     [fieldNames.email]: Yup.string()
-      .email(t('error.invalid', { field: t('emailRegisterScreen.email') }))
-      .required(t('error.required', { field: t('emailRegisterScreen.email') })),
+      .email(
+        t('error.invalid', {
+          field: t('emailRegisterScreen.email'),
+        }),
+      )
+      .required(
+        t('error.required', {
+          field: t('emailRegisterScreen.email'),
+        }),
+      ),
     [fieldNames.isEmailRegistered]: Yup.boolean().oneOf(
       [false],
       t('emailRegisterScreen.emailHasBeenAlreadyRegistered'),
@@ -46,29 +54,38 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
     [fieldNames.password]: Yup.string()
       .matches(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
-        t('error.invalid', { field: t('emailRegisterScreen.password') }),
+        t('error.invalid', {
+          field: t('emailRegisterScreen.password'),
+        }),
       )
-      .required(t('error.required', { field: t('emailRegisterScreen.password') })),
+      .required(
+        t('error.required', {
+          field: t('emailRegisterScreen.password'),
+        }),
+      ),
     [fieldNames.confirmPassword]: Yup.string()
       .oneOf([Yup.ref('password')], t('emailRegisterScreen.confirmPasswordDoesNotMatch'))
-      .required(t('error.required', { field: t('emailRegisterScreen.confirmPassword') })),
+      .required(
+        t('error.required', {
+          field: t('emailRegisterScreen.confirmPassword'),
+        }),
+      ),
   });
 
   let formikProps: FormikProps<FormData>;
 
-  const validateUniqueEmail = catchAndLog(
-    async (email: string) => {
-      if (formikProps.errors.email) {
-        return;
-      }
-      const isEmailRegistered = await authService.isEmailRegistered(email);
-      const message = isEmailRegistered ? t('emailRegisterScreen.emailHasBeenAlreadyRegistered') : undefined;
-      formikProps.setFieldValue('isEmailRegistered', isEmailRegistered);
-      formikProps.setFieldError('isEmailRegistered', (message as unknown) as string);
-    },
-    async () => setIsBusy(false),
-  );
-  const debounceValidateUniqueEmail = _.debounce(validateUniqueEmail, 500);
+  const validateUniqueEmail = async (email: string): Promise<void> => {
+    if (formikProps.errors.email) {
+      return;
+    }
+    const isEmailRegistered = await authService.isEmailRegistered(email);
+    const message = isEmailRegistered ? t('emailRegisterScreen.emailHasBeenAlreadyRegistered') : undefined;
+    formikProps.setFieldValue('isEmailRegistered', isEmailRegistered);
+    formikProps.setFieldError('isEmailRegistered', (message as unknown) as string);
+  };
+
+  const handleValidateUniqueEmail = catchAndLog(validateUniqueEmail);
+  const debounceValidateUniqueEmail = _.debounce(handleValidateUniqueEmail, 500);
 
   const handleChangeEmail = (email: string): void => {
     formikProps.handleChange(fieldNames.email)(email);
@@ -83,9 +100,12 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
         return;
       }
       const user = await authService.createUserWithEmailAndPassword(values.email, values.password);
-      showNotification({ type: 'SUCCESS', message: t('emailRegisterScreen.accountHasBeenCreated') });
       login(user);
-      navigationService.setRootHome();
+      showNotification({
+        type: 'SUCCESS',
+        message: t('emailRegisterScreen.accountHasBeenCreated'),
+      });
+      navigationService.setRootEmailVerification();
     },
     async () => setIsBusy(false),
   );

@@ -51,8 +51,12 @@ const initialize = async (): Promise<void> => {
       fallbackLng: LANGUAGE_EN,
       debug: __DEV__,
       resources: {
-        en: { translation: en },
-        vi: { translation: vi },
+        en: {
+          translation: en,
+        },
+        vi: {
+          translation: vi,
+        },
       },
     });
 };

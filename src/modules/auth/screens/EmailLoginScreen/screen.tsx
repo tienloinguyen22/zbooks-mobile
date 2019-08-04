@@ -30,11 +30,28 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
   };
   const validationSchema = Yup.object().shape({
     [fieldNames.email]: Yup.string()
-      .email(t('error.invalid', { field: t('emailLoginScreen.email') }))
-      .required(t('error.required', { field: t('emailLoginScreen.email') })),
+      .email(
+        t('error.invalid', {
+          field: t('emailLoginScreen.email'),
+        }),
+      )
+      .required(
+        t('error.required', {
+          field: t('emailLoginScreen.email'),
+        }),
+      ),
     [fieldNames.password]: Yup.string()
-      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/, t('error.invalid', { field: t('emailLoginScreen.password') }))
-      .required(t('error.required', { field: t('emailLoginScreen.password') })),
+      .matches(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
+        t('error.invalid', {
+          field: t('emailLoginScreen.password'),
+        }),
+      )
+      .required(
+        t('error.required', {
+          field: t('emailLoginScreen.password'),
+        }),
+      ),
   });
 
   const onSubmit = catchAndLog(
@@ -64,7 +81,11 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
             break;
           default:
         }
-        !!message && showNotification({ type: 'ERROR', message });
+        !!message &&
+          showNotification({
+            type: 'ERROR',
+            message,
+          });
       }
     },
     async () => setIsBusy(false),

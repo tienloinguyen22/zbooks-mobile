@@ -3,27 +3,31 @@ import { ScreenProps } from '@app/core';
 // import { auth } from 'react-native-firebase';
 import i18next from 'i18next';
 import SplashScreen from 'react-native-splash-screen';
-import { navigationService } from '@app/services';
+import { navigationService, authService } from '@app/services';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ appLoaded, language, isLoggedIn }: Props): JSX.Element => {
+export const Screen = ({ appLoaded, language, currentUser }: Props): JSX.Element => {
   useEffect(() => {
     if (!appLoaded) {
       return;
     }
     i18next.changeLanguage(language);
 
-    if (isLoggedIn) {
-      navigationService.setRootHome();
+    (async (): Promise<void> => {
+      if (currentUser.isLoggedIn) {
+        if (await authService.isEmailVerified()) {
+          navigationService.setRootHome();
+        } else {
+          navigationService.setRootEmailVerification();
+        }
+      } else {
+        navigationService.setRootLogin();
+      }
       SplashScreen.hide();
-      return;
-    }
-
-    navigationService.setRootLogin();
-    SplashScreen.hide();
-  }, [appLoaded, isLoggedIn, language]);
+    })();
+  }, [appLoaded, language, currentUser.isLoggedIn]);
   return <></>;
 };

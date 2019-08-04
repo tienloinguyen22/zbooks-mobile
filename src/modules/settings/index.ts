@@ -7,4 +7,6 @@ const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.SettingsScreen, () => WithLazyLoad(WithStore(SettingsScreen)));
 };
 
-export default { registerScreens };
+export default {
+  registerScreens,
+};

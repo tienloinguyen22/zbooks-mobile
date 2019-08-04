@@ -30,7 +30,10 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
     }
     if (!result.isSuccessful) {
       if (result.errorMessage) {
-        showNotification({ type: 'ERROR', message: result.errorMessage });
+        showNotification({
+          type: 'ERROR',
+          message: result.errorMessage,
+        });
       }
       return;
     }
@@ -55,10 +58,16 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
   );
 
   const loginEmail = (): void =>
-    navigationService.navigateTo({ componentId, screenName: screenNames.EmailLoginScreen });
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.EmailLoginScreen,
+    });
 
   const registerByEmail = (): void => {
-    navigationService.navigateTo({ componentId, screenName: screenNames.EmailRegisterScreen });
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.EmailRegisterScreen,
+    });
   };
 
   if (isBusy) {

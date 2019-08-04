@@ -9,7 +9,13 @@ interface Props extends NativeBase.Text {
 }
 
 export const Text = (props: Props): JSX.Element => {
-  const style = combineStyles(styles.default, props.style, props.primary && { color: colors.primary });
+  const style = combineStyles(
+    styles.default,
+    props.style,
+    props.primary && {
+      color: colors.primary,
+    },
+  );
 
   return (
     <NBText {...props} style={style}>

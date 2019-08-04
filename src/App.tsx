@@ -21,12 +21,16 @@ export interface Hermes {
 }
 
 const styles = StyleSheet.create({
-  scrollView: { backgroundColor: Colors.lighter },
+  scrollView: {
+    backgroundColor: Colors.lighter,
+  },
   engine: {
     position: 'absolute',
     right: 0,
   },
-  body: { backgroundColor: Colors.white },
+  body: {
+    backgroundColor: Colors.white,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
@@ -42,7 +46,9 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.dark,
   },
-  highlight: { fontWeight: '700' },
+  highlight: {
+    fontWeight: '700',
+  },
   footer: {
     color: Colors.dark,
     fontSize: 12,

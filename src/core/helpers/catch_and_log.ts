@@ -14,7 +14,10 @@ export const catchAndLog: CatchAndLog = (action, finallyAction) => async (...arg
     await action(...args);
   } catch (error) {
     if (error.message && error.message.indexOf('Network request failed') > -1) {
-      showNotification({ type: 'ERROR', message: i18next.t('error.networkRequestFailed') });
+      showNotification({
+        type: 'ERROR',
+        message: i18next.t('error.networkRequestFailed'),
+      });
     } else {
       recordError(error);
     }

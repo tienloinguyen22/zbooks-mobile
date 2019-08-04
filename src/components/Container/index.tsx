@@ -28,7 +28,10 @@ interface Props {
 }
 export const Container = (props: Props): JSX.Element => {
   const goBack = (): void => {
-    props.componentId && navigationService.goBack({ componentId: props.componentId });
+    props.componentId &&
+      navigationService.goBack({
+        componentId: props.componentId,
+      });
   };
 
   return (

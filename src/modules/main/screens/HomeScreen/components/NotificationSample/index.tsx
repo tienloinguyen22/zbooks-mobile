@@ -5,7 +5,10 @@ import { styles } from './styles';
 
 export const NotificationSample = (): JSX.Element => {
   const showMessage = (): void => {
-    showNotification({ type: 'SUCCESS', message: 'Hello' });
+    showNotification({
+      type: 'SUCCESS',
+      message: 'Hello',
+    });
   };
   return (
     <Card>

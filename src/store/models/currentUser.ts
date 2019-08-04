@@ -22,6 +22,9 @@ export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUse
     logout: produce((draftState: CurrentUserState) => {
       Object.assign(draftState, defaultUser);
     }),
+    update: produce((draftState: CurrentUserState, payload: CurrentUserState) => {
+      Object.assign(draftState, payload);
+    }),
   },
   effects: {},
 });

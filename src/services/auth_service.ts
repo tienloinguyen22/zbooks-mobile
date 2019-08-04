@@ -43,7 +43,11 @@ const getUser = (user: Auth.User): User => {
 const loginFacebook = async (): Promise<LoginResult> => {
   const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
   if (result.isCancelled) {
-    return { isSuccessful: false, isCancelled: true, errorMessage: '' };
+    return {
+      isSuccessful: false,
+      isCancelled: true,
+      errorMessage: '',
+    };
   }
   // get the access token
   const data = await AccessToken.getCurrentAccessToken();
@@ -74,7 +78,11 @@ const loginGoogle = async (): Promise<LoginResult> => {
       error.message.indexOf('The user canceled the sign in request') > -1 ||
       error.message.indexOf('Sign in action cancelled') > -1
     ) {
-      return { isSuccessful: false, isCancelled: true, errorMessage: '' };
+      return {
+        isSuccessful: false,
+        isCancelled: true,
+        errorMessage: '',
+      };
     }
     throw error;
   }
@@ -82,7 +90,9 @@ const loginGoogle = async (): Promise<LoginResult> => {
 
 const createUserWithEmailAndPassword = async (email: string, password: string): Promise<User> => {
   const { user } = await auth().createUserWithEmailAndPassword(email, password);
-  await user.updateProfile({ displayName: user.email || '' });
+  await user.updateProfile({
+    displayName: user.email || '',
+  });
   await user.reload();
   await user.sendEmailVerification();
   return getUser(user);
@@ -107,10 +117,29 @@ const isEmailRegistered = async (email: string): Promise<boolean> => {
   return false;
 };
 
+const isEmailVerified = async (): Promise<boolean> => {
+  const currentUser = await auth().currentUser;
+  if (!currentUser) {
+    return false;
+  }
+  await currentUser.reload();
+  return currentUser.emailVerified;
+};
+
+const getCurrentUser = (): User | undefined => {
+  const { currentUser } = auth();
+  if (!currentUser) {
+    return undefined;
+  }
+  return getUser(currentUser);
+};
+
 export const authService = {
   loginFacebook,
   loginGoogle,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   isEmailRegistered,
+  isEmailVerified,
+  getCurrentUser,
 };

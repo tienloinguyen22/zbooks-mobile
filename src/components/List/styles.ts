@@ -6,7 +6,9 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  value: { color: colors.grey },
+  value: {
+    color: colors.grey,
+  },
   right: {
     flexDirection: 'row-reverse',
     minWidth: 100,

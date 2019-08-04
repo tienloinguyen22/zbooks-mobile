@@ -12,7 +12,13 @@ export const styles = StyleSheet.create({
     width: 300,
     alignSelf: 'center',
   },
-  facebookButton: { backgroundColor: colors.facebook },
-  googleButton: { backgroundColor: colors.google },
-  notHaveAccountText: { marginBottom: 20 },
+  facebookButton: {
+    backgroundColor: colors.facebook,
+  },
+  googleButton: {
+    backgroundColor: colors.google,
+  },
+  notHaveAccountText: {
+    marginBottom: 20,
+  },
 });

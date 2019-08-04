@@ -24,7 +24,9 @@ export const View = (props: Props): JSX.Element => {
     props.column && styles.column,
     props.rowReverse && styles.rowReverse,
     props.columnReverse && styles.columnReverse,
-    !!props.flex && { flex: props.flex },
+    !!props.flex && {
+      flex: props.flex,
+    },
   );
 
   return (
