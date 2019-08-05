@@ -6,6 +6,7 @@ export const colors = {
   lightGrey: '#E9E9ED',
   red: '#dc3545',
   yellow: '#FFFF00',
+  orange: '#F9B442',
   green: '#28a745',
   google: '#EA4334', // color for facebook icon
   facebook: '#4267B2', // color for google icon

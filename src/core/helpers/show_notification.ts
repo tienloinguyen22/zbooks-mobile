@@ -14,7 +14,7 @@ export const showNotification = ({
       backgroundColor = colors.red;
       break;
     case 'WARNING':
-      backgroundColor = colors.yellow;
+      backgroundColor = colors.orange;
       break;
     default:
       backgroundColor = colors.green;
