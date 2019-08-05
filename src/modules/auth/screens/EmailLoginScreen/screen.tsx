@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Form, Text, Field, Container } from '@app/components';
+import { View, Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -101,7 +101,7 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
         {(props) => {
           const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
           return (
-            <Form>
+            <>
               <Field
                 label={t('emailLoginScreen.email')}
                 value={values.email}
@@ -129,7 +129,7 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                   <Text>{t('emailLoginScreen.login')}</Text>
                 </Button>
               </View>
-            </Form>
+            </>
           );
         }}
       </Formik>
