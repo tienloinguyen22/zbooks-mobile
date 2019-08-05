@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScreenProps, i18n, catchAndLog, screenNames } from '@app/core';
 import { config } from '@app/config';
-import { List, ListItemData, Picker, Image, Text, Container } from '@app/components';
+import { List, ListItemData, Picker, Image, Text, Container, Icon, View } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import { Platform } from 'react-native';
 import { navigationService, authService } from '@app/services';
@@ -92,6 +92,11 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
           }}
           style={styles.avatar}
         />
+      )}
+      {!currentUser.avatarUrl && (
+        <View style={styles.avatar}>
+          <Icon name='account-circle-outline' size={150} />
+        </View>
       )}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
       <List data={settingData} />
