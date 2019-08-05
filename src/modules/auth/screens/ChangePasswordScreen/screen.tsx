@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Form, Text, Field, Container } from '@app/components';
+import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -12,44 +12,40 @@ import { mapDispatchToProps } from './map_dispatch_to_props';
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
 interface FormData {
-  email: string;
   password: string;
+  confirmPassword: string;
 }
 
-export const Screen = ({ componentId, login, language }: Props): JSX.Element => {
+export const Screen = ({ componentId, language }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
   const initialValues: FormData = {
-    email: '',
     password: '',
+    confirmPassword: '',
   };
   const fieldNames = {
-    email: 'email',
     password: 'password',
+    confirmPassword: 'confirmPassword',
   };
   const validationSchema = Yup.object().shape({
-    [fieldNames.email]: Yup.string()
-      .email(
-        t('error.invalid', {
-          field: t('emailLoginScreen.email'),
-        }),
-      )
-      .required(
-        t('error.required', {
-          field: t('emailLoginScreen.email'),
-        }),
-      ),
     [fieldNames.password]: Yup.string()
       .matches(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
         t('error.invalid', {
-          field: t('emailLoginScreen.password'),
+          field: t('changePasswordScreen.password'),
         }),
       )
       .required(
         t('error.required', {
-          field: t('emailLoginScreen.password'),
+          field: t('changePasswordScreen.password'),
+        }),
+      ),
+    [fieldNames.confirmPassword]: Yup.string()
+      .oneOf([Yup.ref('password')], t('changePasswordScreen.confirmPasswordDoesNotMatch'))
+      .required(
+        t('error.required', {
+          field: t('changePasswordScreen.confirmPassword'),
         }),
       ),
   });
@@ -58,32 +54,25 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
     async (values: FormData) => {
       setIsBusy(true);
       try {
-        const user = await authService.signInWithEmailAndPassword(values.email, values.password);
-        login(user);
-        if (user.emailVerified) {
-          navigationService.setRootHome();
-        } else {
-          navigationService.setRootEmailVerification();
-        }
+        await authService.changePassword(values.password);
+        showNotification({
+          type: 'SUCCESS',
+          message: t('changePasswordScreen.passwordChanged'),
+        });
+        navigationService.goBack({
+          componentId,
+        });
       } catch (error) {
         if (!error.code) {
           throw error;
         }
         let message = '';
         switch (error.code) {
-          case 'auth/invalid-email':
-            message = t('emailLoginScreen.wrongEmailOrPassword');
-            break;
-          case 'auth/user-disabled':
-            message = t('emailLoginScreen.userDisabled');
-            break;
-          case 'auth/user-not-found':
-            message = t('emailLoginScreen.wrongEmailOrPassword');
-            break;
-          case 'auth/wrong-password':
-            message = t('emailLoginScreen.wrongEmailOrPassword');
+          case 'auth/requires-recent-login':
+            message = t('changePasswordScreen.requireRecentLogin');
             break;
           default:
+            ({ message } = error);
         }
         !!message &&
           showNotification({
@@ -96,23 +85,19 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
   );
 
   return (
-    <Container showHeader showBackButton componentId={componentId} headerTitle={t('emailLoginScreen.login')}>
+    <Container
+      showHeader
+      showBackButton
+      componentId={componentId}
+      headerTitle={t('changePasswordScreen.changePassword')}
+    >
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(props) => {
           const { values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
           return (
-            <Form>
+            <>
               <Field
-                label={t('emailLoginScreen.email')}
-                value={values.email}
-                onChangeText={handleChange(fieldNames.email)}
-                onBlur={handleBlur(fieldNames.email)}
-                showError={touched.email && !!errors.email}
-                showSuccess={touched.email && !errors.email}
-                errorMessage={errors.email}
-              />
-              <Field
-                label={t('emailLoginScreen.password')}
+                label={t('changePasswordScreen.password')}
                 value={values.password}
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
@@ -124,12 +109,20 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 tooltipText={t('common.passwordInfo')}
                 tooltipHeight={language === i18n.LANGUAGE_EN ? 140 : 100}
               />
-              <View column style={styles.buttonContainer}>
-                <Button full onPress={handleSubmit} disabled={isBusy}>
-                  <Text>{t('emailLoginScreen.login')}</Text>
-                </Button>
-              </View>
-            </Form>
+              <Field
+                label={t('changePasswordScreen.confirmPassword')}
+                value={values.confirmPassword}
+                onChangeText={handleChange(fieldNames.confirmPassword)}
+                onBlur={handleBlur(fieldNames.confirmPassword)}
+                showError={touched.confirmPassword && !!errors.confirmPassword}
+                showSuccess={touched.confirmPassword && !errors.confirmPassword}
+                errorMessage={errors.confirmPassword}
+                secureTextEntry
+              />
+              <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+                <Text>{t('changePasswordScreen.changePassword')}</Text>
+              </Button>
+            </>
           );
         }}
       </Formik>

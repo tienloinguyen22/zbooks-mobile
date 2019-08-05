@@ -133,11 +133,11 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
                 showError={touched.password && !!errors.password}
-                showSuccess={touched.email && !errors.password}
+                showSuccess={touched.password && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
                 hasTooltip
-                tooltipText={t('emailRegisterScreen.passwordInfo')}
+                tooltipText={t('common.passwordInfo')}
                 tooltipHeight={language === i18n.LANGUAGE_EN ? 140 : 100}
               />
               <Field
@@ -146,7 +146,7 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
                 onChangeText={handleChange(fieldNames.confirmPassword)}
                 onBlur={handleBlur(fieldNames.confirmPassword)}
                 showError={touched.confirmPassword && !!errors.confirmPassword}
-                showSuccess={touched.email && !errors.confirmPassword}
+                showSuccess={touched.confirmPassword && !errors.confirmPassword}
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />

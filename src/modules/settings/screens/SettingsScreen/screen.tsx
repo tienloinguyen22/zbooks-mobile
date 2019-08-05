@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScreenProps, i18n, catchAndLog } from '@app/core';
+import { ScreenProps, i18n, catchAndLog, screenNames } from '@app/core';
 import { config } from '@app/config';
 import { List, ListItemData, Picker, Image, Text, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,7 @@ import { styles } from './styles';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ changeLanguage, language, currentUser, logout }: Props): JSX.Element => {
+export const Screen = ({ componentId, changeLanguage, language, currentUser, logout }: Props): JSX.Element => {
   const { t } = useTranslation();
   const appVersion = Platform.OS === 'android' ? config.android.version : config.ios.version;
 
@@ -34,7 +34,13 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
     });
   };
 
-  const data: ListItemData[] = [
+  const openChangePasswordScreen = (): void =>
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.ChangePasswordScreen,
+    });
+
+  const settingData: ListItemData[] = [
     {
       title: t('settingsScreen.settings'),
       isHeader: true,
@@ -68,6 +74,15 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
     },
   ];
 
+  if (currentUser && currentUser.loginType === 'EMAIL') {
+    settingData.splice(2, 0, {
+      title: t('settingsScreen.changePassword'),
+      isHeader: false,
+      onPress: openChangePasswordScreen,
+      showIcon: true,
+    });
+  }
+
   return (
     <Container showHeader headerTitle={t('settingsScreen.settings')}>
       {!!currentUser.avatarUrl && (
@@ -79,7 +94,7 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
         />
       )}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
-      <List data={data} />
+      <List data={settingData} />
     </Container>
   );
 };

@@ -1,10 +1,19 @@
 {
+  "changePasswordScreen": {
+    "changePassword": "Change Password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordDoesNotMatch": "Confirm Password does not match",
+    "password": "Password",
+    "passwordChanged": "Password has been changed",
+    "requireRecentLogin": "This operation is sensitive and requires recent authentication. Log in again before retrying this request"
+  },
   "common": {
     "cancel": "Cancel",
     "close": "Close",
     "confirm": "Confirm",
     "home": "Home",
     "ok": "OK",
+    "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
     "select": "Select",
     "settings": "Settings"
   },
@@ -12,7 +21,6 @@
     "email": "Email",
     "login": "Login",
     "password": "Password",
-    "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
     "userDisabled": "User is disabled",
     "wrongEmailOrPassword": "Email or password is incorrect"
   },
@@ -24,7 +32,6 @@
     "email": "Email",
     "emailHasBeenAlreadyRegistered": "Email has been already registered",
     "password": "Password",
-    "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
     "register": "Register"
   },
   "emailVerificationScreen": {
@@ -58,6 +65,7 @@
   "settingsScreen": {
     "about": "About",
     "author": "Author",
+    "changePassword": "Change password",
     "language": "Language",
     "logout": "Logout",
     "settings": "Settings",

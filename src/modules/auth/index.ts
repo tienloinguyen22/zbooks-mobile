@@ -7,6 +7,7 @@ import {
   EmailRegisterScreen,
   EmailLoginScreen,
   EmailVerificationScreen,
+  ChangePasswordScreen,
 } from './screens';
 
 const registerScreens = (): void => {
@@ -15,6 +16,7 @@ const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.EmailRegisterScreen, () => WithStore(EmailRegisterScreen));
   Navigation.registerComponent(screenNames.EmailLoginScreen, () => WithStore(EmailLoginScreen));
   Navigation.registerComponent(screenNames.EmailVerificationScreen, () => WithStore(EmailVerificationScreen));
+  Navigation.registerComponent(screenNames.ChangePasswordScreen, () => WithStore(ChangePasswordScreen));
 };
 
 export default {

@@ -3,6 +3,7 @@ export const screenNames = {
   EmailRegisterScreen: 'EmailRegisterScreen',
   EmailLoginScreen: 'EmailLoginScreen',
   EmailVerificationScreen: 'EmailVerificationScreen',
+  ChangePasswordScreen: 'ChangePasswordScreen',
   AppLoaderScreen: 'AppLoaderScreen',
   SettingsScreen: 'SettingsScreen',
   HomeScreen: 'HomeScreen',

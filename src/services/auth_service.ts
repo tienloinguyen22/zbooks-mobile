@@ -158,7 +158,15 @@ const resendVerificationEmail = async (): Promise<void> => {
   if (!user) {
     return;
   }
-  user.sendEmailVerification();
+  await user.sendEmailVerification();
+};
+
+const changePassword = async (newPassword: string): Promise<void> => {
+  const user = auth().currentUser;
+  if (!user) {
+    return;
+  }
+  await user.updatePassword(newPassword);
 };
 
 export const authService = {
@@ -171,4 +179,5 @@ export const authService = {
   getCurrentUser,
   logout,
   resendVerificationEmail,
+  changePassword,
 };
