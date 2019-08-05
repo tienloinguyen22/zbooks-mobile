@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { ScreenProps } from '@app/core';
-// import { auth } from 'react-native-firebase';
 import i18next from 'i18next';
 import SplashScreen from 'react-native-splash-screen';
 import { navigationService, authService } from '@app/services';

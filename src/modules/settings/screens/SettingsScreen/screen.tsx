@@ -35,8 +35,8 @@ export const Screen = ({ changeLanguage, language, currentUser, logout }: Props)
       GoogleSignin.signOut();
     }
     await auth().signOut();
-    navigationService.setRootLogin();
     logout();
+    navigationService.setRootLogin();
   });
 
   const selectLanguage = (): void => {
