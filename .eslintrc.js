@@ -6,6 +6,7 @@ module.exports = {
     'airbnb-base',
     'plugin:@typescript-eslint/recommended', // uses typescript-specific linting rules
     'plugin:react/recommended', // uses react-specific linting rules
+    'prettier/@typescript-eslint',  // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
     'plugin:prettier/recommended', // enables eslint-plugin-prettier and eslint-config-prettier
     'prettier/react', // disables react-specific linting rules that conflict with prettier
   ],
@@ -38,6 +39,7 @@ module.exports = {
       "ExportDeclaration": { "multiline": true }
     }], // let prettier do its job,
     'operator-linebreak': ['error', 'after'], // mạke operator after with linebreak
+    '@typescript-eslint/no-explicit-any': ['error']
   },
   settings: {
     react: {

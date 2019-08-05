@@ -28,11 +28,14 @@
     "register": "Register"
   },
   "emailVerificationScreen": {
-    "verifyEmail": "Verify Email",
     "check": "Check",
-    "resendVerification": "Resend verification email",
+    "emailNotVerified": "Your email is not verifired yet",
+    "notice": "Your email {{email}} is not verified. Please check the your mailbox, verify it then click Check button below.",
     "openMailbox": "Open Mailbox",
-    "useAnotherAccount": "User another account"
+    "resendEmailNotification": "Verification email is resent. Please check your mailbox",
+    "resendVerification": "Resend verification email",
+    "useAnotherAccount": "User another account",
+    "verifyEmail": "Verify Email"
   },
   "error": {
     "invalid": "{{field}} is invalid",

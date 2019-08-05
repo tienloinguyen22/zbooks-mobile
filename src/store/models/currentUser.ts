@@ -25,6 +25,9 @@ export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUse
     update: produce((draftState: CurrentUserState, payload: CurrentUserState) => {
       Object.assign(draftState, payload);
     }),
+    markEmailVerified: produce((draftState: CurrentUserState) => {
+      draftState.emailVerified = true;
+    }),
   },
   effects: {},
 });

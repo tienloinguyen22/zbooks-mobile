@@ -49,7 +49,7 @@ export const Container = (props: Props): JSX.Element => {
                   </Button>
                 )}
               </Left>
-              <Body>
+              <Body style={styles.headerText}>
                 <Title style={styles.title}>{props.headerTitle}</Title>
               </Body>
               <Right />

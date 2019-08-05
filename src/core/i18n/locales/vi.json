@@ -27,6 +27,16 @@
     "passwordInfo": "Mật khẩu phải có ít nhất 6 kí tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số và 1 kí tự đặc biệt (!, @, #, $, %, ^, &, *)",
     "register": "Đăng kí"
   },
+  "emailVerificationScreen": {
+    "check": "Kiểm tra",
+    "emailNotVerified": "Email của bạn chưa được xác thực",
+    "notice": "Email của bạn {{email}} chưa được xác thực. Vui lòng kiểm tra hòm thư, xác thực và ấn nút kiểm tra bên dưới.",
+    "openMailbox": "Mở hòm thư",
+    "resendEmailNotification": "Email xác thực đã được gửi lại. Vui lòng kiểm tra hòm thư",
+    "resendVerification": "Gửi lại email xác nhận",
+    "useAnotherAccount": "Sử dụng tài khoản khác",
+    "verifyEmail": "Xác thực email"
+  },
   "error": {
     "invalid": "{{field}} không hợp lệ",
     "required": "{{field}} bắt buộc",

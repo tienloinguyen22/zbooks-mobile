@@ -60,7 +60,11 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
       try {
         const user = await authService.signInWithEmailAndPassword(values.email, values.password);
         login(user);
-        navigationService.setRootHome();
+        if (user.emailVerified) {
+          navigationService.setRootHome();
+        } else {
+          navigationService.setRootEmailVerification();
+        }
       } catch (error) {
         if (!error.code) {
           throw error;

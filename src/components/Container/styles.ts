@@ -15,6 +15,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-start',
   },
+  headerText: {
+    minWidth: 150,
+  },
   title: {
     color: colors.white,
   },

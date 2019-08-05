@@ -51,7 +51,7 @@ const renderItem: ListRenderItem<ListItemData> = ({ item }: { item: ListItemData
 };
 
 const getStickyHeaderIndices = (data: ListItemData[]): number[] => {
-  const stickyHeaderIndices = [];
+  const stickyHeaderIndices: number[] = [];
   data.forEach((obj) => {
     if (obj.isHeader) {
       stickyHeaderIndices.push(data.indexOf(obj));

@@ -1,10 +1,11 @@
 import { Dispatch } from '@app/store';
-import { User } from '@app/core';
 
 interface MapDispatchToProps {
-  updateUser: (user: User) => void;
+  markEmailVerified: () => void;
+  logout: () => void;
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
-  updateUser: dispatch.currentUser.update,
+  logout: dispatch.currentUser.logout,
+  markEmailVerified: dispatch.currentUser.markEmailVerified,
 });

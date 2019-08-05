@@ -35,6 +35,7 @@ const getUser = (user: Auth.User): User => {
     displayName: user.displayName || undefined,
     avatarUrl: avatarUrl || undefined,
     isLoggedIn: true,
+    email: user.email || undefined,
     emailVerified: user.emailVerified,
     loginType,
   };
@@ -134,6 +135,32 @@ const getCurrentUser = (): User | undefined => {
   return getUser(currentUser);
 };
 
+const logout = async (): Promise<void> => {
+  const user = auth().currentUser;
+  if (!user) {
+    return;
+  }
+
+  if (
+    user.providerData &&
+    user.providerData.length > 0 &&
+    user.providerData[0].providerId === 'google.com' &&
+    (await GoogleSignin.isSignedIn())
+  ) {
+    GoogleSignin.revokeAccess();
+    GoogleSignin.signOut();
+  }
+  await auth().signOut();
+};
+
+const resendVerificationEmail = async (): Promise<void> => {
+  const user = auth().currentUser;
+  if (!user) {
+    return;
+  }
+  user.sendEmailVerification();
+};
+
 export const authService = {
   loginFacebook,
   loginGoogle,
@@ -142,4 +169,6 @@ export const authService = {
   isEmailRegistered,
   isEmailVerified,
   getCurrentUser,
+  logout,
+  resendVerificationEmail,
 };
