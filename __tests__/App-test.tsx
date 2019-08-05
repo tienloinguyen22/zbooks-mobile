@@ -3,12 +3,15 @@ import { render, fireEvent } from '@testing-library/react-native';
 import App, { Hermes } from '@app/App';
 import { Platform } from 'react-native';
 import { i18n } from '@app/core';
+import { config } from '@app/config';
 
 jest.mock('react-native-splash-screen');
 jest.mock('react-native-google-signin', () => {});
 
 beforeAll(() => {
   i18n.initialize();
+  config.android.version = '1.0.0';
+  config.ios.version = '1.0.0';
 });
 
 describe('<App/>', () => {
