@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScreenProps, i18n, catchAndLog, screenNames } from '@app/core';
+import { ScreenProps, i18n, catchAndLog, screenNames, Language } from '@app/core';
 import { config } from '@app/config';
 import { List, ListItemData, Picker, Image, Text, Container, Icon, View } from '@app/components';
 import { useTranslation } from 'react-i18next';
@@ -22,14 +22,14 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
   });
 
   const selectLanguage = (): void => {
-    Picker.show({
-      pickerData: i18n.LANGUAGE_TEXTS,
-      selectedValue: [i18n.getLanguageName(language)],
-      onPickerConfirm: (data) => {
-        const selectedLanguage = i18n.getLanguageByName(data[0]);
-        if (selectedLanguage) {
-          changeLanguage(selectedLanguage.id);
-        }
+    Picker.show<string>({
+      dataSources: i18n.LANGUAGES.map((lang: Language) => ({
+        value: lang.id,
+        text: lang.name,
+      })),
+      initialValue: language,
+      onValueChanged: (selectedLanguage) => {
+        changeLanguage(selectedLanguage);
       },
     });
   };
