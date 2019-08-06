@@ -4,7 +4,14 @@ import { navigationService } from '@app/services';
 import { ScrollView, Container } from '@app/components';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
-import { NavigationSample, RematchSample, IconSample, CrashSample, NotificationSample } from './components';
+import {
+  NavigationSample,
+  RematchSample,
+  IconSample,
+  CrashSample,
+  NotificationSample,
+  PickerSample,
+} from './components';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
@@ -34,6 +41,7 @@ export const Screen = ({
   return (
     <Container componentId={componentId}>
       <ScrollView>
+        <PickerSample />
         <NavigationSample pushNewScreen={pushNewScreen} changeTab={changeTab} />
         <IconSample />
         <RematchSample
