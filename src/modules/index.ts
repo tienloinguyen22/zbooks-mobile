@@ -3,8 +3,7 @@ import settings from './settings';
 import main from './main';
 
 export const registerModules = (): void => {
-  const modules = [auth, settings, main];
-  for (const module of modules) {
+  [auth, settings, main].forEach((module) => {
     module.registerScreens();
-  }
+  });
 };

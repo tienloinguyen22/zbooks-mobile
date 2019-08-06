@@ -29,7 +29,6 @@ module.exports = {
     'max-len': ['error', 120], // change mex length for a line to 120
     'no-console': 'error', // don't allow console
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft', 'draftState'] }], // no params reassigned except using immer
-    'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
     'no-unused-expressions': ['error', { 'allowShortCircuit': true }], // don't use unused expressions except short circut
     'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }], // don't use unused var except with _ prefix
     'object-curly-newline': ['error', {
