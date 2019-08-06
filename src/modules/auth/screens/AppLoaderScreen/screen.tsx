@@ -17,7 +17,7 @@ export const Screen = ({ appLoaded, language, currentUser }: Props): JSX.Element
 
     (async (): Promise<void> => {
       if (currentUser.isLoggedIn) {
-        if (await authService.isEmailVerified()) {
+        if (currentUser.loginType !== 'EMAIL' || (await authService.isEmailVerified())) {
           navigationService.setRootHome();
         } else {
           navigationService.setRootEmailVerification();
@@ -27,6 +27,6 @@ export const Screen = ({ appLoaded, language, currentUser }: Props): JSX.Element
       }
       SplashScreen.hide();
     })();
-  }, [appLoaded, language, currentUser.isLoggedIn]);
+  }, [appLoaded, language, currentUser.isLoggedIn, currentUser.loginType]);
   return <></>;
 };
