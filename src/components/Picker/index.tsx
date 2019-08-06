@@ -56,8 +56,4 @@ const show: <T>(options: PickerParams<T>) => void = (options) => {
 
 export const Picker = {
   show,
-  hide: RNPicker.hide,
-  isPickerShow: RNPicker.isPickerShow,
-  select: RNPicker.select,
-  toggle: RNPicker.toggle,
 };

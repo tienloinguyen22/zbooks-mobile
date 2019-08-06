@@ -62,6 +62,20 @@
     "registerByEmail": "Đăng kí bằng email",
     "registerByPhoneNo": "Đăng kí bằng số điện thoại"
   },
+  "month": {
+    "april": "Tháng 4",
+    "august": "Tháng 8",
+    "december": "Tháng 12",
+    "february": "Tháng 2",
+    "january": "Tháng 1",
+    "july": "Tháng 7",
+    "june": "Tháng 6",
+    "march": "Tháng 3",
+    "may": "Tháng 5",
+    "november": "Tháng 11",
+    "october": "Tháng 10",
+    "september": "Tháng 9"
+  },
   "settingsScreen": {
     "about": "Thông tin",
     "author": "Tác giả",

@@ -62,6 +62,20 @@
     "registerByEmail": "Register by email",
     "registerByPhoneNo": "Register by phone no"
   },
+  "month": {
+    "april": "April",
+    "august": "August",
+    "december": "December",
+    "february": "February",
+    "january": "January",
+    "july": "July",
+    "june": "June",
+    "march": "March",
+    "may": "May",
+    "november": "November",
+    "october": "October",
+    "september": "September"
+  },
   "settingsScreen": {
     "about": "About",
     "author": "Author",

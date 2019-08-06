@@ -4,6 +4,7 @@ export * from './Card';
 export * from './CardItem';
 export * from './Container';
 export * from './Content';
+export * from './DatePicker';
 export * from './ErrorBoundary';
 export * from './ErrorText';
 export * from './Field';

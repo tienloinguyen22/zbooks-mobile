@@ -28,9 +28,7 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
         text: lang.name,
       })),
       initialValue: language,
-      onValueChanged: (selectedLanguage) => {
-        changeLanguage(selectedLanguage);
-      },
+      onValueChanged: changeLanguage,
     });
   };
 
