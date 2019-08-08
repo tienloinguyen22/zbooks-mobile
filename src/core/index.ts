@@ -12,5 +12,6 @@ export * from './helpers/configure_google_sign_in';
 export * from './helpers/handle_global_errors';
 export * from './helpers/combine_styles';
 export * from './helpers/configure_google_sign_in';
+export * from './helpers/handle_error';
 export * from './hooks/use_effect_once';
 export * from './screen_names';

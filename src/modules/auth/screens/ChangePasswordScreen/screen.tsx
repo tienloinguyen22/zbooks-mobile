@@ -3,7 +3,7 @@ import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, i18n } from '@app/core';
+import { catchAndLog, ScreenProps, showNotification, i18n, handleError } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -63,22 +63,9 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
           componentId,
         });
       } catch (error) {
-        if (!error.code) {
-          throw error;
-        }
-        let message = '';
-        switch (error.code) {
-          case 'auth/requires-recent-login':
-            message = t('changePasswordScreen.requireRecentLogin');
-            break;
-          default:
-            ({ message } = error);
-        }
-        !!message &&
-          showNotification({
-            type: 'ERROR',
-            message,
-          });
+        handleError(error, {
+          'auth/requires-recent-login': t('changePasswordScreen.requireRecentLogin'),
+        });
       }
     },
     async () => setIsBusy(false),

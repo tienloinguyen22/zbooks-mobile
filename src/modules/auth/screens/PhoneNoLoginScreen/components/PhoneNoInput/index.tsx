@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, Text, Field, PickerDataItem } from '@app/components';
+import { Button, Text, Field, PickerDataItem } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
@@ -84,11 +84,9 @@ export const PhoneNoInput = ({ sendVerificationCode, isBusy }: Props): JSX.Eleme
               errorMessage={errors.phoneNo}
               keyboardType='numeric'
             />
-            <View column style={styles.buttonContainer}>
-              <Button full onPress={handleSubmit} disabled={isBusy}>
-                <Text>{t('phoneNoLoginScreen.sendVerificationCode')}</Text>
-              </Button>
-            </View>
+            <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+              <Text>{t('phoneNoLoginScreen.sendVerificationCode')}</Text>
+            </Button>
           </>
         );
       }}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, Field, Container } from '@app/components';
+import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import * as _ from 'lodash';
@@ -99,7 +99,7 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
       if (!formikProps.isValid) {
         return;
       }
-      const user = await authService.createUserWithEmailAndPassword(values.email, values.password);
+      const user = await authService.createUserWithEmailAndPassword(values.email, values.password, language);
       login(user);
       showNotification({
         type: 'SUCCESS',
@@ -150,11 +150,9 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />
-              <View column style={styles.buttonContainer}>
-                <Button full onPress={handleSubmit} disabled={isBusy}>
-                  <Text>{t('emailRegisterScreen.register')}</Text>
-                </Button>
-              </View>
+              <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+                <Text>{t('emailRegisterScreen.register')}</Text>
+              </Button>
             </>
           );
         }}

@@ -5,6 +5,7 @@ export const screenNames = {
   PhoneNoLoginScreen: 'PhoneNoLoginScreen',
   EmailVerificationScreen: 'EmailVerificationScreen',
   ChangePasswordScreen: 'ChangePasswordScreen',
+  ForgotPasswordScreen: 'ForgotPasswordScreen',
   AppLoaderScreen: 'AppLoaderScreen',
   SettingsScreen: 'SettingsScreen',
   HomeScreen: 'HomeScreen',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
-import { catchAndLog, ScreenProps, showNotification, useEffectOnce } from '@app/core';
+import { catchAndLog, ScreenProps, showNotification, useEffectOnce, handleError } from '@app/core';
 import { authService, navigationService } from '@app/services';
 import { Auth } from '@react-native-firebase/auth';
 import produce from 'immer';
@@ -19,7 +19,7 @@ interface State {
   showPhoneNoInput: boolean;
 }
 
-export const Screen = ({ componentId, login }: Props): JSX.Element => {
+export const Screen = ({ componentId, login, language }: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
   const [state, setState] = useState<State>({
@@ -44,7 +44,7 @@ export const Screen = ({ componentId, login }: Props): JSX.Element => {
     async (phoneNo: string) => {
       try {
         setIsBusy(true);
-        const result = await authService.sendSmsVerification(phoneNo);
+        const result = await authService.sendSmsVerification(phoneNo, language);
         setState(
           produce((draftState: State) => {
             draftState.phoneNo = phoneNo;
@@ -70,23 +70,15 @@ export const Screen = ({ componentId, login }: Props): JSX.Element => {
           );
         }, 1000);
       } catch (error) {
-        if (!error.code) {
-          throw error;
-        }
-        let { message } = error;
-        switch (error.code) {
-          case 'auth/too-many-requests':
-            message = t('phoneNoLoginScreen.tooManyRequests');
-            break;
-          case 'auth/popup-closed-by-user':
-            return;
-          default:
-        }
-        !!message &&
-          showNotification({
-            type: 'ERROR',
-            message,
-          });
+        handleError(
+          error,
+          {
+            'auth/too-many-requests': t('phoneNoLoginScreen.tooManyRequests'),
+          },
+          {
+            'auth/popup-closed-by-user': true,
+          },
+        );
       }
     },
     async () => setIsBusy(false),
@@ -112,24 +104,10 @@ export const Screen = ({ componentId, login }: Props): JSX.Element => {
         login(user);
         navigationService.setRootHome();
       } catch (error) {
-        if (!error.code) {
-          throw error;
-        }
-        let { message } = error;
-        switch (error.code) {
-          case 'auth/invalid-verification-code':
-            message = t('phoneNoLoginScreen.invalidVerificationCode');
-            break;
-          case 'auth/user-disabled':
-            message = t('phoneNoLoginScreen.userDisabled');
-            break;
-          default:
-        }
-        !!message &&
-          showNotification({
-            type: 'ERROR',
-            message,
-          });
+        handleError(error, {
+          'auth/invalid-verification-code': t('phoneNoLoginScreen.invalidVerificationCode'),
+          'auth/user-disabled': t('phoneNoLoginScreen.userDisabled'),
+        });
       }
     },
     async () => setIsBusy(false),

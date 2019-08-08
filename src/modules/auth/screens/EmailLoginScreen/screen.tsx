@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, Button, Text, Field, Container } from '@app/components';
+import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, i18n } from '@app/core';
+import { catchAndLog, ScreenProps, i18n, screenNames, handleError } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -66,34 +66,22 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
           navigationService.setRootEmailVerification();
         }
       } catch (error) {
-        if (!error.code) {
-          throw error;
-        }
-        let message = '';
-        switch (error.code) {
-          case 'auth/invalid-email':
-            message = t('emailLoginScreen.wrongEmailOrPassword');
-            break;
-          case 'auth/user-disabled':
-            message = t('emailLoginScreen.userDisabled');
-            break;
-          case 'auth/user-not-found':
-            message = t('emailLoginScreen.wrongEmailOrPassword');
-            break;
-          case 'auth/wrong-password':
-            message = t('emailLoginScreen.wrongEmailOrPassword');
-            break;
-          default:
-        }
-        !!message &&
-          showNotification({
-            type: 'ERROR',
-            message,
-          });
+        handleError(error, {
+          'auth/invalid-email': t('emailLoginScreen.wrongEmailOrPassword'),
+          'auth/user-disabled': t('emailLoginScreen.userDisabled'),
+          'auth/user-not-found': t('emailLoginScreen.wrongEmailOrPassword'),
+          'auth/wrong-password': t('emailLoginScreen.wrongEmailOrPassword'),
+        });
       }
     },
     async () => setIsBusy(false),
   );
+
+  const forgotPassword = (): void =>
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.ForgotPasswordScreen,
+    });
 
   return (
     <Container showHeader showBackButton componentId={componentId} headerTitle={t('emailLoginScreen.login')}>
@@ -124,11 +112,12 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 tooltipText={t('common.passwordInfo')}
                 tooltipHeight={language === i18n.LANGUAGE_EN ? 140 : 100}
               />
-              <View column style={styles.buttonContainer}>
-                <Button full onPress={handleSubmit} disabled={isBusy}>
-                  <Text>{t('emailLoginScreen.login')}</Text>
-                </Button>
-              </View>
+              <Button full onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
+                <Text>{t('emailLoginScreen.login')}</Text>
+              </Button>
+              <Button full onPress={forgotPassword} disabled={isBusy} style={styles.button}>
+                <Text>{t('emailLoginScreen.forgotPassword')}</Text>
+              </Button>
             </>
           );
         }}

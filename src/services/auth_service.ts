@@ -100,7 +100,12 @@ const loginGoogle = async (): Promise<LoginResult> => {
   }
 };
 
-const createUserWithEmailAndPassword = async (email: string, password: string): Promise<User> => {
+const createUserWithEmailAndPassword = async (
+  email: string,
+  password: string,
+  language: string = 'en',
+): Promise<User> => {
+  auth().languageCode = language;
   const { user } = await auth().createUserWithEmailAndPassword(email, password);
   await user.updateProfile({
     displayName: user.email || '',
@@ -164,11 +169,12 @@ const logout = async (): Promise<void> => {
   await auth().signOut();
 };
 
-const resendVerificationEmail = async (): Promise<void> => {
+const resendVerificationEmail = async (language: string = 'en'): Promise<void> => {
   const user = auth().currentUser;
   if (!user) {
     return;
   }
+  auth().languageCode = language;
   await user.sendEmailVerification();
 };
 
@@ -180,7 +186,8 @@ const changePassword = async (newPassword: string): Promise<void> => {
   await user.updatePassword(newPassword);
 };
 
-const sendSmsVerification = async (phoneNo: string): Promise<Auth.ConfirmationResult> => {
+const sendSmsVerification = async (phoneNo: string, language: string = 'en'): Promise<Auth.ConfirmationResult> => {
+  auth().languageCode = language;
   return auth().signInWithPhoneNumber(phoneNo, true);
 };
 
@@ -190,6 +197,11 @@ const verifySmsCode = async (confirmationResult: Auth.ConfirmationResult, code: 
     return undefined;
   }
   return getUser(user);
+};
+
+const sendPasswordResetEmail = async (email: string, language: string = 'en'): Promise<void> => {
+  auth().languageCode = language;
+  await auth().sendPasswordResetEmail(email);
 };
 
 export const authService = {
@@ -205,4 +217,5 @@ export const authService = {
   changePassword,
   sendSmsVerification,
   verifySmsCode,
+  sendPasswordResetEmail,
 };

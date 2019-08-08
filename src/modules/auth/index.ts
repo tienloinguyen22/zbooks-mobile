@@ -9,6 +9,7 @@ import {
   EmailVerificationScreen,
   ChangePasswordScreen,
   PhoneNoLoginScreen,
+  ForgotPasswordScreen,
 } from './screens';
 
 const registerScreens = (): void => {
@@ -19,6 +20,7 @@ const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.EmailVerificationScreen, () => WithStore(EmailVerificationScreen));
   Navigation.registerComponent(screenNames.ChangePasswordScreen, () => WithStore(ChangePasswordScreen));
   Navigation.registerComponent(screenNames.PhoneNoLoginScreen, () => WithStore(PhoneNoLoginScreen));
+  Navigation.registerComponent(screenNames.ForgotPasswordScreen, () => WithStore(ForgotPasswordScreen));
 };
 
 export default {
