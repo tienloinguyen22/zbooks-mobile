@@ -1,4 +1,4 @@
-# react-native-starter-kit (ver 0.4.0)
+# react-native-starter-kit (ver 1.0.0)
 
 ## Build status
 
