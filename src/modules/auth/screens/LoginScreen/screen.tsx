@@ -62,6 +62,11 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
       componentId,
       screenName: screenNames.EmailLoginScreen,
     });
+  const loginPhoneNo = (): void =>
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.PhoneNoLoginScreen,
+    });
 
   const registerByEmail = (): void => {
     navigationService.navigateTo({
@@ -92,15 +97,12 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
       <Button full rounded onPress={loginEmail} style={[styles.button]}>
         <Text>{t('loginScreen.loginWithEmail')}</Text>
       </Button>
-      <Button full rounded onPress={loginGoogle} style={[styles.button]}>
+      <Button full rounded onPress={loginPhoneNo} style={[styles.button]}>
         <Text>{t('loginScreen.loginWithPhoneNo')}</Text>
       </Button>
       <Text style={styles.notHaveAccountText}>{t('loginScreen.notHaveAccount')}</Text>
       <Button full rounded onPress={registerByEmail} style={styles.button}>
         <Text>{t('loginScreen.registerByEmail')}</Text>
-      </Button>
-      <Button full rounded onPress={registerByEmail} style={styles.button}>
-        <Text>{t('loginScreen.registerByPhoneNo')}</Text>
       </Button>
     </Container>
   );

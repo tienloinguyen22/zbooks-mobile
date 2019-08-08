@@ -76,6 +76,18 @@
     "october": "October",
     "september": "September"
   },
+  "phoneNoLoginScreen": {
+    "countryCode": "Country code",
+    "invalidVerificationCode": "Invalid verification code",
+    "login": "Login",
+    "phoneNo": "Phone No",
+    "resendCode": "Resend code",
+    "sendVerificationCode": "Send Verification Code",
+    "tooManyRequests": "We have blocked all requests from this device due to unusual activity. Try again later",
+    "userDisabled": "User is disabled",
+    "verificationCode": "Verification Code",
+    "verify": "Verify"
+  },
   "settingsScreen": {
     "about": "About",
     "author": "Author",

@@ -169,6 +169,18 @@ const changePassword = async (newPassword: string): Promise<void> => {
   await user.updatePassword(newPassword);
 };
 
+const sendSmsVerification = async (phoneNo: string): Promise<Auth.ConfirmationResult> => {
+  return auth().signInWithPhoneNumber(phoneNo, true);
+};
+
+const verifySmsCode = async (confirmationResult: Auth.ConfirmationResult, code: string): Promise<User | undefined> => {
+  const user = await confirmationResult.confirm(code);
+  if (!user) {
+    return undefined;
+  }
+  return getUser(user);
+};
+
 export const authService = {
   loginFacebook,
   loginGoogle,
@@ -180,4 +192,6 @@ export const authService = {
   logout,
   resendVerificationEmail,
   changePassword,
+  sendSmsVerification,
+  verifySmsCode,
 };

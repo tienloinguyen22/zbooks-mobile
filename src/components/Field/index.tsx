@@ -1,5 +1,5 @@
-import React from 'react';
-import { TextInput, NativeSyntheticEvent, TextInputFocusEventData } from 'react-native';
+import React, { useState } from 'react';
+import { TextInput, NativeSyntheticEvent, TextInputFocusEventData, KeyboardTypeOptions } from 'react-native';
 import { colors } from '@app/core';
 import { Tooltip } from '../Tooltip';
 import { View } from '../View';
@@ -8,6 +8,8 @@ import { Label } from '../Label';
 import { styles } from './styles';
 import { ErrorText } from '../ErrorText';
 import { Icon } from '../Icon';
+import { Picker, PickerDataItem } from '../Picker';
+import { Touchable } from '../Touchable';
 
 interface Props {
   label: string;
@@ -22,6 +24,9 @@ interface Props {
   onChangeText?: (text: string) => void;
   onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   secureTextEntry?: boolean;
+  type?: 'text' | 'picker' | 'datepicker';
+  pickerDataSources?: PickerDataItem<string>[];
+  keyboardType?: KeyboardTypeOptions;
 }
 
 export const Field = (props: Props): JSX.Element => {
@@ -31,6 +36,26 @@ export const Field = (props: Props): JSX.Element => {
   } else if (props.showSuccess) {
     borderColor = colors.green;
   }
+
+  let initialItem: PickerDataItem<string> | undefined;
+  if (props.pickerDataSources) {
+    initialItem = props.pickerDataSources.find((item) => item.value === props.value);
+  }
+  const [selectedItem, setSelectedItem] = useState<PickerDataItem<string> | undefined>(initialItem);
+
+  const openPicker = (): void => {
+    if (!props.pickerDataSources) {
+      return;
+    }
+    Picker.show({
+      dataSources: props.pickerDataSources,
+      initialValue: props.value,
+      onValueChanged: (value, item) => {
+        setSelectedItem(item);
+        props.onChangeText && props.onChangeText(value);
+      },
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -56,18 +81,35 @@ export const Field = (props: Props): JSX.Element => {
           </Tooltip>
         )}
       </View>
-      <TextInput
-        style={[
-          styles.textInput,
-          {
-            borderColor,
-          },
-        ]}
-        value={props.value}
-        onChangeText={props.onChangeText}
-        onBlur={props.onBlur}
-        secureTextEntry={props.secureTextEntry}
-      />
+      {(!props.type || props.type === 'text') && (
+        <TextInput
+          style={[
+            styles.textInput,
+            {
+              borderColor,
+            },
+          ]}
+          value={props.value}
+          onChangeText={props.onChangeText}
+          onBlur={props.onBlur}
+          secureTextEntry={props.secureTextEntry}
+          keyboardType={props.keyboardType}
+        />
+      )}
+      {props.type === 'picker' && (
+        <Touchable onPress={openPicker}>
+          <View
+            style={[
+              styles.textInput,
+              {
+                borderColor,
+              },
+            ]}
+          >
+            <Text style={styles.pickerText}>{selectedItem ? selectedItem.text : ''} </Text>
+          </View>
+        </Touchable>
+      )}
       {props.showError && <ErrorText style={styles.error}>{props.errorMessage}</ErrorText>}
     </View>
   );

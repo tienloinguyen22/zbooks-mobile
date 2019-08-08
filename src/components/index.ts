@@ -23,6 +23,7 @@ export * from './Picker';
 export * from './Right';
 export * from './ScrollView';
 export * from './Text';
+export * from './Touchable';
 export * from './Thumbnail';
 export * from './Title';
 export * from './Tooltip';

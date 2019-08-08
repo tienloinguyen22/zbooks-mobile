@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
   container: {
@@ -28,5 +29,9 @@ export const styles = StyleSheet.create({
   },
   tooltipIcon: {
     margin: 8,
+  },
+  pickerText: {
+    color: colors.black,
+    fontSize: 20,
   },
 });

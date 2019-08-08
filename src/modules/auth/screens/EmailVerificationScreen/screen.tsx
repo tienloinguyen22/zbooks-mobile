@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Linking, Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import produce from 'immer';
-import { catchAndLog, ScreenProps, showNotification } from '@app/core';
+import { catchAndLog, ScreenProps, showNotification, useEffectOnce } from '@app/core';
 import { Button, Text, Container } from '@app/components';
 import { authService, navigationService } from '@app/services';
 import { mapStateToProps } from './map_state_to_props';
@@ -24,13 +24,13 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
     waitingTimeToResend: 0,
   });
 
-  useEffect(() => {
+  useEffectOnce(() => {
     return () => {
       if (resendInterval) {
         clearInterval(resendInterval);
       }
     };
-  }, [resendInterval]);
+  });
 
   const checkStatus = catchAndLog(
     async () => {
@@ -58,7 +58,7 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
       });
       setResendVerificationEmailStatus({
         isVerificationEmailSent: true,
-        waitingTimeToResend: 60,
+        waitingTimeToResend: 30,
       });
       resendInterval = setInterval(() => {
         setResendVerificationEmailStatus(
@@ -95,7 +95,7 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
     navigationService.setRootLogin();
   });
 
-  const enableResend =
+  const waitForResend =
     resendVerificationEmailStatus.isVerificationEmailSent && resendVerificationEmailStatus.waitingTimeToResend > 0;
   return (
     <Container showHeader componentId={componentId} headerTitle={t('emailVerificationScreen.verifyEmail')} center>
@@ -107,19 +107,10 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
       <Button full onPress={checkStatus} disabled={isBusy} style={styles.button}>
         <Text>{t('emailVerificationScreen.check')}</Text>
       </Button>
-      <Button
-        full
-        onPress={resendVerificationEmail}
-        disabled={
-          isBusy ||
-          (resendVerificationEmailStatus.isVerificationEmailSent &&
-            resendVerificationEmailStatus.waitingTimeToResend > 0)
-        }
-        style={styles.button}
-      >
+      <Button full onPress={resendVerificationEmail} disabled={isBusy || waitForResend} style={styles.button}>
         <Text>
           {t('emailVerificationScreen.resendVerification')}
-          {enableResend ? ` (${resendVerificationEmailStatus.waitingTimeToResend})` : ''}
+          {waitForResend ? ` (${resendVerificationEmailStatus.waitingTimeToResend})` : ''}
         </Text>
       </Button>
       {Platform.OS === 'ios' && (

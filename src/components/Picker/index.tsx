@@ -6,14 +6,14 @@ import { colors } from '@app/core';
 const primaryColorHexArr = [...colorConvert.hex.rgb(colors.primary), 1];
 const whiteColorHexArr = [...colorConvert.hex.rgb(colors.white), 1];
 
-interface PickerDataItem<T> {
+export interface PickerDataItem<T> {
   value: T;
   text: string;
 }
 interface PickerParams<T> {
   dataSources: PickerDataItem<T>[];
   initialValue?: T;
-  onValueChanged: (value: T) => void;
+  onValueChanged: (value: T, item: PickerDataItem<T>) => void;
 }
 
 const show: <T>(options: PickerParams<T>) => void = (options) => {
@@ -29,7 +29,7 @@ const show: <T>(options: PickerParams<T>) => void = (options) => {
     }
     const selectedText = selectedItems[0];
     const selectedItem = dataSources.find((data) => data.text === selectedText);
-    selectedItem && selectedItem.value !== initialValue && onValueChanged(selectedItem.value);
+    selectedItem && selectedItem.value !== initialValue && onValueChanged(selectedItem.value, selectedItem);
   };
   const selectedItem = dataSources.find((data) => data.value === initialValue);
   let selectedValue: string[] | undefined;
