@@ -78,6 +78,8 @@ export const Screen = ({ componentId, login }: Props): JSX.Element => {
           case 'auth/too-many-requests':
             message = t('phoneNoLoginScreen.tooManyRequests');
             break;
+          case 'auth/popup-closed-by-user':
+            return;
           default:
         }
         !!message &&
