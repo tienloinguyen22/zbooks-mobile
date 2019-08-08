@@ -18,6 +18,7 @@ export type LoginResult = LoginResultSuccess | LoginResultFail;
 
 const FACEBOOK_PROVIDER_ID = 'facebook.com';
 const GOOGLE_PROVIDER_ID = 'google.com';
+const PHONE_PROVIDER_ID = 'phone';
 
 const getUser = (user: Auth.User): User => {
   const avatarUrl =
@@ -28,11 +29,21 @@ const getUser = (user: Auth.User): User => {
       loginType = 'FACEBOOK';
     } else if (user.providerData[0].providerId === GOOGLE_PROVIDER_ID) {
       loginType = 'GOOGLE';
+    } else if (user.providerData[0].providerId === PHONE_PROVIDER_ID) {
+      loginType = 'PHONE_NO';
+    }
+  }
+  let displayName = user.displayName || undefined;
+  if (!displayName) {
+    if (loginType === 'PHONE_NO') {
+      displayName = user.phoneNumber || undefined;
+    } else if (loginType === 'EMAIL') {
+      displayName = user.email || undefined;
     }
   }
   return {
     id: user.uid,
-    displayName: user.displayName || undefined,
+    displayName,
     avatarUrl: avatarUrl || undefined,
     isLoggedIn: true,
     email: user.email || undefined,
