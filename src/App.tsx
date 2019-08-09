@@ -81,7 +81,9 @@ const App = (): JSX.Element => {
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior='automatic' style={styles.scrollView}>
           <Header />
-          {((global as unknown) as Hermes).HermesInternal == null ? null : (
+          {!((global as unknown) as Hermes).HermesInternal ? (
+            <></>
+          ) : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>

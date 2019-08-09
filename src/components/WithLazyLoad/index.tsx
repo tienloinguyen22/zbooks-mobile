@@ -33,7 +33,7 @@ export const WithLazyLoad = (WrappedComponent: AppComponent): AppComponent => {
       // ... and renders the wrapped component with the fresh data!
       // Notice that we pass through any additional props
       if (!this.state.isAppeared) {
-        return null;
+        return <></>;
       }
 
       return <WrappedComponent {...this.props} />;
