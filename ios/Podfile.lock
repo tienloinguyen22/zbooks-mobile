@@ -195,6 +195,10 @@ PODS:
     - React
   - RNCAsyncStorage (1.5.1):
     - React
+  - RNFBAnalytics (0.1.5):
+    - Firebase/Core (~> 6.5.0)
+    - React
+    - RNFBApp
   - RNFBApp (0.1.5):
     - Firebase/Core (~> 6.5.0)
     - React
@@ -249,6 +253,7 @@ DEPENDENCIES:
   - ReactNativeExceptionHandler (from `../node_modules/react-native-exception-handler`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
@@ -334,6 +339,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-navigation"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
+  RNFBAnalytics:
+    :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -394,6 +401,7 @@ SPEC CHECKSUMS:
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   ReactNativeNavigation: ad6e6a664bc6c8eb2fe0fe0b73e2c8bd52275be3
   RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
+  RNFBAnalytics: 587643dac3838440c0681faef815cf6a7306c059
   RNFBApp: b4fe7b915fc8546514331bcbd86378c65bf7c20e
   RNFBAuth: 4fb5c33b1b71fa5558f8bd1b7e3942fb78d3668e
   RNFBCrashlytics: 230d5d6ce6fb930afaa366e92dd681bc78538c68

@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.analytics.ReactNativeFirebaseAnalyticsPackage;
 import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.beefe.picker.PickerViewPackage;
@@ -61,6 +62,7 @@ public class MainApplication extends NavigationApplication {
         new ReactNativeFirebaseAppPackage(),
         new ReactNativeFirebaseAuthPackage(),
         new ReactNativeFirebaseCrashlyticsPackage(),
+        new ReactNativeFirebaseAnalyticsPackage(),
         new PickerViewPackage(),
         new OrientationPackage()
     );

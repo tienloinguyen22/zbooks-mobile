@@ -933,6 +933,14 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
+"@react-native-firebase/analytics@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-0.1.5.tgz#d0ab258f8b7a42c9b4224f69dad6fa5ddc8dceed"
+  integrity sha512-1JSTKip3we3+lUoaehZeo8feHQLwHNMOTinsRVAqPsAibksDbAA5y+rBdIcL5RSpp0HkBh2qhrZZQ7JBJRn4Og==
+  dependencies:
+    "@react-native-firebase/app-types" "0.1.5"
+    "@react-native-firebase/common" "0.1.5"
+
 "@react-native-firebase/app-types@0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-0.1.5.tgz#785483bae8e620fc7285768848ddefc08ac857d5"
