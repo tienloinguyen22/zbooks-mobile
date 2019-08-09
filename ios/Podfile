@@ -53,6 +53,8 @@ target 'mobile' do
 
   pod 'Picker', :path => '../node_modules/react-native-picker'
 
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing

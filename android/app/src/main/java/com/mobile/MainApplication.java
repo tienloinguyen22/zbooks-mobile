@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.github.yamill.orientation.OrientationPackage;
 import com.beefe.picker.PickerViewPackage;
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
@@ -58,7 +59,8 @@ public class MainApplication extends NavigationApplication {
           new RNGoogleSigninPackage(),
           new ReactNativeFirebaseAppPackage(),
           new ReactNativeFirebaseAuthPackage(),
-          new PickerViewPackage()
+          new PickerViewPackage(),
+          new OrientationPackage()
       );
   }
 
