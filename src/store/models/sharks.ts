@@ -7,7 +7,9 @@ export interface SharksState {
 }
 
 export const sharks = createModel<SharksState>({
-  state: { count: 0 },
+  state: {
+    count: 0,
+  },
   reducers: {
     increment: produce((draftState: SharksState, payload: number) => {
       draftState.count += payload;

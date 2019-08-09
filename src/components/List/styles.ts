@@ -9,9 +9,6 @@ export const styles = StyleSheet.create({
   value: {
     color: colors.grey,
   },
-  icon: {
-    fontSize: 18,
-  },
   right: {
     flexDirection: 'row-reverse',
     minWidth: 100,

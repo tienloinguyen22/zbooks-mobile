@@ -13,16 +13,24 @@ import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar, Platform }
 import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen';
 import { config } from '@app/config';
-import { Icon, Button } from '@app/components';
+import { Button } from '@app/components';
 import { useTranslation } from 'react-i18next';
 
+export interface Hermes {
+  HermesInternal?: boolean;
+}
+
 const styles = StyleSheet.create({
-  scrollView: { backgroundColor: Colors.lighter },
+  scrollView: {
+    backgroundColor: Colors.lighter,
+  },
   engine: {
     position: 'absolute',
     right: 0,
   },
-  body: { backgroundColor: Colors.white },
+  body: {
+    backgroundColor: Colors.white,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
@@ -38,7 +46,9 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Colors.dark,
   },
-  highlight: { fontWeight: '700' },
+  highlight: {
+    fontWeight: '700',
+  },
   footer: {
     color: Colors.dark,
     fontSize: 12,
@@ -71,7 +81,7 @@ const App = (): JSX.Element => {
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior='automatic' style={styles.scrollView}>
           <Header />
-          {(global as any).HermesInternal == null ? null : ( // eslint-disable-line @typescript-eslint/no-explicit-any
+          {((global as unknown) as Hermes).HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
@@ -79,14 +89,6 @@ const App = (): JSX.Element => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Effect loaded: {effectLoaded ? 'true' : 'false'}</Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle} testID=''>
-                Icon
-                <Icon name='home' />
-                <Icon ios='ios-menu' android='md-menu' name='home' style={styles.menu} />
-                <Icon type='FontAwesome' name='home' />
-              </Text>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle} testID=''>

@@ -1,6 +1,6 @@
-import { RootState } from '@app/store';
+import { RootState, SharksState, DolphinsState } from '@app/store';
 
-export const mapStateToProps = (state: RootState) => ({
+export const mapStateToProps = (state: RootState): { sharks: SharksState; dolphins: DolphinsState } => ({
   sharks: state.sharks,
   dolphins: state.dolphins,
 });

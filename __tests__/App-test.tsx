@@ -1,20 +1,23 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import App from '@app/App';
+import App, { Hermes } from '@app/App';
 import { Platform } from 'react-native';
 import { i18n } from '@app/core';
+import { config } from '@app/config';
 
 jest.mock('react-native-splash-screen');
 jest.mock('react-native-google-signin', () => {});
 
 beforeAll(() => {
   i18n.initialize();
+  config.android.version = '1.0.0';
+  config.ios.version = '1.0.0';
 });
 
 describe('<App/>', () => {
   beforeEach(() => {
     Platform.OS = 'ios';
-    (global as any).HermesInternal = undefined;
+    ((global as unknown) as Hermes).HermesInternal = undefined;
   });
   it('renders successfully with effect', async () => {
     const { getByText, baseElement } = render(<App />);
@@ -32,7 +35,7 @@ describe('<App/>', () => {
   });
 
   it('renders correctly with hermes engine', async () => {
-    (global as any).HermesInternal = true;
+    ((global as unknown) as Hermes).HermesInternal = true;
     const { getByText, baseElement } = render(<App />);
 
     expect(getByText('Engine: Hermes')).toBeDefined();

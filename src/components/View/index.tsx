@@ -1,39 +1,37 @@
-import React, { Component } from 'react';
-import { View as ReactNativeView, ViewProps, SafeAreaView } from 'react-native';
-import { addStyles } from '@app/core';
+import React from 'react';
+import { View as RNVIew, ViewProps } from 'react-native';
+import { combineStyles } from '@app/core';
 import { styles } from './styles';
 
 interface Props extends ViewProps {
+  flex?: number;
   center?: boolean;
   centerVertical?: boolean;
-  safeArea?: boolean;
-  flex?: boolean;
+  row?: boolean;
+  column?: boolean;
+  rowReverse?: boolean;
+  columnReverse?: boolean;
+  children?: React.ReactNode;
 }
 
-export class View extends Component<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
+export const View = (props: Props): JSX.Element => {
+  const viewStyle = combineStyles(
+    styles.default,
+    props.style,
+    props.center && styles.center,
+    props.centerVertical && styles.centerVertical,
+    props.row && styles.row,
+    props.column && styles.column,
+    props.rowReverse && styles.rowReverse,
+    props.columnReverse && styles.columnReverse,
+    !!props.flex && {
+      flex: props.flex,
+    },
+  );
 
-  render() {
-    let viewStyle = addStyles(styles.default, this.props.style);
-    viewStyle = this.props.center ? addStyles(viewStyle, styles.center) : viewStyle;
-    viewStyle = this.props.centerVertical ? addStyles(viewStyle, styles.centerVertical) : viewStyle;
-
-    if (!this.props.safeArea) {
-      return (
-        <ReactNativeView {...this.props} style={viewStyle}>
-          {this.props.children}
-        </ReactNativeView>
-      );
-    }
-
-    return (
-      <SafeAreaView style={styles.default}>
-        <ReactNativeView {...this.props} style={viewStyle}>
-          {this.props.children}
-        </ReactNativeView>
-      </SafeAreaView>
-    );
-  }
-}
+  return (
+    <RNVIew {...props} style={viewStyle}>
+      {props.children}
+    </RNVIew>
+  );
+};

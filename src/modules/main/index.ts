@@ -1,10 +1,10 @@
-import { WithStore } from '@app/components';
+import { WithStore, WithLazyLoad } from '@app/components';
 import { Navigation } from 'react-native-navigation';
-import { HomeScreen, NewScreen } from './screens';
 import { screenNames } from '@app/core';
+import { HomeScreen, NewScreen } from './screens';
 
-const registerScreens = () => {
-  Navigation.registerComponent(screenNames.HomeScreen, () => WithStore(HomeScreen));
+const registerScreens = (): void => {
+  Navigation.registerComponent(screenNames.HomeScreen, () => WithLazyLoad(WithStore(HomeScreen)));
   Navigation.registerComponent(screenNames.NewScreen, () => WithStore(NewScreen));
 };
 

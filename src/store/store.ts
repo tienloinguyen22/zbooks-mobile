@@ -1,8 +1,9 @@
+import { connect as reduxConnect, ConnectedComponentClass } from 'react-redux';
 import createRematchPersist from '@rematch/persist';
-import { models } from './models';
-import { init, RematchRootState } from '@rematch/core';
+import { init, RematchRootState, RematchDispatch } from '@rematch/core';
 import storage from '@react-native-community/async-storage';
 import { persistStore } from 'redux-persist';
+import { models } from './models';
 
 const persistPlugin = createRematchPersist({
   whitelist: ['currentUser', 'settings', 'sharks'],
@@ -25,5 +26,15 @@ export const persistor = persistStore(store, undefined, () => {
 });
 
 export type Store = typeof store;
-export type Dispatch = typeof store.dispatch;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Dispatch = RematchDispatch<any>;
 export type RootState = RematchRootState<typeof models>;
+
+type Connect = (
+  mapStateToProps: (state: RootState) => {},
+  mapDispatchToProps: (dispatch: Dispatch) => {},
+) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
+(component: any) => ConnectedComponentClass<any, any>;
+
+export const connect: Connect = (mapStateToProps, mapDispatchToProps) => (component) =>
+  reduxConnect(mapStateToProps, mapDispatchToProps)(component);

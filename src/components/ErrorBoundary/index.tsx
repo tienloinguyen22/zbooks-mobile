@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { recordError } from '@app/core';
 import { ErrorText } from '../ErrorText';
@@ -7,27 +7,31 @@ interface State {
   hasError: boolean;
 }
 
-const ErrorMessage = () => {
+const ErrorMessage = (): JSX.Element => {
   const { t } = useTranslation();
   return <ErrorText>{t('error.somethingWentWrong')}</ErrorText>;
 };
 
 export class ErrorBoundary extends Component<{}, State> {
-  constructor(props: any) {
+  private constructor(props: {}) {
     super(props);
-    this.state = { hasError: false };
+    this.state = {
+      hasError: false,
+    };
   }
 
-  static getDerivedStateFromError(_error: any): State {
+  public static getDerivedStateFromError(): State {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true };
+    return {
+      hasError: true,
+    };
   }
 
-  componentDidCatch(error: any, _info: any): void {
+  public componentDidCatch(error: Error): void {
     recordError(error);
   }
 
-  render(): React.ReactNode {
+  public render(): ReactNode | JSX.Element {
     if (this.state.hasError) {
       return <ErrorMessage />;
     }

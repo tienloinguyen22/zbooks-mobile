@@ -5,7 +5,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>en</string>
 		<key>CFBundleDisplayName</key>
-	<string>React Native Starter Kit</string>
+		<string>React Native Starter Kit</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -13,11 +13,11 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-	<string>React Native Starter Kit</string>
+		<string>React Native Starter Kit</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
-	<string>0.3.1</string>
+	<string>1.0.0</string>
 		<key>CFBundleSignature</key>
 		<string>????</string>
 		<key>CFBundleURLTypes</key>
@@ -27,28 +27,28 @@
 				<string>Editor</string>
 				<key>CFBundleURLName</key>
 				<string>fburl</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb341544560115835</string>
-			</array>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>fb341544560115835</string>
+				</array>
 			</dict>
 			<dict>
 				<key>CFBundleTypeRole</key>
 				<string>Editor</string>
 				<key>CFBundleURLName</key>
 				<string>googleurl</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.427332936076-mk0jer7ivc9gpeg9u4m7eleavos5ds5n</string>
-			</array>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>com.googleusercontent.apps.427332936076-mk0jer7ivc9gpeg9u4m7eleavos5ds5n</string>
+				</array>
 			</dict>
 		</array>
 		<key>CFBundleVersion</key>
-	<string>3145738</string>
+	<string>3145740</string>
 		<key>FacebookAppID</key>
-	<string>341544560115835</string>
+		<string>341544560115835</string>
 		<key>FacebookDisplayName</key>
-	<string>React Native Starter Kit</string>
+		<string>React Native Starter Kit</string>
 		<key>ITSAppUsesNonExemptEncryption</key>
 		<false/>
 		<key>LSRequiresIPhoneOS</key>
@@ -67,7 +67,7 @@
 			</dict>
 		</dict>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string></string>
+		<string/>
 		<key>NSMainNibFile</key>
 		<string>LaunchScreen</string>
 		<key>NSMainNibFile~ipad</key>

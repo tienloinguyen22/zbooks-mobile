@@ -1,72 +1,103 @@
 import React from 'react';
-import { ScreenProps, i18n, catchAndLog } from '@app/core';
+import { ScreenProps, i18n, catchAndLog, screenNames, Language } from '@app/core';
 import { config } from '@app/config';
-import { mapStateToProps } from './map_state_to_props';
-import { mapDispatchToProps } from './map_dispatch_to_props';
-import { BaseLayout, List, ListItemData, Picker, Image, Text } from '@app/components';
+import { List, ListItemData, Picker, Image, Text, Container, Icon, View } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import { Platform } from 'react-native';
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from 'react-native-google-signin';
-import { navigationService } from '@app/services';
+import { navigationService, authService } from '@app/services';
+import { mapDispatchToProps } from './map_dispatch_to_props';
+import { mapStateToProps } from './map_state_to_props';
 import { styles } from './styles';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ changeLanguage, language, currentUser }: Props) => {
+export const Screen = ({ componentId, changeLanguage, language, currentUser, logout }: Props): JSX.Element => {
   const { t } = useTranslation();
-  const appVersion = Platform.OS == 'android' ? config.android.version : config.ios.version;
+  const appVersion = Platform.OS === 'android' ? config.android.version : config.ios.version;
 
-  const logout = catchAndLog(async () => {
-    if (auth().currentUser) {
-      const user = auth().currentUser!;
-      if (
-        user.providerData &&
-        user.providerData.length > 0 &&
-        user.providerData[0].providerId === 'google.com' &&
-        (await GoogleSignin.isSignedIn())
-      ) {
-        GoogleSignin.revokeAccess();
-        GoogleSignin.signOut();
-      }
-      await auth().signOut();
-    }
+  const performLogout = catchAndLog(async () => {
+    await authService.logout();
+    logout();
     navigationService.setRootLogin();
   });
 
-  const selectLanguage = () => {
-    Picker.show({
-      pickerData: i18n.LANGUAGE_TEXTS,
-      selectedValue: [i18n.getLanguageName(language)],
-      onPickerConfirm: (data) => {
-        const language = i18n.getLanguageByName(data[0]);
-        if (language) {
-          changeLanguage(language.id);
-        }
-      },
+  const selectLanguage = (): void => {
+    Picker.show<string>({
+      dataSources: i18n.LANGUAGES.map((lang: Language) => ({
+        value: lang.id,
+        text: lang.name,
+      })),
+      initialValue: language,
+      onValueChanged: changeLanguage,
     });
   };
 
-  const data: ListItemData[] = [
-    { title: t('settings.settings'), isHeader: true },
+  const openChangePasswordScreen = (): void =>
+    navigationService.navigateTo({
+      componentId,
+      screenName: screenNames.ChangePasswordScreen,
+    });
+
+  const settingData: ListItemData[] = [
     {
-      title: t('settings.language'),
+      title: t('settingsScreen.settings'),
+      isHeader: true,
+    },
+    {
+      title: t('settingsScreen.language'),
       isHeader: false,
       value: i18n.getLanguageName(language),
       onPress: selectLanguage,
       showIcon: true,
     },
-    { title: t('settings.about'), isHeader: true },
-    { title: t('settings.author'), isHeader: false, value: config.author },
-    { title: t('settings.version'), isHeader: false, value: appVersion },
-    { title: t('settings.logout'), isHeader: false, showIcon: true, onPress: logout },
+    {
+      title: t('settingsScreen.about'),
+      isHeader: true,
+    },
+    {
+      title: t('settingsScreen.author'),
+      isHeader: false,
+      value: config.author,
+    },
+    {
+      title: t('settingsScreen.version'),
+      isHeader: false,
+      value: appVersion,
+    },
+    {
+      title: t('settingsScreen.logout'),
+      isHeader: false,
+      showIcon: true,
+      onPress: performLogout,
+    },
   ];
 
+  if (currentUser && currentUser.loginType === 'EMAIL') {
+    settingData.splice(2, 0, {
+      title: t('settingsScreen.changePassword'),
+      isHeader: false,
+      onPress: openChangePasswordScreen,
+      showIcon: true,
+    });
+  }
+
   return (
-    <BaseLayout>
-      <Image source={{ uri: currentUser.avatarUrl }} style={styles.avatar} />
+    <Container showHeader headerTitle={t('settingsScreen.settings')}>
+      {!!currentUser.avatarUrl && (
+        <Image
+          source={{
+            uri: currentUser.avatarUrl,
+          }}
+          style={styles.avatar}
+        />
+      )}
+      {!currentUser.avatarUrl && (
+        <View style={styles.avatar}>
+          <Icon name='account-circle-outline' size={150} />
+        </View>
+      )}
       <Text style={styles.displayName}>{currentUser.displayName}</Text>
-      <List data={data} />
-    </BaseLayout>
+      <List data={settingData} />
+    </Container>
   );
 };
