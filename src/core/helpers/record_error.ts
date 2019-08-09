@@ -1,15 +1,18 @@
-// import firebase from 'react-native-firebase';
+import { Platform } from 'react-native';
+import crashlytics from '@react-native-firebase/crashlytics';
+import auth from '@react-native-firebase/auth';
+import { config } from '@app/config';
 
 export const recordError = (error: Error): void => {
-  if (!__DEV__) {
+  if (__DEV__) {
     try {
-      // if (firebase.auth().currentUser) {
-      //     firebase.crashlytics().setStringValue('userId', `${firebase.auth().currentUser!.uid}`);
-      // }
-      // firebase.crashlytics().setStringValue('stack', `${error.stack}`);
-      // firebase.crashlytics().setStringValue('message', `${error.message}`);
-      // firebase.crashlytics().recordError(0, `RN Fatal: ${error.message}`);
-    } catch {
+      const { currentUser } = auth();
+      if (currentUser) {
+        crashlytics().log(`userId: ${currentUser.uid}`);
+      }
+      crashlytics().log(`appVersion: ${Platform.OS === 'ios' ? config.ios.version : config.android.version}`);
+      crashlytics().recordError(error);
+    } catch (internalError) {
       // do nothing
     }
   } else {

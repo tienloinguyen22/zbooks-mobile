@@ -1,4 +1,9 @@
 apply plugin: "com.android.application"
+apply plugin: 'io.fabric'
+
+crashlytics {
+  enableNdk true
+}
 
 import com.android.build.OutputFile
 
@@ -204,8 +209,6 @@ configurations.all {
 dependencies {
     implementation project(':react-native-orientation')
     implementation project(':react-native-picker')
-    implementation project(':@react-native-firebase_auth')
-    implementation project(':@react-native-firebase_app')
     implementation project(':react-native-google-signin')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-exception-handler')

@@ -41,6 +41,7 @@ export const Screen = ({
   return (
     <Container componentId={componentId}>
       <ScrollView>
+        <CrashSample />
         <PickerSample />
         <NavigationSample pushNewScreen={pushNewScreen} changeTab={changeTab} />
         <IconSample />
@@ -52,7 +53,6 @@ export const Screen = ({
           incrementDolphin={incrementDolphin}
           incrementDolphinAsync={incrementDolphinAsync}
         />
-        <CrashSample />
         <NotificationSample />
       </ScrollView>
     </Container>
