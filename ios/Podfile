@@ -47,11 +47,11 @@ target 'mobile' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
 
-  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
-
-  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
-
   pod 'Picker', :path => '../node_modules/react-native-picker'
+
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
+  pod 'RNFBCrashlytics', :path => '../node_modules/@react-native-firebase/crashlytics'
 
   target 'mobileTests' do
     inherit! :search_paths

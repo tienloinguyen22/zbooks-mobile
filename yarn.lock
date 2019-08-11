@@ -933,32 +933,49 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
-"@react-native-firebase/app-types@0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-0.0.26.tgz#70499ee68f5f3807370b994e352fbc207e99512f"
-  integrity sha512-3iC+NCrdHr69FcE6E9XuSZxga7bA/rNr01dmfWvsDeiD4S3kxrMPjnjp3AA6DumqJKZ+8WxKAAIQ5O0BrY0gag==
-
-"@react-native-firebase/app@^0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-0.0.26.tgz#c068774042986d766898da8cfaefba2705a77bec"
-  integrity sha512-jQu/NSioOiqx6rxgYg2NZmIUnc+GQ4/4d97F0P+/MzdYJlpoTemY0/F9QV9OFvEhuUm8hlt/KkgPXIFFEcp3Zg==
+"@react-native-firebase/analytics@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-0.1.5.tgz#d0ab258f8b7a42c9b4224f69dad6fa5ddc8dceed"
+  integrity sha512-1JSTKip3we3+lUoaehZeo8feHQLwHNMOTinsRVAqPsAibksDbAA5y+rBdIcL5RSpp0HkBh2qhrZZQ7JBJRn4Og==
   dependencies:
-    "@react-native-firebase/app-types" "0.0.26"
-    "@react-native-firebase/common" "0.0.26"
+    "@react-native-firebase/app-types" "0.1.5"
+    "@react-native-firebase/common" "0.1.5"
+
+"@react-native-firebase/app-types@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-0.1.5.tgz#785483bae8e620fc7285768848ddefc08ac857d5"
+  integrity sha512-bmiFRowcEqOIrinkwcx8pYuRyxBO6wp3q1g5ZgmlIQpdua7u9Z5BmtdlnTYp/0IuWOji4fXn8Wua8y6iazMiNw==
+
+"@react-native-firebase/app@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-0.1.5.tgz#03fc3fcbfef53d30570742481759ad2ab3f3e8f3"
+  integrity sha512-6nbd9j4xY65IVoggbBZHvUh4lwRA5DIDQ0kW0XXV+gOUV+zHcSHCVlHMcbGQsFsaJIFjFE9jgkJ67uN6UX7dmw==
+  dependencies:
+    "@react-native-firebase/app-types" "0.1.5"
+    "@react-native-firebase/common" "0.1.5"
     opencollective-postinstall "^2.0.1"
 
-"@react-native-firebase/auth@^0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-0.0.26.tgz#7ecf67abc94f102353d3108465287400884458f3"
-  integrity sha512-226aR0ToCzkLVlO/krOD1eQSXSMxtQv9a9S4heFyhNjKc8WFK9ExVKs284egdM6wIq0jv+nZG/11x1xpGnc9TA==
+"@react-native-firebase/auth@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-0.1.5.tgz#a33d1c03bc8750be2213e062011c1a2db2eb598a"
+  integrity sha512-Wo6y7hJ1KGYUthAa1TOJubESsegRjVxVG0DMMuwo/Lj5MhrMS4Zq+xkxRexk+F60N1dXfAqT/tPE26l+8C842Q==
   dependencies:
-    "@react-native-firebase/app-types" "0.0.26"
-    "@react-native-firebase/common" "0.0.26"
+    "@react-native-firebase/app-types" "0.1.5"
+    "@react-native-firebase/common" "0.1.5"
 
-"@react-native-firebase/common@0.0.26":
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/common/-/common-0.0.26.tgz#3df21a8eaf1a37ab66af13fa1af47c2f70dcfb30"
-  integrity sha512-fyBMBEW0iubxrCVIcTg6ByWohXHG77hDNEW3RsemY1Ph7/qvov79NdRLnLX54NQRDSzN1GpGlj4tV6y8isiD1A==
+"@react-native-firebase/common@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/common/-/common-0.1.5.tgz#dff6eca209c2540c9921df5b11a2afaae034e3ff"
+  integrity sha512-GZGxwKL/LuJnOaEpq7mV54PGgZAgDUt3DmWpjKytQoNb8ZfUJjjbYDvoQwVZBxH53cqHh2nsSiKQ41gY0PCmPA==
+
+"@react-native-firebase/crashlytics@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-0.1.5.tgz#b000b884c58fb9791c9b4419550fa2c94b7141da"
+  integrity sha512-vrpYGrHXZOeRa+Gmsrw3RrbiRhuWiS6iyj+8/ZfiBjrmD0iMDUg/vPiC5PUs1X3wqKu9q4qomD9xj6RUiPhvhA==
+  dependencies:
+    "@react-native-firebase/app-types" "0.1.5"
+    "@react-native-firebase/common" "0.1.5"
+    stacktrace-js "^2.0.0"
 
 "@rematch/core@^1.1.0":
   version "1.1.0"
@@ -1104,6 +1121,11 @@
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
+
+"@types/react-native-orientation@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-orientation/-/react-native-orientation-5.0.1.tgz#347f7041683249f9ca7386717aa4dd66b394d3fb"
+  integrity sha512-0Uvj73hXWXwxKISUSh8KDew9005D49NtbLJ/coldIMZNPhI+4obk2X6nzF3FBeIQ/2FbVUUZM6oMMIgQwPUJ2w==
 
 "@types/react-native-vector-icons@^6.4.1":
   version "6.4.1"
@@ -2471,6 +2493,13 @@ error-ex@^1.2.0, error-ex@^1.3.1:
   dependencies:
     is-arrayish "^0.2.1"
 
+error-stack-parser@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/error-stack-parser/-/error-stack-parser-2.0.2.tgz#4ae8dbaa2bf90a8b450707b9149dcabca135520d"
+  integrity sha512-E1fPutRDdIj/hohG0UpT5mayXNCxXP9d+snxFsPU9X0XgccOumKraa3juDMwTUyi7+Bu5+mCGagjg4IYeNbOdw==
+  dependencies:
+    stackframe "^1.0.4"
+
 errorhandler@^1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/errorhandler/-/errorhandler-1.5.1.tgz#b9ba5d17cf90744cd1e851357a6e75bf806a9a91"
@@ -2614,6 +2643,11 @@ eslint-plugin-jsx-a11y@^6.2.3:
     emoji-regex "^7.0.2"
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
+
+eslint-plugin-no-null@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-no-null/-/eslint-plugin-no-null-1.0.2.tgz#1236a812391390a1877ad4007c26e745341c951f"
+  integrity sha1-EjaoEjkTkKGHetQAfCbnRTQclR8=
 
 eslint-plugin-prettier@2.6.2:
   version "2.6.2"
@@ -6020,6 +6054,11 @@ react-native-navigation@3.0.0-alpha.2:
     react-lifecycles-compat "2.0.0"
     tslib "1.9.3"
 
+react-native-orientation@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-orientation/-/react-native-orientation-3.1.3.tgz#d45803841fe94b6cce9acbe904fd5ca191a3711e"
+  integrity sha512-A0h0E+2f95X4avmhaBG1ZT8WDxBACA/q//JN2eF1E7kq8AJVxt5XDiavv+aSBkBlqFsfF3bIS+T/DB5mXmnxuA==
+
 react-native-picker@^4.3.7:
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/react-native-picker/-/react-native-picker-4.3.7.tgz#9842e8c62ff0d8b676e9514d9f9172413c0518a8"
@@ -6739,6 +6778,11 @@ source-map-url@^0.4.0:
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
   integrity sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
 
+source-map@0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+  integrity sha1-dc449SvwczxafwwRjYEzSiu19BI=
+
 source-map@^0.5.0, source-map@^0.5.6:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
@@ -6810,10 +6854,39 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+stack-generator@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/stack-generator/-/stack-generator-2.0.3.tgz#bb74385c67ffc4ccf3c4dee5831832d4e509c8a0"
+  integrity sha512-kdzGoqrnqsMxOEuXsXyQTmvWXZmG0f3Ql2GDx5NtmZs59sT2Bt9Vdyq0XdtxUi58q/+nxtbF9KOQ9HkV1QznGg==
+  dependencies:
+    stackframe "^1.0.4"
+
 stack-utils@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-1.0.2.tgz#33eba3897788558bebfc2db059dc158ec36cebb8"
   integrity sha512-MTX+MeG5U994cazkjd/9KNAapsHnibjMLnfXodlkXw76JEea0UiNzrqidzo1emMwk7w5Qhc9jd4Bn9TBb1MFwA==
+
+stackframe@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/stackframe/-/stackframe-1.0.4.tgz#357b24a992f9427cba6b545d96a14ed2cbca187b"
+  integrity sha512-to7oADIniaYwS3MhtCa/sQhrxidCCQiF/qp4/m5iN3ipf0Y7Xlri0f6eG29r08aL7JYl8n32AF3Q5GYBZ7K8vw==
+
+stacktrace-gps@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/stacktrace-gps/-/stacktrace-gps-3.0.2.tgz#33f8baa4467323ab2bd1816efa279942ba431ccc"
+  integrity sha512-9o+nWhiz5wFnrB3hBHs2PTyYrS60M1vvpSzHxwxnIbtY2q9Nt51hZvhrG1+2AxD374ecwyS+IUwfkHRE/2zuGg==
+  dependencies:
+    source-map "0.5.6"
+    stackframe "^1.0.4"
+
+stacktrace-js@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/stacktrace-js/-/stacktrace-js-2.0.0.tgz#776ca646a95bc6c6b2b90776536a7fc72c6ddb58"
+  integrity sha1-d2ymRqlbxsayuQd2U2p/xyxt21g=
+  dependencies:
+    error-stack-parser "^2.0.1"
+    stack-generator "^2.0.1"
+    stacktrace-gps "^3.0.1"
 
 stacktrace-parser@^0.1.3:
   version "0.1.6"

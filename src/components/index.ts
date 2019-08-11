@@ -28,5 +28,5 @@ export * from './Thumbnail';
 export * from './Title';
 export * from './Tooltip';
 export * from './View';
-export * from './WithLazyLoad';
 export * from './WithStore';
+export * from './WithScreen';

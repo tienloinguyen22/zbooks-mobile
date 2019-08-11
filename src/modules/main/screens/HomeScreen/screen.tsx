@@ -11,6 +11,7 @@ import {
   CrashSample,
   NotificationSample,
   PickerSample,
+  AnalyticsSample,
 } from './components';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
@@ -41,6 +42,8 @@ export const Screen = ({
   return (
     <Container componentId={componentId}>
       <ScrollView>
+        <AnalyticsSample />
+        <CrashSample />
         <PickerSample />
         <NavigationSample pushNewScreen={pushNewScreen} changeTab={changeTab} />
         <IconSample />
@@ -52,7 +55,6 @@ export const Screen = ({
           incrementDolphin={incrementDolphin}
           incrementDolphinAsync={incrementDolphinAsync}
         />
-        <CrashSample />
         <NotificationSample />
       </ScrollView>
     </Container>

@@ -1,6 +1,9 @@
 PODS:
   - boost-for-react-native (1.63.0)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
   - DoubleConversion (1.1.6)
+  - Fabric (1.9.0)
   - FBSDKCoreKit (5.2.3):
     - FBSDKCoreKit/Basics (= 5.2.3)
     - FBSDKCoreKit/Core (= 5.2.3)
@@ -11,36 +14,37 @@ PODS:
     - FBSDKCoreKit (~> 5.0)
   - FBSDKShareKit (5.2.3):
     - FBSDKCoreKit (~> 5.0)
-  - Firebase/Auth (5.20.2):
+  - Firebase/Auth (6.5.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (= 5.4.2)
-  - Firebase/Core (5.20.2):
+    - FirebaseAuth (~> 6.2.1)
+  - Firebase/Core (6.5.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.8.1)
-  - Firebase/CoreOnly (5.20.2):
-    - FirebaseCore (= 5.4.1)
-  - FirebaseAnalytics (5.8.1):
-    - FirebaseCore (~> 5.4)
-    - FirebaseInstanceID (~> 3.8)
-    - GoogleAppMeasurement (= 5.8.1)
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - FirebaseAnalytics (= 6.0.4)
+  - Firebase/CoreOnly (6.5.0):
+    - FirebaseCore (= 6.1.0)
+  - FirebaseAnalytics (6.0.4):
+    - FirebaseCore (~> 6.1)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleAppMeasurement (= 6.0.4)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - FirebaseAuth (5.4.2):
+  - FirebaseAuth (6.2.1):
     - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (5.4.1):
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.8.1):
-    - FirebaseCore (~> 5.2)
-    - GoogleUtilities/Environment (~> 5.2)
-    - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseCore (6.1.0):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseInstanceID (4.2.2):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
   - Folly (2018.10.22.00):
     - boost-for-react-native
     - DoubleConversion
@@ -51,11 +55,11 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - GoogleAppMeasurement (5.8.1):
-    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
-    - GoogleUtilities/MethodSwizzler (~> 5.2)
-    - GoogleUtilities/Network (~> 5.2)
-    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+  - GoogleAppMeasurement (6.0.4):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
   - GoogleSignIn (4.4.0):
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
@@ -69,23 +73,23 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.2.1)
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.1)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.1)"
-  - GoogleUtilities/AppDelegateSwizzler (5.8.0):
+  - GoogleUtilities/AppDelegateSwizzler (6.2.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.8.0)
-  - GoogleUtilities/Logger (5.8.0):
+  - GoogleUtilities/Environment (6.2.3)
+  - GoogleUtilities/Logger (6.2.3):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.8.0):
+  - GoogleUtilities/MethodSwizzler (6.2.3):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.8.0):
+  - GoogleUtilities/Network (6.2.3):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.8.0)"
-  - GoogleUtilities/Reachability (5.8.0):
+  - "GoogleUtilities/NSData+zlib (6.2.3)"
+  - GoogleUtilities/Reachability (6.2.3):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.8.0):
+  - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - nanopb (0.3.901):
@@ -157,6 +161,8 @@ PODS:
   - react-native-fbsdk/Share (1.0.0-rc.5):
     - FBSDKShareKit (~> 5.0)
     - React
+  - react-native-orientation (3.1.3):
+    - React
   - react-native-splash-screen (3.2.0):
     - React
   - React-RCTActionSheet (0.60.4):
@@ -189,12 +195,22 @@ PODS:
     - React
   - RNCAsyncStorage (1.5.1):
     - React
-  - RNFBApp (0.0.26):
-    - Firebase/Core (~> 5.20.2)
+  - RNFBAnalytics (0.1.5):
+    - Firebase/Core (~> 6.5.0)
     - React
-  - RNFBAuth (0.0.26):
-    - Firebase/Auth (~> 5.20.2)
-    - Firebase/Core (~> 5.20.2)
+    - RNFBApp
+  - RNFBApp (0.1.5):
+    - Firebase/Core (~> 6.5.0)
+    - React
+  - RNFBAuth (0.1.5):
+    - Firebase/Auth (~> 6.5.0)
+    - Firebase/Core (~> 6.5.0)
+    - React
+    - RNFBApp
+  - RNFBCrashlytics (0.1.5):
+    - Crashlytics (~> 3.12.0)
+    - Fabric (~> 1.9.0)
+    - Firebase/Core (~> 6.5.0)
     - React
     - RNFBApp
   - RNGoogleSignin (2.0.0):
@@ -222,6 +238,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-fbsdk (from `../node_modules/react-native-fbsdk`)
+  - react-native-orientation (from `../node_modules/react-native-orientation`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -236,8 +253,10 @@ DEPENDENCIES:
   - ReactNativeExceptionHandler (from `../node_modules/react-native-exception-handler`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
+  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -245,6 +264,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
+    - Crashlytics
+    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -288,6 +309,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-fbsdk:
     :path: "../node_modules/react-native-fbsdk"
+  react-native-orientation:
+    :path: "../node_modules/react-native-orientation"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   React-RCTActionSheet:
@@ -316,10 +339,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-navigation"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
+  RNFBAnalytics:
+    :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
     :path: "../node_modules/@react-native-firebase/auth"
+  RNFBCrashlytics:
+    :path: "../node_modules/@react-native-firebase/crashlytics"
   RNGoogleSignin:
     :path: "../node_modules/react-native-google-signin"
   RNVectorIcons:
@@ -329,22 +356,24 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FBSDKCoreKit: 5154c35d9058fd7dfa0445ba19e194c4b172fc32
   FBSDKLoginKit: dc98b6bf12334f1a42f28d0457fffc9aa3d1eca5
   FBSDKShareKit: 6f9c622f9a5d051f43f2dab6f753d5198422b89c
-  Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
-  FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
-  FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
+  Firebase: dedc9e48ea3f3649ad5f6b982f8a0c73508a14b5
+  FirebaseAnalytics: 3fb375bc9d13779add4039716f868d233a473fad
+  FirebaseAuth: a06ad63e9bf4c86165b54cceb1c14d4f4c38d419
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
-  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
+  FirebaseCore: aecf02fb2274ec361b9bebeac112f5daa18273bd
+  FirebaseInstanceID: 662b8108a09fe9ed01aafdedba100fde8536b0f6
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
-  GoogleAppMeasurement: ffe513e90551844a739e7bcbb1d2aca1c28a4338
+  GoogleAppMeasurement: 183bd916af7f80deb67c01888368f1108d641832
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
-  GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
+  GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Picker: 37554355aef82a532ea95b71b6eeba66bc86182b
@@ -357,6 +386,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7549641e48bafae7bfee3f3ea19bf4901639c5de
   React-jsinspector: 73f24a02fa684ed6a2b828ba116874a2191ded88
   react-native-fbsdk: 1bd77128b223a25ff3dad3aca2423aab9d4fac92
+  react-native-orientation: f1caf84d65f1a4fd4511a18f2b924e634ad7a628
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 9f71d7ae3e8fb10e08d162cbf14c621349dbfab3
   React-RCTAnimation: 981d8c95b0e30918a9832ccac32af83562a27fae
@@ -371,12 +401,14 @@ SPEC CHECKSUMS:
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   ReactNativeNavigation: ad6e6a664bc6c8eb2fe0fe0b73e2c8bd52275be3
   RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
-  RNFBApp: c5576298413d3f2a38c469b357afff2463b68274
-  RNFBAuth: c51f27f2497114b8da5bd19e8ba8033ad2ae01f6
+  RNFBAnalytics: 587643dac3838440c0681faef815cf6a7306c059
+  RNFBApp: b4fe7b915fc8546514331bcbd86378c65bf7c20e
+  RNFBAuth: 4fb5c33b1b71fa5558f8bd1b7e3942fb78d3668e
+  RNFBCrashlytics: 230d5d6ce6fb930afaa366e92dd681bc78538c68
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   yoga: c2c050f6ae6e222534760cc82f559b89214b67e2
 
-PODFILE CHECKSUM: 068d9c4941d0af3cd2b1522b1718c072d6a727b0
+PODFILE CHECKSUM: ce1639e097a7894d3245958f7dfac5e64318be54
 
 COCOAPODS: 1.7.4

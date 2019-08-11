@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
+  plugins: [
+    'no-null',
+  ],
   extends: [
     '@react-native-community',
     'airbnb-base',
@@ -32,13 +35,14 @@ module.exports = {
     'no-unused-expressions': ['error', { 'allowShortCircuit': true }], // don't use unused expressions except short circut
     'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }], // don't use unused var except with _ prefix
     'object-curly-newline': ['error', {
-      "ObjectExpression": { "multiline": true, "minProperties": 1 },
-      "ObjectPattern": { "multiline": true },
-      "ImportDeclaration": { "multiline": true },
-      "ExportDeclaration": { "multiline": true }
+      'ObjectExpression': { 'multiline': true, 'minProperties': 1 },
+      'ObjectPattern': { 'multiline': true },
+      'ImportDeclaration': { 'multiline': true },
+      'ExportDeclaration': { 'multiline': true }
     }], // let prettier do its job,
     'operator-linebreak': ['error', 'after'], // mạke operator after with linebreak
-    '@typescript-eslint/no-explicit-any': ['error']
+    '@typescript-eslint/no-explicit-any': ['error'],
+    'no-null/no-null': ['error'],
   },
   settings: {
     react: {

@@ -7,6 +7,9 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.analytics.ReactNativeFirebaseAnalyticsPackage;
+import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsPackage;
+import com.github.yamill.orientation.OrientationPackage;
 import com.beefe.picker.PickerViewPackage;
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
@@ -28,43 +31,46 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends NavigationApplication {
-    
+
   @Override
   protected ReactGateway createReactGateway() {
-      ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
-          @Override
-          protected String getJSMainModuleName() {
-              return "index";
-          }
-      };
-      return new ReactGateway(this, isDebug(), host);
+    ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+      @Override
+      protected String getJSMainModuleName() {
+        return "index";
+      }
+    };
+    return new ReactGateway(this, isDebug(), host);
   }
 
   @Override
   public boolean isDebug() {
-      return BuildConfig.DEBUG;
+    return BuildConfig.DEBUG;
   }
 
   protected List<ReactPackage> getPackages() {
-      // Add additional packages you require here
-      // No need to add RnnPackage and MainReactPackage
-      return Arrays.<ReactPackage>asList(
-          // eg. new VectorIconsPackage()
-          new SplashScreenReactPackage(),
-          new VectorIconsPackage(),
-          new AsyncStoragePackage(),
-          new ReactNativeExceptionHandlerPackage(),
-          new FBSDKPackage(),
-          new RNGoogleSigninPackage(),
-          new ReactNativeFirebaseAppPackage(),
-          new ReactNativeFirebaseAuthPackage(),
-          new PickerViewPackage()
-      );
+    // Add additional packages you require here
+    // No need to add RnnPackage and MainReactPackage
+    return Arrays.<ReactPackage>asList(
+        // eg. new VectorIconsPackage()
+        new SplashScreenReactPackage(),
+        new VectorIconsPackage(),
+        new AsyncStoragePackage(),
+        new ReactNativeExceptionHandlerPackage(),
+        new FBSDKPackage(),
+        new RNGoogleSigninPackage(),
+        new ReactNativeFirebaseAppPackage(),
+        new ReactNativeFirebaseAuthPackage(),
+        new ReactNativeFirebaseCrashlyticsPackage(),
+        new ReactNativeFirebaseAnalyticsPackage(),
+        new PickerViewPackage(),
+        new OrientationPackage()
+    );
   }
 
   @Override
   public List<ReactPackage> createAdditionalReactPackages() {
-      return getPackages();
+    return getPackages();
   }
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {

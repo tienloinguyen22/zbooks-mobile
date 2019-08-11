@@ -1,4 +1,9 @@
 apply plugin: "com.android.application"
+apply plugin: 'io.fabric'
+
+crashlytics {
+  enableNdk true
+}
 
 import com.android.build.OutputFile
 
@@ -77,7 +82,7 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     entryFile: "index.js",
-    enableHermes: true,  // clean and rebuild if changing
+    enableHermes: false,  // clean and rebuild if changing
 ]
 
 // apply from: "../../node_modules/react-native/react.gradle"
@@ -133,8 +138,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
-        versionCode 3145740
-        versionName "1.0.0"
+        versionCode 3145741
+        versionName "1.0.1"
         multiDexEnabled true
     }
     splits {
@@ -202,9 +207,8 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-orientation')
     implementation project(':react-native-picker')
-    implementation project(':@react-native-firebase_auth')
-    implementation project(':@react-native-firebase_app')
     implementation project(':react-native-google-signin')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-exception-handler')
