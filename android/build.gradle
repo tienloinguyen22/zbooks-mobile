@@ -66,6 +66,8 @@ subprojects { subproject ->
                         setIgnore(true)
                     }
                 }
+                compileSdkVersion = 28
+                buildToolsVersion = "28.0.3"
             }
         }
     }
