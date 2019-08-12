@@ -39,7 +39,7 @@
   },
   "emailVerificationScreen": {
     "check": "Check",
-    "emailNotVerified": "Your email is not verifired yet",
+    "emailNotVerified": "Your email is not verified yet",
     "notice": "Your email {{email}} is not verified. Please check the your mailbox, verify it then click Check button below.",
     "openMailbox": "Open Mailbox",
     "resendEmailNotification": "Verification email is resent. Please check your mailbox",
