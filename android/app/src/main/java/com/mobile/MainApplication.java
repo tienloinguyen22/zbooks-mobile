@@ -7,6 +7,8 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.microsoft.codepush.react.CodePush;
+import io.invertase.firebase.config.ReactNativeFirebaseConfigPackage;
 import io.invertase.firebase.analytics.ReactNativeFirebaseAnalyticsPackage;
 import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsPackage;
 import com.github.yamill.orientation.OrientationPackage;
@@ -33,8 +35,19 @@ import java.util.List;
 public class MainApplication extends NavigationApplication {
 
   @Override
+  public boolean isDebug() {
+      return BuildConfig.DEBUG;
+  }
+
+  @Override
   protected ReactGateway createReactGateway() {
     ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+      @javax.annotation.Nullable
+      @Override
+      protected String getJSBundleFile() {
+          return CodePush.getJSBundleFile();
+      }
+
       @Override
       protected String getJSMainModuleName() {
         return "index";
@@ -44,64 +57,23 @@ public class MainApplication extends NavigationApplication {
   }
 
   @Override
-  public boolean isDebug() {
-    return BuildConfig.DEBUG;
-  }
-
-  protected List<ReactPackage> getPackages() {
-    // Add additional packages you require here
-    // No need to add RnnPackage and MainReactPackage
-    return Arrays.<ReactPackage>asList(
-        // eg. new VectorIconsPackage()
-        new SplashScreenReactPackage(),
-        new VectorIconsPackage(),
-        new AsyncStoragePackage(),
-        new ReactNativeExceptionHandlerPackage(),
-        new FBSDKPackage(),
-        new RNGoogleSigninPackage(),
-        new ReactNativeFirebaseAppPackage(),
-        new ReactNativeFirebaseAuthPackage(),
-        new ReactNativeFirebaseCrashlyticsPackage(),
-        new ReactNativeFirebaseAnalyticsPackage(),
-        new PickerViewPackage(),
-        new OrientationPackage()
-    );
-  }
-
-  @Override
   public List<ReactPackage> createAdditionalReactPackages() {
-    return getPackages();
-  }
-
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    public boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
-
-    @Override
-    protected List<ReactPackage> getPackages() {
-      @SuppressWarnings("UnnecessaryLocalVariable")
-      List<ReactPackage> packages = new PackageList(this).getPackages();
-      // Packages that cannot be autolinked yet can be added manually here, for example:
-      // packages.add(new MyReactNativePackage());
-      return packages;
-    }
-
-    @Override
-    protected String getJSMainModuleName() {
-      return "index";
-    }
-  };
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
-  }
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
+    return Arrays.<ReactPackage>asList(
+      // eg. new VectorIconsPackage()
+      new SplashScreenReactPackage(),
+      new VectorIconsPackage(),
+      new AsyncStoragePackage(),
+      new ReactNativeExceptionHandlerPackage(),
+      new FBSDKPackage(),
+      new RNGoogleSigninPackage(),
+      new ReactNativeFirebaseAppPackage(),
+      new ReactNativeFirebaseAuthPackage(),
+      new ReactNativeFirebaseCrashlyticsPackage(),
+      new ReactNativeFirebaseAnalyticsPackage(),
+      new ReactNativeFirebaseConfigPackage(),
+      new PickerViewPackage(),
+      new OrientationPackage(),
+      new CodePush("", MainApplication.this, BuildConfig.DEBUG)
+    );
   }
 }
