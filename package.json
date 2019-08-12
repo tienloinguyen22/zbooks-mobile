@@ -20,7 +20,7 @@
     "react-native": "0.60.4",
     "react-native-code-push": "^5.6.1",
     "react-native-exception-handler": "^2.10.8",
-    "react-native-fbsdk": "git+https://github.com/facebook/react-native-fbsdk.git",
+    "react-native-fbsdk": "^1.0.1",
     "react-native-google-signin": "^2.0.0",
     "react-native-navigation": "3.0.0-alpha.2",
     "react-native-orientation": "^3.1.3",
