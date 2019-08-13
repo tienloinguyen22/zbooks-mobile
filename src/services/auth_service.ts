@@ -218,4 +218,5 @@ export const authService = {
   sendSmsVerification,
   verifySmsCode,
   sendPasswordResetEmail,
+  getUser,
 };

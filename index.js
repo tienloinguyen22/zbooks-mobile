@@ -1,4 +1,4 @@
 /**
  * @format
  */
-import './src/bootstrap.ts';
+import './src/bootstrap';

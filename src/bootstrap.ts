@@ -1,4 +1,4 @@
-import { navigationService } from '@app/services';
+import { navigationService, appService } from '@app/services';
 import { registerModules } from '@app/modules';
 import { i18n, catchAndLog, handleGlobalErrors, configureGoogleSignIn } from '@app/core';
 
@@ -9,5 +9,7 @@ catchAndLog(
     registerModules();
     navigationService.initialize();
     await configureGoogleSignIn();
+    await appService.setDefaults();
+    await appService.checkUpdate();
   },
 )();

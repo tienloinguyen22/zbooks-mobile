@@ -40,7 +40,6 @@ module.exports = {
       'ImportDeclaration': { 'multiline': true },
       'ExportDeclaration': { 'multiline': true }
     }], // let prettier do its job,
-    'operator-linebreak': ['error', 'after'], // mạke operator after with linebreak
     '@typescript-eslint/no-explicit-any': ['error'],
     'no-null/no-null': ['error'],
   },

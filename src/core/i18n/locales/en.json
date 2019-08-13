@@ -12,10 +12,12 @@
     "close": "Close",
     "confirm": "Confirm",
     "home": "Home",
+    "newUpdate": "New Update",
     "ok": "OK",
     "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
     "select": "Select",
-    "settings": "Settings"
+    "settings": "Settings",
+    "updateInstalled": "A new update arrived. Please restart the app"
   },
   "emailLoginScreen": {
     "email": "Email",
@@ -37,7 +39,7 @@
   },
   "emailVerificationScreen": {
     "check": "Check",
-    "emailNotVerified": "Your email is not verifired yet",
+    "emailNotVerified": "Your email is not verified yet",
     "notice": "Your email {{email}} is not verified. Please check the your mailbox, verify it then click Check button below.",
     "openMailbox": "Open Mailbox",
     "resendEmailNotification": "Verification email is resent. Please check your mailbox",

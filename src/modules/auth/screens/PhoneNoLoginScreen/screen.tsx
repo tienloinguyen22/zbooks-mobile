@@ -3,7 +3,7 @@ import { Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import { catchAndLog, ScreenProps, showNotification, useEffectOnce, handleError } from '@app/core';
 import { authService, navigationService } from '@app/services';
-import { Auth } from '@react-native-firebase/auth';
+import auth, { Auth } from '@react-native-firebase/auth';
 import produce from 'immer';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
@@ -32,10 +32,19 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
   let resendInterval: NodeJS.Timeout | undefined;
 
   useEffectOnce(() => {
+    const unsubscribeOnAuthStateChanged = auth().onAuthStateChanged((user) => {
+      if (user) {
+        login(authService.getUser(user));
+        navigationService.setRootHome();
+      }
+    });
     return () => {
       // console.log(resendInterval);
       if (resendInterval) {
         clearInterval(resendInterval);
+      }
+      if (unsubscribeOnAuthStateChanged) {
+        unsubscribeOnAuthStateChanged();
       }
     };
   });
