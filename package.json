@@ -6,7 +6,7 @@
     "@react-native-firebase/auth": "^0.1.5",
     "@react-native-firebase/config": "^0.1.5",
     "@react-native-firebase/crashlytics": "^0.1.5",
-    "@rematch/core": "^1.1.0",
+    "@rematch/core": "^1.2.0",
     "@rematch/persist": "^1.1.6",
     "bluebird": "^3.5.5",
     "color-convert": "^2.0.0",
@@ -114,5 +114,5 @@
     "update-version": "ts-node job.ts update-version",
     "validate": "yarn lint && yarn code-check && yarn test"
   },
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

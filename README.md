@@ -1,4 +1,4 @@
-# react-native-starter-kit (ver 1.1.0)
+# react-native-starter-kit (ver 1.2.0)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![npm type definitions](https://shields-staging.herokuapp.com/npm/types/typescript)
