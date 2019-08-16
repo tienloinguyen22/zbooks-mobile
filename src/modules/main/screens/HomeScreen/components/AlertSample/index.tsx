@@ -13,7 +13,7 @@ export const AlertSample = (): JSX.Element => {
       title: 'Hello',
       message: 'Hello React',
       onPressCancel: destroySibling,
-      error: true,
+      warning: true,
       actions: [
         {
           title: 'Button1',

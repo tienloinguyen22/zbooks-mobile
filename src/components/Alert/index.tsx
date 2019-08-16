@@ -13,17 +13,15 @@ interface Props extends ViewProps {
   actions?: AlertAction[];
   onPressCancel?: () => void;
 }
-const elements: RootSiblings[] = [];
+let alert: RootSiblings | undefined;
 class Alert extends Component {
   public static show = (props: Props): RootSiblings => {
-    const alert = new RootSiblings(<AlertContainer {...props} />);
-    elements.push(alert);
+    alert = new RootSiblings(<AlertContainer {...props} />);
     return alert;
   };
 
   public static hide = (): void => {
-    const lastSibling = elements.pop();
-    lastSibling && lastSibling.destroy();
+    alert && alert.destroy();
   };
 }
 

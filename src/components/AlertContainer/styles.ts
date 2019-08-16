@@ -59,11 +59,9 @@ export const styles = StyleSheet.create({
   },
   textSpecial: {
     color: colors.white,
-    fontSize: 12,
   },
   textNormal: {
     color: colors.primary,
-    fontSize: 12,
   },
   buttonClose: {
     justifyContent: 'center',

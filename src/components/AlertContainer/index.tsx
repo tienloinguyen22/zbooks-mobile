@@ -1,13 +1,13 @@
 import React from 'react';
-import { ViewProps, TouchableOpacity, ViewStyle } from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
 import Modal from 'react-native-modal';
 import { combineStyles, colors } from '@app/core';
 import { Icon } from '@app/components/Icon';
 import { Button } from '@app/components/Button';
+import { useTranslation } from 'react-i18next';
 import { View } from '../View';
 import { styles } from './styles';
 import { Text } from '../Text';
-import { useTranslation } from '../../../node_modules/react-i18next';
 
 export interface AlertAction {
   title: string;
@@ -34,7 +34,7 @@ export const AlertContainer = (props: Props): JSX.Element => {
       backgroundColor: colors.primary,
     },
     props.warning && {
-      backgroundColor: colors.orange1,
+      backgroundColor: colors.orange,
     },
     props.error && {
       backgroundColor: colors.red,
@@ -81,9 +81,9 @@ export const AlertContainer = (props: Props): JSX.Element => {
             )}
             {!props.actions && (
               <View style={styles.reserveContainer}>
-                <TouchableOpacity style={styles.buttonClose} onPress={props.onPressCancel}>
+                <Button onPress={props.onPressCancel} style={styles.buttonDialogOutline}>
                   <Text style={styles.textSpecial}>{t('dialog.close')}</Text>
-                </TouchableOpacity>
+                </Button>
               </View>
             )}
           </View>
