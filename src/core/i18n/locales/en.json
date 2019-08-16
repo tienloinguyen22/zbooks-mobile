@@ -19,6 +19,12 @@
     "settings": "Settings",
     "updateInstalled": "A new update arrived. Please restart the app"
   },
+  "dialog": {
+    "close": "Close",
+    "error": "Error",
+    "info": "Info",
+    "warning": "Warning"
+  },
   "emailLoginScreen": {
     "email": "Email",
     "forgotPassword": "Forgot Password?",

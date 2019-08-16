@@ -4,6 +4,7 @@ import { combineStyles } from '@app/core';
 import { styles } from './styles';
 
 interface Props extends NativeBase.Button {
+  outline?: boolean;
   children?: ReactNode;
 }
 
@@ -13,6 +14,7 @@ export const Button = (props: Props): JSX.Element => {
     props.style,
     props.transparent && styles.transparent,
     props.disabled && styles.disabled,
+    props.outline && styles.outline,
   );
   const rounded = props.rounded !== false;
 

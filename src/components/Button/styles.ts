@@ -11,4 +11,9 @@ export const styles = StyleSheet.create({
   disabled: {
     backgroundColor: colors.grey,
   },
+  outline: {
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.primary,
+  },
 });

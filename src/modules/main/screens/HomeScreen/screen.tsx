@@ -2,6 +2,7 @@ import React from 'react';
 import { ScreenProps, screenNames } from '@app/core';
 import { navigationService } from '@app/services';
 import { ScrollView, Container } from '@app/components';
+import { AlertSample } from '@app/modules/main/screens/HomeScreen/components/AlertSample';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import {
@@ -15,7 +16,6 @@ import {
 } from './components';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
-
 export const Screen = ({
   componentId,
   sharks,
@@ -56,6 +56,7 @@ export const Screen = ({
           incrementDolphinAsync={incrementDolphinAsync}
         />
         <NotificationSample />
+        <AlertSample />
       </ScrollView>
     </Container>
   );
