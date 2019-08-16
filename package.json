@@ -85,7 +85,7 @@
   },
   "scripts": {
     "android": "react-native run-android",
-    "android:alpha": "npx jetify && bundle exec fastlane android alpha",
+    "android:alpha": "UPDATE_SENTRY=TRUE npx jetify && bundle exec fastlane android alpha",
     "android:build": "npx jetify && bundle exec fastlane android build",
     "android:clean": "cd android && ./gradlew clean --stacktrace && cd ..",
     "android:codepush": "appcenter codepush release-react -a app-name-android",
@@ -103,7 +103,7 @@
     "ios:emulator": "open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/",
     "ios:production": "bundle exec fastlane ios production",
     "ios:release-test": "react-native run-ios --configuration Release",
-    "ios:testflight": "bundle exec fastlane ios uploadToTestflight",
+    "ios:testflight": "UPDATE_SENTRY=TRUE bundle exec fastlane ios uploadToTestflight",
     "job": "ts-node job.ts",
     "lint": "eslint '{src,__tests__}/**/**.{ts,tsx}' && prettier --check '{src,__{tests,mocks}__}/**/*.{ts,tsx}'",
     "lint-fix": "prettier --write '{src,__{tests,mocks}__}/**/*.{ts,tsx}' && eslint '{src,__tests__}/**/**.{ts,tsx}' --fix",
