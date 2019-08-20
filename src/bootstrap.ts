@@ -13,6 +13,6 @@ catchAndLog(
     await configureGoogleSignIn();
     await appService.setDefaults();
     await appService.checkUpdate();
-    Sentry.config(config.sentryDns).install();
+    !__DEV__ && Sentry.config(config.sentryDns).install();
   },
 )();
