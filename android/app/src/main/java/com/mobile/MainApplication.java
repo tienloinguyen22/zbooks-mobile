@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
 import io.sentry.RNSentryPackage;
 import com.microsoft.codepush.react.CodePush;
 import io.invertase.firebase.config.ReactNativeFirebaseConfigPackage;
@@ -72,6 +73,7 @@ public class MainApplication extends NavigationApplication {
       new ReactNativeFirebaseConfigPackage(),
       new PickerViewPackage(),
       new OrientationPackage(),
+      new LottiePackage(),
       new CodePush("", MainApplication.this, BuildConfig.DEBUG),
       new RNSentryPackage()
     );
