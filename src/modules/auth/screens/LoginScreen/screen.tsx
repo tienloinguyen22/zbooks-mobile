@@ -87,11 +87,11 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
     <Container center centerVertical>
       <Image style={styles.appIcon} source={appIconSource} />
       <Button full rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
-        <Icon name='facebook' color={colors.white} />
+        <Icon name='facebook' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Facebook</Text>
       </Button>
       <Button full rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
-        <Icon name='google' color={colors.white} />
+        <Icon name='google' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Google</Text>
       </Button>
       <Button full rounded onPress={loginEmail} style={[styles.button]}>

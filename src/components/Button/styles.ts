@@ -8,4 +8,9 @@ export const styles = StyleSheet.create({
   disabled: {
     backgroundColor: colors.grey,
   },
+  default: {
+    paddingHorizontal: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

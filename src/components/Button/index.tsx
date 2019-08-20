@@ -15,6 +15,7 @@ export const Button = (props: Props): JSX.Element => {
   });
 
   const style = combineStyles(
+    styles.default,
     {
       backgroundColor: primaryColor,
     },
