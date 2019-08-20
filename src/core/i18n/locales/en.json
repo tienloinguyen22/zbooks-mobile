@@ -7,6 +7,15 @@
     "passwordChanged": "Password has been changed",
     "requireRecentLogin": "This operation is sensitive and requires recent authentication. Log in again before retrying this request"
   },
+  "color": {
+    "blue": "Blue",
+    "deepPurple": "Deep Purple",
+    "indigo": "Indigo",
+    "lightBlue": "Light Blue",
+    "pink": "Pink",
+    "purple": "Purple",
+    "red": "Red"
+  },
   "common": {
     "cancel": "Cancel",
     "close": "Close",
@@ -104,7 +113,13 @@
     "changePassword": "Change password",
     "language": "Language",
     "logout": "Logout",
+    "primaryColor": "Primary color",
     "settings": "Settings",
+    "theme": "Theme",
     "version": "Version"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
   }
 }

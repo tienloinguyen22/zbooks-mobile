@@ -13,12 +13,12 @@ export const NotificationSample = (): JSX.Element => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text primary>Notification</Text>
+        <Text bold>Notification</Text>
       </CardItem>
       <CardItem bordered>
         <View column>
           <Button onPress={showMessage} style={styles.button}>
-            <Text>Show notification</Text>
+            <Text white>Show notification</Text>
           </Button>
         </View>
       </CardItem>

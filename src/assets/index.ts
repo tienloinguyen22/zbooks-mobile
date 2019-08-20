@@ -12,8 +12,15 @@ export interface CountryCode {
   code: string;
 }
 
+export interface PrimaryColor {
+  code: string;
+  darkColor: string;
+  lightColor: string;
+}
+
 export const jsonSources = {
   countries: () => require('./json/country_code.json') as CountryCode[],
+  primaryColors: () => require('./json/primary_colors.json') as PrimaryColor[],
   loading: () => require('./json/loading.json'),
 };
 /* eslint-enable global-require */

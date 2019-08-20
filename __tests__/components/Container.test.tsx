@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { Container } from '@app/components';
 import { navigationService } from '@app/services';
+import * as useTheme from '@app/core/hooks/use_theme';
 
 beforeAll(() => {});
 
@@ -10,10 +11,14 @@ describe('components/Container', () => {
   const backButtonText = '';
 
   beforeEach(() => {
-    jest.mock('@app/core', () => ({
-      colors: {
-        primaryColor: 'blue',
-      },
+    jest.spyOn(useTheme, 'useTheme').mockImplementation(() => ({
+      changePrimaryColor: () => {},
+      changeTheme: () => {},
+      componentBackgroundColor: 'componentBackgroundColor',
+      primaryColor: 'primaryColor',
+      screenBackgroundColor: 'screenBackgroundColor',
+      textColor: 'textColor',
+      theme: 'dark',
     }));
   });
 

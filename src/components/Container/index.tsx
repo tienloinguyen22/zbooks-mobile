@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { navigationService } from '@app/services';
-import { colors } from '@app/core';
+import { useTheme, colors } from '@app/core';
 import { StatusBar, SafeAreaView } from 'react-native';
 import { Left } from '../Left';
 import { Button } from '../Button';
@@ -27,6 +27,7 @@ interface Props {
   columnReverse?: boolean;
 }
 export const Container = (props: Props): JSX.Element => {
+  const { primaryColor, screenBackgroundColor } = useTheme();
   const goBack = (): void => {
     props.componentId &&
       navigationService.goBack({
@@ -36,12 +37,33 @@ export const Container = (props: Props): JSX.Element => {
 
   return (
     <>
-      <SafeAreaView style={styles.rootContainerBackground} />
-      <SafeAreaView style={styles.rootContainer}>
+      <SafeAreaView
+        style={[
+          styles.rootContainerBackground,
+          {
+            backgroundColor: primaryColor,
+          },
+        ]}
+      />
+      <SafeAreaView
+        style={[
+          styles.rootContainer,
+          {
+            backgroundColor: screenBackgroundColor,
+          },
+        ]}
+      >
         <ErrorBoundary>
-          <StatusBar backgroundColor={colors.primary} barStyle='light-content' />
+          <StatusBar backgroundColor={primaryColor} barStyle='light-content' />
           {props.showHeader && (
-            <View style={styles.header}>
+            <View
+              style={[
+                styles.header,
+                {
+                  backgroundColor: primaryColor,
+                },
+              ]}
+            >
               <Left>
                 {props.showBackButton && (
                   <Button transparent onPress={goBack}>
@@ -63,6 +85,9 @@ export const Container = (props: Props): JSX.Element => {
             rowReverse={props.rowReverse}
             center={props.center}
             centerVertical={props.centerVertical}
+            style={{
+              backgroundColor: screenBackgroundColor,
+            }}
           >
             {props.children}
           </View>

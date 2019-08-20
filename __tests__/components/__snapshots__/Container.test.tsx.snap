@@ -20,21 +20,34 @@ exports[`components/Container renders successfully 1`] = `
   >
     <SafeAreaView
       style={
-        Object {
-          "backgroundColor": "#79bfa7",
-          "flex": 0,
-        }
+        Array [
+          Object {
+            "flex": 0,
+          },
+          Object {
+            "backgroundColor": "primaryColor",
+          },
+        ]
       }
     />
     <SafeAreaView
       style={
-        Object {
-          "flex": 1,
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "backgroundColor": "screenBackgroundColor",
+          },
+        ]
       }
     >
       <View
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "screenBackgroundColor",
+          }
+        }
       />
     </SafeAreaView>
   </View>
@@ -61,27 +74,41 @@ exports[`components/Container renders successfully with its header 1`] = `
   >
     <SafeAreaView
       style={
-        Object {
-          "backgroundColor": "#79bfa7",
-          "flex": 0,
-        }
+        Array [
+          Object {
+            "flex": 0,
+          },
+          Object {
+            "backgroundColor": "primaryColor",
+          },
+        ]
       }
     />
     <SafeAreaView
       style={
-        Object {
-          "flex": 1,
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "backgroundColor": "screenBackgroundColor",
+          },
+        ]
       }
     >
       <View
         style={
-          Object {
-            "alignSelf": "flex-start",
-            "backgroundColor": "#79bfa7",
-            "flexDirection": "row",
-            "height": 50,
-          }
+          Array [
+            Object {},
+            Object {
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "height": 50,
+            },
+            Object {
+              "backgroundColor": "primaryColor",
+            },
+          ]
         }
       >
         <View
@@ -141,7 +168,11 @@ exports[`components/Container renders successfully with its header 1`] = `
         />
       </View>
       <View
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "screenBackgroundColor",
+          }
+        }
       />
     </SafeAreaView>
   </View>
@@ -168,27 +199,41 @@ exports[`components/Container renders successfully with its header and Back butt
   >
     <SafeAreaView
       style={
-        Object {
-          "backgroundColor": "#79bfa7",
-          "flex": 0,
-        }
+        Array [
+          Object {
+            "flex": 0,
+          },
+          Object {
+            "backgroundColor": "primaryColor",
+          },
+        ]
       }
     />
     <SafeAreaView
       style={
-        Object {
-          "flex": 1,
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "backgroundColor": "screenBackgroundColor",
+          },
+        ]
       }
     >
       <View
         style={
-          Object {
-            "alignSelf": "flex-start",
-            "backgroundColor": "#79bfa7",
-            "flexDirection": "row",
-            "height": 50,
-          }
+          Array [
+            Object {},
+            Object {
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "height": 50,
+            },
+            Object {
+              "backgroundColor": "primaryColor",
+            },
+          ]
         }
       >
         <View
@@ -301,7 +346,11 @@ exports[`components/Container renders successfully with its header and Back butt
         />
       </View>
       <View
-        style={Object {}}
+        style={
+          Object {
+            "backgroundColor": "screenBackgroundColor",
+          }
+        }
       />
     </SafeAreaView>
   </View>

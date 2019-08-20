@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
   displayName: {
@@ -9,10 +8,9 @@ export const styles = StyleSheet.create({
   avatar: {
     marginTop: 20,
     marginBottom: 20,
-    height: 150,
-    width: 150,
-    borderRadius: 150,
-    borderColor: colors.primary,
+    height: 100,
+    width: 100,
+    borderRadius: 100,
     borderWidth: 1,
     alignSelf: 'center',
   },

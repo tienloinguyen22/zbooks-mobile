@@ -7,6 +7,15 @@
     "passwordChanged": "Mật khẩu đã thay đổi",
     "requireRecentLogin": "Thao tác này yêu cầu đăng nhập lại. Vui lòng đăng nhập lại và thử lại"
   },
+  "color": {
+    "blue": "Xanh da trời",
+    "deepPurple": "Tím đậm",
+    "indigo": "Chàm",
+    "lightBlue": "Xanh da trời nhạt",
+    "pink": "Hồng",
+    "purple": "Tím",
+    "red": "Đỏ"
+  },
   "common": {
     "cancel": "Huỷ",
     "close": "Đóng",
@@ -104,7 +113,13 @@
     "changePassword": "Đổi mật khẩu",
     "language": "Ngôn ngữ",
     "logout": "Đăng xuất",
+    "primaryColor": "Màu chủ đạo",
     "settings": "Cài đặt",
+    "theme": "Nền",
     "version": "Phiên bản"
+  },
+  "theme": {
+    "dark": "Tối",
+    "light": "Sáng"
   }
 }

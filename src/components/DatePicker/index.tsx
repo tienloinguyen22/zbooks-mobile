@@ -2,10 +2,8 @@ import RNPicker, { PickerOptions } from 'react-native-picker';
 import i18next from 'i18next';
 import colorConvert from 'color-convert';
 import _ from 'lodash';
-import { colors } from '@app/core';
-
-const primaryColorHexArr = [...colorConvert.hex.rgb(colors.primary), 1];
-const whiteColorHexArr = [...colorConvert.hex.rgb(colors.white), 1];
+import { store } from '@app/store';
+import { colors, getPrimaryColor, THEME_DARK } from '@app/core';
 
 export interface DateValue {
   year: number;
@@ -151,12 +149,18 @@ const show = ({ onValueChanged, initialValue, fromYear, toYear }: PickerParams):
     selectedValue = [initialValue.year.toString(), getMonthText(initialValue.month), initialValue.day.toString()];
   }
 
+  const { primaryColorCode, theme } = store.getState().settings;
+  const primaryColor = getPrimaryColor(primaryColorCode, theme);
+  const primaryColorHexArr = [...colorConvert.hex.rgb(primaryColor), 1];
+  const whiteColorHexArr = [...colorConvert.hex.rgb(colors.white), 1];
+  const pickerTextColorHexArr = [...colorConvert.hex.rgb(theme === THEME_DARK ? colors.white : primaryColor), 1];
+  const pickerBackgroundHexArr = [...colorConvert.hex.rgb(theme === THEME_DARK ? colors.lightBlack : colors.white), 1];
   const pickerOptions: PickerOptions = {
     pickerConfirmBtnText: i18next.t('common.confirm'),
     pickerCancelBtnText: i18next.t('common.cancel'),
     pickerTitleText: i18next.t('common.select'),
-    pickerBg: whiteColorHexArr,
-    pickerFontColor: primaryColorHexArr,
+    pickerBg: pickerBackgroundHexArr,
+    pickerFontColor: pickerTextColorHexArr,
     pickerToolBarBg: primaryColorHexArr,
     pickerTitleColor: whiteColorHexArr,
     pickerCancelBtnColor: whiteColorHexArr,

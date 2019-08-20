@@ -23,32 +23,32 @@ export const RematchSample = ({
   <>
     <Card>
       <CardItem header bordered>
-        <Text primary>Rematch with redux-persist</Text>
+        <Text bold>Rematch with redux-persist</Text>
       </CardItem>
       <CardItem bordered>
         <View column>
           <Text>Sharks: {sharks.count}</Text>
           <Button onPress={incrementShark} style={styles.button}>
-            <Text>Raise shark</Text>
+            <Text white>Raise shark</Text>
           </Button>
           <Button onPress={incrementSharkAsync} style={styles.button}>
-            <Text>Raise shark async</Text>
+            <Text white>Raise shark async</Text>
           </Button>
         </View>
       </CardItem>
     </Card>
     <Card>
       <CardItem header bordered>
-        <Text primary>Rematch without redux-persist</Text>
+        <Text bold>Rematch without redux-persist</Text>
       </CardItem>
       <CardItem bordered>
         <View column>
           <Text>Dolphins: {dolphins.count}</Text>
           <Button onPress={incrementDolphin} style={styles.button}>
-            <Text>Raise dolphin</Text>
+            <Text white>Raise dolphin</Text>
           </Button>
           <Button onPress={incrementDolphinAsync} style={styles.button}>
-            <Text>Raise dolphin async</Text>
+            <Text white>Raise dolphin async</Text>
           </Button>
         </View>
       </CardItem>
