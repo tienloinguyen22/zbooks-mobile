@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { TextInput, NativeSyntheticEvent, TextInputFocusEventData, KeyboardTypeOptions } from 'react-native';
-import { colors } from '@app/core';
+import { colors, useTheme, THEME_DARK } from '@app/core';
 import { Tooltip } from '../Tooltip';
 import { View } from '../View';
 import { Text } from '../Text';
-import { Label } from '../Label';
 import { styles } from './styles';
 import { ErrorText } from '../ErrorText';
 import { Icon } from '../Icon';
@@ -30,11 +29,21 @@ interface Props {
 }
 
 export const Field = (props: Props): JSX.Element => {
-  let borderColor = colors.grey;
+  const { primaryColor, textColor, screenBackgroundColor, theme } = useTheme();
+  let borderColor = primaryColor;
   if (props.showError) {
     borderColor = colors.red;
   } else if (props.showSuccess) {
     borderColor = colors.green;
+  }
+  let tooltipBackgroundColor = colors.black;
+  let tooltipTextColor = colors.white;
+  if (theme === THEME_DARK) {
+    tooltipBackgroundColor = colors.white;
+    tooltipTextColor = colors.black;
+  } else {
+    tooltipBackgroundColor = colors.black;
+    tooltipTextColor = colors.white;
   }
 
   let initialItem: PickerDataItem<string> | undefined;
@@ -58,26 +67,49 @@ export const Field = (props: Props): JSX.Element => {
   };
 
   return (
-    <View style={styles.container}>
-      <View row center>
-        <Label style={styles.label}>{props.label}</Label>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: screenBackgroundColor,
+        },
+      ]}
+    >
+      <View
+        row
+        center
+        style={{
+          backgroundColor: screenBackgroundColor,
+        }}
+      >
+        <Text
+          bold
+          style={[
+            styles.label,
+            {
+              color: textColor,
+            },
+          ]}
+        >
+          {props.label}
+        </Text>
         {props.hasTooltip && !!props.tooltipText && (
           <Tooltip
             width={props.tooltipWidth || 250}
             height={props.tooltipHeight || 50}
-            backgroundColor={colors.black}
+            backgroundColor={tooltipBackgroundColor}
             withOverlay={false}
             popover={
               <Text
                 style={{
-                  color: colors.white,
+                  color: tooltipTextColor,
                 }}
               >
                 {props.tooltipText}
               </Text>
             }
           >
-            <Icon name='information-outline' size={14} style={styles.tooltipIcon} />
+            <Icon name='information-outline' size={14} style={styles.tooltipIcon} color={textColor} />
           </Tooltip>
         )}
       </View>
@@ -87,6 +119,7 @@ export const Field = (props: Props): JSX.Element => {
             styles.textInput,
             {
               borderColor,
+              color: textColor,
             },
           ]}
           value={props.value}
@@ -103,14 +136,35 @@ export const Field = (props: Props): JSX.Element => {
               styles.textInput,
               {
                 borderColor,
+                backgroundColor: screenBackgroundColor,
               },
             ]}
           >
-            <Text style={styles.pickerText}>{selectedItem ? selectedItem.text : ''} </Text>
+            <Text
+              style={[
+                styles.pickerText,
+                {
+                  color: textColor,
+                },
+              ]}
+            >
+              {selectedItem ? selectedItem.text : ''}{' '}
+            </Text>
           </View>
         </Touchable>
       )}
-      {props.showError && <ErrorText style={styles.error}>{props.errorMessage}</ErrorText>}
+      {props.showError && (
+        <ErrorText
+          style={[
+            styles.error,
+            {
+              color: colors.red,
+            },
+          ]}
+        >
+          {props.errorMessage}
+        </ErrorText>
+      )}
     </View>
   );
 };

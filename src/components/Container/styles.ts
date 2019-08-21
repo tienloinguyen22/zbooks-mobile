@@ -4,13 +4,11 @@ import { colors } from '@app/core';
 export const styles = StyleSheet.create({
   rootContainerBackground: {
     flex: 0,
-    backgroundColor: colors.primary,
   },
   rootContainer: {
     flex: 1,
   },
   header: {
-    backgroundColor: colors.primary,
     height: 50,
     flexDirection: 'row',
     alignSelf: 'flex-start',

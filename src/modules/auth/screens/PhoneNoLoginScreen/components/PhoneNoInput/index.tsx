@@ -85,7 +85,7 @@ export const PhoneNoInput = ({ sendVerificationCode, isBusy }: Props): JSX.Eleme
               keyboardType='numeric'
             />
             <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
-              <Text>{t('phoneNoLoginScreen.sendVerificationCode')}</Text>
+              <Text white>{t('phoneNoLoginScreen.sendVerificationCode')}</Text>
             </Button>
           </>
         );

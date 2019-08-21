@@ -7,10 +7,11 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
+import io.sentry.RNSentryPackage;
 import com.microsoft.codepush.react.CodePush;
 import io.invertase.firebase.config.ReactNativeFirebaseConfigPackage;
 import io.invertase.firebase.analytics.ReactNativeFirebaseAnalyticsPackage;
-import io.invertase.firebase.crashlytics.ReactNativeFirebaseCrashlyticsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.beefe.picker.PickerViewPackage;
 import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
@@ -68,12 +69,13 @@ public class MainApplication extends NavigationApplication {
       new RNGoogleSigninPackage(),
       new ReactNativeFirebaseAppPackage(),
       new ReactNativeFirebaseAuthPackage(),
-      new ReactNativeFirebaseCrashlyticsPackage(),
       new ReactNativeFirebaseAnalyticsPackage(),
       new ReactNativeFirebaseConfigPackage(),
       new PickerViewPackage(),
       new OrientationPackage(),
-      new CodePush("", MainApplication.this, BuildConfig.DEBUG)
+      new LottiePackage(),
+      new CodePush("", MainApplication.this, BuildConfig.DEBUG),
+      new RNSentryPackage()
     );
   }
 }

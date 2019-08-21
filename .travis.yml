@@ -13,7 +13,8 @@ before_install:
   # apply production configuration
   - openssl aes-256-cbc -K $encrypted_178f17f19164_key -iv $encrypted_178f17f19164_iv -in production.zip.enc -out production.zip -d
   - unzip -o production.zip
-install: yarn
+  - npm install -g yarn
+  - yarn
 jobs:
   include:
     - stage: Validate

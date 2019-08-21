@@ -68,7 +68,7 @@ export const VerificationCodeInput = ({
               keyboardType='numeric'
             />
             <Button full onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
-              <Text>{t('phoneNoLoginScreen.verify')}</Text>
+              <Text white>{t('phoneNoLoginScreen.verify')}</Text>
             </Button>
             <Button
               full
@@ -80,7 +80,7 @@ export const VerificationCodeInput = ({
               }
               style={styles.button}
             >
-              <Text>
+              <Text white>
                 {t('phoneNoLoginScreen.resendCode')}
                 {waitForResend ? ` (${resendVerificationCodeStatus.waitingTimeToResend})` : ''}
               </Text>

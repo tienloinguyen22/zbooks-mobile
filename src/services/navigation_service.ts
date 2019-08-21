@@ -1,13 +1,15 @@
 import { Navigation, LayoutBottomTabsChildren } from 'react-native-navigation';
-import { colors, screenNames, Resource } from '@app/core';
-import { getIconImageSource } from '@app/components/Icon';
 import i18next from 'i18next';
+import { screenNames, Resource, THEME_DARK, colors, getPrimaryColor } from '@app/core';
+import { store } from '@app/store';
+import { getIconImageSource } from '@app/components/Icon';
 
 interface TabItem {
   screenName: string;
   text: string;
   icon: Resource;
   color?: string;
+  selectedColor?: string;
 }
 
 const navigateTo = ({ screenName, componentId }: { screenName: string; componentId: string; options?: {} }): void => {
@@ -30,7 +32,23 @@ const goBack = ({ componentId }: { componentId: string }): void => {
   Navigation.pop(componentId);
 };
 
+const setDefaultOptions = (): void => {
+  const { primaryColorCode, theme } = store.getState().settings;
+  const primaryColor = getPrimaryColor(primaryColorCode, theme);
+  Navigation.setDefaultOptions({
+    statusBar: {
+      backgroundColor: primaryColor,
+      style: 'light',
+    },
+    topBar: {
+      drawBehind: true,
+      visible: false,
+    },
+  });
+};
+
 const setRootStack = (screenName: string): void => {
+  setDefaultOptions();
   Navigation.setRoot({
     root: {
       stack: {
@@ -59,21 +77,12 @@ const setRootEmailVerification = (): void => setRootStack(screenNames.EmailVerif
 
 const initialize = (): void => {
   Navigation.events().registerAppLaunchedListener((): void => {
-    Navigation.setDefaultOptions({
-      statusBar: {
-        backgroundColor: colors.primary,
-        style: 'light',
-      },
-      topBar: {
-        drawBehind: true,
-        visible: false,
-      },
-    });
+    setDefaultOptions();
     setRootAppLoader();
   });
 };
 
-const getTabItem = ({ screenName, icon, color, text }: TabItem): LayoutBottomTabsChildren => ({
+const getTabItem = ({ screenName, icon, color, text, selectedColor }: TabItem): LayoutBottomTabsChildren => ({
   stack: {
     children: [
       {
@@ -87,16 +96,29 @@ const getTabItem = ({ screenName, icon, color, text }: TabItem): LayoutBottomTab
       bottomTab: {
         text,
         icon,
-        selectedIconColor: color || colors.primary,
-        selectedTextColor: color || colors.primary,
+        selectedIconColor: selectedColor,
+        selectedTextColor: selectedColor,
+        textColor: color,
+        iconColor: color,
       },
     },
   },
 });
 
 const setRootHome = async (currentTabIndex?: number): Promise<void> => {
+  setDefaultOptions();
   const homeIcon = await getIconImageSource('home', 30);
   const moreIcon = await getIconImageSource('dots-horizontal', 30);
+  const { primaryColorCode, theme } = store.getState().settings;
+  const primaryColor = getPrimaryColor(primaryColorCode, theme);
+  let tabColor = colors.white;
+  let tabTextColor = colors.grey;
+  if (theme === THEME_DARK) {
+    tabColor = colors.black;
+    tabTextColor = colors.white;
+  } else {
+    tabColor = colors.white;
+  }
   Navigation.setRoot({
     root: {
       bottomTabs: {
@@ -104,6 +126,7 @@ const setRootHome = async (currentTabIndex?: number): Promise<void> => {
           bottomTabs: {
             currentTabIndex: currentTabIndex || 0,
             titleDisplayMode: 'alwaysShow',
+            backgroundColor: tabColor,
           },
         },
         children: [
@@ -111,11 +134,15 @@ const setRootHome = async (currentTabIndex?: number): Promise<void> => {
             screenName: screenNames.HomeScreen,
             icon: homeIcon,
             text: i18next.t('common.home'),
+            color: tabTextColor,
+            selectedColor: primaryColor,
           }),
           getTabItem({
             screenName: screenNames.SettingsScreen,
             icon: moreIcon,
             text: i18next.t('common.settings'),
+            color: tabTextColor,
+            selectedColor: primaryColor,
           }),
         ],
       },

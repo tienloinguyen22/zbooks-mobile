@@ -6,10 +6,7 @@ PODS:
     - JWT (~> 3.0.0-beta.7)
     - React
     - SSZipArchive (~> 2.1)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
   - DoubleConversion (1.1.6)
-  - Fabric (1.9.0)
   - FBSDKCoreKit (5.2.3):
     - FBSDKCoreKit/Basics (= 5.2.3)
     - FBSDKCoreKit/Core (= 5.2.3)
@@ -113,6 +110,10 @@ PODS:
   - GTMSessionFetcher/Core (1.2.2)
   - JWT (3.0.0-beta.11):
     - Base64 (~> 1.1.2)
+  - lottie-ios (3.0.3)
+  - lottie-react-native (3.1.0):
+    - lottie-ios (~> 3.0.3)
+    - React
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -123,94 +124,92 @@ PODS:
   - Picker/Core (4.3.7):
     - React
   - Protobuf (3.9.0)
-  - React (0.60.4):
-    - React-Core (= 0.60.4)
-    - React-DevSupport (= 0.60.4)
-    - React-RCTActionSheet (= 0.60.4)
-    - React-RCTAnimation (= 0.60.4)
-    - React-RCTBlob (= 0.60.4)
-    - React-RCTImage (= 0.60.4)
-    - React-RCTLinking (= 0.60.4)
-    - React-RCTNetwork (= 0.60.4)
-    - React-RCTSettings (= 0.60.4)
-    - React-RCTText (= 0.60.4)
-    - React-RCTVibration (= 0.60.4)
-    - React-RCTWebSocket (= 0.60.4)
-  - React-Core (0.60.4):
+  - React (0.60.5):
+    - React-Core (= 0.60.5)
+    - React-DevSupport (= 0.60.5)
+    - React-RCTActionSheet (= 0.60.5)
+    - React-RCTAnimation (= 0.60.5)
+    - React-RCTBlob (= 0.60.5)
+    - React-RCTImage (= 0.60.5)
+    - React-RCTLinking (= 0.60.5)
+    - React-RCTNetwork (= 0.60.5)
+    - React-RCTSettings (= 0.60.5)
+    - React-RCTText (= 0.60.5)
+    - React-RCTVibration (= 0.60.5)
+    - React-RCTWebSocket (= 0.60.5)
+  - React-Core (0.60.5):
     - Folly (= 2018.10.22.00)
-    - React-cxxreact (= 0.60.4)
-    - React-jsiexecutor (= 0.60.4)
-    - yoga (= 0.60.4.React)
-  - React-cxxreact (0.60.4):
+    - React-cxxreact (= 0.60.5)
+    - React-jsiexecutor (= 0.60.5)
+    - yoga (= 0.60.5.React)
+  - React-cxxreact (0.60.5):
     - boost-for-react-native (= 1.63.0)
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
-    - React-jsinspector (= 0.60.4)
-  - React-DevSupport (0.60.4):
-    - React-Core (= 0.60.4)
-    - React-RCTWebSocket (= 0.60.4)
-  - React-fishhook (0.60.4)
-  - React-jsi (0.60.4):
+    - React-jsinspector (= 0.60.5)
+  - React-DevSupport (0.60.5):
+    - React-Core (= 0.60.5)
+    - React-RCTWebSocket (= 0.60.5)
+  - React-jsi (0.60.5):
     - boost-for-react-native (= 1.63.0)
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
-    - React-jsi/Default (= 0.60.4)
-  - React-jsi/Default (0.60.4):
+    - React-jsi/Default (= 0.60.5)
+  - React-jsi/Default (0.60.5):
     - boost-for-react-native (= 1.63.0)
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
-  - React-jsiexecutor (0.60.4):
+  - React-jsiexecutor (0.60.5):
     - DoubleConversion
     - Folly (= 2018.10.22.00)
     - glog
-    - React-cxxreact (= 0.60.4)
-    - React-jsi (= 0.60.4)
-  - React-jsinspector (0.60.4)
-  - react-native-fbsdk (1.0.0-rc.5):
+    - React-cxxreact (= 0.60.5)
+    - React-jsi (= 0.60.5)
+  - React-jsinspector (0.60.5)
+  - react-native-fbsdk (1.0.1):
     - React
-    - react-native-fbsdk/Core (= 1.0.0-rc.5)
-    - react-native-fbsdk/Login (= 1.0.0-rc.5)
-    - react-native-fbsdk/Share (= 1.0.0-rc.5)
-  - react-native-fbsdk/Core (1.0.0-rc.5):
+    - react-native-fbsdk/Core (= 1.0.1)
+    - react-native-fbsdk/Login (= 1.0.1)
+    - react-native-fbsdk/Share (= 1.0.1)
+  - react-native-fbsdk/Core (1.0.1):
     - FBSDKCoreKit (~> 5.0)
     - React
-  - react-native-fbsdk/Login (1.0.0-rc.5):
+  - react-native-fbsdk/Login (1.0.1):
     - FBSDKLoginKit (~> 5.0)
     - React
-  - react-native-fbsdk/Share (1.0.0-rc.5):
+  - react-native-fbsdk/Share (1.0.1):
     - FBSDKShareKit (~> 5.0)
     - React
   - react-native-orientation (3.1.3):
     - React
   - react-native-splash-screen (3.2.0):
     - React
-  - React-RCTActionSheet (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTAnimation (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTBlob (0.60.4):
-    - React-Core (= 0.60.4)
-    - React-RCTNetwork (= 0.60.4)
-    - React-RCTWebSocket (= 0.60.4)
-  - React-RCTImage (0.60.4):
-    - React-Core (= 0.60.4)
-    - React-RCTNetwork (= 0.60.4)
-  - React-RCTLinking (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTNetwork (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTSettings (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTText (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTVibration (0.60.4):
-    - React-Core (= 0.60.4)
-  - React-RCTWebSocket (0.60.4):
-    - React-Core (= 0.60.4)
-    - React-fishhook (= 0.60.4)
+  - React-RCTActionSheet (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTAnimation (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTBlob (0.60.5):
+    - React-Core (= 0.60.5)
+    - React-RCTNetwork (= 0.60.5)
+    - React-RCTWebSocket (= 0.60.5)
+  - React-RCTImage (0.60.5):
+    - React-Core (= 0.60.5)
+    - React-RCTNetwork (= 0.60.5)
+  - React-RCTLinking (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTNetwork (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTSettings (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTText (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTVibration (0.60.5):
+    - React-Core (= 0.60.5)
+  - React-RCTWebSocket (0.60.5):
+    - React-Core (= 0.60.5)
   - ReactNativeExceptionHandler (2.10.8):
     - React
   - ReactNativeNavigation (3.0.0-alpha.2):
@@ -234,19 +233,19 @@ PODS:
     - Firebase/RemoteConfig (~> 6.5.0)
     - React
     - RNFBApp
-  - RNFBCrashlytics (0.1.5):
-    - Crashlytics (~> 3.12.0)
-    - Fabric (~> 1.9.0)
-    - Firebase/Core (~> 6.5.0)
-    - React
-    - RNFBApp
   - RNGoogleSignin (2.0.0):
     - GoogleSignIn (~> 4.4.0)
     - React
   - RNVectorIcons (6.6.0):
     - React
+  - Sentry (4.1.3):
+    - Sentry/Core (= 4.1.3)
+  - Sentry/Core (4.1.3)
+  - SentryReactNative (0.43.2):
+    - React
+    - Sentry (~> 4.1.3)
   - SSZipArchive (2.2.2)
-  - yoga (0.60.4.React)
+  - yoga (0.60.5.React)
 
 DEPENDENCIES:
   - CodePush (from `../node_modules/react-native-code-push`)
@@ -257,12 +256,13 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - GoogleSignIn (~> 4.4.0)
+  - lottie-ios (from `../node_modules/lottie-ios`)
+  - lottie-react-native (from `../node_modules/lottie-react-native`)
   - Picker (from `../node_modules/react-native-picker`)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/React`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
   - React-DevSupport (from `../node_modules/react-native/React`)
-  - React-fishhook (from `../node_modules/react-native/Libraries/fishhook`)
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
@@ -286,17 +286,15 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBConfig (from `../node_modules/@react-native-firebase/config`)"
-  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - SentryReactNative (from `../node_modules/react-native-sentry`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Base64
     - boost-for-react-native
-    - Crashlytics
-    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -316,6 +314,7 @@ SPEC REPOS:
     - JWT
     - nanopb
     - Protobuf
+    - Sentry
     - SSZipArchive
 
 EXTERNAL SOURCES:
@@ -327,6 +326,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  lottie-ios:
+    :path: "../node_modules/lottie-ios"
+  lottie-react-native:
+    :path: "../node_modules/lottie-react-native"
   Picker:
     :path: "../node_modules/react-native-picker"
   React:
@@ -337,8 +340,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/cxxreact"
   React-DevSupport:
     :path: "../node_modules/react-native/React"
-  React-fishhook:
-    :path: "../node_modules/react-native/Libraries/fishhook"
   React-jsi:
     :path: "../node_modules/react-native/ReactCommon/jsi"
   React-jsiexecutor:
@@ -385,12 +386,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNFBConfig:
     :path: "../node_modules/@react-native-firebase/config"
-  RNFBCrashlytics:
-    :path: "../node_modules/@react-native-firebase/crashlytics"
   RNGoogleSignin:
     :path: "../node_modules/react-native-google-signin"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  SentryReactNative:
+    :path: "../node_modules/react-native-sentry"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -398,9 +399,7 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CodePush: 5fead4bea79a99aefcd3841607709846796177b3
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FBSDKCoreKit: 5154c35d9058fd7dfa0445ba19e194c4b172fc32
   FBSDKLoginKit: dc98b6bf12334f1a42f28d0457fffc9aa3d1eca5
   FBSDKShareKit: 6f9c622f9a5d051f43f2dab6f753d5198422b89c
@@ -420,30 +419,31 @@ SPEC CHECKSUMS:
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
+  lottie-ios: 6037add6441183d4ffd100d2ac78724aa8d919d4
+  lottie-react-native: 86aeee2caa9250e4c8027ac75711a59c6679e532
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Picker: 37554355aef82a532ea95b71b6eeba66bc86182b
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
-  React: ff7ee2ae5ee1c1d9ae2183b4111045b25294bb01
-  React-Core: 8e0ea421cae5609d2562850f98421b15030476fa
-  React-cxxreact: 326880209990151a7182a813311054e9772ba510
-  React-DevSupport: e9f10e6721e78e87622fc985db695c0c0168db8a
-  React-fishhook: 1f0e5b08449403fa75c3fb3881a0beefbada14af
-  React-jsi: 21d3153b1153fbf6510a92b6b11e33e725cb7432
-  React-jsiexecutor: 7549641e48bafae7bfee3f3ea19bf4901639c5de
-  React-jsinspector: 73f24a02fa684ed6a2b828ba116874a2191ded88
-  react-native-fbsdk: 1bd77128b223a25ff3dad3aca2423aab9d4fac92
+  React: 53c53c4d99097af47cf60594b8706b4e3321e722
+  React-Core: ba421f6b4f4cbe2fb17c0b6fc675f87622e78a64
+  React-cxxreact: 8384287780c4999351ad9b6e7a149d9ed10a2395
+  React-DevSupport: 197fb409737cff2c4f9986e77c220d7452cb9f9f
+  React-jsi: 4d8c9efb6312a9725b18d6fc818ffc103f60fec2
+  React-jsiexecutor: 90ad2f9db09513fc763bc757fdc3c4ff8bde2a30
+  React-jsinspector: e08662d1bf5b129a3d556eb9ea343a3f40353ae4
+  react-native-fbsdk: 080f3bb23513c5b59b6528543206fe0d1436bb7e
   react-native-orientation: f1caf84d65f1a4fd4511a18f2b924e634ad7a628
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
-  React-RCTActionSheet: 9f71d7ae3e8fb10e08d162cbf14c621349dbfab3
-  React-RCTAnimation: 981d8c95b0e30918a9832ccac32af83562a27fae
-  React-RCTBlob: 21e73d1020a302a75fed30dbaee9f15287b80baa
-  React-RCTImage: c0bc6ac0926517b6fb7e4c279b04843113e99d1d
-  React-RCTLinking: 1af3f3c59114bed3deec0107c62e7efad0932ee5
-  React-RCTNetwork: 35df9de46e19cda5c56380be1a7759b9b8cb2fcd
-  React-RCTSettings: f580504c2cd1f44e25add10fb9ed3954f67f8ac5
-  React-RCTText: e0f224898b13af9aa036ea7cb3d438daa68c1044
-  React-RCTVibration: 0bea40cd51bd089bd591a8f74c86e91fdf2666c5
-  React-RCTWebSocket: 163873f4cdd5f1058a9483443404fc3801581cb6
+  React-RCTActionSheet: b0f1ea83f4bf75fb966eae9bfc47b78c8d3efd90
+  React-RCTAnimation: 359ba1b5690b1e87cc173558a78e82d35919333e
+  React-RCTBlob: 5e2b55f76e9a1c7ae52b826923502ddc3238df24
+  React-RCTImage: f5f1c50922164e89bdda67bcd0153952a5cfe719
+  React-RCTLinking: d0ecbd791e9ddddc41fa1f66b0255de90e8ee1e9
+  React-RCTNetwork: e26946300b0ab7bb6c4a6348090e93fa21f33a9d
+  React-RCTSettings: d0d37cb521b7470c998595a44f05847777cc3f42
+  React-RCTText: b074d89033583d4f2eb5faf7ea2db3a13c7553a2
+  React-RCTVibration: 2105b2e0e2b66a6408fc69a46c8a7fb5b2fdade0
+  React-RCTWebSocket: cd932a16b7214898b6b7f788c8bddb3637246ac4
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
   ReactNativeNavigation: ad6e6a664bc6c8eb2fe0fe0b73e2c8bd52275be3
   RNCAsyncStorage: b63d6e83fc629b01df6b624688f17944cea5637f
@@ -451,12 +451,13 @@ SPEC CHECKSUMS:
   RNFBApp: b4fe7b915fc8546514331bcbd86378c65bf7c20e
   RNFBAuth: 4fb5c33b1b71fa5558f8bd1b7e3942fb78d3668e
   RNFBConfig: 3ff6ba25e95b72cdda1b8f405fd8f87fc496b999
-  RNFBCrashlytics: 230d5d6ce6fb930afaa366e92dd681bc78538c68
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
+  SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
-  yoga: c2c050f6ae6e222534760cc82f559b89214b67e2
+  yoga: 312528f5bbbba37b4dcea5ef00e8b4033fdd9411
 
-PODFILE CHECKSUM: 760883e263db7d41ea308dac7e97b5f5591bff94
+PODFILE CHECKSUM: e2fbb554d9927f955ee67892497544c441fb2b34
 
 COCOAPODS: 1.7.4

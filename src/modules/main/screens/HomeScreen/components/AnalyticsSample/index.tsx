@@ -20,15 +20,15 @@ export const AnalyticsSample = (): JSX.Element => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text primary>Analytics</Text>
+        <Text bold>Analytics</Text>
       </CardItem>
       <CardItem bordered>
         <View column>
           <Button onPress={recordCurrentScreen} style={styles.button}>
-            <Text>{'Record current screen (Home)'}</Text>
+            <Text white>{'Record current screen (Home)'}</Text>
           </Button>
           <Button onPress={recordSampleEvent} style={styles.button}>
-            <Text>Record event sample_event</Text>
+            <Text white>Record event sample_event</Text>
           </Button>
         </View>
       </CardItem>
