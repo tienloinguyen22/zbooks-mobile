@@ -25,7 +25,6 @@ export * from './ScrollView';
 export * from './Text';
 export * from './Touchable';
 export * from './Thumbnail';
-export * from './Title';
 export * from './Tooltip';
 export * from './View';
 export * from './WithStore';

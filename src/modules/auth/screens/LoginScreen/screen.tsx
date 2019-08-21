@@ -86,22 +86,22 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
   return (
     <Container center centerVertical>
       <Image style={styles.appIcon} source={appIconSource} />
-      <Button full rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
+      <Button rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
         <Icon name='facebook' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Facebook</Text>
       </Button>
-      <Button full rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
+      <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
         <Icon name='google' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Google</Text>
       </Button>
-      <Button full rounded onPress={loginEmail} style={[styles.button]}>
+      <Button rounded onPress={loginEmail} style={[styles.button]}>
         <Text white>{t('loginScreen.loginWithEmail')}</Text>
       </Button>
-      <Button full rounded onPress={loginPhoneNo} style={[styles.button]}>
+      <Button rounded onPress={loginPhoneNo} style={[styles.button]}>
         <Text white>{t('loginScreen.loginWithPhoneNo')}</Text>
       </Button>
       <Text style={styles.notHaveAccountText}>{t('loginScreen.notHaveAccount')}</Text>
-      <Button full rounded onPress={registerByEmail} style={styles.button}>
+      <Button rounded onPress={registerByEmail} style={styles.button}>
         <Text white>{t('loginScreen.registerByEmail')}</Text>
       </Button>
     </Container>

@@ -150,7 +150,7 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />
-              <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+              <Button onPress={handleSubmit} disabled={isBusy} style={styles.button}>
                 <Text white>{t('emailRegisterScreen.register')}</Text>
               </Button>
             </>

@@ -112,10 +112,10 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 tooltipText={t('common.passwordInfo')}
                 tooltipHeight={language === i18n.LANGUAGE_EN ? 140 : 100}
               />
-              <Button full onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
+              <Button onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
                 <Text white>{t('emailLoginScreen.login')}</Text>
               </Button>
-              <Button full onPress={forgotPassword} disabled={isBusy} style={styles.button}>
+              <Button onPress={forgotPassword} disabled={isBusy} style={styles.button}>
                 <Text white>{t('emailLoginScreen.forgotPassword')}</Text>
               </Button>
             </>
