@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScreenProps, screenNames } from '@app/core';
+import { ScreenProps, screenNames, sleep } from '@app/core';
 import { navigationService } from '@app/services';
 import { ScrollView, Container } from '@app/components';
 import { AlertSample } from '@app/modules/main/screens/HomeScreen/components/AlertSample';
@@ -18,15 +18,8 @@ import {
 } from './components';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
-export const Screen = ({
-  componentId,
-  sharks,
-  dolphins,
-  incrementShark,
-  incrementSharkAsync,
-  incrementDolphin,
-  incrementDolphinAsync,
-}: Props): JSX.Element => {
+
+export const Screen = ({ componentId, sharks, dolphins, incrementShark, incrementDolphin }: Props): JSX.Element => {
   const pushNewScreen = (): void => {
     navigationService.navigateTo({
       componentId,
@@ -41,6 +34,24 @@ export const Screen = ({
     });
   };
 
+  const incrementSharkAsync = async (): Promise<void> => {
+    await sleep(500);
+    incrementShark(1);
+  };
+
+  const incrementDolphinAsync = async (): Promise<void> => {
+    await sleep(500);
+    incrementDolphin(1);
+  };
+
+  const incrementShark1 = (): void => {
+    incrementShark(1);
+  };
+
+  const incrementDolphin1 = (): void => {
+    incrementDolphin(1);
+  };
+
   return (
     <Container componentId={componentId}>
       <ScrollView>
@@ -52,9 +63,9 @@ export const Screen = ({
         <RematchSample
           sharks={sharks}
           dolphins={dolphins}
-          incrementShark={incrementShark}
+          incrementShark={incrementShark1}
           incrementSharkAsync={incrementSharkAsync}
-          incrementDolphin={incrementDolphin}
+          incrementDolphin={incrementDolphin1}
           incrementDolphinAsync={incrementDolphinAsync}
         />
         <NotificationSample />

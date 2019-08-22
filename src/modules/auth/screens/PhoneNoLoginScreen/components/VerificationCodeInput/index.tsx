@@ -67,11 +67,10 @@ export const VerificationCodeInput = ({
               errorMessage={errors.code}
               keyboardType='numeric'
             />
-            <Button full onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
+            <Button onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
               <Text white>{t('phoneNoLoginScreen.verify')}</Text>
             </Button>
             <Button
-              full
               onPress={resendVerificationCode}
               disabled={
                 isBusy ||

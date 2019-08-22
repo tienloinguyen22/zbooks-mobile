@@ -13,9 +13,25 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
   },
   default: {
-    paddingHorizontal: 5,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
+    height: 45,
+  },
+  rounded: {
+    borderRadius: 20,
+  },
+  success: {
+    backgroundColor: colors.green,
+  },
+  info: {
+    backgroundColor: colors.blue,
+  },
+  warning: {
+    backgroundColor: colors.orange,
+  },
+  danger: {
+    backgroundColor: colors.red,
   },
 });

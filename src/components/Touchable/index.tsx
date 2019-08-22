@@ -1,14 +1,23 @@
 import React, { ReactNode } from 'react';
-import { Platform, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
+import { Platform, TouchableNativeFeedback, TouchableOpacity, ViewProps } from 'react-native';
+import { View } from '../View';
 
-interface Props {
+interface Props extends ViewProps {
   onPress?: () => void;
   children?: ReactNode;
 }
 
-export const Touchable = ({ children, onPress }: Props): JSX.Element => {
+export const Touchable = (props: Props): JSX.Element => {
   if (Platform.OS === 'ios') {
-    return <TouchableOpacity onPress={onPress}>{children}</TouchableOpacity>;
+    return (
+      <TouchableOpacity onPress={props.onPress}>
+        <View {...props}>{props.children}</View>
+      </TouchableOpacity>
+    );
   }
-  return <TouchableNativeFeedback onPress={onPress}>{children}</TouchableNativeFeedback>;
+  return (
+    <TouchableNativeFeedback onPress={props.onPress}>
+      <View {...props}>{props.children}</View>
+    </TouchableNativeFeedback>
+  );
 };

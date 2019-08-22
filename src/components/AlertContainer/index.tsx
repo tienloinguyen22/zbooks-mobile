@@ -1,10 +1,11 @@
 import React from 'react';
 import { ViewProps, ViewStyle } from 'react-native';
 import Modal from 'react-native-modal';
-import { combineStyles, colors, useTheme, THEME_DARK } from '@app/core';
+import { combineStyles, colors, THEME_DARK } from '@app/core';
 import { Icon } from '@app/components/Icon';
 import { Button } from '@app/components/Button';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '@app/hooks';
 import { View } from '../View';
 import { styles } from './styles';
 import { Text } from '../Text';
@@ -24,15 +25,12 @@ interface Props extends ViewProps {
   success?: boolean;
   visible: boolean;
   actions?: AlertAction[];
-  onPressCancel?: () => void;
+  onPressCancel: () => void;
 }
 
 export const AlertContainer = (props: Props): JSX.Element => {
   const { primaryColor, theme } = useTheme();
   const { t } = useTranslation();
-  const normalTextStyle = {
-    color: primaryColor,
-  };
   const backgroundAlert = {
     backgroundColor: theme === THEME_DARK ? colors.lightBlack : colors.white,
   };
@@ -93,7 +91,9 @@ export const AlertContainer = (props: Props): JSX.Element => {
                 {props.actions.map((item) => {
                   return (
                     <Button outline={!item.special} onPress={item.onPress} key={item.title} style={styles.buttonDialog}>
-                      <Text style={item.special ? styles.textSpecial : normalTextStyle}>{item.title}</Text>
+                      <Text white={item.special} primary={!item.special}>
+                        {item.title}
+                      </Text>
                     </Button>
                   );
                 })}
@@ -102,7 +102,7 @@ export const AlertContainer = (props: Props): JSX.Element => {
             {!props.actions && (
               <View style={styles.reserveContainer}>
                 <Button onPress={props.onPressCancel} style={styles.buttonDialog}>
-                  <Text style={styles.textSpecial}>{t('dialog.close')}</Text>
+                  <Text white>{t('dialog.close')}</Text>
                 </Button>
               </View>
             )}

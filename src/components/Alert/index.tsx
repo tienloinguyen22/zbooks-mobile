@@ -12,7 +12,7 @@ interface Props extends ViewProps {
   success?: boolean;
   visible: boolean;
   actions?: AlertAction[];
-  onPressCancel?: () => void;
+  onPressCancel: () => void;
 }
 let alert: RootSiblings | undefined;
 const show = (props: Props): RootSiblings => {

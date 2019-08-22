@@ -9,8 +9,8 @@ interface MapDispatchToProps {
 }
 
 export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
-  changeLanguage: dispatch.settings.changeLanguageWithI18next,
-  changeTheme: dispatch.settings.changeThemeAndReload,
-  changePrimaryColor: dispatch.settings.changePrimaryColorAndReload,
+  changeLanguage: dispatch.settings.changeLanguage,
+  changeTheme: dispatch.settings.changeTheme,
+  changePrimaryColor: dispatch.settings.changePrimaryColor,
   logout: dispatch.currentUser.logout,
 });

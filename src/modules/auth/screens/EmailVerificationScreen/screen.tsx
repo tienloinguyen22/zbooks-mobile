@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Linking, Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import produce from 'immer';
-import { catchAndLog, ScreenProps, showNotification, useEffectOnce } from '@app/core';
+import { catchAndLog, ScreenProps, showNotification } from '@app/core';
+import { useEffectOnce } from '@app/hooks';
 import { Button, Text, Container } from '@app/components';
 import { authService, navigationService } from '@app/services';
 import { mapStateToProps } from './map_state_to_props';
@@ -104,21 +105,21 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
           email: currentUser.email,
         })}
       </Text>
-      <Button full onPress={checkStatus} disabled={isBusy} style={styles.button}>
+      <Button onPress={checkStatus} disabled={isBusy} style={styles.button}>
         <Text white>{t('emailVerificationScreen.check')}</Text>
       </Button>
-      <Button full onPress={resendVerificationEmail} disabled={isBusy || waitForResend} style={styles.button}>
+      <Button onPress={resendVerificationEmail} disabled={isBusy || waitForResend} style={styles.button}>
         <Text white>
           {t('emailVerificationScreen.resendVerification')}
           {waitForResend ? ` (${resendVerificationEmailStatus.waitingTimeToResend})` : ''}
         </Text>
       </Button>
       {Platform.OS === 'ios' && (
-        <Button full onPress={openMailbox} disabled={isBusy} style={styles.button}>
+        <Button onPress={openMailbox} disabled={isBusy} style={styles.button}>
           <Text white>{t('emailVerificationScreen.openMailbox')}</Text>
         </Button>
       )}
-      <Button full onPress={performLogout} disabled={isBusy} style={styles.button}>
+      <Button onPress={performLogout} disabled={isBusy} style={styles.button}>
         <Text white>{t('emailVerificationScreen.useAnotherAccount')}</Text>
       </Button>
     </Container>

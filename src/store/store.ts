@@ -26,8 +26,7 @@ export const persistor = persistStore(store, undefined, () => {
 });
 
 export type Store = typeof store;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Dispatch = RematchDispatch<any>;
+export type Dispatch = RematchDispatch<typeof models>;
 export type RootState = RematchRootState<typeof models>;
 
 type Connect = (
