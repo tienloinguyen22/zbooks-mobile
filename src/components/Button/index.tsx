@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { combineStyles, useTheme } from '@app/core';
+import { combineStyles } from '@app/core';
+import { useTheme } from '@app/hooks';
 import { ViewProps } from 'react-native';
 import { Touchable } from '@app/components/Touchable';
 import { styles } from './styles';

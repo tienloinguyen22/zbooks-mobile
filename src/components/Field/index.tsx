@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, NativeSyntheticEvent, TextInputFocusEventData, KeyboardTypeOptions } from 'react-native';
-import { colors, useTheme, THEME_DARK } from '@app/core';
+import { colors, THEME_DARK } from '@app/core';
+import { useTheme } from '@app/hooks';
 import { Tooltip } from '../Tooltip';
 import { View } from '../View';
 import { Text } from '../Text';

@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { navigationService } from '@app/services';
-import { useTheme, colors } from '@app/core';
+import { colors } from '@app/core';
+import { useTheme } from '@app/hooks';
 import { StatusBar, SafeAreaView } from 'react-native';
 import { Button } from '@app/components';
 import { Left } from '../Left';

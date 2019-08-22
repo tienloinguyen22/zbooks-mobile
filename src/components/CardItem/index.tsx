@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import { combineStyles, useTheme } from '@app/core';
 import { ViewProps } from 'react-native';
+import { combineStyles } from '@app/core';
+import { useTheme } from '@app/hooks';
 import { View } from '../View';
 import { styles } from './styles';
 

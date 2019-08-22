@@ -1,5 +1,6 @@
 import React from 'react';
 import { Platform } from 'react-native';
+import i18next from 'i18next';
 import {
   ScreenProps,
   i18n,
@@ -52,7 +53,11 @@ export const Screen = ({
         text: lang.name,
       })),
       initialValue: language,
-      onValueChanged: changeLanguage,
+      onValueChanged: async (lang: string) => {
+        await i18next.changeLanguage(lang);
+        changeLanguage(lang);
+        navigationService.setRootHome(1);
+      },
     });
   };
 
@@ -63,7 +68,10 @@ export const Screen = ({
         text: t(`theme.${systemTheme}`),
       })),
       initialValue: theme,
-      onValueChanged: changeTheme,
+      onValueChanged: (selectedTheme: Theme) => {
+        changeTheme(selectedTheme);
+        navigationService.setRootHome(1);
+      },
     });
   };
 
@@ -74,7 +82,10 @@ export const Screen = ({
         text: t(`color.${color.code}`),
       })),
       initialValue: primaryColorCode,
-      onValueChanged: changePrimaryColor,
+      onValueChanged: (selectedPrimaryColor: string) => {
+        changePrimaryColor(selectedPrimaryColor);
+        navigationService.setRootHome(1);
+      },
     });
   };
 

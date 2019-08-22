@@ -1,5 +1,5 @@
 import { jsonSources } from '@app/assets';
-import { Theme, THEME_DARK } from '@app/core';
+import { Theme, THEME_DARK } from '../interfaces/Theme';
 
 const primaryColors = jsonSources.primaryColors();
 export const getPrimaryColor = (primaryCode: string, theme: Theme): string => {
