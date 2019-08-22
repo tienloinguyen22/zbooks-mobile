@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Text as NBText, TextProps } from 'react-native';
-import { combineStyles, useTheme, colors } from '@app/core';
+import { combineStyles, colors } from '@app/core';
+import { useTheme } from '@app/hooks';
 import { styles } from './styles';
 
 interface Props extends TextProps {

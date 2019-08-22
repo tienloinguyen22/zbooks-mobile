@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { Container } from '@app/components';
 import { navigationService } from '@app/services';
-import * as useTheme from '@app/core/hooks/use_theme';
+import * as useTheme from '@app/hooks/use_theme';
 
 beforeAll(() => {});
 

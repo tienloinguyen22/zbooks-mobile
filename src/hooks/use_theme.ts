@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { store } from '@app/store';
-import { getPrimaryColor } from '../helpers/get_primary_color';
-import { colors } from '../themes/colors';
-import { Theme, THEME_DARK } from '../interfaces/Theme';
+import { getPrimaryColor, colors, Theme, THEME_DARK } from '@app/core';
 
 interface CurrentTheme {
   theme: Theme;

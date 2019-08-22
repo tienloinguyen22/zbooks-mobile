@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Button as NativeBaseButton, NativeBase } from 'native-base';
-import { combineStyles, useTheme, useEffectOnce } from '@app/core';
+import { combineStyles } from '@app/core';
+import { useTheme, useEffectOnce } from '@app/hooks';
 import { styles } from './styles';
 
 interface Props extends NativeBase.Button {

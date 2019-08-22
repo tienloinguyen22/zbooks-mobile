@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
-import { catchAndLog, ScreenProps, showNotification, useEffectOnce, handleError } from '@app/core';
+import { catchAndLog, ScreenProps, showNotification, handleError } from '@app/core';
+import { useEffectOnce } from '@app/hooks';
 import { authService, navigationService } from '@app/services';
 import auth, { Auth } from '@react-native-firebase/auth';
 import produce from 'immer';

@@ -29,5 +29,4 @@ export const currentUser: ModelConfig<CurrentUserState> = createModel<CurrentUse
       draftState.emailVerified = true;
     }),
   },
-  effects: {},
 });

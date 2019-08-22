@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { Card as NBCard, NativeBase } from 'native-base';
-import { combineStyles, useTheme, useEffectOnce } from '@app/core';
+import { combineStyles } from '@app/core';
+import { useTheme, useEffectOnce } from '@app/hooks';
 
 interface Props extends NativeBase.Text {
   primary?: boolean;
