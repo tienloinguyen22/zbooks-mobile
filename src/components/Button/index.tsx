@@ -1,9 +1,10 @@
 import React, { ReactNode } from 'react';
 import { combineStyles, useTheme } from '@app/core';
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { ViewProps } from 'react-native';
+import { Touchable } from '@app/components/Touchable';
 import { styles } from './styles';
 
-interface Props extends TouchableOpacityProps {
+interface Props extends ViewProps {
   children?: ReactNode;
   transparent?: boolean;
   disabled?: boolean;
@@ -13,6 +14,7 @@ interface Props extends TouchableOpacityProps {
   info?: boolean;
   warning?: boolean;
   danger?: boolean;
+  onPress: () => void;
 }
 
 export const Button = (props: Props): JSX.Element => {
@@ -47,9 +49,9 @@ export const Button = (props: Props): JSX.Element => {
   // work around to re-render component after changing state
   return (
     <>
-      <TouchableOpacity {...props} style={style}>
+      <Touchable {...props} style={style}>
         {childrenWithProps}
-      </TouchableOpacity>
+      </Touchable>
     </>
   );
 };
