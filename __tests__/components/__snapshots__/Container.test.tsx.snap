@@ -241,29 +241,44 @@ exports[`components/Container renders successfully with its header and Back butt
           <TouchableOpacity
             activeOpacity={0.2}
           >
-            <Text
-              allowFontScaling={false}
+            <View
               style={
-                Array [
-                  Object {
-                    "color": "#fff",
-                    "fontSize": 25,
-                  },
-                  Object {
-                    "marginLeft": 10,
-                    "marginRight": 10,
-                  },
-                  Object {
-                    "fontFamily": "Material Design Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 20,
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 50,
+                }
               }
+              transparent={true}
             >
-              
-            </Text>
+              <Text
+                allowFontScaling={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 25,
+                    },
+                    Object {
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
         <View

@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
 import { navigationService } from '@app/services';
 import { useTheme, colors } from '@app/core';
-import { StatusBar, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StatusBar, SafeAreaView } from 'react-native';
+import { Button } from '@app/components';
 import { Left } from '../Left';
 import { Body } from '../Body';
 import { Right } from '../Right';
@@ -65,9 +66,9 @@ export const Container = (props: Props): JSX.Element => {
             >
               <Left>
                 {props.showBackButton && (
-                  <TouchableOpacity onPress={goBack}>
+                  <Button transparent style={styles.backButton} onPress={goBack}>
                     <Icon name='chevron-left' color={colors.white} style={styles.icon} />
-                  </TouchableOpacity>
+                  </Button>
                 )}
               </Left>
               <Body style={styles.headerText}>
