@@ -1,38 +1,32 @@
-import React, { ReactNode, useState } from 'react';
-import { CardItem as NBCardItem, NativeBase } from 'native-base';
-import { combineStyles, useTheme, useEffectOnce } from '@app/core';
+import React, { ReactNode } from 'react';
+import { combineStyles, useTheme } from '@app/core';
+import { ViewProps } from 'react-native';
+import { View } from '../View';
+import { styles } from './styles';
 
-interface Props extends NativeBase.CardItem {
+interface Props extends ViewProps {
   primary?: boolean;
   children?: ReactNode;
+  bordered?: boolean;
 }
 
 export const CardItem = (props: Props): JSX.Element => {
   const { componentBackgroundColor } = useTheme();
-  const [toggleRefresh, setToggleRefresh] = useState<boolean>(false);
-  useEffectOnce(() => {
-    setToggleRefresh(!toggleRefresh);
-  });
 
   const style = combineStyles(
+    styles.default,
     {
       backgroundColor: componentBackgroundColor,
     },
     props.style,
+    props.bordered && styles.bordered,
   );
 
   return (
     <>
-      {toggleRefresh && (
-        <NBCardItem {...props} style={style}>
-          {props.children}
-        </NBCardItem>
-      )}
-      {!toggleRefresh && (
-        <NBCardItem {...props} style={style}>
-          {props.children}
-        </NBCardItem>
-      )}
+      <View {...props} style={style}>
+        {props.children}
+      </View>
     </>
   );
 };

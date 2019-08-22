@@ -22,7 +22,7 @@ export const RematchSample = ({
 }: Props): JSX.Element => (
   <>
     <Card>
-      <CardItem header bordered>
+      <CardItem bordered>
         <Text bold>Rematch with redux-persist</Text>
       </CardItem>
       <CardItem bordered>
@@ -38,7 +38,7 @@ export const RematchSample = ({
       </CardItem>
     </Card>
     <Card>
-      <CardItem header bordered>
+      <CardItem bordered>
         <Text bold>Rematch without redux-persist</Text>
       </CardItem>
       <CardItem bordered>

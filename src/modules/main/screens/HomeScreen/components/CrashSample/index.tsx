@@ -15,7 +15,7 @@ export const CrashSample = (): JSX.Element => {
 
   return (
     <Card>
-      <CardItem header bordered>
+      <CardItem bordered>
         <Text bold>Crash Handle (open debugger to view console)</Text>
       </CardItem>
       <CardItem bordered>

@@ -84,7 +84,7 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 errorMessage={errors.email}
               />
               <View column>
-                <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+                <Button onPress={handleSubmit} disabled={isBusy} style={styles.button}>
                   <Text white>{t('forgotPasswordScreen.sendPasswordResetEmail')}</Text>
                 </Button>
               </View>

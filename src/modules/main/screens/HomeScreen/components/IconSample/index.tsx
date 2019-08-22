@@ -6,7 +6,7 @@ export const IconSample = (): JSX.Element => {
   const { primaryColor } = useTheme();
   return (
     <Card>
-      <CardItem header bordered>
+      <CardItem bordered>
         <Text bold>Icons</Text>
       </CardItem>
       <CardItem bordered>
