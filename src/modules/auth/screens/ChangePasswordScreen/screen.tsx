@@ -106,7 +106,7 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />
-              <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+              <Button onPress={handleSubmit} disabled={isBusy} style={styles.button}>
                 <Text white>{t('changePasswordScreen.changePassword')}</Text>
               </Button>
             </>

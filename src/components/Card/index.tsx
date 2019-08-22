@@ -1,21 +1,20 @@
-import React, { ReactNode, useState } from 'react';
-import { Card as NBCard, NativeBase } from 'native-base';
+import React, { ReactNode } from 'react';
 import { combineStyles } from '@app/core';
-import { useTheme, useEffectOnce } from '@app/hooks';
+import { useTheme } from '@app/hooks';
+import { ViewProps } from 'react-native';
+import { View } from '../View';
+import { styles } from './styles';
 
-interface Props extends NativeBase.Text {
+interface Props extends ViewProps {
   primary?: boolean;
   children?: ReactNode;
 }
 
 export const Card = (props: Props): JSX.Element => {
   const { componentBackgroundColor } = useTheme();
-  const [toggleRefresh, setToggleRefresh] = useState<boolean>(false);
-  useEffectOnce(() => {
-    setToggleRefresh(!toggleRefresh);
-  });
 
   const style = combineStyles(
+    styles.default,
     {
       backgroundColor: componentBackgroundColor,
     },
@@ -24,16 +23,9 @@ export const Card = (props: Props): JSX.Element => {
 
   return (
     <>
-      {toggleRefresh && (
-        <NBCard {...props} style={style}>
-          {props.children}
-        </NBCard>
-      )}
-      {!toggleRefresh && (
-        <NBCard {...props} style={style}>
-          {props.children}
-        </NBCard>
-      )}
+      <View {...props} style={style}>
+        {props.children}
+      </View>
     </>
   );
 };

@@ -3,15 +3,15 @@ import { navigationService } from '@app/services';
 import { colors } from '@app/core';
 import { useTheme } from '@app/hooks';
 import { StatusBar, SafeAreaView } from 'react-native';
+import { Button } from '@app/components';
 import { Left } from '../Left';
-import { Button } from '../Button';
 import { Body } from '../Body';
-import { Title } from '../Title';
 import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { View } from '../View';
 import { styles } from './styles';
 import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 interface Props {
   componentId?: string;
@@ -67,13 +67,15 @@ export const Container = (props: Props): JSX.Element => {
             >
               <Left>
                 {props.showBackButton && (
-                  <Button transparent onPress={goBack}>
+                  <Button transparent style={styles.backButton} onPress={goBack}>
                     <Icon name='chevron-left' color={colors.white} style={styles.icon} />
                   </Button>
                 )}
               </Left>
               <Body style={styles.headerText}>
-                <Title style={styles.title}>{props.headerTitle}</Title>
+                <Text h6 bold white>
+                  {props.headerTitle}
+                </Text>
               </Body>
               <Right />
             </View>

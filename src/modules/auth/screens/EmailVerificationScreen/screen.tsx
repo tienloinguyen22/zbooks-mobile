@@ -105,21 +105,21 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
           email: currentUser.email,
         })}
       </Text>
-      <Button full onPress={checkStatus} disabled={isBusy} style={styles.button}>
+      <Button onPress={checkStatus} disabled={isBusy} style={styles.button}>
         <Text white>{t('emailVerificationScreen.check')}</Text>
       </Button>
-      <Button full onPress={resendVerificationEmail} disabled={isBusy || waitForResend} style={styles.button}>
+      <Button onPress={resendVerificationEmail} disabled={isBusy || waitForResend} style={styles.button}>
         <Text white>
           {t('emailVerificationScreen.resendVerification')}
           {waitForResend ? ` (${resendVerificationEmailStatus.waitingTimeToResend})` : ''}
         </Text>
       </Button>
       {Platform.OS === 'ios' && (
-        <Button full onPress={openMailbox} disabled={isBusy} style={styles.button}>
+        <Button onPress={openMailbox} disabled={isBusy} style={styles.button}>
           <Text white>{t('emailVerificationScreen.openMailbox')}</Text>
         </Button>
       )}
-      <Button full onPress={performLogout} disabled={isBusy} style={styles.button}>
+      <Button onPress={performLogout} disabled={isBusy} style={styles.button}>
         <Text white>{t('emailVerificationScreen.useAnotherAccount')}</Text>
       </Button>
     </Container>
