@@ -1,6 +1,5 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
-import { colors } from '@app/core';
 import { ListItem } from '../ListItem';
 import { Text } from '../Text';
 import { Left } from '../Left';
@@ -20,10 +19,17 @@ export interface ListItemData {
   icon?: string;
   isPicker?: boolean;
   onPress?: () => void;
+  primaryColor?: string;
+  iconColor?: string;
 }
-
 const HeaderItem = ({ item }: { item: ListItemData }): JSX.Element => (
-  <ListItem itemDivider onPress={item.onPress}>
+  <ListItem
+    itemDivider
+    onPress={item.onPress}
+    style={{
+      backgroundColor: item.primaryColor,
+    }}
+  >
     <Left>
       <Text style={styles.header}>{item.title}</Text>
     </Left>
@@ -37,8 +43,8 @@ const Item = ({ item }: { item: ListItemData }): JSX.Element => (
       <Text>{item.title}</Text>
     </Left>
     <Right style={styles.right}>
-      {item.showIcon && <Icon name={item.icon || 'chevron-right'} color={colors.lightGrey} size={18} />}
-      <Text style={styles.value}>{item.value}</Text>
+      {item.showIcon && <Icon name={item.icon || 'chevron-right'} color={item.iconColor} size={18} />}
+      <Text>{item.value}</Text>
     </Right>
   </ListItem>
 );
@@ -69,6 +75,7 @@ export const List = ({ data }: Props): JSX.Element => {
       renderItem={renderItem}
       keyExtractor={(_item, index) => index.toString()}
       stickyHeaderIndices={stickyHeaderIndices}
+      contentContainerStyle={styles.spaceBottomFlatList}
     />
   );
 };

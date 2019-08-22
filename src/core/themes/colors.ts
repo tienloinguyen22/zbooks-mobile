@@ -1,13 +1,14 @@
 export const colors = {
-  primary: '#79bfa7',
   white: '#fff',
-  black: '#333333',
-  grey: '#A0A0A3',
-  lightGrey: '#E9E9ED',
-  red: '#dc3545',
+  black: '#222C44',
+  lightBlack: '#1A2237',
+  grey: '#8B97AC',
+  lightGrey: '#F7F9FC',
+  red: '#FC4173',
   yellow: '#FFFF00',
-  orange: '#F9B442',
-  green: '#28a745',
+  orange: '#FDA929',
+  green: '#24DF98',
+  blue: '#1A97FC',
   google: '#EA4334', // color for facebook icon
   facebook: '#4267B2', // color for google icon
 };

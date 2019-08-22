@@ -10,15 +10,15 @@ interface Props {
 export const NavigationSample = ({ pushNewScreen, changeTab }: Props): JSX.Element => (
   <Card>
     <CardItem header bordered>
-      <Text primary>Navigation</Text>
+      <Text bold>Navigation</Text>
     </CardItem>
     <CardItem bordered>
       <View column>
         <Button onPress={pushNewScreen} style={styles.button}>
-          <Text>Push New Screen</Text>
+          <Text white>Push New Screen</Text>
         </Button>
         <Button onPress={changeTab} style={styles.button}>
-          <Text>Change Tab Settings</Text>
+          <Text white>Change Tab Settings</Text>
         </Button>
       </View>
     </CardItem>

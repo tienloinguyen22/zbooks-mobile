@@ -1,9 +1,20 @@
 import React from 'react';
-import { ScreenProps, i18n, catchAndLog, screenNames, Language } from '@app/core';
+import { Platform } from 'react-native';
+import {
+  ScreenProps,
+  i18n,
+  catchAndLog,
+  screenNames,
+  Language,
+  Theme,
+  THEME_DARK,
+  colors,
+  getPrimaryColor,
+} from '@app/core';
 import { config } from '@app/config';
 import { List, ListItemData, Picker, Image, Text, Container, Icon, View } from '@app/components';
+import { jsonSources, PrimaryColor } from '@app/assets';
 import { useTranslation } from 'react-i18next';
-import { Platform } from 'react-native';
 import { navigationService, authService } from '@app/services';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import { mapStateToProps } from './map_state_to_props';
@@ -11,10 +22,23 @@ import { styles } from './styles';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ componentId, changeLanguage, language, currentUser, logout }: Props): JSX.Element => {
+const primaryColors = jsonSources.primaryColors();
+
+export const Screen = ({
+  componentId,
+  changeLanguage,
+  language,
+  changePrimaryColor,
+  primaryColorCode,
+  changeTheme,
+  theme,
+  currentUser,
+  logout,
+}: Props): JSX.Element => {
   const { t } = useTranslation();
   const appVersion = Platform.OS === 'android' ? config.android.version : config.ios.version;
-
+  const textColor = theme === THEME_DARK ? colors.white : colors.black;
+  const primaryColor = getPrimaryColor(primaryColorCode, theme);
   const performLogout = catchAndLog(async () => {
     await authService.logout();
     logout();
@@ -32,6 +56,33 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
     });
   };
 
+  const selectTheme = (): void => {
+    Picker.show<Theme>({
+      dataSources: (['dark', 'light'] as Theme[]).map((systemTheme: Theme) => ({
+        value: systemTheme,
+        text: t(`theme.${systemTheme}`),
+      })),
+      initialValue: theme,
+      onValueChanged: changeTheme,
+    });
+  };
+
+  const selectPrimaryColor = (): void => {
+    Picker.show<string>({
+      dataSources: primaryColors.map((color: PrimaryColor) => ({
+        value: color.code,
+        text: t(`color.${color.code}`),
+      })),
+      initialValue: primaryColorCode,
+      onValueChanged: changePrimaryColor,
+    });
+  };
+
+  const getPrimaryColorName = (code: string): string => {
+    const matchedColor = primaryColors.filter((item) => item.code === code);
+    return matchedColor ? t(`color.${matchedColor[0].code}`) : '';
+  };
+
   const openChangePasswordScreen = (): void =>
     navigationService.navigateTo({
       componentId,
@@ -42,6 +93,7 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
     {
       title: t('settingsScreen.settings'),
       isHeader: true,
+      primaryColor,
     },
     {
       title: t('settingsScreen.language'),
@@ -49,10 +101,28 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
       value: i18n.getLanguageName(language),
       onPress: selectLanguage,
       showIcon: true,
+      iconColor: textColor,
+    },
+    {
+      title: t('settingsScreen.theme'),
+      isHeader: false,
+      value: t(`theme.${theme}`),
+      onPress: selectTheme,
+      showIcon: true,
+      iconColor: textColor,
+    },
+    {
+      title: t('settingsScreen.primaryColor'),
+      isHeader: false,
+      value: getPrimaryColorName(primaryColorCode),
+      onPress: selectPrimaryColor,
+      showIcon: true,
+      iconColor: textColor,
     },
     {
       title: t('settingsScreen.about'),
       isHeader: true,
+      primaryColor,
     },
     {
       title: t('settingsScreen.author'),
@@ -78,6 +148,7 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
       isHeader: false,
       onPress: openChangePasswordScreen,
       showIcon: true,
+      iconColor: textColor,
     });
   }
 
@@ -88,15 +159,22 @@ export const Screen = ({ componentId, changeLanguage, language, currentUser, log
           source={{
             uri: currentUser.avatarUrl,
           }}
-          style={styles.avatar}
+          style={[
+            styles.avatar,
+            {
+              borderColor: primaryColor,
+            },
+          ]}
         />
       )}
       {!currentUser.avatarUrl && (
-        <View style={styles.avatar}>
-          <Icon name='account-circle-outline' size={150} />
+        <View center centerVertical style={styles.avatar}>
+          <Icon name='account-circle-outline' size={100} color={textColor} />
         </View>
       )}
-      <Text style={styles.displayName}>{currentUser.displayName}</Text>
+      <Text bold style={styles.displayName}>
+        {currentUser.displayName}
+      </Text>
       <List data={settingData} />
     </Container>
   );

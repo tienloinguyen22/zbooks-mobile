@@ -14,6 +14,7 @@ import {
   NotificationSample,
   PickerSample,
   AnalyticsSample,
+  TextStyleSample,
 } from './components';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
@@ -59,6 +60,7 @@ export const Screen = ({
         <NotificationSample />
         <AlertSample />
         <LottieSample />
+        <TextStyleSample />
       </ScrollView>
     </Container>
   );

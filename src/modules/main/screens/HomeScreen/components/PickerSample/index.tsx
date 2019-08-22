@@ -33,19 +33,19 @@ export const PickerSample = (): JSX.Element => {
   return (
     <Card>
       <CardItem header bordered>
-        <Text primary>Picker</Text>
+        <Text bold>Picker</Text>
       </CardItem>
       <CardItem bordered>
         <View column>
           <Text>{language}</Text>
           <Button onPress={changeLanguage} style={styles.button}>
-            <Text>Change Language</Text>
+            <Text white>Change Language</Text>
           </Button>
           <Text>
             Year: {date.year} - Month: {date.month} - Day: {date.day}
           </Text>
           <Button onPress={changeDate} style={styles.button}>
-            <Text>Change Date</Text>
+            <Text white>Change Date</Text>
           </Button>
         </View>
       </CardItem>

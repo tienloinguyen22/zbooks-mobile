@@ -21,4 +21,7 @@ export const styles = StyleSheet.create({
   notHaveAccountText: {
     marginBottom: 20,
   },
+  icon: {
+    marginRight: 20,
+  },
 });

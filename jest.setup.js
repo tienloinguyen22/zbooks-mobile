@@ -17,3 +17,14 @@ jest.mock('@react-native-community/async-storage', () => mockAsyncStorage);
 jest.mock('@react-native-firebase/app', () => ({}));
 jest.mock('@react-native-firebase/auth', () => ({}));
 jest.mock('@react-native-firebase/config', () => ({}));
+jest.mock('react-native-splash-screen');
+jest.mock('react-native-google-signin', () => {});
+jest.mock('react-native-code-push', () => {});
+jest.mock('redux-persist', () => ({
+  persistStore: jest.fn(),
+}));
+jest.mock('@rematch/persist', () => jest.fn());
+jest.mock('@rematch/core', () => ({
+  init: jest.fn(),
+  createModel: jest.fn(),
+}));

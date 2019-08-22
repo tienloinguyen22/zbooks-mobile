@@ -36,7 +36,6 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   titleDefault: {
-    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -46,7 +45,6 @@ export const styles = StyleSheet.create({
   },
   messageText: {
     textAlign: 'center',
-    fontSize: 16,
     paddingVertical: 15,
   },
   buttonContainer: {
@@ -54,22 +52,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 10,
   },
-  buttonDialogOutline: {
+  buttonDialog: {
     marginHorizontal: 5,
+    width: 80,
   },
   textSpecial: {
     color: colors.white,
-  },
-  textNormal: {
-    color: colors.primary,
-  },
-  buttonClose: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    backgroundColor: colors.primary,
-    borderRadius: 5,
   },
   columnGrey: {
     width: 1,
