@@ -4,8 +4,6 @@ import { Container } from '@app/components';
 import { navigationService } from '@app/services';
 import * as useTheme from '@app/hooks/use_theme';
 
-beforeAll(() => {});
-
 describe('components/Container', () => {
   const headerTitle = 'App header';
   const backButtonText = '';

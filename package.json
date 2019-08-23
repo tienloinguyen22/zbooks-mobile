@@ -113,7 +113,7 @@
     "lint-fix": "prettier --write '{src,__{tests,mocks}__}/**/*.{ts,tsx}' && eslint '{src,__tests__}/**/**.{ts,tsx}' --fix",
     "prettier": "prettier --write '{src,__{tests,mocks}__}/**/*.{ts,tsx}'",
     "start": "yarn lint && yarn code-check && node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --verbose",
     "update-icon": "./generate_icons.sh",
     "update-version": "ts-node job.ts update-version",
     "validate": "yarn lint && yarn code-check && yarn test"

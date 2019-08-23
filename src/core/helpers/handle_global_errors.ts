@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import Promise from 'bluebird';
 import { recordError } from './record_error';
 
-interface Bluebird {
+export interface Bluebird {
   onunhandledrejection: (error: Error) => void;
 }
 
@@ -29,9 +29,7 @@ global.Promise = Promise;
   // Warning: when running in "remote debug" mode (JS environment is Chrome browser),
   // this handler is called a second time by Bluebird with a custom "dom-event".
   // We need to filter this case out:
-  if (error instanceof Error) {
-    showAndRecordError(error);
-  }
+  error instanceof Error && showAndRecordError(error);
 };
 
 export const handleGlobalErrors = (): void => {
@@ -39,8 +37,8 @@ export const handleGlobalErrors = (): void => {
     showAndRecordError(error, isFatal);
   }, true);
   setNativeExceptionHandler(
-    (_errorString: string) => {
-      // do nothing
+    (errorString: string) => {
+      showAndRecordError(new Error(errorString), true);
     },
     false,
     true,
