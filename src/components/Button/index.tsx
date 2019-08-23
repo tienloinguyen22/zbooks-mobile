@@ -8,6 +8,7 @@ import { styles } from './styles';
 interface Props extends ViewProps {
   children?: ReactNode;
   transparent?: boolean;
+  outline?: boolean;
   disabled?: boolean;
   rounded?: boolean;
   width?: number;
@@ -29,6 +30,10 @@ export const Button = (props: Props): JSX.Element => {
     },
     props.style,
     props.transparent && styles.transparent,
+    props.outline && styles.outline,
+    props.outline && {
+      borderColor: primaryColor,
+    },
     props.disabled && styles.disabled,
     props.success && styles.success,
     props.info && styles.info,

@@ -28,6 +28,13 @@
     "settings": "Cài đặt",
     "updateInstalled": "Bản cập nhật mới đã được tải. Vui lòng khởi động lại"
   },
+  "dialog": {
+    "close": "Đóng",
+    "info": "Thông tin",
+    "warning": "Cảnh báo",
+    "success": "Thành công",
+    "error": "Lỗi"
+  },
   "emailLoginScreen": {
     "email": "Email",
     "forgotPassword": "Quên mật khẩu?",
