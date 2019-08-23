@@ -32,7 +32,7 @@ export const PickerSample = (): JSX.Element => {
 
   return (
     <Card>
-      <CardItem bordered>
+      <CardItem bordered header>
         <Text bold>Picker</Text>
       </CardItem>
       <CardItem bordered>

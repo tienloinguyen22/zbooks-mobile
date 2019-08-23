@@ -61,7 +61,7 @@ export const AlertSample = (): JSX.Element => {
   };
   return (
     <Card>
-      <CardItem bordered>
+      <CardItem bordered header>
         <Text bold>Alert</Text>
       </CardItem>
       <CardItem bordered>

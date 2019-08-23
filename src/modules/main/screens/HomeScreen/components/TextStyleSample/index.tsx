@@ -69,7 +69,7 @@ const arrayHeadlines: HeadingItem[] = [
 ];
 export const TextStyleSample = (): JSX.Element => (
   <Card>
-    <CardItem bordered>
+    <CardItem bordered header>
       <Text bold>Sample Text</Text>
     </CardItem>
     <CardItem bordered>

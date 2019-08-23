@@ -4,8 +4,9 @@ import { colors } from '@app/core';
 const { width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   default: {
-    width: width - 10,
-    margin: 5,
+    width: width - 40,
+    marginHorizontal: 20,
+    marginVertical: 10,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,

@@ -7,7 +7,7 @@ const loading = jsonSources.loading();
 export const LottieSample = (): JSX.Element => {
   return (
     <Card>
-      <CardItem bordered>
+      <CardItem bordered header>
         <Text primary>Lottie Animations</Text>
       </CardItem>
       <CardItem bordered>

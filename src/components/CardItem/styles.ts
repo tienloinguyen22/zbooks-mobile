@@ -3,8 +3,8 @@ import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
   bordered: {
-    borderWidth: 1,
-    borderColor: colors.lightGrey,
+    borderTopWidth: 1,
+    borderTopColor: colors.lightGrey,
   },
   default: {
     padding: 5,
