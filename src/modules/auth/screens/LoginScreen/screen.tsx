@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
 import { ScreenProps, catchAndLog, screenNames, colors, showNotification } from '@app/core';
 import { Image, Button, Text, Icon, Loading, Container } from '@app/components';
-import { navigationService, authService, LoginResult } from '@app/services';
+import { navigationService, authService, LoginResult, appService } from '@app/services';
+import { useEffectOnce } from '@app/hooks';
 import { styles } from './styles';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import { mapStateToProps } from './map_state_to_props';
@@ -12,10 +13,20 @@ type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchT
 
 const appIconSource = imageSources.appIcon();
 
-export const Screen = ({ login, componentId }: Props): JSX.Element => {
+export const Screen = ({
+  login,
+  componentId,
+  shouldShownUpdateWarning,
+  updateShownUpdateWarning,
+}: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
-
+  useEffectOnce(() => {
+    if (shouldShownUpdateWarning) {
+      appService.checkNeedUpdateNewBinaryVersion();
+      updateShownUpdateWarning(false);
+    }
+  });
   const performLogin = async (loginType: 'GOOGLE' | 'FACEBOOK'): Promise<void> => {
     let result: LoginResult | undefined;
     switch (loginType) {

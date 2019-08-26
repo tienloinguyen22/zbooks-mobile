@@ -1,9 +1,10 @@
 import React from 'react';
 import { ScreenProps, screenNames, sleep } from '@app/core';
-import { navigationService } from '@app/services';
+import { navigationService, appService } from '@app/services';
 import { ScrollView, Container } from '@app/components';
 import { AlertSample } from '@app/modules/main/screens/HomeScreen/components/AlertSample';
 import { LottieSample } from '@app/modules/main/screens/HomeScreen/components/LottieSample';
+import { useEffectOnce } from '@app/hooks';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import {
@@ -19,7 +20,21 @@ import {
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
 
-export const Screen = ({ componentId, sharks, dolphins, incrementShark, incrementDolphin }: Props): JSX.Element => {
+export const Screen = ({
+  componentId,
+  sharks,
+  dolphins,
+  incrementShark,
+  incrementDolphin,
+  shouldShownUpdateWarning,
+  updateShownUpdateWarning,
+}: Props): JSX.Element => {
+  useEffectOnce(() => {
+    if (shouldShownUpdateWarning) {
+      appService.checkNeedUpdateNewBinaryVersion();
+      updateShownUpdateWarning(false);
+    }
+  });
   const pushNewScreen = (): void => {
     navigationService.navigateTo({
       componentId,

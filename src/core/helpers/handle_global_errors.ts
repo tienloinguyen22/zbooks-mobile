@@ -1,7 +1,7 @@
 import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
-import { Alert } from 'react-native';
 import i18next from 'i18next';
 import Promise from 'bluebird';
+import { Alert } from '@app/components';
 import { recordError } from './record_error';
 
 export interface Bluebird {
@@ -11,11 +11,12 @@ export interface Bluebird {
 const showAndRecordError = (error: Error, _isFatal: boolean = false): void => {
   recordError(error);
   if (!__DEV__) {
-    Alert.alert(i18next.t('error.unexpectedErrorOccurred'), i18next.t('error.unexpectedErrorOccurredMessage'), [
-      {
-        text: i18next.t('common.close'),
-      },
-    ]);
+    Alert.show({
+      type: 'ERROR',
+      title: i18next.t('error.unexpectedErrorOccurred'),
+      message: i18next.t('error.unexpectedErrorOccurredMessage'),
+      onPressCancel: Alert.hide,
+    });
   }
 };
 

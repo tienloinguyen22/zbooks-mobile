@@ -31,3 +31,4 @@ export * from './WithStore';
 export * from './WithScreen';
 export * from './Alert';
 export * from './Animation';
+export * from './AlertContainer';

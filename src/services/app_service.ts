@@ -1,13 +1,20 @@
 import remoteConfig from '@react-native-firebase/config';
 import auth from '@react-native-firebase/auth';
 import codePush from 'react-native-code-push';
-import { Alert, Platform } from 'react-native';
+import { Platform, Linking } from 'react-native';
 import i18next from 'i18next';
 import { config } from '@app/config';
+import { Alert, AlertAction } from '@app/components';
 
 const TESTERS_KEY = 'testers';
+const MINIMUM_VERSION_KEY = 'minimumVersion';
 interface Testers {
   [testerId: string]: boolean;
+}
+interface Version {
+  ios: string;
+  android: string;
+  forceUpdate: boolean;
 }
 
 const getRemoteConfigJson = async <T>(key: string): Promise<T | undefined> => {
@@ -23,11 +30,15 @@ const getRemoteConfigJson = async <T>(key: string): Promise<T | undefined> => {
     return undefined;
   }
 };
-
 const onSyncStatusChange = (syncStatus: codePush.SyncStatus): void => {
   switch (syncStatus) {
     case codePush.SyncStatus.UPDATE_INSTALLED:
-      Alert.alert(i18next.t('common.newUpdate'), i18next.t('common.updateInstalled'));
+      Alert.show({
+        type: 'INFO',
+        title: i18next.t('common.newUpdate'),
+        message: i18next.t('common.updateInstalled'),
+        onPressCancel: Alert.hide,
+      });
       break;
     default:
       break;
@@ -46,6 +57,58 @@ const checkIsTester = async (): Promise<boolean> => {
     return false;
   }
   return testers[currentUser.uid] === true;
+};
+const toAppStoreLink = (): void => {
+  Linking.openURL(config.ios.storeLink);
+};
+
+const toPlayStoreLink = (): void => {
+  Linking.openURL(config.android.storeLink);
+};
+export const checkNeedUpdateNewBinaryVersion = async (): Promise<void> => {
+  const minimumVersion = await getRemoteConfigJson<Version>(MINIMUM_VERSION_KEY);
+  if (!minimumVersion) {
+    return;
+  }
+  const forceUpdateAction: AlertAction[] = [
+    {
+      title: i18next.t('common.update'),
+      onPress: Platform.OS === 'ios' ? toAppStoreLink : toPlayStoreLink,
+      special: true,
+    },
+  ];
+  const notifyUpdateActions: AlertAction[] = [
+    {
+      title: i18next.t('common.update'),
+      onPress: Platform.OS === 'ios' ? toAppStoreLink : toPlayStoreLink,
+      special: true,
+    },
+    {
+      title: i18next.t('common.close'),
+      onPress: Alert.hide,
+      special: false,
+    },
+  ];
+  if (minimumVersion.ios > config.ios.version || minimumVersion.android > config.android.version) {
+    if (minimumVersion.forceUpdate) {
+      Alert.show({
+        type: 'WARNING',
+        title: i18next.t('common.newUpdate'),
+        message: i18next.t('common.newVersionInAppStore'),
+        onPressCancel: Alert.hide,
+        closeable: false,
+        actions: forceUpdateAction,
+      });
+    } else {
+      Alert.show({
+        type: 'WARNING',
+        title: i18next.t('common.newUpdate'),
+        message: i18next.t('common.newVersionInAppStore'),
+        onPressCancel: Alert.hide,
+        actions: notifyUpdateActions,
+      });
+    }
+  }
 };
 
 export const checkUpdate = async (): Promise<void> => {
@@ -83,4 +146,5 @@ export const appService = {
   setDefaults,
   getRemoteConfigJson,
   checkUpdate,
+  checkNeedUpdateNewBinaryVersion,
 };

@@ -1,3 +1,8 @@
 import { RootState } from '@app/store';
 
-export const mapStateToProps = (_state: RootState): {} => ({});
+interface MapStateToProps {
+  shouldShownUpdateWarning: boolean;
+}
+export const mapStateToProps = (state: RootState): MapStateToProps => ({
+  shouldShownUpdateWarning: state.minumumVersionChecks.shouldShownUpdateWarning,
+});

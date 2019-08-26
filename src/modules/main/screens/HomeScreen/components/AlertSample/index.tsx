@@ -3,30 +3,26 @@ import { Card, CardItem, Text, View, Button, Alert } from '@app/components';
 import { styles } from './styles';
 
 export const AlertSample = (): JSX.Element => {
-  const hideAlert = (): void => {
-    Alert.hide();
-  };
   const showWarningAlert = (): void => {
     Alert.show({
-      visible: true,
+      type: 'WARNING',
       title: 'Hello',
       message: 'Hello React',
-      onPressCancel: hideAlert,
-      warning: true,
+      onPressCancel: Alert.hide,
       actions: [
         {
           title: 'Button1',
-          onPress: hideAlert,
+          onPress: Alert.hide,
           special: true,
         },
         {
           title: 'Button2',
-          onPress: hideAlert,
+          onPress: Alert.hide,
           special: false,
         },
         {
           title: 'Cancel',
-          onPress: hideAlert,
+          onPress: Alert.hide,
           special: true,
         },
       ],
@@ -34,29 +30,26 @@ export const AlertSample = (): JSX.Element => {
   };
   const showInfoAlert = (): void => {
     Alert.show({
-      visible: true,
+      type: 'INFO',
       title: 'Info',
       message: 'Hello React',
-      onPressCancel: hideAlert,
-      info: true,
+      onPressCancel: Alert.hide,
     });
   };
   const showErrorAlert = (): void => {
     Alert.show({
-      visible: true,
+      type: 'ERROR',
       title: 'Error',
       message: 'Error happen',
-      onPressCancel: hideAlert,
-      error: true,
+      onPressCancel: Alert.hide,
     });
   };
   const showSuccessAlert = (): void => {
     Alert.show({
-      visible: true,
+      type: 'SUCCESS',
       title: 'Success',
       message: 'Good job!',
-      onPressCancel: hideAlert,
-      success: true,
+      onPressCancel: Alert.hide,
     });
   };
   return (
