@@ -14,4 +14,12 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: 'center',
   },
+  iconAvatar: {
+    marginTop: 10,
+    marginBottom: 10,
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+    alignSelf: 'center',
+  },
 });

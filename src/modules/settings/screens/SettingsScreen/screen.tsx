@@ -13,7 +13,7 @@ import {
   getPrimaryColor,
 } from '@app/core';
 import { config } from '@app/config';
-import { List, ListItemData, Picker, Image, Text, Container, Icon, View } from '@app/components';
+import { List, ListItemData, Picker, Image, Text, Container, Icon } from '@app/components';
 import { jsonSources, PrimaryColor } from '@app/assets';
 import { useTranslation } from 'react-i18next';
 import { navigationService, authService } from '@app/services';
@@ -150,6 +150,7 @@ export const Screen = ({
       isHeader: false,
       showIcon: true,
       onPress: performLogout,
+      iconColor: textColor,
     },
   ];
 
@@ -179,9 +180,7 @@ export const Screen = ({
         />
       )}
       {!currentUser.avatarUrl && (
-        <View center centerVertical style={styles.avatar}>
-          <Icon name='account-circle-outline' size={100} color={textColor} />
-        </View>
+        <Icon name='account-circle-outline' size={100} color={textColor} style={styles.iconAvatar} />
       )}
       <Text bold style={styles.displayName}>
         {currentUser.displayName}
