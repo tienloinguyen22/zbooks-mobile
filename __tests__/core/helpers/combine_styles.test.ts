@@ -14,16 +14,42 @@ describe('core/helpers/combine_styles', () => {
 
   it('returns new style object', async () => {
     const styles = combineStyles(style1, style2);
-    expect(styles).toMatchSnapshot();
+    expect(styles).toMatchInlineSnapshot(`
+      Object {
+        "alignContent": "center",
+        "alignSelf": "center",
+      }
+    `);
   });
 
   it('returns new style array from an object and an array', async () => {
     const styles = combineStyles([style1], style2);
-    expect(styles).toMatchSnapshot();
+    expect(styles).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "alignContent": "center",
+        },
+        Object {
+          "alignSelf": "center",
+        },
+      ]
+    `);
   });
 
   it('returns new style array from 2 arrays', async () => {
     const styles = combineStyles([style1], [style2, style3]);
-    expect(styles).toMatchSnapshot();
+    expect(styles).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "alignContent": "center",
+        },
+        Object {
+          "alignSelf": "center",
+        },
+        Object {
+          "backfaceVisibility": "hidden",
+        },
+      ]
+    `);
   });
 });

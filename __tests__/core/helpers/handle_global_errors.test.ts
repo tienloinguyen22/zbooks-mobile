@@ -9,10 +9,6 @@ describe('core/helpers/handle_global_errors', () => {
     jest.spyOn(ExceptionHandler, 'setNativeExceptionHandler').mockImplementation(() => jest.fn);
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
   it('calls exception handlers', async () => {
     handleGlobalErrors();
     expect(ExceptionHandler.setJSExceptionHandler).toBeCalled();

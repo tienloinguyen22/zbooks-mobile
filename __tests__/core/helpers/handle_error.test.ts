@@ -8,10 +8,6 @@ describe('core/helpers/handle_error', () => {
     jest.spyOn(showNotificattion, 'showNotification').mockImplementation(() => jest.fn);
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
   it('throws error again if not having code', async () => {
     expect(() => handleError(new Error(), {})).toThrow();
   });

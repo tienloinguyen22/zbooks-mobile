@@ -6,10 +6,6 @@ describe('core/helpers/record_error', () => {
     jest.spyOn(Toast, 'show').mockImplementation(() => jest.fn());
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
   const message = 'notification message';
 
   it('shows success notificaton', async () => {

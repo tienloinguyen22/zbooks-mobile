@@ -136,6 +136,7 @@ const setDefaults = async (): Promise<void> => {
   await remoteConfig().setConfigSettings({
     isDeveloperModeEnabled: __DEV__,
   });
+
   await remoteConfig().setDefaults({
     testers: '{}',
     minimumVersion: '{"ios":"0.0.1","android":"0.0.1"}',

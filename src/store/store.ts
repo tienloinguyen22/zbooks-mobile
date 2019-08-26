@@ -20,9 +20,7 @@ export const store = init({
 export const persistor = persistStore(store, undefined, () => {
   const { settings } = store.getState();
   // we only should do it only 1 time when user installs & opens the app for the first time
-  if (!settings.appLoaded) {
-    store.dispatch.settings.finishLoadingApp();
-  }
+  !settings.appLoaded && store.dispatch.settings.finishLoadingApp();
 });
 
 export type Store = typeof store;

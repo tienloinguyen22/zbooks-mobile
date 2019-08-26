@@ -20,10 +20,6 @@ describe('components/Container', () => {
     }));
   });
 
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
   it('renders successfully', async () => {
     const { baseElement } = render(<Container />);
     expect(baseElement).toMatchSnapshot();

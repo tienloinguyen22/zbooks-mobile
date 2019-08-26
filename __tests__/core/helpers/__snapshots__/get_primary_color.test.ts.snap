@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`core/helpers/get_primary_color returns default color if not found 1`] = `"#fff"`;
-
-exports[`core/helpers/get_primary_color returns default light color if the current theme is dark 1`] = `"#e57373"`;
-
-exports[`core/helpers/get_primary_color returns default light color if the current theme is light 1`] = `"#d32f2f"`;

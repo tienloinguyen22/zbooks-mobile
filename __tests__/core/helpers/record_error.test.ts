@@ -2,12 +2,6 @@ import { recordError } from '@app/core';
 import { Sentry } from 'react-native-sentry';
 
 describe('core/helpers/record_error', () => {
-  beforeEach(() => {});
-
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
   it('captures error in Sentry', async () => {
     ((__DEV__ as unknown) as boolean) = false;
     const error = new Error();

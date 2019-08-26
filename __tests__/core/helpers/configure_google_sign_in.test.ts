@@ -2,9 +2,6 @@ import { GoogleSignin } from 'react-native-google-signin';
 import { configureGoogleSignIn } from '@app/core';
 
 describe('core/helpers/configure_google_sign_in', () => {
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
   it('calls GoogleSignin correctly', async () => {
     await configureGoogleSignIn();
     expect(GoogleSignin.configure).toBeCalledTimes(1);
