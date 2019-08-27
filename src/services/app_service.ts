@@ -4,7 +4,8 @@ import codePush from 'react-native-code-push';
 import { Platform, Linking } from 'react-native';
 import i18next from 'i18next';
 import { config } from '@app/config';
-import { Alert, AlertAction } from '@app/components';
+import { Alert } from '@app/components/Alert';
+import { AlertAction } from '@app/components/AlertContainer';
 
 const TESTERS_KEY = 'testers';
 const MINIMUM_VERSION_KEY = 'minimumVersion';

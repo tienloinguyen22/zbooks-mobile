@@ -1,7 +1,13 @@
-import { handleGlobalErrors, Bluebird } from '@app/core';
 import * as ExceptionHandler from 'react-native-exception-handler';
 import * as recordError from '@app/core/helpers/record_error';
-import { Alert } from '@app/components';
+import { Alert } from '@app/components/Alert';
+import { handleGlobalErrors, Bluebird } from '../src/handle_global_errors';
+
+jest.mock('@app/components/Alert', () => ({
+  Alert: {
+    show: jest.fn(),
+  },
+}));
 
 describe('core/helpers/handle_global_errors', () => {
   beforeEach(() => {
@@ -27,7 +33,9 @@ describe('core/helpers/handle_global_errors', () => {
       .mockImplementation((handler: ExceptionHandler.JSExceptionHandler, _allowInDevMode?: boolean) => {
         handler(new Error(), true);
       });
+
     handleGlobalErrors();
+
     expect(mock).toBeCalled();
   });
 
@@ -45,7 +53,9 @@ describe('core/helpers/handle_global_errors', () => {
     ) => {
       handler('error');
     });
+
     handleGlobalErrors();
+
     expect(mock).toBeCalled();
   });
 
@@ -56,9 +66,9 @@ describe('core/helpers/handle_global_errors', () => {
       resolve();
     });
     jest.spyOn(recordError, 'recordError').mockImplementation(() => recordErrorAsync);
-    Alert.show = jest.fn();
-    ((__DEV__ as unknown) as boolean) = false;
+
     ((global as unknown) as Bluebird).onunhandledrejection(new Error());
+
     expect(mock).toBeCalled();
     expect(Alert.show).toBeCalled();
   });

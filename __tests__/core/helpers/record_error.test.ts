@@ -6,6 +6,7 @@ describe('core/helpers/record_error', () => {
     ((__DEV__ as unknown) as boolean) = false;
     const error = new Error();
     recordError(error);
+
     expect(Sentry.captureException).toBeCalledWith(error);
   });
 
@@ -14,6 +15,7 @@ describe('core/helpers/record_error', () => {
     jest.spyOn(global.console, 'log').mockImplementation(() => jest.fn());
     const error = new Error();
     recordError(error);
+
     expect(Sentry.captureException).not.toBeCalledWith();
     expect(global.console.log).toBeCalledWith(error);
   });

@@ -18,6 +18,7 @@ describe('core/helpers/handle_error', () => {
     handleError(error, {
       errorCode: errorMessage,
     });
+
     expect(showNotification).toBeCalledWith({
       type: 'ERROR',
       message: errorMessage,
@@ -34,6 +35,7 @@ describe('core/helpers/handle_error', () => {
         errorCode: true,
       },
     );
+
     expect(showNotification).not.toBeCalled();
   });
 
@@ -41,6 +43,7 @@ describe('core/helpers/handle_error', () => {
     const error: ErrorWithCode = new Error('');
     error.code = 'errorCode';
     handleError(error, {});
+
     expect(showNotification).not.toBeCalled();
   });
 });

@@ -2,7 +2,7 @@ import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-e
 import i18next from 'i18next';
 import Promise from 'bluebird';
 import { Alert } from '@app/components';
-import { recordError } from './record_error';
+import { recordError } from '@app/core';
 
 export interface Bluebird {
   onunhandledrejection: (error: Error) => void;
@@ -10,14 +10,12 @@ export interface Bluebird {
 
 const showAndRecordError = (error: Error, _isFatal: boolean = false): void => {
   recordError(error);
-  if (!__DEV__) {
-    Alert.show({
-      type: 'ERROR',
-      title: i18next.t('error.unexpectedErrorOccurred'),
-      message: i18next.t('error.unexpectedErrorOccurredMessage'),
-      onPressCancel: Alert.hide,
-    });
-  }
+  Alert.show({
+    type: 'ERROR',
+    title: i18next.t('error.unexpectedErrorOccurred'),
+    message: i18next.t('error.unexpectedErrorOccurredMessage'),
+    onPressCancel: Alert.hide,
+  });
 };
 
 // https://stackoverflow.com/questions/48487089/global-unhandledrejection-listener-in-react-native

@@ -1,8 +1,9 @@
-import { i18n, catchAndLog, handleGlobalErrors, configureGoogleSignIn } from '@app/core';
+import { i18n, catchAndLog, configureGoogleSignIn } from '@app/core';
 import { Sentry } from 'react-native-sentry';
 import { navigationService, appService } from '@app/services';
 import { registerModules } from '@app/modules';
 import { config } from '@app/config';
+import { handleGlobalErrors } from './handle_global_errors';
 
 catchAndLog(
   async (): Promise<void> => {

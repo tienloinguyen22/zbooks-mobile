@@ -3,7 +3,7 @@ import { navigationService } from '@app/services';
 import { colors } from '@app/core';
 import { useTheme } from '@app/hooks';
 import { StatusBar, SafeAreaView } from 'react-native';
-import { Button } from '@app/components';
+import { Button } from '../Button';
 import { Left } from '../Left';
 import { Body } from '../Body';
 import { Right } from '../Right';

@@ -22,11 +22,13 @@ describe('components/Container', () => {
 
   it('renders successfully', async () => {
     const { baseElement } = render(<Container />);
+
     expect(baseElement).toMatchSnapshot();
   });
 
   it('renders successfully with its header', async () => {
     const { baseElement, getByText } = render(<Container showHeader headerTitle={headerTitle} />);
+
     expect(getByText(headerTitle)).toBeDefined();
     expect(baseElement).toMatchSnapshot();
   });
@@ -35,6 +37,7 @@ describe('components/Container', () => {
     const { baseElement, getByText } = render(
       <Container showHeader headerTitle={headerTitle} showBackButton componentId='1' />,
     );
+
     expect(getByText(headerTitle)).toBeDefined();
     expect(getByText(backButtonText)).toBeDefined();
     expect(baseElement).toMatchSnapshot();
@@ -45,6 +48,7 @@ describe('components/Container', () => {
     const { getByText } = render(<Container showHeader headerTitle={headerTitle} showBackButton componentId='1' />);
     const button = getByText(backButtonText);
     fireEvent.press(button);
+
     expect(navigationService.goBack).toBeCalledTimes(1);
   });
 });

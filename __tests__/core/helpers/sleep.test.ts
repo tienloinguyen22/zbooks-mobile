@@ -13,8 +13,10 @@ describe('core/helpers/sleep', () => {
         unref: jest.fn(),
       };
     });
+
     const time = 1000;
     await sleep(time);
+
     expect(expectedTime).toBe(time);
   });
 });

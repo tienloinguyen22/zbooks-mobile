@@ -13,6 +13,7 @@ describe('core/helpers/record_error', () => {
       type: 'SUCCESS',
       message,
     });
+
     expect(Toast.show).toBeCalled();
   });
 
@@ -21,6 +22,7 @@ describe('core/helpers/record_error', () => {
       type: 'WARNING',
       message,
     });
+
     expect(Toast.show).toBeCalled();
   });
   it('shows error notificaton', async () => {
@@ -28,6 +30,7 @@ describe('core/helpers/record_error', () => {
       type: 'ERROR',
       message,
     });
+
     expect(Toast.show).toBeCalled();
   });
 });
