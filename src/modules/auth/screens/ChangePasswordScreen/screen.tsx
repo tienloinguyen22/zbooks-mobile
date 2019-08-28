@@ -3,7 +3,7 @@ import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, i18n, handleError } from '@app/core';
+import { ScreenProps, showNotification, i18n, handleError } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -50,26 +50,25 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
       ),
   });
 
-  const onSubmit = catchAndLog(
-    async (values: FormData) => {
+  const onSubmit = async (values: FormData): Promise<void> => {
+    try {
       setIsBusy(true);
-      try {
-        await authService.changePassword(values.password);
-        showNotification({
-          type: 'SUCCESS',
-          message: t('changePasswordScreen.passwordChanged'),
-        });
-        navigationService.goBack({
-          componentId,
-        });
-      } catch (error) {
-        handleError(error, {
-          'auth/requires-recent-login': t('changePasswordScreen.requireRecentLogin'),
-        });
-      }
-    },
-    async () => setIsBusy(false),
-  );
+      await authService.changePassword(values.password);
+      showNotification({
+        type: 'SUCCESS',
+        message: t('changePasswordScreen.passwordChanged'),
+      });
+      navigationService.goBack({
+        componentId,
+      });
+    } catch (error) {
+      handleError(error, {
+        'auth/requires-recent-login': t('changePasswordScreen.requireRecentLogin'),
+      });
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   return (
     <Container

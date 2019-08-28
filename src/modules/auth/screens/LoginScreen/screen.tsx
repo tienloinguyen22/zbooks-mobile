@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
-import { ScreenProps, catchAndLog, screenNames, colors, showNotification } from '@app/core';
+import { ScreenProps, screenNames, colors, showNotification } from '@app/core';
 import { Image, Button, Text, Icon, Loading, Container } from '@app/components';
 import { navigationService, authService, LoginResult, appService } from '@app/services';
 import { useEffectOnce } from '@app/hooks';
@@ -52,21 +52,27 @@ export const Screen = ({
     navigationService.setRootHome();
   };
 
-  const loginFacebook = catchAndLog(
-    async () => {
+  const loginFacebook = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       await performLogin('FACEBOOK');
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
-  const loginGoogle = catchAndLog(
-    async () => {
+  const loginGoogle = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       await performLogin('GOOGLE');
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   const loginEmail = (): void =>
     navigationService.navigateTo({

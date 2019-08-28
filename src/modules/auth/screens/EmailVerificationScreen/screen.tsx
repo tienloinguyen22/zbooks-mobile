@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Linking, Platform } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import produce from 'immer';
-import { catchAndLog, ScreenProps, showNotification } from '@app/core';
+import { ScreenProps, showNotification } from '@app/core';
 import { useEffectOnce } from '@app/hooks';
 import { Button, Text, Container } from '@app/components';
 import { authService, navigationService } from '@app/services';
@@ -33,8 +33,8 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
     };
   });
 
-  const checkStatus = catchAndLog(
-    async () => {
+  const checkStatus = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       if (await authService.isEmailVerified()) {
         markEmailVerified();
@@ -45,12 +45,15 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
           message: t('emailVerificationScreen.emailNotVerified'),
         });
       }
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
-  const resendVerificationEmail = catchAndLog(
-    async () => {
+  const resendVerificationEmail = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       await authService.resendVerificationEmail();
       showNotification({
@@ -76,25 +79,31 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
           }),
         );
       }, 1000);
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
-  const openMailbox = catchAndLog(
-    async () => {
+  const openMailbox = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       if (Platform.OS === `ios`) {
-        Linking.openURL(`message:`);
+        await Linking.openURL(`message:`);
       }
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
-  const performLogout = catchAndLog(async () => {
+  const performLogout = async (): Promise<void> => {
     await authService.logout();
     logout();
     navigationService.setRootLogin();
-  });
+  };
 
   const waitForResend =
     resendVerificationEmailStatus.isVerificationEmailSent && resendVerificationEmailStatus.waitingTimeToResend > 0;

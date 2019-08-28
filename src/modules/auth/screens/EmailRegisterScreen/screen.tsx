@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import * as _ from 'lodash';
 import { Formik, FormikProps } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, i18n } from '@app/core';
+import { ScreenProps, showNotification, i18n } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -84,16 +84,15 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
     formikProps.setFieldError('isEmailRegistered', (message as unknown) as string);
   };
 
-  const handleValidateUniqueEmail = catchAndLog(validateUniqueEmail);
-  const debounceValidateUniqueEmail = _.debounce(handleValidateUniqueEmail, 500);
+  const debounceValidateUniqueEmail = _.debounce(validateUniqueEmail, 500);
 
   const handleChangeEmail = (email: string): void => {
     formikProps.handleChange(fieldNames.email)(email);
     debounceValidateUniqueEmail(email);
   };
 
-  const onSubmit = catchAndLog(
-    async (values: FormData) => {
+  const onSubmit = async (values: FormData): Promise<void> => {
+    try {
       setIsBusy(true);
       await validateUniqueEmail(values.email);
       if (!formikProps.isValid) {
@@ -106,9 +105,12 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
         message: t('emailRegisterScreen.accountHasBeenCreated'),
       });
       navigationService.setRootEmailVerification();
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      throw error;
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   return (
     <Container showHeader showBackButton componentId={componentId} headerTitle={t('emailRegisterScreen.register')}>

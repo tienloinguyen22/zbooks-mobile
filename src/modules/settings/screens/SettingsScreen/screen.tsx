@@ -1,17 +1,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import i18next from 'i18next';
-import {
-  ScreenProps,
-  i18n,
-  catchAndLog,
-  screenNames,
-  Language,
-  Theme,
-  THEME_DARK,
-  colors,
-  getPrimaryColor,
-} from '@app/core';
+import { ScreenProps, i18n, screenNames, Language, Theme, THEME_DARK, colors, getPrimaryColor } from '@app/core';
 import { config } from '@app/config';
 import { List, ListItemData, Picker, Image, Text, Container, Icon } from '@app/components';
 import { jsonSources, PrimaryColor } from '@app/assets';
@@ -40,11 +30,11 @@ export const Screen = ({
   const appVersion = Platform.OS === 'android' ? config.android.version : config.ios.version;
   const textColor = theme === THEME_DARK ? colors.white : colors.black;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
-  const performLogout = catchAndLog(async () => {
+  const performLogout = async (): Promise<void> => {
     await authService.logout();
     logout();
     navigationService.setRootLogin();
-  });
+  };
 
   const selectLanguage = (): void => {
     Picker.show<string>({
