@@ -78,8 +78,8 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 value={values.email}
                 onChangeText={handleChange(fieldNames.email)}
                 onBlur={handleBlur(fieldNames.email)}
-                showError={touched.email && !!errors.email}
-                showSuccess={touched.email && !errors.email}
+                error={touched.email && !!errors.email}
+                success={touched.email && !errors.email}
                 errorMessage={errors.email}
               />
               <View column>

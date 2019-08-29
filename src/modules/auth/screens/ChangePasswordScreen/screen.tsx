@@ -87,8 +87,8 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 value={values.password}
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
-                showError={touched.password && !!errors.password}
-                showSuccess={touched.password && !errors.password}
+                error={touched.password && !!errors.password}
+                success={touched.password && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
                 hasTooltip
@@ -100,8 +100,8 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 value={values.confirmPassword}
                 onChangeText={handleChange(fieldNames.confirmPassword)}
                 onBlur={handleBlur(fieldNames.confirmPassword)}
-                showError={touched.confirmPassword && !!errors.confirmPassword}
-                showSuccess={touched.confirmPassword && !errors.confirmPassword}
+                error={touched.confirmPassword && !!errors.confirmPassword}
+                success={touched.confirmPassword && !errors.confirmPassword}
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />

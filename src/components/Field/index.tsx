@@ -14,8 +14,8 @@ import { Touchable } from '../Touchable';
 interface Props {
   label: string;
   value: string;
-  showError?: boolean;
-  showSuccess?: boolean;
+  error?: boolean;
+  success?: boolean;
   errorMessage?: string;
   hasTooltip?: boolean;
   tooltipHeight?: number;
@@ -32,9 +32,9 @@ interface Props {
 export const Field = (props: Props): JSX.Element => {
   const { primaryColor, textColor, screenBackgroundColor, theme } = useTheme();
   let borderColor = primaryColor;
-  if (props.showError) {
+  if (props.error) {
     borderColor = colors.red;
-  } else if (props.showSuccess) {
+  } else if (props.success) {
     borderColor = colors.green;
   }
   let tooltipBackgroundColor = colors.black;
@@ -154,7 +154,7 @@ export const Field = (props: Props): JSX.Element => {
           </View>
         </Touchable>
       )}
-      {props.showError && (
+      {props.error && (
         <ErrorText
           style={[
             styles.error,

@@ -94,8 +94,8 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 value={values.email}
                 onChangeText={handleChange(fieldNames.email)}
                 onBlur={handleBlur(fieldNames.email)}
-                showError={touched.email && !!errors.email}
-                showSuccess={touched.email && !errors.email}
+                error={touched.email && !!errors.email}
+                success={touched.email && !errors.email}
                 errorMessage={errors.email}
               />
               <Field
@@ -103,8 +103,8 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 value={values.password}
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
-                showError={touched.password && !!errors.password}
-                showSuccess={touched.password && !errors.password}
+                error={touched.password && !!errors.password}
+                success={touched.password && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
                 hasTooltip

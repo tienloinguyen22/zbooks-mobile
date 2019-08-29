@@ -62,8 +62,8 @@ export const VerificationCodeInput = ({
               value={values.code}
               onChangeText={handleChange(fieldNames.code)}
               onBlur={handleBlur(fieldNames.code)}
-              showError={touched.code && !!errors.code}
-              showSuccess={touched.code && !errors.code}
+              error={touched.code && !!errors.code}
+              success={touched.code && !errors.code}
               errorMessage={errors.code}
               keyboardType='numeric'
             />

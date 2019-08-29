@@ -4,6 +4,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverage: true,
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
+  collectCoverageFrom: ['src/**/*.[jt](s|sx)'],
   setupFilesAfterEnv: [
     '@testing-library/react-native/cleanup-after-each',
     '<rootDir>/jest.setup.js',
@@ -11,4 +12,5 @@ module.exports = {
   ],
   resetMocks: true,
   resetModules: true,
+  testRegex: '\\.(test|spec)\\.[jt](s|sx)?$',
 };

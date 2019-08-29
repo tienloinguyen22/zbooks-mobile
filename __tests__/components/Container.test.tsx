@@ -2,22 +2,15 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { Container } from '@app/components';
 import { navigationService } from '@app/services';
-import * as useTheme from '@app/hooks/use_theme';
+import { THEME_DARK } from '@app/core';
+import { mockTheme } from '../helper';
 
 describe('components/Container', () => {
   const headerTitle = 'App header';
   const backButtonText = '';
 
   beforeEach(() => {
-    jest.spyOn(useTheme, 'useTheme').mockImplementation(() => ({
-      changePrimaryColor: () => {},
-      changeTheme: () => {},
-      componentBackgroundColor: 'componentBackgroundColor',
-      primaryColor: 'primaryColor',
-      screenBackgroundColor: 'screenBackgroundColor',
-      textColor: 'textColor',
-      theme: 'dark',
-    }));
+    mockTheme(THEME_DARK);
   });
 
   it('renders successfully', async () => {
@@ -43,10 +36,11 @@ describe('components/Container', () => {
     expect(baseElement).toMatchSnapshot();
   });
 
-  it('go back when clicking Back button', async () => {
+  it('goes back when clicking Back button', async () => {
     navigationService.goBack = jest.fn();
     const { getByText } = render(<Container showHeader headerTitle={headerTitle} showBackButton componentId='1' />);
     const button = getByText(backButtonText);
+
     fireEvent.press(button);
 
     expect(navigationService.goBack).toBeCalledTimes(1);

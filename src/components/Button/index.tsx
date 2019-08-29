@@ -49,10 +49,9 @@ export const Button = (props: Props): JSX.Element => {
     numberOfLines: 1,
   };
   const childrenWithProps = React.Children.map(props.children, (child) =>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    child ? React.cloneElement(child as any, addedStyle) : child,
+    child ? React.cloneElement(child as JSX.Element, addedStyle) : child,
   );
-  // work around to re-render component after changing state
+
   return (
     <>
       <Touchable {...props} style={style}>

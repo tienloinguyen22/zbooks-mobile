@@ -25,7 +25,7 @@ exports[`components/Container renders successfully 1`] = `
             "flex": 0,
           },
           Object {
-            "backgroundColor": "primaryColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -37,7 +37,7 @@ exports[`components/Container renders successfully 1`] = `
             "flex": 1,
           },
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -45,7 +45,7 @@ exports[`components/Container renders successfully 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           }
         }
       />
@@ -79,7 +79,7 @@ exports[`components/Container renders successfully with its header 1`] = `
             "flex": 0,
           },
           Object {
-            "backgroundColor": "primaryColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -91,7 +91,7 @@ exports[`components/Container renders successfully with its header 1`] = `
             "flex": 1,
           },
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -106,7 +106,7 @@ exports[`components/Container renders successfully with its header 1`] = `
               "height": 50,
             },
             Object {
-              "backgroundColor": "primaryColor",
+              "backgroundColor": "black",
             },
           ]
         }
@@ -163,7 +163,7 @@ exports[`components/Container renders successfully with its header 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           }
         }
       />
@@ -197,7 +197,7 @@ exports[`components/Container renders successfully with its header and Back butt
             "flex": 0,
           },
           Object {
-            "backgroundColor": "primaryColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -209,7 +209,7 @@ exports[`components/Container renders successfully with its header and Back butt
             "flex": 1,
           },
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -224,7 +224,7 @@ exports[`components/Container renders successfully with its header and Back butt
               "height": 50,
             },
             Object {
-              "backgroundColor": "primaryColor",
+              "backgroundColor": "black",
             },
           ]
         }
@@ -324,7 +324,7 @@ exports[`components/Container renders successfully with its header and Back butt
       <View
         style={
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           }
         }
       />

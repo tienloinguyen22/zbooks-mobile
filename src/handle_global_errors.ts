@@ -14,7 +14,7 @@ const showAndRecordError = (error: Error, _isFatal: boolean = false): void => {
     type: 'ERROR',
     title: i18next.t('error.unexpectedErrorOccurred'),
     message: i18next.t('error.unexpectedErrorOccurredMessage'),
-    onPressCancel: Alert.hide,
+    onPressClose: Alert.hide,
   });
 };
 

@@ -43,3 +43,11 @@ jest.mock('react-native-sentry', () => ({
     captureException: jest.fn(),
   },
 }));
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key) => key,
+  }),
+}));
+jest.mock('i18next', () => ({
+  t: (key) => key,
+}));

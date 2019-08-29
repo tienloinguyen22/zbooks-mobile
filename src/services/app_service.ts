@@ -38,7 +38,7 @@ const onSyncStatusChange = (syncStatus: codePush.SyncStatus): void => {
         type: 'INFO',
         title: i18next.t('common.newUpdate'),
         message: i18next.t('common.updateInstalled'),
-        onPressCancel: Alert.hide,
+        onPressClose: Alert.hide,
       });
       break;
     default:
@@ -75,19 +75,17 @@ export const checkNeedUpdateNewBinaryVersion = async (): Promise<void> => {
     {
       title: i18next.t('common.update'),
       onPress: Platform.OS === 'ios' ? toAppStoreLink : toPlayStoreLink,
-      special: true,
     },
   ];
   const notifyUpdateActions: AlertAction[] = [
     {
       title: i18next.t('common.update'),
       onPress: Platform.OS === 'ios' ? toAppStoreLink : toPlayStoreLink,
-      special: true,
     },
     {
       title: i18next.t('common.close'),
       onPress: Alert.hide,
-      special: false,
+      outline: true,
     },
   ];
   if (minimumVersion.ios > config.ios.version || minimumVersion.android > config.android.version) {
@@ -96,7 +94,7 @@ export const checkNeedUpdateNewBinaryVersion = async (): Promise<void> => {
         type: 'WARNING',
         title: i18next.t('common.newUpdate'),
         message: i18next.t('common.newVersionInAppStore'),
-        onPressCancel: Alert.hide,
+        onPressClose: Alert.hide,
         closeable: false,
         actions: forceUpdateAction,
       });
@@ -105,7 +103,7 @@ export const checkNeedUpdateNewBinaryVersion = async (): Promise<void> => {
         type: 'WARNING',
         title: i18next.t('common.newUpdate'),
         message: i18next.t('common.newVersionInAppStore'),
-        onPressCancel: Alert.hide,
+        onPressClose: Alert.hide,
         actions: notifyUpdateActions,
       });
     }

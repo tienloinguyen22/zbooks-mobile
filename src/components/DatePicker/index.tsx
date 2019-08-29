@@ -24,8 +24,6 @@ interface PickerParams {
 
 const getMonthText = (month: number): string => {
   switch (month) {
-    case 1:
-      return i18next.t('month.january');
     case 2:
       return i18next.t('month.february');
     case 3:
@@ -49,14 +47,12 @@ const getMonthText = (month: number): string => {
     case 12:
       return i18next.t('month.december');
     default:
-      throw Error('Invalid month');
+      return i18next.t('month.january');
   }
 };
 
 const getMonthFromText = (text: string): number => {
   switch (text) {
-    case i18next.t('month.january'):
-      return 1;
     case i18next.t('month.february'):
       return 2;
     case i18next.t('month.march'):
@@ -80,7 +76,7 @@ const getMonthFromText = (text: string): number => {
     case i18next.t('month.december'):
       return 12;
     default:
-      throw Error('Invalid month');
+      return 1;
   }
 };
 
@@ -133,9 +129,6 @@ const show = ({ onValueChanged, initialValue, fromYear, toYear }: PickerParams):
   );
 
   const onPickerConfirm = (selectedDateArray: string[]): void => {
-    if (!onValueChanged) {
-      return;
-    }
     const selectedDate: DateValue = {
       year: parseInt(selectedDateArray[0], 10),
       month: getMonthFromText(selectedDateArray[1]),
@@ -145,10 +138,8 @@ const show = ({ onValueChanged, initialValue, fromYear, toYear }: PickerParams):
   };
 
   let selectedValue: string[] | undefined;
-  if (initialValue) {
-    selectedValue = [initialValue.year.toString(), getMonthText(initialValue.month), initialValue.day.toString()];
-  }
-
+  initialValue &&
+    (selectedValue = [initialValue.year.toString(), getMonthText(initialValue.month), initialValue.day.toString()]);
   const { primaryColorCode, theme } = store.getState().settings;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
   const primaryColorHexArr = [...colorConvert.hex.rgb(primaryColor), 1];
