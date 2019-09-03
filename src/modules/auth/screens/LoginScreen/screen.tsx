@@ -56,8 +56,6 @@ export const Screen = ({
     try {
       setIsBusy(true);
       await performLogin('FACEBOOK');
-    } catch (error) {
-      throw error;
     } finally {
       setIsBusy(false);
     }
@@ -67,8 +65,6 @@ export const Screen = ({
     try {
       setIsBusy(true);
       await performLogin('GOOGLE');
-    } catch (error) {
-      throw error;
     } finally {
       setIsBusy(false);
     }

@@ -45,8 +45,6 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
           message: t('emailVerificationScreen.emailNotVerified'),
         });
       }
-    } catch (error) {
-      throw error;
     } finally {
       setIsBusy(false);
     }
@@ -79,8 +77,6 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
           }),
         );
       }, 1000);
-    } catch (error) {
-      throw error;
     } finally {
       setIsBusy(false);
     }
@@ -92,8 +88,6 @@ export const Screen = ({ componentId, markEmailVerified, currentUser, logout }: 
       if (Platform.OS === `ios`) {
         await Linking.openURL(`message:`);
       }
-    } catch (error) {
-      throw error;
     } finally {
       setIsBusy(false);
     }

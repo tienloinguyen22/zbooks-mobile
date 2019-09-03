@@ -1,4 +1,5 @@
 import { ViewStyle, StyleProp, TextStyle } from 'react-native';
+import _ from 'lodash';
 
 export type CombineStylesParam<T> = false | StyleProp<T>;
 export const combineStyles = <T extends ViewStyle | TextStyle>(...arg: CombineStylesParam<T>[]): StyleProp<T> =>
@@ -17,7 +18,8 @@ export const combineStyles = <T extends ViewStyle | TextStyle>(...arg: CombineSt
     } else if (Array.isArray(nextStyle)) {
       mergedStyle = [style, ...nextStyle];
     } else {
-      mergedStyle = Object.assign({}, style, nextStyle);
+      mergedStyle = _.merge({}, style, nextStyle);
     }
+
     return mergedStyle;
   });

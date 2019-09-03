@@ -105,8 +105,6 @@ export const Screen = ({ componentId, language, login }: Props): JSX.Element => 
         message: t('emailRegisterScreen.accountHasBeenCreated'),
       });
       navigationService.setRootEmailVerification();
-    } catch (error) {
-      throw error;
     } finally {
       setIsBusy(false);
     }
