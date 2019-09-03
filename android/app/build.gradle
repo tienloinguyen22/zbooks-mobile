@@ -142,8 +142,8 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative60"
-        versionCode 3145743
-        versionName "1.3.0"
+        versionCode 3145800
+        versionName "1.4.0"
         multiDexEnabled true
     }
     splits {
