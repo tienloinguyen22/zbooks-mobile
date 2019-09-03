@@ -9,5 +9,5 @@ interface MapDispatchToProps {
 export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
   incrementShark: dispatch.sharks.increment,
   incrementDolphin: dispatch.dolphins.increment,
-  updateShownUpdateWarning: dispatch.minumumVersionChecks.updateShownUpdateWarning,
+  updateShownUpdateWarning: dispatch.minimumVersionChecks.updateShownUpdateWarning,
 });

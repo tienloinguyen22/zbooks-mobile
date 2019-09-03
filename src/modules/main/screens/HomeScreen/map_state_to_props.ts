@@ -5,5 +5,5 @@ export const mapStateToProps = (
 ): { sharks: SharksState; dolphins: DolphinsState; shouldShownUpdateWarning: boolean } => ({
   sharks: state.sharks,
   dolphins: state.dolphins,
-  shouldShownUpdateWarning: state.minumumVersionChecks.shouldShownUpdateWarning,
+  shouldShownUpdateWarning: state.minimumVersionChecks.shouldShownUpdateWarning,
 });

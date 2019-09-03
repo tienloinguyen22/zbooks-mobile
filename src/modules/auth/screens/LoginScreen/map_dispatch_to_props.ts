@@ -7,5 +7,5 @@ interface MapDispatchToProps {
 
 export const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => ({
   login: dispatch.currentUser.login,
-  updateShownUpdateWarning: dispatch.minumumVersionChecks.updateShownUpdateWarning,
+  updateShownUpdateWarning: dispatch.minimumVersionChecks.updateShownUpdateWarning,
 });

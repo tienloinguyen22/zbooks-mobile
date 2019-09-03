@@ -5,7 +5,7 @@ export interface VersionCheckState {
   shouldShownUpdateWarning: boolean;
 }
 
-export const minumumVersionChecks = createModel<VersionCheckState>({
+export const minimumVersionChecks = createModel<VersionCheckState>({
   state: {
     shouldShownUpdateWarning: true,
   },

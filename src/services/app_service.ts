@@ -31,6 +31,7 @@ const getRemoteConfigJson = async <T>(key: string): Promise<T | undefined> => {
     return undefined;
   }
 };
+
 const onSyncStatusChange = (syncStatus: codePush.SyncStatus): void => {
   switch (syncStatus) {
     case codePush.SyncStatus.UPDATE_INSTALLED:
@@ -59,28 +60,26 @@ const checkIsTester = async (): Promise<boolean> => {
   }
   return testers[currentUser.uid] === true;
 };
-const toAppStoreLink = (): void => {
-  Linking.openURL(config.ios.storeLink);
-};
 
-const toPlayStoreLink = (): void => {
-  Linking.openURL(config.android.storeLink);
-};
 export const checkNeedUpdateNewBinaryVersion = async (): Promise<void> => {
   const minimumVersion = await getRemoteConfigJson<Version>(MINIMUM_VERSION_KEY);
   if (!minimumVersion) {
     return;
   }
+  const gotoStore = (): Promise<void> =>
+    Linking.openURL(Platform.OS === 'ios' ? config.ios.storeLink : config.android.storeLink);
+  const currentVersion = Platform.OS === 'ios' ? config.ios.version : config.android.version;
+  const checkVersion = Platform.OS === 'ios' ? minimumVersion.ios : minimumVersion.android;
   const forceUpdateAction: AlertAction[] = [
     {
       title: i18next.t('common.update'),
-      onPress: Platform.OS === 'ios' ? toAppStoreLink : toPlayStoreLink,
+      onPress: gotoStore,
     },
   ];
   const notifyUpdateActions: AlertAction[] = [
     {
       title: i18next.t('common.update'),
-      onPress: Platform.OS === 'ios' ? toAppStoreLink : toPlayStoreLink,
+      onPress: gotoStore,
     },
     {
       title: i18next.t('common.close'),
@@ -88,26 +87,15 @@ export const checkNeedUpdateNewBinaryVersion = async (): Promise<void> => {
       outline: true,
     },
   ];
-  if (minimumVersion.ios > config.ios.version || minimumVersion.android > config.android.version) {
-    if (minimumVersion.forceUpdate) {
-      Alert.show({
-        type: 'WARNING',
-        title: i18next.t('common.newUpdate'),
-        message: i18next.t('common.newVersionInAppStore'),
-        onPressClose: Alert.hide,
-        closeable: false,
-        actions: forceUpdateAction,
-      });
-    } else {
-      Alert.show({
-        type: 'WARNING',
-        title: i18next.t('common.newUpdate'),
-        message: i18next.t('common.newVersionInAppStore'),
-        onPressClose: Alert.hide,
-        actions: notifyUpdateActions,
-      });
-    }
-  }
+
+  checkVersion > currentVersion &&
+    Alert.show({
+      type: 'WARNING',
+      title: i18next.t('common.newUpdate'),
+      message: i18next.t('common.newVersionInAppStore'),
+      closeable: false,
+      actions: minimumVersion.forceUpdate ? forceUpdateAction : notifyUpdateActions,
+    });
 };
 
 export const checkUpdate = async (): Promise<void> => {

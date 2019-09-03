@@ -17,6 +17,7 @@ describe('store/models/currentUser', () => {
     };
     const { reducers } = (currentUser as unknown) as { reducers: ModelReducers<CurrentUserState> };
     const state = reducers.login(defaultUser, loggedInUser);
+
     expect(state).toMatchInlineSnapshot(`
       Object {
         "avatarUrl": "",

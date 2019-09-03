@@ -1,7 +1,7 @@
 import { sharks, SharksState } from './sharks';
 import { dolphins, DolphinsState } from './dolphins';
 import { settings, SettingsState } from './settings';
-import { minumumVersionChecks, VersionCheckState } from './minumumVersionChecks';
+import { minimumVersionChecks, VersionCheckState } from './minimumVersionChecks';
 import { currentUser, CurrentUserState } from './currentUser';
 
 export type SharksState = SharksState;
@@ -14,5 +14,5 @@ export const models = {
   settings,
   sharks,
   dolphins,
-  minumumVersionChecks,
+  minimumVersionChecks,
 };

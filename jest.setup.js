@@ -28,16 +28,7 @@ jest.mock('@rematch/core', () => ({
   init: jest.fn(),
   createModel: jest.fn(),
 }));
-jest.mock('react-native-google-signin', () => ({
-  GoogleSignin: {
-    configure: jest.fn(),
-    hasPlayServices: jest.fn(() => Promise.resolve(true)),
-    signIn: jest.fn(() => Promise.resolve({})),
-    signInSilently: jest.fn(() => Promise.resolve({})),
-    revokeAccess: jest.fn(() => Promise.resolve(true)),
-    signOut: jest.fn(() => Promise.resolve(true)),
-  },
-}));
+
 jest.mock('react-native-sentry', () => ({
   Sentry: {
     captureException: jest.fn(),

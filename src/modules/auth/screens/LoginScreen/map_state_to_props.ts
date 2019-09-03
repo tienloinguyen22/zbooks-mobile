@@ -4,5 +4,5 @@ interface MapStateToProps {
   shouldShownUpdateWarning: boolean;
 }
 export const mapStateToProps = (state: RootState): MapStateToProps => ({
-  shouldShownUpdateWarning: state.minumumVersionChecks.shouldShownUpdateWarning,
+  shouldShownUpdateWarning: state.minimumVersionChecks.shouldShownUpdateWarning,
 });
