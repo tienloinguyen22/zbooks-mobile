@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import { View, Text, Icon } from '@app/components';
 import { colors, THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 beforeAll(() => {});
 

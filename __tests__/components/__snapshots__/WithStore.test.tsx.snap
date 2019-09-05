@@ -17,6 +17,16 @@ exports[`components/WithStore renders successfully 1`] = `
         "flex": 1,
       }
     }
-  />
+  >
+    <Provider
+      store={Object {}}
+    >
+      <View>
+        <Text>
+          Sample screen
+        </Text>
+      </View>
+    </Provider>
+  </View>
 </View>
 `;

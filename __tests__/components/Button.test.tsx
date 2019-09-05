@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { Button, Text } from '@app/components';
 import { THEME_DARK, THEME_LIGHT } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/Button', () => {
   const props = {

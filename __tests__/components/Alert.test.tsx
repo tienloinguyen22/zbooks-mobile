@@ -1,6 +1,6 @@
 import { Alert } from '@app/components';
 import { THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/Alert', () => {
   const title = 'Title';

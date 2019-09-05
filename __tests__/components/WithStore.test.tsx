@@ -1,16 +1,24 @@
+import React from 'react';
 import { render } from '@testing-library/react-native';
 import { WithStore } from '@app/components';
-import { LoginScreen } from '@app/modules/auth/screens';
-import { THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { View, Text } from 'react-native';
+
+jest.mock('react-redux', () => ({
+  Provider: 'Provider',
+}));
+jest.mock('@app/store/store', () => ({
+  store: {},
+}));
 
 describe('components/WithStore', () => {
-  beforeEach(() => {
-    mockTheme(THEME_DARK);
-  });
-
   it('renders successfully', async () => {
-    const { baseElement } = render(WithStore(LoginScreen));
+    const Screen = (): JSX.Element => (
+      <View>
+        <Text>Sample screen</Text>
+      </View>
+    );
+    const WithStoreComponent = WithStore(Screen);
+    const { baseElement } = render(<WithStoreComponent />);
     expect(baseElement).toMatchSnapshot();
   });
 });
