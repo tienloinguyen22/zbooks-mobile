@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
-import { ScreenProps, catchAndLog, screenNames, colors, showNotification } from '@app/core';
+import { ScreenProps, screenNames, colors, showNotification } from '@app/core';
 import { Image, Button, Text, Icon, Loading, Container } from '@app/components';
-import { navigationService, authService, LoginResult } from '@app/services';
+import { navigationService, authService, LoginResult, appService } from '@app/services';
+import { useEffectOnce } from '@app/hooks';
 import { styles } from './styles';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import { mapStateToProps } from './map_state_to_props';
@@ -12,10 +13,20 @@ type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchT
 
 const appIconSource = imageSources.appIcon();
 
-export const Screen = ({ login, componentId }: Props): JSX.Element => {
+export const Screen = ({
+  login,
+  componentId,
+  shouldShownUpdateWarning,
+  updateShownUpdateWarning,
+}: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
-
+  useEffectOnce(() => {
+    if (shouldShownUpdateWarning) {
+      appService.checkNeedUpdateNewBinaryVersion();
+      updateShownUpdateWarning(false);
+    }
+  });
   const performLogin = async (loginType: 'GOOGLE' | 'FACEBOOK'): Promise<void> => {
     let result: LoginResult | undefined;
     switch (loginType) {
@@ -41,21 +52,23 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
     navigationService.setRootHome();
   };
 
-  const loginFacebook = catchAndLog(
-    async () => {
+  const loginFacebook = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       await performLogin('FACEBOOK');
-    },
-    async () => setIsBusy(false),
-  );
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
-  const loginGoogle = catchAndLog(
-    async () => {
+  const loginGoogle = async (): Promise<void> => {
+    try {
       setIsBusy(true);
       await performLogin('GOOGLE');
-    },
-    async () => setIsBusy(false),
-  );
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   const loginEmail = (): void =>
     navigationService.navigateTo({
@@ -86,22 +99,22 @@ export const Screen = ({ login, componentId }: Props): JSX.Element => {
   return (
     <Container center centerVertical>
       <Image style={styles.appIcon} source={appIconSource} />
-      <Button full rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
+      <Button rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
         <Icon name='facebook' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Facebook</Text>
       </Button>
-      <Button full rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
+      <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
         <Icon name='google' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Google</Text>
       </Button>
-      <Button full rounded onPress={loginEmail} style={[styles.button]}>
+      <Button rounded onPress={loginEmail} style={[styles.button]}>
         <Text white>{t('loginScreen.loginWithEmail')}</Text>
       </Button>
-      <Button full rounded onPress={loginPhoneNo} style={[styles.button]}>
+      <Button rounded onPress={loginPhoneNo} style={[styles.button]}>
         <Text white>{t('loginScreen.loginWithPhoneNo')}</Text>
       </Button>
       <Text style={styles.notHaveAccountText}>{t('loginScreen.notHaveAccount')}</Text>
-      <Button full rounded onPress={registerByEmail} style={styles.button}>
+      <Button rounded onPress={registerByEmail} style={styles.button}>
         <Text white>{t('loginScreen.registerByEmail')}</Text>
       </Button>
     </Container>

@@ -77,7 +77,6 @@ const setRootEmailVerification = (): void => setRootStack(screenNames.EmailVerif
 
 const initialize = (): void => {
   Navigation.events().registerAppLaunchedListener((): void => {
-    setDefaultOptions();
     setRootAppLoader();
   });
 };
@@ -119,6 +118,7 @@ const setRootHome = async (currentTabIndex?: number): Promise<void> => {
   } else {
     tabColor = colors.white;
   }
+
   Navigation.setRoot({
     root: {
       bottomTabs: {

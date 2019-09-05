@@ -1,0 +1,94 @@
+@startuml
+
+package "Mobile" {
+  frame "Core" {
+    [Helpers]
+    [Hooks]
+    [i18n]
+    [Interfaces]
+    [Themes]
+
+    Modules -up--> Core
+    Components -up-> Core
+    Services -up-> Core
+    Stores -up-> Core
+  } 
+  frame "Components" {
+    [Animation]
+    [Container]
+    [Others] as OtherComponents
+
+    Modules -up--> Components
+  } 
+
+  frame "Modules" {
+    node "Auth Module" as AuthModule {
+      together {
+        [App Loader Screen]
+        [Change Password Screen]
+        [Email Login Screen]
+      }
+      together {
+        [Email Register Screen]
+        [Email Verification Screen]
+        [Forgot Password Screen]
+      }
+      together {
+        [Login Screen]
+        [Phone No Login Screen]
+      }
+      [Email Login Screen] -[hidden]-> [Forgot Password Screen]
+      [Forgot Password Screen] -[hidden]-> [Phone No Login Screen]
+    }
+
+    node "Main Module" as MainModule {
+      together {
+        [Home Screen]
+        [New Screen]
+      }
+      together {
+        [Analytics Sample]
+        [Crash Sample]
+        [Icon Sample]
+        [Others] as HomeOtherSubComponents
+
+        [Home Screen] -down-> [Analytics Sample]
+        [Home Screen] -down-> [Crash Sample]
+        [Home Screen] -down-> [Icon Sample]
+        [Home Screen] -down-> HomeOtherSubComponents
+      }
+      [Phone No Login Screen] -[hidden]-> [New Screen]
+    }
+
+    together {
+      node "Settings Module" as SettingsModule {
+        [Settings Screen]
+        [Icon Sample] -[hidden]-> [Settings Screen]
+      }
+    }
+  }
+
+  frame "Stores" {
+    [Current User]
+    [Settings] as SettingsModel
+
+    Modules -down-> Stores
+  } 
+
+  frame "Services" {
+    [App Service]
+    [Auth Service]
+    [Navigation Service]
+
+    Modules -right---> Services
+  } 
+}
+
+package Server {
+  cloud "Firebase" {
+  }
+  cloud "API" {
+  }
+  Services -down-> Server
+}
+@enduml

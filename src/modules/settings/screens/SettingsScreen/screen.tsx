@@ -1,18 +1,9 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import {
-  ScreenProps,
-  i18n,
-  catchAndLog,
-  screenNames,
-  Language,
-  Theme,
-  THEME_DARK,
-  colors,
-  getPrimaryColor,
-} from '@app/core';
+import i18next from 'i18next';
+import { ScreenProps, i18n, screenNames, Language, Theme, THEME_DARK, colors, getPrimaryColor } from '@app/core';
 import { config } from '@app/config';
-import { List, ListItemData, Picker, Image, Text, Container, Icon, View } from '@app/components';
+import { List, ListItemData, Picker, Image, Text, Container, Icon } from '@app/components';
 import { jsonSources, PrimaryColor } from '@app/assets';
 import { useTranslation } from 'react-i18next';
 import { navigationService, authService } from '@app/services';
@@ -39,11 +30,11 @@ export const Screen = ({
   const appVersion = Platform.OS === 'android' ? config.android.version : config.ios.version;
   const textColor = theme === THEME_DARK ? colors.white : colors.black;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
-  const performLogout = catchAndLog(async () => {
+  const performLogout = async (): Promise<void> => {
     await authService.logout();
     logout();
     navigationService.setRootLogin();
-  });
+  };
 
   const selectLanguage = (): void => {
     Picker.show<string>({
@@ -52,7 +43,11 @@ export const Screen = ({
         text: lang.name,
       })),
       initialValue: language,
-      onValueChanged: changeLanguage,
+      onValueChanged: async (lang: string) => {
+        await i18next.changeLanguage(lang);
+        changeLanguage(lang);
+        navigationService.setRootHome(1);
+      },
     });
   };
 
@@ -63,7 +58,10 @@ export const Screen = ({
         text: t(`theme.${systemTheme}`),
       })),
       initialValue: theme,
-      onValueChanged: changeTheme,
+      onValueChanged: (selectedTheme: Theme) => {
+        changeTheme(selectedTheme);
+        navigationService.setRootHome(1);
+      },
     });
   };
 
@@ -74,7 +72,10 @@ export const Screen = ({
         text: t(`color.${color.code}`),
       })),
       initialValue: primaryColorCode,
-      onValueChanged: changePrimaryColor,
+      onValueChanged: (selectedPrimaryColor: string) => {
+        changePrimaryColor(selectedPrimaryColor);
+        navigationService.setRootHome(1);
+      },
     });
   };
 
@@ -139,6 +140,7 @@ export const Screen = ({
       isHeader: false,
       showIcon: true,
       onPress: performLogout,
+      iconColor: textColor,
     },
   ];
 
@@ -168,9 +170,7 @@ export const Screen = ({
         />
       )}
       {!currentUser.avatarUrl && (
-        <View center centerVertical style={styles.avatar}>
-          <Icon name='account-circle-outline' size={100} color={textColor} />
-        </View>
+        <Icon name='account-circle-outline' size={100} color={textColor} style={styles.iconAvatar} />
       )}
       <Text bold style={styles.displayName}>
         {currentUser.displayName}

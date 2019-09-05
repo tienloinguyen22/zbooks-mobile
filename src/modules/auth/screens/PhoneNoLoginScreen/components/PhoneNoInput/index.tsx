@@ -68,8 +68,8 @@ export const PhoneNoInput = ({ sendVerificationCode, isBusy }: Props): JSX.Eleme
               value={values.countryCode}
               onChangeText={handleChange(fieldNames.countryCode)}
               onBlur={handleBlur(fieldNames.countryCode)}
-              showError={touched.countryCode && !!errors.countryCode}
-              showSuccess={touched.countryCode && !errors.countryCode}
+              error={touched.countryCode && !!errors.countryCode}
+              success={touched.countryCode && !errors.countryCode}
               errorMessage={errors.countryCode}
               type='picker'
               pickerDataSources={countries}
@@ -79,12 +79,12 @@ export const PhoneNoInput = ({ sendVerificationCode, isBusy }: Props): JSX.Eleme
               value={values.phoneNo}
               onChangeText={handleChange(fieldNames.phoneNo)}
               onBlur={handleBlur(fieldNames.phoneNo)}
-              showError={touched.phoneNo && !!errors.phoneNo}
-              showSuccess={touched.phoneNo && !errors.phoneNo}
+              error={touched.phoneNo && !!errors.phoneNo}
+              success={touched.phoneNo && !errors.phoneNo}
               errorMessage={errors.phoneNo}
               keyboardType='numeric'
             />
-            <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+            <Button onPress={handleSubmit} disabled={isBusy} style={styles.button}>
               <Text white>{t('phoneNoLoginScreen.sendVerificationCode')}</Text>
             </Button>
           </>

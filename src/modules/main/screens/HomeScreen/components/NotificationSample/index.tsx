@@ -12,7 +12,7 @@ export const NotificationSample = (): JSX.Element => {
   };
   return (
     <Card>
-      <CardItem header bordered>
+      <CardItem bordered header>
         <Text bold>Notification</Text>
       </CardItem>
       <CardItem bordered>

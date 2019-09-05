@@ -22,6 +22,6 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   icon: {
-    marginRight: 20,
+    marginRight: 40,
   },
 });

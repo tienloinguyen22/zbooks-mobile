@@ -2,6 +2,7 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import auth, { Auth } from '@react-native-firebase/auth';
 import { User, LoginType } from '@app/core';
 import { GoogleSignin } from 'react-native-google-signin';
+import { config } from '@app/config';
 
 interface LoginResultSuccess {
   isSuccessful: true;
@@ -24,21 +25,21 @@ const getUser = (user: Auth.User): User => {
   const avatarUrl =
     user.photoURL && user.photoURL.indexOf('facebook') > -1 ? `${user.photoURL}?height=500` : user.photoURL;
   let loginType: LoginType = 'EMAIL';
-  if (user.providerData && user.providerData.length > 0) {
-    if (user.providerData[0].providerId === FACEBOOK_PROVIDER_ID) {
-      loginType = 'FACEBOOK';
-    } else if (user.providerData[0].providerId === GOOGLE_PROVIDER_ID) {
-      loginType = 'GOOGLE';
-    } else if (user.providerData[0].providerId === PHONE_PROVIDER_ID) {
-      loginType = 'PHONE_NO';
-    }
+  if (user.providerData[0].providerId === FACEBOOK_PROVIDER_ID) {
+    loginType = 'FACEBOOK';
+  } else if (user.providerData[0].providerId === GOOGLE_PROVIDER_ID) {
+    loginType = 'GOOGLE';
+  } else if (user.providerData[0].providerId === PHONE_PROVIDER_ID) {
+    loginType = 'PHONE_NO';
+  } else {
+    loginType = 'EMAIL';
   }
   let displayName = user.displayName || undefined;
   if (!displayName) {
     if (loginType === 'PHONE_NO') {
-      displayName = user.phoneNumber || undefined;
+      displayName = (user.phoneNumber as unknown) as string;
     } else if (loginType === 'EMAIL') {
-      displayName = user.email || undefined;
+      displayName = (user.email as unknown) as string;
     }
   }
   return {
@@ -67,6 +68,7 @@ const loginFacebook = async (): Promise<LoginResult> => {
     // handle this however suites the flow of your app
     throw new Error('Something went wrong obtaining the users access token');
   }
+
   const credential = await auth.FacebookAuthProvider.credential(data.accessToken);
   const { user } = await auth().signInWithCredential(credential);
   return {
@@ -103,12 +105,12 @@ const loginGoogle = async (): Promise<LoginResult> => {
 const createUserWithEmailAndPassword = async (
   email: string,
   password: string,
-  language: string = 'en',
+  language: string = config.i18n.defaultLang,
 ): Promise<User> => {
   auth().languageCode = language;
   const { user } = await auth().createUserWithEmailAndPassword(email, password);
   await user.updateProfile({
-    displayName: user.email || '',
+    displayName: email,
   });
   await user.reload();
   await user.sendEmailVerification();
@@ -124,11 +126,11 @@ const isEmailRegistered = async (email: string): Promise<boolean> => {
   try {
     await auth().signInWithEmailAndPassword(email, ' ');
   } catch (error) {
-    if (error.code !== 'auth/user-not-found') {
-      return true;
-    }
     if (!error.code) {
       throw error;
+    }
+    if (error.code !== 'auth/user-not-found') {
+      return true;
     }
   }
   return false;
@@ -145,10 +147,7 @@ const isEmailVerified = async (): Promise<boolean> => {
 
 const getCurrentUser = (): User | undefined => {
   const { currentUser } = auth();
-  if (!currentUser) {
-    return undefined;
-  }
-  return getUser(currentUser);
+  return currentUser ? getUser(currentUser) : undefined;
 };
 
 const logout = async (): Promise<void> => {
@@ -169,37 +168,33 @@ const logout = async (): Promise<void> => {
   await auth().signOut();
 };
 
-const resendVerificationEmail = async (language: string = 'en'): Promise<void> => {
+const resendVerificationEmail = async (language: string = config.i18n.defaultLang): Promise<void> => {
   const user = auth().currentUser;
-  if (!user) {
-    return;
+  if (user) {
+    auth().languageCode = language;
+    user && (await user.sendEmailVerification());
   }
-  auth().languageCode = language;
-  await user.sendEmailVerification();
 };
 
 const changePassword = async (newPassword: string): Promise<void> => {
   const user = auth().currentUser;
-  if (!user) {
-    return;
-  }
-  await user.updatePassword(newPassword);
+  user && (await user.updatePassword(newPassword));
 };
 
-const sendSmsVerification = async (phoneNo: string, language: string = 'en'): Promise<Auth.ConfirmationResult> => {
+const sendSmsVerification = async (
+  phoneNo: string,
+  language: string = config.i18n.defaultLang,
+): Promise<Auth.ConfirmationResult> => {
   auth().languageCode = language;
   return auth().signInWithPhoneNumber(phoneNo, true);
 };
 
 const verifySmsCode = async (confirmationResult: Auth.ConfirmationResult, code: string): Promise<User | undefined> => {
   const user = await confirmationResult.confirm(code);
-  if (!user) {
-    return undefined;
-  }
-  return getUser(user);
+  return user ? getUser(user) : undefined;
 };
 
-const sendPasswordResetEmail = async (email: string, language: string = 'en'): Promise<void> => {
+const sendPasswordResetEmail = async (email: string, language: string = config.i18n.defaultLang): Promise<void> => {
   auth().languageCode = language;
   await auth().sendPasswordResetEmail(email);
 };

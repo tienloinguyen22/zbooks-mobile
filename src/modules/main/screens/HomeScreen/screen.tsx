@@ -1,8 +1,10 @@
 import React from 'react';
-import { ScreenProps, screenNames } from '@app/core';
-import { navigationService } from '@app/services';
+import { ScreenProps, screenNames, sleep } from '@app/core';
+import { navigationService, appService } from '@app/services';
 import { ScrollView, Container } from '@app/components';
+import { AlertSample } from '@app/modules/main/screens/HomeScreen/components/AlertSample';
 import { LottieSample } from '@app/modules/main/screens/HomeScreen/components/LottieSample';
+import { useEffectOnce } from '@app/hooks';
 import { mapStateToProps } from './map_state_to_props';
 import { mapDispatchToProps } from './map_dispatch_to_props';
 import {
@@ -23,10 +25,16 @@ export const Screen = ({
   sharks,
   dolphins,
   incrementShark,
-  incrementSharkAsync,
   incrementDolphin,
-  incrementDolphinAsync,
+  shouldShownUpdateWarning,
+  updateShownUpdateWarning,
 }: Props): JSX.Element => {
+  useEffectOnce(() => {
+    if (shouldShownUpdateWarning) {
+      appService.checkNeedUpdateNewBinaryVersion();
+      updateShownUpdateWarning(false);
+    }
+  });
   const pushNewScreen = (): void => {
     navigationService.navigateTo({
       componentId,
@@ -41,6 +49,24 @@ export const Screen = ({
     });
   };
 
+  const incrementSharkAsync = async (): Promise<void> => {
+    await sleep(500);
+    incrementShark(1);
+  };
+
+  const incrementDolphinAsync = async (): Promise<void> => {
+    await sleep(500);
+    incrementDolphin(1);
+  };
+
+  const incrementShark1 = (): void => {
+    incrementShark(1);
+  };
+
+  const incrementDolphin1 = (): void => {
+    incrementDolphin(1);
+  };
+
   return (
     <Container componentId={componentId}>
       <ScrollView>
@@ -52,12 +78,13 @@ export const Screen = ({
         <RematchSample
           sharks={sharks}
           dolphins={dolphins}
-          incrementShark={incrementShark}
+          incrementShark={incrementShark1}
           incrementSharkAsync={incrementSharkAsync}
-          incrementDolphin={incrementDolphin}
+          incrementDolphin={incrementDolphin1}
           incrementDolphinAsync={incrementDolphinAsync}
         />
         <NotificationSample />
+        <AlertSample />
         <LottieSample />
         <TextStyleSample />
       </ScrollView>

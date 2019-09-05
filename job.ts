@@ -53,7 +53,7 @@ export const updateConfig = (environment: string = 'default'): void => {
     },
     {
       src: path.resolve(__dirname, `${envFolder}/ios/sentry.properties`),
-      des: path.resolve(__dirname, `ios/mobile/sentry.properties`),
+      des: path.resolve(__dirname, `ios/sentry.properties`),
     },
     {
       src: path.resolve(__dirname, `${envFolder}/override_config.json`),

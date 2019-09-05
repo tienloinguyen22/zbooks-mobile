@@ -16,24 +16,16 @@ interface PickerParams<T> {
 
 const show: <T>(options: PickerParams<T>) => void = (options) => {
   const { onValueChanged, dataSources, initialValue } = options;
-  if (!dataSources) {
-    return;
-  }
 
-  const pickerData = options.dataSources ? options.dataSources.map((data) => data.text) : undefined;
+  const pickerData = options.dataSources.map((data) => data.text);
   const onPickerConfirm = (selectedItems: string[]): void => {
-    if (!onValueChanged) {
-      return;
-    }
     const selectedText = selectedItems[0];
     const selectedItem = dataSources.find((data) => data.text === selectedText);
     selectedItem && selectedItem.value !== initialValue && onValueChanged(selectedItem.value, selectedItem);
   };
   const selectedItem = dataSources.find((data) => data.value === initialValue);
   let selectedValue: string[] | undefined;
-  if (selectedItem) {
-    selectedValue = [selectedItem.text];
-  }
+  selectedItem && (selectedValue = [selectedItem.text]);
 
   const { primaryColorCode, theme } = store.getState().settings;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);

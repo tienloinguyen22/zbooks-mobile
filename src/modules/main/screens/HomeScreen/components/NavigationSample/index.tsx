@@ -9,7 +9,7 @@ interface Props {
 
 export const NavigationSample = ({ pushNewScreen, changeTab }: Props): JSX.Element => (
   <Card>
-    <CardItem header bordered>
+    <CardItem bordered header>
       <Text bold>Navigation</Text>
     </CardItem>
     <CardItem bordered>

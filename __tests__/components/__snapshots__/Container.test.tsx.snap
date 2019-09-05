@@ -25,7 +25,7 @@ exports[`components/Container renders successfully 1`] = `
             "flex": 0,
           },
           Object {
-            "backgroundColor": "primaryColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -37,7 +37,7 @@ exports[`components/Container renders successfully 1`] = `
             "flex": 1,
           },
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -45,7 +45,7 @@ exports[`components/Container renders successfully 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           }
         }
       />
@@ -79,7 +79,7 @@ exports[`components/Container renders successfully with its header 1`] = `
             "flex": 0,
           },
           Object {
-            "backgroundColor": "primaryColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -91,7 +91,7 @@ exports[`components/Container renders successfully with its header 1`] = `
             "flex": 1,
           },
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -106,7 +106,7 @@ exports[`components/Container renders successfully with its header 1`] = `
               "height": 50,
             },
             Object {
-              "backgroundColor": "primaryColor",
+              "backgroundColor": "black",
             },
           ]
         }
@@ -135,24 +135,17 @@ exports[`components/Container renders successfully with its header 1`] = `
           }
         >
           <Text
-            numberOfLines={1}
+            bold={true}
+            h6={true}
             style={
-              Array [
-                Object {
-                  "color": "#000",
-                  "fontFamily": "System",
-                  "fontSize": 17,
-                  "fontWeight": "700",
-                  "marginLeft": undefined,
-                  "paddingLeft": 4,
-                  "paddingTop": 1,
-                  "textAlign": "center",
-                },
-                Object {
-                  "color": "#fff",
-                },
-              ]
+              Object {
+                "color": "#fff",
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "textTransform": "none",
+              }
             }
+            white={true}
           >
             App header
           </Text>
@@ -170,7 +163,7 @@ exports[`components/Container renders successfully with its header 1`] = `
       <View
         style={
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           }
         }
       />
@@ -204,7 +197,7 @@ exports[`components/Container renders successfully with its header and Back butt
             "flex": 0,
           },
           Object {
-            "backgroundColor": "primaryColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -216,7 +209,7 @@ exports[`components/Container renders successfully with its header and Back butt
             "flex": 1,
           },
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           },
         ]
       }
@@ -231,7 +224,7 @@ exports[`components/Container renders successfully with its header and Back butt
               "height": 50,
             },
             Object {
-              "backgroundColor": "primaryColor",
+              "backgroundColor": "black",
             },
           ]
         }
@@ -246,57 +239,46 @@ exports[`components/Container renders successfully with its header and Back butt
           }
         >
           <TouchableOpacity
-            activeOpacity={0.5}
-            rounded={true}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderBottomWidth": null,
-                "borderColor": "#007aff",
-                "borderLeftWidth": null,
-                "borderRadius": 57,
-                "borderRightWidth": null,
-                "borderTopWidth": null,
-                "borderWidth": undefined,
-                "elevation": 0,
-                "flexDirection": "row",
-                "height": 45,
-                "justifyContent": "center",
-                "paddingBottom": 6,
-                "paddingHorizontal": 5,
-                "paddingTop": 6,
-                "shadowColor": null,
-                "shadowOffset": null,
-                "shadowOpacity": null,
-                "shadowRadius": null,
-              }
-            }
-            transparent={true}
+            activeOpacity={0.2}
           >
-            <Text
-              allowFontScaling={false}
+            <View
               style={
-                Array [
-                  Object {
-                    "color": "#fff",
-                    "fontSize": 25,
-                  },
-                  Object {
-                    "marginLeft": 10,
-                    "marginRight": 10,
-                  },
-                  Object {
-                    "fontFamily": "Material Design Icons",
-                    "fontStyle": "normal",
-                    "fontWeight": "normal",
-                  },
-                  Object {},
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 20,
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 50,
+                }
               }
+              transparent={true}
             >
-              
-            </Text>
+              <Text
+                allowFontScaling={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 25,
+                    },
+                    Object {
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
         <View
@@ -314,24 +296,17 @@ exports[`components/Container renders successfully with its header and Back butt
           }
         >
           <Text
-            numberOfLines={1}
+            bold={true}
+            h6={true}
             style={
-              Array [
-                Object {
-                  "color": "#000",
-                  "fontFamily": "System",
-                  "fontSize": 17,
-                  "fontWeight": "700",
-                  "marginLeft": undefined,
-                  "paddingLeft": 4,
-                  "paddingTop": 1,
-                  "textAlign": "center",
-                },
-                Object {
-                  "color": "#fff",
-                },
-              ]
+              Object {
+                "color": "#fff",
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "textTransform": "none",
+              }
             }
+            white={true}
           >
             App header
           </Text>
@@ -349,7 +324,7 @@ exports[`components/Container renders successfully with its header and Back butt
       <View
         style={
           Object {
-            "backgroundColor": "screenBackgroundColor",
+            "backgroundColor": "black",
           }
         }
       />

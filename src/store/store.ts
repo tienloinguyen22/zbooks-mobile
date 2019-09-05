@@ -20,14 +20,11 @@ export const store = init({
 export const persistor = persistStore(store, undefined, () => {
   const { settings } = store.getState();
   // we only should do it only 1 time when user installs & opens the app for the first time
-  if (!settings.appLoaded) {
-    store.dispatch.settings.finishLoadingApp();
-  }
+  !settings.appLoaded && store.dispatch.settings.finishLoadingApp();
 });
 
 export type Store = typeof store;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Dispatch = RematchDispatch<any>;
+export type Dispatch = RematchDispatch<typeof models>;
 export type RootState = RematchRootState<typeof models>;
 
 type Connect = (

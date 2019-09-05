@@ -3,7 +3,7 @@ import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { catchAndLog, ScreenProps, i18n, screenNames, handleError } from '@app/core';
+import { ScreenProps, i18n, screenNames, handleError } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -54,28 +54,27 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
       ),
   });
 
-  const onSubmit = catchAndLog(
-    async (values: FormData) => {
+  const onSubmit = async (values: FormData): Promise<void> => {
+    try {
       setIsBusy(true);
-      try {
-        const user = await authService.signInWithEmailAndPassword(values.email, values.password);
-        login(user);
-        if (user.emailVerified) {
-          navigationService.setRootHome();
-        } else {
-          navigationService.setRootEmailVerification();
-        }
-      } catch (error) {
-        handleError(error, {
-          'auth/invalid-email': t('emailLoginScreen.wrongEmailOrPassword'),
-          'auth/user-disabled': t('emailLoginScreen.userDisabled'),
-          'auth/user-not-found': t('emailLoginScreen.wrongEmailOrPassword'),
-          'auth/wrong-password': t('emailLoginScreen.wrongEmailOrPassword'),
-        });
+      const user = await authService.signInWithEmailAndPassword(values.email, values.password);
+      login(user);
+      if (user.emailVerified) {
+        navigationService.setRootHome();
+      } else {
+        navigationService.setRootEmailVerification();
       }
-    },
-    async () => setIsBusy(false),
-  );
+    } catch (error) {
+      handleError(error, {
+        'auth/invalid-email': t('emailLoginScreen.wrongEmailOrPassword'),
+        'auth/user-disabled': t('emailLoginScreen.userDisabled'),
+        'auth/user-not-found': t('emailLoginScreen.wrongEmailOrPassword'),
+        'auth/wrong-password': t('emailLoginScreen.wrongEmailOrPassword'),
+      });
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   const forgotPassword = (): void =>
     navigationService.navigateTo({
@@ -95,8 +94,8 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 value={values.email}
                 onChangeText={handleChange(fieldNames.email)}
                 onBlur={handleBlur(fieldNames.email)}
-                showError={touched.email && !!errors.email}
-                showSuccess={touched.email && !errors.email}
+                error={touched.email && !!errors.email}
+                success={touched.email && !errors.email}
                 errorMessage={errors.email}
               />
               <Field
@@ -104,18 +103,18 @@ export const Screen = ({ componentId, login, language }: Props): JSX.Element => 
                 value={values.password}
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
-                showError={touched.password && !!errors.password}
-                showSuccess={touched.password && !errors.password}
+                error={touched.password && !!errors.password}
+                success={touched.password && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
                 hasTooltip
                 tooltipText={t('common.passwordInfo')}
                 tooltipHeight={language === i18n.LANGUAGE_EN ? 140 : 100}
               />
-              <Button full onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
+              <Button onPress={handleSubmit} disabled={isBusy} style={[styles.button, styles.firstButton]}>
                 <Text white>{t('emailLoginScreen.login')}</Text>
               </Button>
-              <Button full onPress={forgotPassword} disabled={isBusy} style={styles.button}>
+              <Button onPress={forgotPassword} disabled={isBusy} style={styles.button}>
                 <Text white>{t('emailLoginScreen.forgotPassword')}</Text>
               </Button>
             </>

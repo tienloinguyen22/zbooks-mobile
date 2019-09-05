@@ -3,7 +3,6 @@ import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
   default: {
-    fontSize: 14,
     textTransform: 'none',
   },
   bold: {
@@ -34,11 +33,10 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   s1: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 16,
   },
   s2: {
-    fontSize: 12,
+    fontSize: 14,
   },
   success: {
     color: colors.green,

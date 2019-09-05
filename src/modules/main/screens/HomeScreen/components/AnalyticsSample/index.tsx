@@ -19,7 +19,7 @@ export const AnalyticsSample = (): JSX.Element => {
 
   return (
     <Card>
-      <CardItem header bordered>
+      <CardItem bordered header>
         <Text bold>Analytics</Text>
       </CardItem>
       <CardItem bordered>

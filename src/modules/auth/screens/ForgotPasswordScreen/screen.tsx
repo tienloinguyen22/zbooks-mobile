@@ -3,7 +3,7 @@ import { View, Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, handleError } from '@app/core';
+import { ScreenProps, showNotification, handleError } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -39,28 +39,27 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
       ),
   });
 
-  const onSubmit = catchAndLog(
-    async (values: FormData) => {
+  const onSubmit = async (values: FormData): Promise<void> => {
+    try {
       setIsBusy(true);
-      try {
-        await authService.sendPasswordResetEmail(values.email, language);
-        setTimeout(() => {
-          showNotification({
-            type: 'SUCCESS',
-            message: t('forgotPasswordScreen.passwordResetEmailSent'),
-          });
-          navigationService.goBack({
-            componentId,
-          });
-        }, 2000);
-      } catch (error) {
-        handleError(error, {
-          'auth/user-not-found': t('forgotPasswordScreen.userNotFound'),
+      await authService.sendPasswordResetEmail(values.email, language);
+      setTimeout(() => {
+        showNotification({
+          type: 'SUCCESS',
+          message: t('forgotPasswordScreen.passwordResetEmailSent'),
         });
-      }
-    },
-    async () => setIsBusy(false),
-  );
+        navigationService.goBack({
+          componentId,
+        });
+      }, 2000);
+    } catch (error) {
+      handleError(error, {
+        'auth/user-not-found': t('forgotPasswordScreen.userNotFound'),
+      });
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   return (
     <Container
@@ -79,12 +78,12 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 value={values.email}
                 onChangeText={handleChange(fieldNames.email)}
                 onBlur={handleBlur(fieldNames.email)}
-                showError={touched.email && !!errors.email}
-                showSuccess={touched.email && !errors.email}
+                error={touched.email && !!errors.email}
+                success={touched.email && !errors.email}
                 errorMessage={errors.email}
               />
               <View column>
-                <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+                <Button onPress={handleSubmit} disabled={isBusy} style={styles.button}>
                   <Text white>{t('forgotPasswordScreen.sendPasswordResetEmail')}</Text>
                 </Button>
               </View>

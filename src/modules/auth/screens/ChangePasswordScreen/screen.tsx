@@ -3,7 +3,7 @@ import { Button, Text, Field, Container } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { catchAndLog, ScreenProps, showNotification, i18n, handleError } from '@app/core';
+import { ScreenProps, showNotification, i18n, handleError } from '@app/core';
 import { navigationService, authService } from '@app/services';
 import { styles } from './styles';
 import { mapStateToProps } from './map_state_to_props';
@@ -50,26 +50,25 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
       ),
   });
 
-  const onSubmit = catchAndLog(
-    async (values: FormData) => {
+  const onSubmit = async (values: FormData): Promise<void> => {
+    try {
       setIsBusy(true);
-      try {
-        await authService.changePassword(values.password);
-        showNotification({
-          type: 'SUCCESS',
-          message: t('changePasswordScreen.passwordChanged'),
-        });
-        navigationService.goBack({
-          componentId,
-        });
-      } catch (error) {
-        handleError(error, {
-          'auth/requires-recent-login': t('changePasswordScreen.requireRecentLogin'),
-        });
-      }
-    },
-    async () => setIsBusy(false),
-  );
+      await authService.changePassword(values.password);
+      showNotification({
+        type: 'SUCCESS',
+        message: t('changePasswordScreen.passwordChanged'),
+      });
+      navigationService.goBack({
+        componentId,
+      });
+    } catch (error) {
+      handleError(error, {
+        'auth/requires-recent-login': t('changePasswordScreen.requireRecentLogin'),
+      });
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   return (
     <Container
@@ -88,8 +87,8 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 value={values.password}
                 onChangeText={handleChange(fieldNames.password)}
                 onBlur={handleBlur(fieldNames.password)}
-                showError={touched.password && !!errors.password}
-                showSuccess={touched.password && !errors.password}
+                error={touched.password && !!errors.password}
+                success={touched.password && !errors.password}
                 errorMessage={errors.password}
                 secureTextEntry
                 hasTooltip
@@ -101,12 +100,12 @@ export const Screen = ({ componentId, language }: Props): JSX.Element => {
                 value={values.confirmPassword}
                 onChangeText={handleChange(fieldNames.confirmPassword)}
                 onBlur={handleBlur(fieldNames.confirmPassword)}
-                showError={touched.confirmPassword && !!errors.confirmPassword}
-                showSuccess={touched.confirmPassword && !errors.confirmPassword}
+                error={touched.confirmPassword && !!errors.confirmPassword}
+                success={touched.confirmPassword && !errors.confirmPassword}
                 errorMessage={errors.confirmPassword}
                 secureTextEntry
               />
-              <Button full onPress={handleSubmit} disabled={isBusy} style={styles.button}>
+              <Button onPress={handleSubmit} disabled={isBusy} style={styles.button}>
                 <Text white>{t('changePasswordScreen.changePassword')}</Text>
               </Button>
             </>

@@ -8,7 +8,6 @@ export const recordError = async (error: Error): Promise<void> => {
       // do nothing
     }
   } else {
-    // eslint-disable-next-line no-console
-    console.log(error);
+    global.console.log(error);
   }
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextInput, NativeSyntheticEvent, TextInputFocusEventData, KeyboardTypeOptions } from 'react-native';
-import { colors, useTheme, THEME_DARK } from '@app/core';
+import { colors, THEME_DARK } from '@app/core';
+import { useTheme } from '@app/hooks';
 import { Tooltip } from '../Tooltip';
 import { View } from '../View';
 import { Text } from '../Text';
@@ -13,8 +14,8 @@ import { Touchable } from '../Touchable';
 interface Props {
   label: string;
   value: string;
-  showError?: boolean;
-  showSuccess?: boolean;
+  error?: boolean;
+  success?: boolean;
   errorMessage?: string;
   hasTooltip?: boolean;
   tooltipHeight?: number;
@@ -31,9 +32,9 @@ interface Props {
 export const Field = (props: Props): JSX.Element => {
   const { primaryColor, textColor, screenBackgroundColor, theme } = useTheme();
   let borderColor = primaryColor;
-  if (props.showError) {
+  if (props.error) {
     borderColor = colors.red;
-  } else if (props.showSuccess) {
+  } else if (props.success) {
     borderColor = colors.green;
   }
   let tooltipBackgroundColor = colors.black;
@@ -153,7 +154,7 @@ export const Field = (props: Props): JSX.Element => {
           </View>
         </Touchable>
       )}
-      {props.showError && (
+      {props.error && (
         <ErrorText
           style={[
             styles.error,
