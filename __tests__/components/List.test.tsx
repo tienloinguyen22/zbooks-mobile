@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { ListItemData, List } from '@app/components';
 import { colors, THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/List', () => {
   beforeEach(() => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import { ErrorText } from '@app/components';
 import { THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/ErrorText', () => {
   const errorText = 'Error';

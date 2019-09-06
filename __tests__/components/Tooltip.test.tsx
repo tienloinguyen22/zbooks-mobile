@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import { Tooltip } from '@app/components';
 import { colors, THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/Tooltip', () => {
   beforeEach(() => {

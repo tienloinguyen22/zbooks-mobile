@@ -1,6 +1,12 @@
 import React, { Component, ReactNode } from 'react';
 import { Navigation } from 'react-native-navigation';
-import * as Orientation from 'react-native-orientation';
+import {
+  lockToPortrait,
+  lockToLandscape,
+  lockToLandscapeLeft,
+  lockToLandscapeRight,
+  unlockAllOrientations,
+} from 'react-native-orientation';
 
 interface State {
   isAppeared: boolean;
@@ -29,37 +35,33 @@ export const WithScreen = (WrappedComponent: AppComponent, options?: Options): A
     }
 
     public componentDidAppear(): void {
-      if (!this.state.isAppeared) {
+      !this.state.isAppeared &&
         this.setState({
           isAppeared: true,
         });
-      }
-      if (options && options.alwaysRefresh) {
+
+      options &&
+        options.alwaysRefresh &&
         this.setState({
           toggleRefresh: !this.state.toggleRefresh,
         });
-      }
 
       switch (options && options.orientation) {
         case 'PORTRAIT':
-          Orientation.lockToPortrait();
+          lockToPortrait();
           break;
         case 'LANDSCAPE':
-          Orientation.lockToLandscape();
+          lockToLandscape();
           break;
         case 'LANDSCAPE-LEFT':
-          Orientation.lockToLandscapeLeft();
+          lockToLandscapeLeft();
           break;
         case 'LANDSCAPE-RIGHT':
-          Orientation.lockToLandscapeRight();
+          lockToLandscapeRight();
           break;
         default:
-          Orientation.unlockAllOrientations();
+          unlockAllOrientations();
       }
-    }
-
-    public componentDidDisappear(): void {
-      // nothing for now
     }
 
     public render(): ReactNode {

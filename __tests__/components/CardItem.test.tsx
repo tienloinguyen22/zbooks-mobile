@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import { Text, CardItem, Button } from '@app/components';
 import { THEME_DARK, THEME_LIGHT } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/CardItem', () => {
   const helloText = 'Hello';

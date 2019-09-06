@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react-native';
 import { Touchable, Text, Icon } from '@app/components';
 import { colors, THEME_DARK } from '@app/core';
 import { Platform } from 'react-native';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 beforeAll(() => {});
 

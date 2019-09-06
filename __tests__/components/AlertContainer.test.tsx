@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import { AlertContainer, View, Button, Text } from '@app/components';
 import { THEME_DARK, THEME_LIGHT } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 const mockModal = (modalProps: { onBackdropPress: () => void; children: React.ReactNode }): JSX.Element => {
   const onPress = jest.fn().mockImplementation(() => {

@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react-native';
 import { Container } from '@app/components';
 import { navigationService } from '@app/services';
 import { THEME_DARK } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 describe('components/Container', () => {
   const headerTitle = 'App header';

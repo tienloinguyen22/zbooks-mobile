@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react-native';
 import { ErrorBoundary, Text } from '@app/components';
 import { THEME_DARK, recordError } from '@app/core';
-import { mockTheme } from '../helper';
+import { mockTheme } from '../test_helpers';
 
 jest.mock('@app/core/helpers/record_error', () => ({
   recordError: jest.fn(),
