@@ -4,12 +4,10 @@ import { colors } from '@app/core';
 export const styles = StyleSheet.create({
   container: {
     flex: 0,
-    paddingLeft: 15,
-    paddingRight: 15,
     paddingTop: 10,
   },
   textInput: {
-    fontSize: 20,
+    fontSize: 15,
     borderWidth: 1,
     borderRadius: 25,
     paddingLeft: 15,
@@ -23,7 +21,6 @@ export const styles = StyleSheet.create({
     marginBottom: 5,
   },
   label: {
-    marginLeft: 15,
     marginTop: 5,
     marginBottom: 5,
   },
@@ -32,6 +29,10 @@ export const styles = StyleSheet.create({
   },
   pickerText: {
     color: colors.black,
-    fontSize: 20,
+  },
+  eyeIcon: {
+    position: 'absolute',
+    right: 5,
+    bottom: 5,
   },
 });

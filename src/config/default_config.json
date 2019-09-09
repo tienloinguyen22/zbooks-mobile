@@ -11,6 +11,7 @@
     "versionCode": 3145800
   },
   "author": "Thinh Tran",
+  "dateFormat": "DD/MM/YYYY",
   "fb": {
     "id": ""
   },

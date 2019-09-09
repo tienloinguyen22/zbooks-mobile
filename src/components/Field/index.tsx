@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
-import { TextInput, NativeSyntheticEvent, TextInputFocusEventData, KeyboardTypeOptions } from 'react-native';
-import { colors, THEME_DARK } from '@app/core';
+import {
+  TextInput,
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+  KeyboardTypeOptions,
+  ViewStyle,
+  TextStyle,
+} from 'react-native';
+import { colors, THEME_DARK, formatDate } from '@app/core';
 import { useTheme } from '@app/hooks';
+import { DatePicker, DateValue } from '@app/components';
 import { Tooltip } from '../Tooltip';
 import { View } from '../View';
 import { Text } from '../Text';
@@ -16,6 +24,11 @@ interface Props {
   value: string;
   error?: boolean;
   success?: boolean;
+  errorColor?: string;
+  successColor?: string;
+  containerStyle?: ViewStyle;
+  inputStyle?: ViewStyle;
+  labelStyle?: TextStyle;
   errorMessage?: string;
   hasTooltip?: boolean;
   tooltipHeight?: number;
@@ -27,15 +40,20 @@ interface Props {
   type?: 'text' | 'picker' | 'datepicker';
   pickerDataSources?: PickerDataItem<string>[];
   keyboardType?: KeyboardTypeOptions;
+  placeHolderTextColor?: string;
+  hasPassword?: boolean;
+  datePickerFromYear?: number;
+  datePickerToYear?: number;
+  inputTextColor?: string;
 }
 
 export const Field = (props: Props): JSX.Element => {
   const { primaryColor, textColor, screenBackgroundColor, theme } = useTheme();
   let borderColor = primaryColor;
   if (props.error) {
-    borderColor = colors.red;
+    borderColor = props.errorColor ? props.errorColor : colors.red;
   } else if (props.success) {
-    borderColor = colors.green;
+    borderColor = props.successColor ? props.successColor : colors.green;
   }
   let tooltipBackgroundColor = colors.black;
   let tooltipTextColor = colors.white;
@@ -52,6 +70,12 @@ export const Field = (props: Props): JSX.Element => {
     initialItem = props.pickerDataSources.find((item) => item.value === props.value);
   }
   const [selectedItem, setSelectedItem] = useState<PickerDataItem<string> | undefined>(initialItem);
+  const [shouldShowPassword, updateShowPassword] = useState<boolean>(false);
+  const [date, setDate] = useState<DateValue | undefined>(undefined);
+
+  const showPassword = (): void => {
+    updateShowPassword(true);
+  };
 
   const openPicker = (): void => {
     if (!props.pickerDataSources) {
@@ -67,12 +91,30 @@ export const Field = (props: Props): JSX.Element => {
     });
   };
 
+  const openDatePicker = (): void => {
+    const currentDate = new Date();
+    DatePicker.show({
+      initialValue: {
+        year: currentDate.getFullYear(),
+        month: currentDate.getMonth(),
+        day: currentDate.getDate(),
+      },
+      onValueChanged: (dateValue) => {
+        setDate(dateValue);
+        props.onChangeText && props.onChangeText(formatDate(dateValue));
+      },
+      fromYear: props.datePickerFromYear ? props.datePickerFromYear : currentDate.getFullYear(),
+      toYear: props.datePickerToYear ? props.datePickerToYear : currentDate.getFullYear(),
+    });
+  };
+
   return (
     <View
       style={[
         styles.container,
         {
           backgroundColor: screenBackgroundColor,
+          ...props.containerStyle,
         },
       ]}
     >
@@ -84,11 +126,11 @@ export const Field = (props: Props): JSX.Element => {
         }}
       >
         <Text
-          bold
           style={[
             styles.label,
             {
               color: textColor,
+              ...props.labelStyle,
             },
           ]}
         >
@@ -115,29 +157,43 @@ export const Field = (props: Props): JSX.Element => {
         )}
       </View>
       {(!props.type || props.type === 'text') && (
-        <TextInput
+        <View
           style={[
             styles.textInput,
             {
               borderColor,
-              color: textColor,
+              ...props.inputStyle,
             },
           ]}
-          value={props.value}
-          onChangeText={props.onChangeText}
-          onBlur={props.onBlur}
-          secureTextEntry={props.secureTextEntry}
-          keyboardType={props.keyboardType}
-        />
+        >
+          <TextInput
+            style={{
+              color: props.inputTextColor ? props.inputTextColor : textColor,
+            }}
+            value={props.value}
+            onChangeText={props.onChangeText}
+            onBlur={props.onBlur}
+            secureTextEntry={shouldShowPassword ? false : props.secureTextEntry}
+            keyboardType={props.keyboardType}
+            placeholder={props.label}
+            placeholderTextColor={props.placeHolderTextColor ? props.placeHolderTextColor : textColor}
+          />
+        </View>
+      )}
+      {!!props.hasPassword && (
+        <Touchable onPress={showPassword} style={styles.eyeIcon}>
+          <Icon name={'eye-outline'} color={colors.white} size={20} />
+        </Touchable>
       )}
       {props.type === 'picker' && (
         <Touchable onPress={openPicker}>
           <View
+            row
             style={[
               styles.textInput,
               {
                 borderColor,
-                backgroundColor: screenBackgroundColor,
+                ...props.inputStyle,
               },
             ]}
           >
@@ -145,12 +201,43 @@ export const Field = (props: Props): JSX.Element => {
               style={[
                 styles.pickerText,
                 {
-                  color: textColor,
+                  color: props.placeHolderTextColor ? props.placeHolderTextColor : textColor,
                 },
               ]}
             >
-              {selectedItem ? selectedItem.text : ''}{' '}
+              {selectedItem ? selectedItem.text : ''}
             </Text>
+            <View style={styles.eyeIcon}>
+              <Icon name={'chevron-down'} color={colors.white} size={20} />
+            </View>
+          </View>
+        </Touchable>
+      )}
+      {props.type === 'datepicker' && (
+        <Touchable onPress={openDatePicker}>
+          <View
+            row
+            style={[
+              styles.textInput,
+              {
+                borderColor,
+                ...props.inputStyle,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.pickerText,
+                {
+                  color: props.placeHolderTextColor ? props.placeHolderTextColor : textColor,
+                },
+              ]}
+            >
+              {!date ? props.label : formatDate(date)}
+            </Text>
+            <View style={styles.eyeIcon}>
+              <Icon name={'chevron-down'} color={colors.white} size={20} />
+            </View>
           </View>
         </Touchable>
       )}
@@ -159,7 +246,7 @@ export const Field = (props: Props): JSX.Element => {
           style={[
             styles.error,
             {
-              color: colors.red,
+              color: props.errorColor ? props.errorColor : colors.red,
             },
           ]}
         >
