@@ -1,0 +1,1093 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modules/auth/screen/EmailLoginScreen renders successfully 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "flex": 0,
+          },
+          Object {
+            "backgroundColor": "black",
+          },
+        ]
+      }
+    />
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "backgroundColor": "black",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {},
+            Object {
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "height": 50,
+            },
+            Object {
+              "backgroundColor": "black",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "flex-start",
+              "alignSelf": "center",
+              "flex": 1,
+            }
+          }
+        >
+          <TouchableOpacity
+            activeOpacity={0.2}
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 20,
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 50,
+                }
+              }
+              transparent={true}
+            >
+              <Text
+                allowFontScaling={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 25,
+                    },
+                    Object {
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "flex": 1,
+              },
+              Object {
+                "minWidth": 150,
+              },
+            ]
+          }
+        >
+          <Text
+            bold={true}
+            h6={true}
+            style={
+              Object {
+                "color": "#fff",
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "textTransform": "none",
+              }
+            }
+            white={true}
+          >
+            emailLoginScreen.login
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "flex-end",
+              "alignSelf": "center",
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "black",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {},
+              Object {
+                "flex": 0,
+                "paddingTop": 10,
+              },
+              Object {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <View
+            center={true}
+            row={true}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "black",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "textTransform": "none",
+                  },
+                  Object {
+                    "marginBottom": 5,
+                    "marginTop": 5,
+                  },
+                  Object {
+                    "color": "white",
+                  },
+                ]
+              }
+            >
+              emailLoginScreen.email
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {},
+                Object {
+                  "borderRadius": 25,
+                  "borderWidth": 1,
+                  "fontSize": 15,
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                },
+                Object {
+                  "borderColor": "black",
+                },
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              placeholder="emailLoginScreen.email"
+              placeholderTextColor="white"
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {},
+              Object {
+                "flex": 0,
+                "paddingTop": 10,
+              },
+              Object {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <View
+            center={true}
+            row={true}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "black",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "textTransform": "none",
+                  },
+                  Object {
+                    "marginBottom": 5,
+                    "marginTop": 5,
+                  },
+                  Object {
+                    "color": "white",
+                  },
+                ]
+              }
+            >
+              emailLoginScreen.password
+            </Text>
+            <View
+              collapsable={false}
+            >
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": "white",
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "margin": 8,
+                      },
+                      Object {
+                        "fontFamily": "Material Design Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </TouchableOpacity>
+              <Modal
+                animationType="fade"
+                hardwareAccelerated={false}
+                transparent={true}
+                visible={false}
+              >
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={
+                    Object {
+                      "backgroundColor": "transparent",
+                      "flex": 1,
+                    }
+                  }
+                >
+                  <View>
+                    <View
+                      style={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "height": 0,
+                          "left": 0,
+                          "overflow": "visible",
+                          "position": "absolute",
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    >
+                      <Text
+                        allowFontScaling={false}
+                        style={
+                          Array [
+                            Object {
+                              "color": "white",
+                              "fontSize": 14,
+                            },
+                            Object {
+                              "margin": 8,
+                            },
+                            Object {
+                              "fontFamily": "Material Design Icons",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "left": -7.5,
+                          "position": "absolute",
+                          "top": -2,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "transparent",
+                              "borderBottomColor": "white",
+                              "borderBottomWidth": 15,
+                              "borderLeftColor": "transparent",
+                              "borderLeftWidth": 8,
+                              "borderRightColor": "transparent",
+                              "borderRightWidth": 8,
+                              "borderStyle": "solid",
+                              "height": 0,
+                              "width": 0,
+                            },
+                            Object {
+                              "borderBottomColor": "#fff",
+                            },
+                            Object {},
+                          ]
+                        }
+                      />
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#fff",
+                          "borderRadius": 10,
+                          "display": "flex",
+                          "flex": 1,
+                          "height": 140,
+                          "justifyContent": "flex-start",
+                          "left": -17.999,
+                          "padding": 10,
+                          "position": "absolute",
+                          "top": 10,
+                          "width": 250,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          Object {
+                            "color": "#222C44",
+                            "textTransform": "none",
+                          }
+                        }
+                      >
+                        common.passwordInfo
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              </Modal>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {},
+                Object {
+                  "borderRadius": 25,
+                  "borderWidth": 1,
+                  "fontSize": 15,
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                },
+                Object {
+                  "borderColor": "black",
+                },
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              placeholder="emailLoginScreen.password"
+              placeholderTextColor="white"
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+        </View>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            disabled={false}
+            style={
+              Array [
+                Object {},
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "black",
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 200,
+                },
+                Object {
+                  "alignSelf": "center",
+                  "marginBottom": 20,
+                  "width": 300,
+                },
+                Object {
+                  "marginTop": 20,
+                },
+                Object {
+                  "borderRadius": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              emailLoginScreen.login
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            disabled={false}
+            style={
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "black",
+                "borderRadius": 20,
+                "flexDirection": "row",
+                "height": 45,
+                "justifyContent": "center",
+                "marginBottom": 20,
+                "width": 300,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              emailLoginScreen.forgotPassword
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  </View>
+</View>
+`;
+
+exports[`modules/auth/screen/EmailLoginScreen renders successfully with Vietnamese language 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "flex": 0,
+          },
+          Object {
+            "backgroundColor": "black",
+          },
+        ]
+      }
+    />
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "backgroundColor": "black",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {},
+            Object {
+              "alignSelf": "flex-start",
+              "flexDirection": "row",
+              "height": 50,
+            },
+            Object {
+              "backgroundColor": "black",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "flex-start",
+              "alignSelf": "center",
+              "flex": 1,
+            }
+          }
+        >
+          <TouchableOpacity
+            activeOpacity={0.2}
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 20,
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 50,
+                }
+              }
+              transparent={true}
+            >
+              <Text
+                allowFontScaling={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 25,
+                    },
+                    Object {
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "fontFamily": "Material Design Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    Object {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "flex": 1,
+              },
+              Object {
+                "minWidth": 150,
+              },
+            ]
+          }
+        >
+          <Text
+            bold={true}
+            h6={true}
+            style={
+              Object {
+                "color": "#fff",
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "textTransform": "none",
+              }
+            }
+            white={true}
+          >
+            emailLoginScreen.login
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "flex-end",
+              "alignSelf": "center",
+              "flex": 1,
+            }
+          }
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "black",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {},
+              Object {
+                "flex": 0,
+                "paddingTop": 10,
+              },
+              Object {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <View
+            center={true}
+            row={true}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "black",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "textTransform": "none",
+                  },
+                  Object {
+                    "marginBottom": 5,
+                    "marginTop": 5,
+                  },
+                  Object {
+                    "color": "white",
+                  },
+                ]
+              }
+            >
+              emailLoginScreen.email
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {},
+                Object {
+                  "borderRadius": 25,
+                  "borderWidth": 1,
+                  "fontSize": 15,
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                },
+                Object {
+                  "borderColor": "black",
+                },
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              placeholder="emailLoginScreen.email"
+              placeholderTextColor="white"
+              rejectResponderTermination={true}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {},
+              Object {
+                "flex": 0,
+                "paddingTop": 10,
+              },
+              Object {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <View
+            center={true}
+            row={true}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "black",
+                "flexDirection": "row",
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "textTransform": "none",
+                  },
+                  Object {
+                    "marginBottom": 5,
+                    "marginTop": 5,
+                  },
+                  Object {
+                    "color": "white",
+                  },
+                ]
+              }
+            >
+              emailLoginScreen.password
+            </Text>
+            <View
+              collapsable={false}
+            >
+              <TouchableOpacity
+                activeOpacity={1}
+              >
+                <Text
+                  allowFontScaling={false}
+                  style={
+                    Array [
+                      Object {
+                        "color": "white",
+                        "fontSize": 14,
+                      },
+                      Object {
+                        "margin": 8,
+                      },
+                      Object {
+                        "fontFamily": "Material Design Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      Object {},
+                    ]
+                  }
+                >
+                  
+                </Text>
+              </TouchableOpacity>
+              <Modal
+                animationType="fade"
+                hardwareAccelerated={false}
+                transparent={true}
+                visible={false}
+              >
+                <TouchableOpacity
+                  activeOpacity={1}
+                  style={
+                    Object {
+                      "backgroundColor": "transparent",
+                      "flex": 1,
+                    }
+                  }
+                >
+                  <View>
+                    <View
+                      style={
+                        Object {
+                          "backgroundColor": "transparent",
+                          "height": 0,
+                          "left": 0,
+                          "overflow": "visible",
+                          "position": "absolute",
+                          "top": 0,
+                          "width": 0,
+                        }
+                      }
+                    >
+                      <Text
+                        allowFontScaling={false}
+                        style={
+                          Array [
+                            Object {
+                              "color": "white",
+                              "fontSize": 14,
+                            },
+                            Object {
+                              "margin": 8,
+                            },
+                            Object {
+                              "fontFamily": "Material Design Icons",
+                              "fontStyle": "normal",
+                              "fontWeight": "normal",
+                            },
+                            Object {},
+                          ]
+                        }
+                      >
+                        
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "left": -7.5,
+                          "position": "absolute",
+                          "top": -2,
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "backgroundColor": "transparent",
+                              "borderBottomColor": "white",
+                              "borderBottomWidth": 15,
+                              "borderLeftColor": "transparent",
+                              "borderLeftWidth": 8,
+                              "borderRightColor": "transparent",
+                              "borderRightWidth": 8,
+                              "borderStyle": "solid",
+                              "height": 0,
+                              "width": 0,
+                            },
+                            Object {
+                              "borderBottomColor": "#fff",
+                            },
+                            Object {},
+                          ]
+                        }
+                      />
+                    </View>
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#fff",
+                          "borderRadius": 10,
+                          "display": "flex",
+                          "flex": 1,
+                          "height": 100,
+                          "justifyContent": "flex-start",
+                          "left": -17.999,
+                          "padding": 10,
+                          "position": "absolute",
+                          "top": 10,
+                          "width": 250,
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          Object {
+                            "color": "#222C44",
+                            "textTransform": "none",
+                          }
+                        }
+                      >
+                        common.passwordInfo
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              </Modal>
+            </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {},
+                Object {
+                  "borderRadius": 25,
+                  "borderWidth": 1,
+                  "fontSize": 15,
+                  "paddingBottom": 10,
+                  "paddingLeft": 15,
+                  "paddingRight": 15,
+                  "paddingTop": 10,
+                },
+                Object {
+                  "borderColor": "black",
+                },
+              ]
+            }
+          >
+            <TextInput
+              allowFontScaling={true}
+              placeholder="emailLoginScreen.password"
+              placeholderTextColor="white"
+              rejectResponderTermination={true}
+              secureTextEntry={true}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+              underlineColorAndroid="transparent"
+              value=""
+            />
+          </View>
+        </View>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            disabled={false}
+            style={
+              Array [
+                Object {},
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "black",
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 200,
+                },
+                Object {
+                  "alignSelf": "center",
+                  "marginBottom": 20,
+                  "width": 300,
+                },
+                Object {
+                  "marginTop": 20,
+                },
+                Object {
+                  "borderRadius": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              emailLoginScreen.login
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            disabled={false}
+            style={
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "black",
+                "borderRadius": 20,
+                "flexDirection": "row",
+                "height": 45,
+                "justifyContent": "center",
+                "marginBottom": 20,
+                "width": 300,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              emailLoginScreen.forgotPassword
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  </View>
+</View>
+`;

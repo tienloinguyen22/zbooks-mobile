@@ -33,5 +33,4 @@ type Connect = (
 ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (component: any) => ConnectedComponentClass<any, any>;
 
-export const connect: Connect = (mapStateToProps, mapDispatchToProps) => (component) =>
-  reduxConnect(mapStateToProps, mapDispatchToProps)(component);
+export const connect: Connect = reduxConnect;

@@ -4,7 +4,7 @@ import { SharksState, sharks } from '@app/store/models/sharks';
 jest.mock('@rematch/core', () => ({
   createModel: (config: { reducers: ModelReducers<SharksState> }) => config,
 }));
-describe('store/models/dolphins', () => {
+describe('store/models/sharks', () => {
   it('increment', async () => {
     const oldDolphinState: SharksState = {
       count: 0,

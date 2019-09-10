@@ -1,0 +1,342 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modules/auth/screen/LoginScreen renders successfully 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    collapsable={true}
+    pointerEvents="box-none"
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "flex": 0,
+          },
+          Object {
+            "backgroundColor": "#d32f2f",
+          },
+        ]
+      }
+    />
+    <SafeAreaView
+      style={
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "backgroundColor": "#F7F9FC",
+          },
+        ]
+      }
+    >
+      <View
+        center={true}
+        centerVertical={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#F7F9FC",
+            "flex": 1,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Image
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/app_icon.png",
+            }
+          }
+          style={
+            Object {
+              "height": 150,
+              "margin": 20,
+              "width": 150,
+            }
+          }
+        />
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            rounded={true}
+            style={
+              Array [
+                Object {},
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#d32f2f",
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 200,
+                },
+                Object {
+                  "alignSelf": "center",
+                  "marginBottom": 20,
+                  "width": 300,
+                },
+                Object {
+                  "backgroundColor": "#4267B2",
+                },
+                Object {
+                  "borderRadius": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 25,
+                  },
+                  Object {
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              loginScreen.loginWith
+               Facebook
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            rounded={true}
+            style={
+              Array [
+                Object {},
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#d32f2f",
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 200,
+                },
+                Object {
+                  "alignSelf": "center",
+                  "marginBottom": 20,
+                  "width": 300,
+                },
+                Object {
+                  "backgroundColor": "#EA4334",
+                },
+                Object {
+                  "borderRadius": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              allowFontScaling={false}
+              numberOfLines={1}
+              style={
+                Array [
+                  Object {
+                    "color": "#fff",
+                    "fontSize": 25,
+                  },
+                  Object {
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "fontFamily": "Material Design Icons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              loginScreen.loginWith
+               Google
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            rounded={true}
+            style={
+              Array [
+                Object {},
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#d32f2f",
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 200,
+                },
+                Object {
+                  "alignSelf": "center",
+                  "marginBottom": 20,
+                  "width": 300,
+                },
+                Object {
+                  "borderRadius": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              loginScreen.loginWithEmail
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            rounded={true}
+            style={
+              Array [
+                Object {},
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#d32f2f",
+                  "flexDirection": "row",
+                  "height": 45,
+                  "justifyContent": "center",
+                  "width": 200,
+                },
+                Object {
+                  "alignSelf": "center",
+                  "marginBottom": 20,
+                  "width": 300,
+                },
+                Object {
+                  "borderRadius": 20,
+                },
+              ]
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              loginScreen.loginWithPhoneNo
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <Text
+          style={
+            Object {
+              "color": "#222C44",
+              "marginBottom": 20,
+              "textTransform": "none",
+            }
+          }
+        >
+          loginScreen.notHaveAccount
+        </Text>
+        <TouchableOpacity
+          activeOpacity={0.2}
+        >
+          <View
+            rounded={true}
+            style={
+              Object {
+                "alignItems": "center",
+                "alignSelf": "center",
+                "backgroundColor": "#d32f2f",
+                "borderRadius": 20,
+                "flexDirection": "row",
+                "height": 45,
+                "justifyContent": "center",
+                "marginBottom": 20,
+                "width": 300,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                Object {
+                  "color": "#fff",
+                  "fontWeight": "bold",
+                  "textTransform": "none",
+                }
+              }
+              white={true}
+            >
+              loginScreen.registerByEmail
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  </View>
+</View>
+`;
