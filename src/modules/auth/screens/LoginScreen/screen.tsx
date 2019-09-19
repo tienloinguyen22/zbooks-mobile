@@ -30,14 +30,12 @@ export const Screen = ({
   const performLogin = async (loginType: 'GOOGLE' | 'FACEBOOK'): Promise<void> => {
     let result: LoginResult | undefined;
     switch (loginType) {
-      case 'FACEBOOK':
-        result = await authService.loginFacebook();
-        break;
       case 'GOOGLE':
         result = await authService.loginGoogle();
         break;
       default:
-        return;
+        result = await authService.loginFacebook();
+        break;
     }
     if (!result.isSuccessful) {
       if (result.errorMessage) {

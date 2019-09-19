@@ -24,8 +24,6 @@ exports[`components/Field renders successfully 1`] = `
           Object {},
           Object {
             "flex": 0,
-            "paddingLeft": 15,
-            "paddingRight": 15,
             "paddingTop": 10,
           },
           Object {
@@ -46,7 +44,6 @@ exports[`components/Field renders successfully 1`] = `
         }
       >
         <Text
-          bold={true}
           style={
             Array [
               Object {
@@ -55,14 +52,10 @@ exports[`components/Field renders successfully 1`] = `
               },
               Object {
                 "marginBottom": 5,
-                "marginLeft": 15,
                 "marginTop": 5,
               },
               Object {
                 "color": "white",
-              },
-              Object {
-                "fontWeight": "bold",
               },
             ]
           }
@@ -70,15 +63,14 @@ exports[`components/Field renders successfully 1`] = `
           label
         </Text>
       </View>
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
+      <View
         style={
           Array [
+            Object {},
             Object {
               "borderRadius": 25,
               "borderWidth": 1,
-              "fontSize": 20,
+              "fontSize": 15,
               "paddingBottom": 10,
               "paddingLeft": 15,
               "paddingRight": 15,
@@ -86,13 +78,24 @@ exports[`components/Field renders successfully 1`] = `
             },
             Object {
               "borderColor": "black",
-              "color": "white",
             },
           ]
         }
-        underlineColorAndroid="transparent"
-        value="value"
-      />
+      >
+        <TextInput
+          allowFontScaling={true}
+          placeholder="label"
+          placeholderTextColor="white"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="value"
+        />
+      </View>
     </View>
   </View>
 </View>
@@ -122,8 +125,6 @@ exports[`components/Field renders with error successfully 1`] = `
           Object {},
           Object {
             "flex": 0,
-            "paddingLeft": 15,
-            "paddingRight": 15,
             "paddingTop": 10,
           },
           Object {
@@ -144,7 +145,6 @@ exports[`components/Field renders with error successfully 1`] = `
         }
       >
         <Text
-          bold={true}
           style={
             Array [
               Object {
@@ -153,14 +153,10 @@ exports[`components/Field renders with error successfully 1`] = `
               },
               Object {
                 "marginBottom": 5,
-                "marginLeft": 15,
                 "marginTop": 5,
               },
               Object {
                 "color": "white",
-              },
-              Object {
-                "fontWeight": "bold",
               },
             ]
           }
@@ -168,15 +164,14 @@ exports[`components/Field renders with error successfully 1`] = `
           label
         </Text>
       </View>
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
+      <View
         style={
           Array [
+            Object {},
             Object {
               "borderRadius": 25,
               "borderWidth": 1,
-              "fontSize": 20,
+              "fontSize": 15,
               "paddingBottom": 10,
               "paddingLeft": 15,
               "paddingRight": 15,
@@ -184,13 +179,24 @@ exports[`components/Field renders with error successfully 1`] = `
             },
             Object {
               "borderColor": "#FC4173",
-              "color": "white",
             },
           ]
         }
-        underlineColorAndroid="transparent"
-        value="value"
-      />
+      >
+        <TextInput
+          allowFontScaling={true}
+          placeholder="label"
+          placeholderTextColor="white"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="value"
+        />
+      </View>
       <Text
         style={
           Array [
@@ -244,8 +250,6 @@ exports[`components/Field renders with light theme successfully 1`] = `
           Object {},
           Object {
             "flex": 0,
-            "paddingLeft": 15,
-            "paddingRight": 15,
             "paddingTop": 10,
           },
           Object {
@@ -266,7 +270,6 @@ exports[`components/Field renders with light theme successfully 1`] = `
         }
       >
         <Text
-          bold={true}
           style={
             Array [
               Object {
@@ -275,14 +278,10 @@ exports[`components/Field renders with light theme successfully 1`] = `
               },
               Object {
                 "marginBottom": 5,
-                "marginLeft": 15,
                 "marginTop": 5,
               },
               Object {
                 "color": "white",
-              },
-              Object {
-                "fontWeight": "bold",
               },
             ]
           }
@@ -290,15 +289,14 @@ exports[`components/Field renders with light theme successfully 1`] = `
           label
         </Text>
       </View>
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
+      <View
         style={
           Array [
+            Object {},
             Object {
               "borderRadius": 25,
               "borderWidth": 1,
-              "fontSize": 20,
+              "fontSize": 15,
               "paddingBottom": 10,
               "paddingLeft": 15,
               "paddingRight": 15,
@@ -306,13 +304,24 @@ exports[`components/Field renders with light theme successfully 1`] = `
             },
             Object {
               "borderColor": "black",
-              "color": "white",
             },
           ]
         }
-        underlineColorAndroid="transparent"
-        value="value"
-      />
+      >
+        <TextInput
+          allowFontScaling={true}
+          placeholder="label"
+          placeholderTextColor="white"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="value"
+        />
+      </View>
     </View>
   </View>
 </View>
@@ -342,8 +351,6 @@ exports[`components/Field renders with success successfully 1`] = `
           Object {},
           Object {
             "flex": 0,
-            "paddingLeft": 15,
-            "paddingRight": 15,
             "paddingTop": 10,
           },
           Object {
@@ -364,7 +371,6 @@ exports[`components/Field renders with success successfully 1`] = `
         }
       >
         <Text
-          bold={true}
           style={
             Array [
               Object {
@@ -373,14 +379,10 @@ exports[`components/Field renders with success successfully 1`] = `
               },
               Object {
                 "marginBottom": 5,
-                "marginLeft": 15,
                 "marginTop": 5,
               },
               Object {
                 "color": "white",
-              },
-              Object {
-                "fontWeight": "bold",
               },
             ]
           }
@@ -388,15 +390,14 @@ exports[`components/Field renders with success successfully 1`] = `
           label
         </Text>
       </View>
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
+      <View
         style={
           Array [
+            Object {},
             Object {
               "borderRadius": 25,
               "borderWidth": 1,
-              "fontSize": 20,
+              "fontSize": 15,
               "paddingBottom": 10,
               "paddingLeft": 15,
               "paddingRight": 15,
@@ -404,13 +405,24 @@ exports[`components/Field renders with success successfully 1`] = `
             },
             Object {
               "borderColor": "#24DF98",
-              "color": "white",
             },
           ]
         }
-        underlineColorAndroid="transparent"
-        value="value"
-      />
+      >
+        <TextInput
+          allowFontScaling={true}
+          placeholder="label"
+          placeholderTextColor="white"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="value"
+        />
+      </View>
     </View>
   </View>
 </View>
@@ -440,8 +452,6 @@ exports[`components/Field renders with tooltip successfully 1`] = `
           Object {},
           Object {
             "flex": 0,
-            "paddingLeft": 15,
-            "paddingRight": 15,
             "paddingTop": 10,
           },
           Object {
@@ -462,7 +472,6 @@ exports[`components/Field renders with tooltip successfully 1`] = `
         }
       >
         <Text
-          bold={true}
           style={
             Array [
               Object {
@@ -471,14 +480,10 @@ exports[`components/Field renders with tooltip successfully 1`] = `
               },
               Object {
                 "marginBottom": 5,
-                "marginLeft": 15,
                 "marginTop": 5,
               },
               Object {
                 "color": "white",
-              },
-              Object {
-                "fontWeight": "bold",
               },
             ]
           }
@@ -632,15 +637,14 @@ exports[`components/Field renders with tooltip successfully 1`] = `
           </Modal>
         </View>
       </View>
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
+      <View
         style={
           Array [
+            Object {},
             Object {
               "borderRadius": 25,
               "borderWidth": 1,
-              "fontSize": 20,
+              "fontSize": 15,
               "paddingBottom": 10,
               "paddingLeft": 15,
               "paddingRight": 15,
@@ -648,13 +652,24 @@ exports[`components/Field renders with tooltip successfully 1`] = `
             },
             Object {
               "borderColor": "black",
-              "color": "white",
             },
           ]
         }
-        underlineColorAndroid="transparent"
-        value="value"
-      />
+      >
+        <TextInput
+          allowFontScaling={true}
+          placeholder="label"
+          placeholderTextColor="white"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="value"
+        />
+      </View>
     </View>
   </View>
 </View>
@@ -684,8 +699,6 @@ exports[`components/Field renders with tooltip without specifying width and heig
           Object {},
           Object {
             "flex": 0,
-            "paddingLeft": 15,
-            "paddingRight": 15,
             "paddingTop": 10,
           },
           Object {
@@ -706,7 +719,6 @@ exports[`components/Field renders with tooltip without specifying width and heig
         }
       >
         <Text
-          bold={true}
           style={
             Array [
               Object {
@@ -715,14 +727,10 @@ exports[`components/Field renders with tooltip without specifying width and heig
               },
               Object {
                 "marginBottom": 5,
-                "marginLeft": 15,
                 "marginTop": 5,
               },
               Object {
                 "color": "white",
-              },
-              Object {
-                "fontWeight": "bold",
               },
             ]
           }
@@ -876,15 +884,14 @@ exports[`components/Field renders with tooltip without specifying width and heig
           </Modal>
         </View>
       </View>
-      <TextInput
-        allowFontScaling={true}
-        rejectResponderTermination={true}
+      <View
         style={
           Array [
+            Object {},
             Object {
               "borderRadius": 25,
               "borderWidth": 1,
-              "fontSize": 20,
+              "fontSize": 15,
               "paddingBottom": 10,
               "paddingLeft": 15,
               "paddingRight": 15,
@@ -892,13 +899,24 @@ exports[`components/Field renders with tooltip without specifying width and heig
             },
             Object {
               "borderColor": "black",
-              "color": "white",
             },
           ]
         }
-        underlineColorAndroid="transparent"
-        value="value"
-      />
+      >
+        <TextInput
+          allowFontScaling={true}
+          placeholder="label"
+          placeholderTextColor="white"
+          rejectResponderTermination={true}
+          style={
+            Object {
+              "color": "white",
+            }
+          }
+          underlineColorAndroid="transparent"
+          value="value"
+        />
+      </View>
     </View>
   </View>
 </View>

@@ -1,10 +1,10 @@
-# react-native-starter-kit (ver 1.4.0)
+# react-native-starter-kit (ver 1.5.0)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![npm type definitions](https://shields-staging.herokuapp.com/npm/types/typescript)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-<!-- [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) -->
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![coverage status](https://coveralls.io/repos/github/thinhtran3588/react-native-starter-kit/badge.svg?branch=master)](https://coveralls.io/github/thinhtran3588/react-native-starter-kit?branch=master)
 
 ## Build status
 

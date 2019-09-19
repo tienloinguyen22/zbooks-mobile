@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Text as NBText, TextProps } from 'react-native';
+import { Text as NBText, TextProps, TextStyle } from 'react-native';
 import { combineStyles, colors } from '@app/core';
 import { useTheme } from '@app/hooks';
 import { styles } from './styles';
@@ -26,7 +26,7 @@ interface Props extends TextProps {
 export const Text = (props: Props): JSX.Element => {
   const { primaryColor, textColor } = useTheme();
 
-  const style = combineStyles(
+  const style = combineStyles<TextStyle>(
     styles.default,
     {
       color: textColor,

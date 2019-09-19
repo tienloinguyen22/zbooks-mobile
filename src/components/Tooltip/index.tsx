@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const Tooltip = (props: Props): JSX.Element => {
-  const containerStyle = combineStyles(styles.container, props.containerStyle);
+  const containerStyle = combineStyles<ViewStyle>(styles.container, props.containerStyle);
   return (
     <RNTooltip {...props} containerStyle={containerStyle}>
       {props.children}

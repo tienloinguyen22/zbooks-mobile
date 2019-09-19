@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ViewProps } from 'react-native';
+import { ViewProps, ViewStyle } from 'react-native';
 import { combineStyles, colors, THEME_DARK } from '@app/core';
 import { useTheme } from '@app/hooks';
 import { View } from '../View';
@@ -18,7 +18,7 @@ export const CardItem = (props: Props): JSX.Element => {
     borderTopWidth: 1,
     borderTopColor: theme === THEME_DARK ? colors.lightBlack : colors.grey,
   };
-  const style = combineStyles(
+  const style = combineStyles<ViewStyle>(
     styles.default,
     {
       backgroundColor: componentBackgroundColor,
