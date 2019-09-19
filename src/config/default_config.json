@@ -7,8 +7,8 @@
       "stagingKey": ""
     },
     "storeLink": "market://details?id=com.google.android.apps.playconsole",
-    "version": "1.4.0",
-    "versionCode": 3145800
+    "version": "1.5.0",
+    "versionCode": 3145801
   },
   "author": "Thinh Tran",
   "dateFormat": "DD/MM/YYYY",
@@ -22,14 +22,14 @@
   },
   "ios": {
     "appName": "ReactNativeStarterKit",
-    "build": 3145800,
+    "build": 3145801,
     "bundleId": "pro.thinhtran.treactnativestarterkit",
     "codePush": {
       "productionKey": "",
       "stagingKey": ""
     },
     "storeLink": "itms-apps://apps.apple.com/app/testflight/id899247664",
-    "version": "1.4.0"
+    "version": "1.5.0"
   },
   "sentryDns": "",
   "signInOptions": ["email", "phone", "facebook", "google"]
