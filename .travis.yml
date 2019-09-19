@@ -19,7 +19,8 @@ jobs:
   include:
     - stage: Validate
       script: yarn job production &&
-        yarn validate
+        yarn validate &&
+        yarn coveralls
     - stage: Build iOS
       if: branch = master OR branch = develop
       os: osx
