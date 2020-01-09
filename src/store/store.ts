@@ -1,4 +1,4 @@
-import { connect as reduxConnect, ConnectedComponentClass } from 'react-redux';
+import { connect as reduxConnect, ConnectedComponent } from 'react-redux';
 import createRematchPersist from '@rematch/persist';
 import { init, RematchRootState, RematchDispatch } from '@rematch/core';
 import storage from '@react-native-community/async-storage';
@@ -31,6 +31,6 @@ type Connect = (
   mapStateToProps: (state: RootState) => {},
   mapDispatchToProps: (dispatch: Dispatch) => {},
 ) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
-(component: any) => ConnectedComponentClass<any, any>;
+(component: any) => ConnectedComponent<any, any>;
 
 export const connect: Connect = reduxConnect;

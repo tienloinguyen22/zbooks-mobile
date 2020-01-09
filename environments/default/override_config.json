@@ -18,5 +18,8 @@
       "stagingKey": ""
     }
   },
-  "sentryDns": ""
+  "sentryDns": "",
+  "apollo": {
+    "uri": ""
+  }
 }
