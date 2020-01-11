@@ -31,5 +31,4 @@ export * from './WithScreen';
 export * from './Alert';
 export * from './Animation';
 export * from './AlertContainer';
-export * from './WithStore';
 export * from './WithApolloClient';

@@ -2,8 +2,9 @@ import RNPicker, { PickerOptions } from 'react-native-picker';
 import i18next from 'i18next';
 import colorConvert from 'color-convert';
 import _ from 'lodash';
-import { store } from '@app/store';
 import { colors, getPrimaryColor, THEME_DARK } from '@app/core';
+import gql from 'graphql-tag';
+import { apolloClient } from '@app/graphql';
 
 export interface DateValue {
   year: number;
@@ -21,6 +22,12 @@ interface PickerParams {
   initialValue?: DateValue;
   onValueChanged: (value: DateValue) => void;
 }
+
+const APP_SETTINGS = gql`
+  query GetAppSettings {
+    appSettings @client
+  }
+`;
 
 const getMonthText = (month: number): string => {
   switch (month) {
@@ -115,6 +122,10 @@ const createDateData = (fromDate: DateValue, toDate: DateValue): DateData => {
 };
 
 const show = ({ onValueChanged, initialValue, fromYear, toYear }: PickerParams): void => {
+  const data = apolloClient.readQuery({
+    query: APP_SETTINGS,
+  });
+
   const pickerData = createDateData(
     {
       year: fromYear || 1970,
@@ -140,7 +151,7 @@ const show = ({ onValueChanged, initialValue, fromYear, toYear }: PickerParams):
   let selectedValue: string[] | undefined;
   initialValue &&
     (selectedValue = [initialValue.year.toString(), getMonthText(initialValue.month), initialValue.day.toString()]);
-  const { primaryColorCode, theme } = store.getState().settings;
+  const { primaryColorCode, theme } = data.appSettings;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
   const primaryColorHexArr = [...colorConvert.hex.rgb(primaryColor), 1];
   const whiteColorHexArr = [...colorConvert.hex.rgb(colors.white), 1];

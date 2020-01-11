@@ -1,8 +1,9 @@
 import RNPicker, { PickerOptions } from 'react-native-picker';
 import i18next from 'i18next';
 import colorConvert from 'color-convert';
-import { store } from '@app/store';
 import { colors, getPrimaryColor, THEME_DARK } from '@app/core';
+import { apolloClient } from '@app/graphql';
+import gql from 'graphql-tag';
 
 export interface PickerDataItem<T> {
   value: T;
@@ -14,7 +15,17 @@ interface PickerParams<T> {
   onValueChanged: (value: T, item: PickerDataItem<T>) => void;
 }
 
+const APP_SETTINGS = gql`
+  query GetAppSettings {
+    appSettings @client
+  }
+`;
+
 const show: <T>(options: PickerParams<T>) => void = (options) => {
+  const graphQlData = apolloClient.readQuery({
+    query: APP_SETTINGS,
+  });
+
   const { onValueChanged, dataSources, initialValue } = options;
 
   const pickerData = options.dataSources.map((data) => data.text);
@@ -27,7 +38,7 @@ const show: <T>(options: PickerParams<T>) => void = (options) => {
   let selectedValue: string[] | undefined;
   selectedItem && (selectedValue = [selectedItem.text]);
 
-  const { primaryColorCode, theme } = store.getState().settings;
+  const { primaryColorCode, theme } = graphQlData.appSettings;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
   const primaryColorHexArr = [...colorConvert.hex.rgb(primaryColor), 1];
   const whiteColorHexArr = [...colorConvert.hex.rgb(colors.white), 1];

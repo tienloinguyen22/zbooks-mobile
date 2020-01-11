@@ -1,6 +1,6 @@
 import { createModel, ModelReducers } from '@rematch/core';
 import produce from 'immer';
-import { User } from '@app/core';
+import { User } from '@app/graphql';
 
 export type CurrentUserState = User;
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { store } from '@app/store';
 import { getPrimaryColor, colors, Theme, THEME_DARK } from '@app/core';
+import gql from 'graphql-tag';
+import { apolloClient } from '@app/graphql';
 
 interface CurrentTheme {
   theme: Theme;
@@ -9,7 +10,18 @@ interface CurrentTheme {
   screenBackgroundColor: string;
   componentBackgroundColor: string;
 }
+
+const APP_SETTINGS = gql`
+  query GetAppSettings {
+    appSettings @client
+  }
+`;
+
 export const useTheme = (): CurrentTheme => {
+  const graphQlData = apolloClient.readQuery({
+    query: APP_SETTINGS,
+  });
+
   const [currentTheme, setCurrentTheme] = useState<CurrentTheme>({
     theme: 'light',
     primaryColor: colors.white,
@@ -19,7 +31,8 @@ export const useTheme = (): CurrentTheme => {
   });
 
   useEffect(() => {
-    const { settings } = store.getState();
+    const { appSettings } = graphQlData;
+    const settings = appSettings;
     const primaryColorValue = getPrimaryColor(settings.primaryColorCode, settings.theme);
     setCurrentTheme({
       theme: settings.theme,
@@ -28,7 +41,7 @@ export const useTheme = (): CurrentTheme => {
       screenBackgroundColor: settings.theme === THEME_DARK ? colors.lightBlack : colors.lightGrey,
       componentBackgroundColor: settings.theme === THEME_DARK ? colors.black : colors.white,
     });
-  }, []);
+  }, [graphQlData]);
 
   return {
     ...currentTheme,

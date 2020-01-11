@@ -1,8 +1,9 @@
 import { Navigation, LayoutBottomTabsChildren } from 'react-native-navigation';
 import i18next from 'i18next';
 import { screenNames, Resource, THEME_DARK, colors, getPrimaryColor } from '@app/core';
-import { store } from '@app/store';
 import { getIconImageSource } from '@app/components/Icon';
+import gql from 'graphql-tag';
+import { apolloClient } from '@app/graphql';
 
 interface TabItem {
   screenName: string;
@@ -32,8 +33,18 @@ const goBack = ({ componentId }: { componentId: string }): void => {
   Navigation.pop(componentId);
 };
 
+const APP_SETTINGS = gql`
+  query GetAppSettings {
+    appSettings @client
+  }
+`;
+
 const setDefaultOptions = (): void => {
-  const { primaryColorCode, theme } = store.getState().settings;
+  const graphQlData = apolloClient.readQuery({
+    query: APP_SETTINGS,
+  });
+
+  const { primaryColorCode, theme } = graphQlData.appSettings;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
   Navigation.setDefaultOptions({
     statusBar: {
@@ -108,7 +119,11 @@ const setRootHome = async (currentTabIndex?: number): Promise<void> => {
   setDefaultOptions();
   const homeIcon = await getIconImageSource('home', 30);
   const moreIcon = await getIconImageSource('dots-horizontal', 30);
-  const { primaryColorCode, theme } = store.getState().settings;
+  const graphQlData = apolloClient.readQuery({
+    query: APP_SETTINGS,
+  });
+
+  const { primaryColorCode, theme } = graphQlData.appSettings;
   const primaryColor = getPrimaryColor(primaryColorCode, theme);
   let tabColor = colors.white;
   let tabTextColor = colors.grey;

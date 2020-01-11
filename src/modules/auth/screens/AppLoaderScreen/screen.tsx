@@ -3,21 +3,39 @@ import { ScreenProps } from '@app/core';
 import i18next from 'i18next';
 import SplashScreen from 'react-native-splash-screen';
 import { navigationService, authService } from '@app/services';
-import { mapStateToProps } from './map_state_to_props';
-import { mapDispatchToProps } from './map_dispatch_to_props';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/client';
+import _ from 'lodash';
 
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
+type Props = ScreenProps;
 
-export const Screen = ({ appLoaded, language, currentUser }: Props): JSX.Element => {
+const APP_SETTINGS_AND_CURRENT_USER = gql`
+  query GetAppSettingsAndCurrentUser {
+    appSettings @client {
+      language
+    }
+    currentUser @client {
+      isLoggedIn
+      loginType
+    }
+  }
+`;
+
+export const Screen = (_props: Props): JSX.Element => {
+  const { data, loading } = useQuery(APP_SETTINGS_AND_CURRENT_USER);
+  const language = _.get(data, 'appSettings.language');
+  const isLoggedIn = _.get(data, 'currentUser.isLoggedIn');
+  const loginType = _.get(data, 'currentUser.loginType');
+
   useEffect(() => {
-    if (!appLoaded) {
+    if (loading) {
       return;
     }
     i18next.changeLanguage(language);
 
     (async (): Promise<void> => {
-      if (currentUser.isLoggedIn) {
-        if (currentUser.loginType !== 'EMAIL' || (await authService.isEmailVerified())) {
+      if (isLoggedIn) {
+        if (loginType !== 'EMAIL' || (await authService.isEmailVerified())) {
           navigationService.setRootHome();
         } else {
           navigationService.setRootEmailVerification();
@@ -27,6 +45,7 @@ export const Screen = ({ appLoaded, language, currentUser }: Props): JSX.Element
       }
       SplashScreen.hide();
     })();
-  }, [appLoaded, language, currentUser.isLoggedIn, currentUser.loginType]);
+  }, [isLoggedIn, language, loading, loginType]);
+
   return <></>;
 };

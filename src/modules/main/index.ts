@@ -1,15 +1,14 @@
-import { WithStore, WithScreen } from '@app/components';
+import { WithScreen, WithApolloClient } from '@app/components';
 import { Navigation } from 'react-native-navigation';
 import { screenNames } from '@app/core';
-import { HomeScreen, NewScreen } from './screens';
+import { HomeScreen } from './screens';
 
 const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.HomeScreen, () =>
-    WithScreen(WithStore(HomeScreen), {
+    WithScreen(WithApolloClient(HomeScreen), {
       lazyLoad: true,
     }),
   );
-  Navigation.registerComponent(screenNames.NewScreen, () => WithScreen(WithStore(NewScreen)));
 };
 
 export default {

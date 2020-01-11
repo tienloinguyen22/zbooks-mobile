@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
-import { ScreenProps, screenNames, colors, showNotification } from '@app/core';
+import { ScreenProps, colors, showNotification } from '@app/core';
 import { Image, Button, Text, Icon, Loading, Container } from '@app/components';
-import { navigationService, authService, LoginResult, appService } from '@app/services';
-import { useEffectOnce } from '@app/hooks';
+import { navigationService, authService, LoginResult } from '@app/services';
+import { User, apolloClient } from '@app/graphql';
 import { styles } from './styles';
-import { mapDispatchToProps } from './map_dispatch_to_props';
-import { mapStateToProps } from './map_state_to_props';
 
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
+type Props = ScreenProps;
 
 const appIconSource = imageSources.appIcon();
 
-export const Screen = ({
-  login,
-  componentId,
-  shouldShownUpdateWarning,
-  updateShownUpdateWarning,
-}: Props): JSX.Element => {
+export const Screen = (_props: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
-  useEffectOnce(() => {
-    if (shouldShownUpdateWarning) {
-      appService.checkNeedUpdateNewBinaryVersion();
-      updateShownUpdateWarning(false);
-    }
-  });
+
+  const login = (user: User): void => {
+    apolloClient.cache.writeData({
+      data: {
+        currentUser: user,
+      },
+    });
+  };
+
   const performLogin = async (loginType: 'GOOGLE' | 'FACEBOOK'): Promise<void> => {
     let result: LoginResult | undefined;
     switch (loginType) {
@@ -68,24 +64,6 @@ export const Screen = ({
     }
   };
 
-  const loginEmail = (): void =>
-    navigationService.navigateTo({
-      componentId,
-      screenName: screenNames.EmailLoginScreen,
-    });
-  const loginPhoneNo = (): void =>
-    navigationService.navigateTo({
-      componentId,
-      screenName: screenNames.PhoneNoLoginScreen,
-    });
-
-  const registerByEmail = (): void => {
-    navigationService.navigateTo({
-      componentId,
-      screenName: screenNames.EmailRegisterScreen,
-    });
-  };
-
   if (isBusy) {
     return (
       <Container center centerVertical>
@@ -104,16 +82,6 @@ export const Screen = ({
       <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
         <Icon name='google' color={colors.white} style={styles.icon} />
         <Text white>{t('loginScreen.loginWith')} Google</Text>
-      </Button>
-      <Button rounded onPress={loginEmail} style={[styles.button]}>
-        <Text white>{t('loginScreen.loginWithEmail')}</Text>
-      </Button>
-      <Button rounded onPress={loginPhoneNo} style={[styles.button]}>
-        <Text white>{t('loginScreen.loginWithPhoneNo')}</Text>
-      </Button>
-      <Text style={styles.notHaveAccountText}>{t('loginScreen.notHaveAccount')}</Text>
-      <Button rounded onPress={registerByEmail} style={styles.button}>
-        <Text white>{t('loginScreen.registerByEmail')}</Text>
       </Button>
     </Container>
   );

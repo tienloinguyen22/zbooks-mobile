@@ -1,8 +1,9 @@
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import auth, { Auth } from '@react-native-firebase/auth';
-import { User, LoginType } from '@app/core';
+import { LoginType } from '@app/core';
 import { GoogleSignin } from 'react-native-google-signin';
 import { config } from '@app/config';
+import { User } from '@app/graphql';
 
 interface LoginResultSuccess {
   isSuccessful: true;

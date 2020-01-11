@@ -1,15 +1,15 @@
 import React from 'react';
-import { ScreenProps, screenNames, sleep } from '@app/core';
-import { navigationService, appService } from '@app/services';
+import gql from 'graphql-tag';
+import { ScreenProps, screenNames, THEME_DARK } from '@app/core';
+import { navigationService } from '@app/services';
 import { ScrollView, Container } from '@app/components';
 import { AlertSample } from '@app/modules/main/screens/HomeScreen/components/AlertSample';
 import { LottieSample } from '@app/modules/main/screens/HomeScreen/components/LottieSample';
-import { useEffectOnce } from '@app/hooks';
-import { mapStateToProps } from './map_state_to_props';
-import { mapDispatchToProps } from './map_dispatch_to_props';
+import { useQuery } from '@apollo/client';
+import { TouchableOpacity, Text } from 'react-native';
+import { apolloClient } from '@app/graphql';
 import {
   NavigationSample,
-  RematchSample,
   IconSample,
   CrashSample,
   NotificationSample,
@@ -18,23 +18,19 @@ import {
   TextStyleSample,
 } from './components';
 
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & ScreenProps;
+type Props = ScreenProps;
 
-export const Screen = ({
-  componentId,
-  sharks,
-  dolphins,
-  incrementShark,
-  incrementDolphin,
-  shouldShownUpdateWarning,
-  updateShownUpdateWarning,
-}: Props): JSX.Element => {
-  useEffectOnce(() => {
-    if (shouldShownUpdateWarning) {
-      appService.checkNeedUpdateNewBinaryVersion();
-      updateShownUpdateWarning(false);
-    }
-  });
+const APP_SETTINGS = gql`
+  query GetAppSettings {
+    appSettings @client
+  }
+`;
+
+export const Screen = ({ componentId }: Props): JSX.Element => {
+  const { data } = useQuery(APP_SETTINGS);
+  // eslint-disable-next-line no-console
+  console.log('TCL: data', data);
+
   const pushNewScreen = (): void => {
     navigationService.navigateTo({
       componentId,
@@ -49,40 +45,27 @@ export const Screen = ({
     });
   };
 
-  const incrementSharkAsync = async (): Promise<void> => {
-    await sleep(500);
-    incrementShark(1);
-  };
-
-  const incrementDolphinAsync = async (): Promise<void> => {
-    await sleep(500);
-    incrementDolphin(1);
-  };
-
-  const incrementShark1 = (): void => {
-    incrementShark(1);
-  };
-
-  const incrementDolphin1 = (): void => {
-    incrementDolphin(1);
+  const changeTheme = (): void => {
+    apolloClient.writeData({
+      data: {
+        appSettings: {
+          theme: THEME_DARK,
+        },
+      },
+    });
   };
 
   return (
     <Container componentId={componentId}>
       <ScrollView>
+        <TouchableOpacity onPress={changeTheme}>
+          <Text>Test</Text>
+        </TouchableOpacity>
         <AnalyticsSample />
         <CrashSample />
         <PickerSample />
         <NavigationSample pushNewScreen={pushNewScreen} changeTab={changeTab} />
         <IconSample />
-        <RematchSample
-          sharks={sharks}
-          dolphins={dolphins}
-          incrementShark={incrementShark1}
-          incrementSharkAsync={incrementSharkAsync}
-          incrementDolphin={incrementDolphin1}
-          incrementDolphinAsync={incrementDolphinAsync}
-        />
         <NotificationSample />
         <AlertSample />
         <LottieSample />

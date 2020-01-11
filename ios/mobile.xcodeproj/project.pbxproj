@@ -17,7 +17,6 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* mobileTests.m */; };
 		3236F2C323066F71007FE03A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236F2C223066F71007FE03A /* File.swift */; };
-		380BEE93B2A04E188002A3F0 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ECD1240D213B4CA2AAAF7EC2 /* MaterialCommunityIcons.ttf */; };
 		3C82054ED43B631E2FC11C62 /* libPods-mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC8C4D952BFBF24D0FECD15 /* libPods-mobile-tvOSTests.a */; };
 		4A6E817C22EAC95100E2CE74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E817B22EAC95100E2CE74 /* GoogleService-Info.plist */; };
 		7FD41DB4574ABF190463F32C /* libPods-mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB6CA9C697CC5FA586EB4EC /* libPods-mobileTests.a */; };
@@ -373,7 +372,6 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				4A6E817C22EAC95100E2CE74 /* GoogleService-Info.plist in Resources */,
-				380BEE93B2A04E188002A3F0 /* MaterialCommunityIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
