@@ -1,6 +1,4 @@
 import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock';
-import React from 'react';
-import { connect } from 'react-redux';
 
 /* eslint-disable no-console */
 const originalConsoleError = console.error;
@@ -22,14 +20,6 @@ jest.mock('@react-native-firebase/config', () => ({}));
 jest.mock('react-native-splash-screen');
 jest.mock('react-native-google-signin', () => {});
 jest.mock('react-native-code-push', () => {});
-jest.mock('redux-persist', () => ({
-  persistStore: jest.fn(),
-}));
-jest.mock('@rematch/persist', () => jest.fn());
-jest.mock('@rematch/core', () => ({
-  init: jest.fn().mockReturnValue({}),
-  createModel: (model) => model,
-}));
 
 jest.mock('react-native-sentry', () => ({
   Sentry: {
@@ -44,15 +34,3 @@ jest.mock('react-i18next', () => ({
 jest.mock('i18next', () => ({
   t: (key) => key,
 }));
-jest.mock('react-redux', () => ({
-  connect: jest.fn(),
-  Provider: 'Provider',
-}));
-connect.mockImplementation((mapStateToProps, mapDispatchToProps) => (Component) => {
-  // eslint-disable-next-line global-require
-  const { store } = require('./src/store');
-  const ConnectedComponent = (props) => {
-    return <Component {...mapStateToProps(store.getState())} {...mapDispatchToProps(store.dispatch)} {...props} />;
-  };
-  return ConnectedComponent;
-});
