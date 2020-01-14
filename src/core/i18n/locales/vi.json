@@ -84,6 +84,7 @@
     "hello": "Xin chào"
   },
   "loginScreen": {
+    "continueWith": "Tiếp tục với",
     "loginWith": "Đăng nhập với",
     "loginWithEmail": "Đăng nhập với email",
     "loginWithPhoneNo": "Đăng nhập với số điện thoại",

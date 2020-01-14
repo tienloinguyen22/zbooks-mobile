@@ -5,11 +5,13 @@ import { ScreenProps, colors, showNotification } from '@app/core';
 import { Image, Button, Text, Icon, Loading, Container } from '@app/components';
 import { navigationService, authService, LoginResult } from '@app/services';
 import { User, apolloClient } from '@app/graphql';
+import LinearGradient from 'react-native-linear-gradient';
+import { View } from 'react-native';
 import { styles } from './styles';
 
 type Props = ScreenProps;
 
-const appIconSource = imageSources.appIcon();
+const appIconSource = imageSources.loginIcon();
 
 export const Screen = (_props: Props): JSX.Element => {
   const { t } = useTranslation();
@@ -74,15 +76,36 @@ export const Screen = (_props: Props): JSX.Element => {
 
   return (
     <Container center centerVertical>
-      <Image style={styles.appIcon} source={appIconSource} />
-      <Button rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
-        <Icon name='facebook' color={colors.white} style={styles.icon} />
-        <Text white>{t('loginScreen.loginWith')} Facebook</Text>
-      </Button>
-      <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
-        <Icon name='google' color={colors.white} style={styles.icon} />
-        <Text white>{t('loginScreen.loginWith')} Google</Text>
-      </Button>
+      {/* <View style={styles.appIconContainer}>
+        <Image style={styles.appIcon} source={appIconSource} />
+      </View> */}
+      <LinearGradient
+        colors={['#141deg', '#1fc8db']}
+        style={styles.appIconContainer}
+        start={{
+          x: 0,
+          y: 0,
+        }}
+        end={{
+          x: 1,
+          y: 0,
+        }}
+      >
+        <Image style={styles.appIcon} source={appIconSource} />
+      </LinearGradient>
+
+      <View>
+        <Button rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
+          <Icon name='facebook' color={colors.white} style={styles.icon} />
+          <Text white>{t('loginScreen.continueWith')} Facebook</Text>
+          <View />
+        </Button>
+        <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
+          <Icon name='google' color={colors.white} style={styles.icon} />
+          <Text white>{t('loginScreen.continueWith')} Google</Text>
+          <View />
+        </Button>
+      </View>
     </Container>
   );
 };

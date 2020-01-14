@@ -4,6 +4,7 @@ export const imageSources = {
   appIcon: () => require('./images/app_icon.png'),
   appIconRound: () => require('./images/app_icon_round.png'),
   appIconNoAlpha: () => require('./images/app_icon_no_alpha.png'),
+  loginIcon: () => require('./images/login_icon.png'),
 };
 
 export interface CountryCode {

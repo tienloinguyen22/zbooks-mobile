@@ -11,7 +11,7 @@ export interface AppSettings {
 }
 
 export const initialAppSettings = {
-  appLoaded: true,
+  appLoaded: false,
   language: i18n.LANGUAGE_EN,
   theme: THEME_LIGHT,
   primaryColorCode: defaultPrimaryColorCode,

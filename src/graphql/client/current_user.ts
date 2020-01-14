@@ -14,7 +14,7 @@ export const initialCurrentUser = {
   id: '',
   displayName: '',
   avatarUrl: '',
-  isLoggedIn: true,
+  isLoggedIn: false,
   email: '',
   emailVerified: false,
   loginType: '',

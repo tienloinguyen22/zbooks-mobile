@@ -55,7 +55,7 @@ export const Container = (props: Props): JSX.Element => {
         ]}
       >
         <ErrorBoundary>
-          <StatusBar backgroundColor={primaryColor} barStyle='light-content' />
+          <StatusBar backgroundColor={primaryColor} barStyle='dark-content' />
           {props.showHeader && (
             <View
               style={[

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ScreenProps } from '@app/core';
 import i18next from 'i18next';
 import SplashScreen from 'react-native-splash-screen';
-import { navigationService, authService } from '@app/services';
+import { navigationService } from '@app/services';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import _ from 'lodash';
@@ -35,14 +35,11 @@ export const Screen = (_props: Props): JSX.Element => {
 
     (async (): Promise<void> => {
       if (isLoggedIn) {
-        if (loginType !== 'EMAIL' || (await authService.isEmailVerified())) {
-          navigationService.setRootHome();
-        } else {
-          navigationService.setRootEmailVerification();
-        }
+        navigationService.setRootHome();
       } else {
         navigationService.setRootLogin();
       }
+
       SplashScreen.hide();
     })();
   }, [isLoggedIn, language, loading, loginType]);

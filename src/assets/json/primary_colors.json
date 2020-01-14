@@ -1,5 +1,10 @@
 [
   {
+    "darkColor": "#ffffff",
+    "lightColor": "#ffffff",
+    "code": "white"
+  },
+  {
     "darkColor": "#e57373",
     "lightColor": "#d32f2f",
     "code": "red"

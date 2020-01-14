@@ -28,7 +28,6 @@ export const Button = (props: Props): JSX.Element => {
       backgroundColor: primaryColor,
       width: props.width ? props.width : 200,
     },
-    props.style,
     props.transparent && styles.transparent,
     props.outline && styles.outline,
     props.outline && {
@@ -40,6 +39,7 @@ export const Button = (props: Props): JSX.Element => {
     props.warning && styles.warning,
     props.danger && styles.danger,
     rounded && styles.rounded,
+    props.style,
   );
   const boldStyle = {
     fontWeight: 'bold',

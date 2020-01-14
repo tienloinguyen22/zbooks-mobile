@@ -84,6 +84,7 @@
     "hello": "Hello"
   },
   "loginScreen": {
+    "continueWith": "Continue with",
     "loginWith": "Login with",
     "loginWithEmail": "Login with email",
     "loginWithPhoneNo": "Login with phone no",

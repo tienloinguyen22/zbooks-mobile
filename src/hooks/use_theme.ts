@@ -26,7 +26,7 @@ export const useTheme = (): CurrentTheme => {
     theme: 'light',
     primaryColor: colors.white,
     textColor: colors.white,
-    screenBackgroundColor: colors.grey,
+    screenBackgroundColor: colors.white,
     componentBackgroundColor: colors.white,
   });
 
@@ -38,7 +38,7 @@ export const useTheme = (): CurrentTheme => {
       theme: settings.theme,
       primaryColor: primaryColorValue,
       textColor: settings.theme === THEME_DARK ? colors.white : colors.black,
-      screenBackgroundColor: settings.theme === THEME_DARK ? colors.lightBlack : colors.lightGrey,
+      screenBackgroundColor: colors.white,
       componentBackgroundColor: settings.theme === THEME_DARK ? colors.black : colors.white,
     });
   }, [graphQlData]);
