@@ -1,6 +1,6 @@
 import { Navigation, LayoutBottomTabsChildren } from 'react-native-navigation';
 import i18next from 'i18next';
-import { screenNames, Resource, THEME_DARK, colors, getPrimaryColor } from '@app/core';
+import { screenNames, Resource, THEME_DARK, colors } from '@app/core';
 import { getIconImageSource } from '@app/components/Icon';
 import gql from 'graphql-tag';
 import { apolloClient } from '@app/graphql';
@@ -40,12 +40,7 @@ const APP_SETTINGS = gql`
 `;
 
 const setDefaultOptions = (): void => {
-  const graphQlData = apolloClient.readQuery({
-    query: APP_SETTINGS,
-  });
-
-  const { primaryColorCode, theme } = graphQlData.appSettings;
-  const primaryColor = getPrimaryColor(primaryColorCode, theme);
+  const { primaryColor } = colors;
   Navigation.setDefaultOptions({
     statusBar: {
       backgroundColor: primaryColor,
@@ -123,8 +118,8 @@ const setRootHome = async (currentTabIndex?: number): Promise<void> => {
     query: APP_SETTINGS,
   });
 
-  const { primaryColorCode, theme } = graphQlData.appSettings;
-  const primaryColor = getPrimaryColor(primaryColorCode, theme);
+  const { theme } = graphQlData.appSettings;
+  const { primaryColor } = colors;
   let tabColor = colors.white;
   let tabTextColor = colors.grey;
   if (theme === THEME_DARK) {

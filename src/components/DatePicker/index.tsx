@@ -2,7 +2,7 @@ import RNPicker, { PickerOptions } from 'react-native-picker';
 import i18next from 'i18next';
 import colorConvert from 'color-convert';
 import _ from 'lodash';
-import { colors, getPrimaryColor, THEME_DARK } from '@app/core';
+import { colors, THEME_DARK } from '@app/core';
 import gql from 'graphql-tag';
 import { apolloClient } from '@app/graphql';
 
@@ -151,8 +151,8 @@ const show = ({ onValueChanged, initialValue, fromYear, toYear }: PickerParams):
   let selectedValue: string[] | undefined;
   initialValue &&
     (selectedValue = [initialValue.year.toString(), getMonthText(initialValue.month), initialValue.day.toString()]);
-  const { primaryColorCode, theme } = data.appSettings;
-  const primaryColor = getPrimaryColor(primaryColorCode, theme);
+  const { theme } = data.appSettings;
+  const { primaryColor } = colors;
   const primaryColorHexArr = [...colorConvert.hex.rgb(primaryColor), 1];
   const whiteColorHexArr = [...colorConvert.hex.rgb(colors.white), 1];
   const pickerTextColorHexArr = [...colorConvert.hex.rgb(theme === THEME_DARK ? colors.white : primaryColor), 1];

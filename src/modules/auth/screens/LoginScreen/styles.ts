@@ -3,14 +3,12 @@ import { colors } from '@app/core';
 
 export const styles = StyleSheet.create({
   appIconContainer: {
-    marginBottom: 64,
+    marginBottom: 24,
     width: 160,
     height: 160,
-    // backgroundColor: '#000',
     borderRadius: 160 / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8',
   },
   appIcon: {
     width: 80,
@@ -29,12 +27,26 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.facebook,
   },
   googleButton: {
-    backgroundColor: colors.google,
+    backgroundColor: colors.white,
   },
   notHaveAccountText: {
     marginBottom: 20,
   },
   icon: {
     marginRight: 40,
+  },
+  textCenter: {
+    textAlign: 'center',
+  },
+  textTitle: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
+  },
+  titleContainer: {
+    marginBottom: 12,
+  },
+  welcomeContainer: {
+    marginBottom: 84,
   },
 });

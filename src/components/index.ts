@@ -32,3 +32,4 @@ export * from './Alert';
 export * from './Animation';
 export * from './AlertContainer';
 export * from './WithApolloClient';
+export * from './ImageIcon';

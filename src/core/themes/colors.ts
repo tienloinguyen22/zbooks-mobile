@@ -1,4 +1,8 @@
 export const colors = {
+  shadow: 'rgba(78, 79, 114, 0.12)',
+  lightBackgroundColor: '#FAFBFD',
+  darkBackgroundColor: '#222C44',
+  primaryColor: '#222C44',
   white: '#fff',
   black: '#222C44',
   lightBlack: '#1A2237',

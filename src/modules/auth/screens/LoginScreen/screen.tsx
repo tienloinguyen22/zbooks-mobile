@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
-import { ScreenProps, colors, showNotification } from '@app/core';
-import { Image, Button, Text, Icon, Loading, Container } from '@app/components';
+import { ScreenProps, showNotification, commonStyles } from '@app/core';
+import { Image, Button, Text, Loading, Container, ImageIcon } from '@app/components';
 import { navigationService, authService, LoginResult } from '@app/services';
 import { User, apolloClient } from '@app/graphql';
 import LinearGradient from 'react-native-linear-gradient';
@@ -76,33 +76,30 @@ export const Screen = (_props: Props): JSX.Element => {
 
   return (
     <Container center centerVertical>
-      {/* <View style={styles.appIconContainer}>
-        <Image style={styles.appIcon} source={appIconSource} />
-      </View> */}
-      <LinearGradient
-        colors={['#141deg', '#1fc8db']}
-        style={styles.appIconContainer}
-        start={{
-          x: 0,
-          y: 0,
-        }}
-        end={{
-          x: 1,
-          y: 0,
-        }}
-      >
+      <LinearGradient colors={['#89f7fe', '#66a6ff']} style={styles.appIconContainer}>
         <Image style={styles.appIcon} source={appIconSource} />
       </LinearGradient>
 
+      <View style={styles.welcomeContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.textTitle}>Welcome!!</Text>
+        </View>
+        <View>
+          <Text style={styles.textCenter}>
+            Create your account to get started. After that, you can share books and make friends
+          </Text>
+        </View>
+      </View>
+
       <View>
-        <Button rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton]}>
-          <Icon name='facebook' color={colors.white} style={styles.icon} />
+        <Button rounded onPress={loginFacebook} style={[styles.button, styles.facebookButton, commonStyles.boxShadow]}>
+          <ImageIcon source={imageSources.facebookIcon()} />
           <Text white>{t('loginScreen.continueWith')} Facebook</Text>
           <View />
         </Button>
-        <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton]}>
-          <Icon name='google' color={colors.white} style={styles.icon} />
-          <Text white>{t('loginScreen.continueWith')} Google</Text>
+        <Button rounded onPress={loginGoogle} style={[styles.button, styles.googleButton, commonStyles.boxShadow]}>
+          <ImageIcon source={imageSources.googleIcon()} />
+          <Text>{t('loginScreen.continueWith')} Google</Text>
           <View />
         </Button>
       </View>

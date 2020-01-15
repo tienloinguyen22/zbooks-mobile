@@ -1,6 +1,8 @@
 PODS:
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
+  - BVLinearGradient (2.5.6):
+    - React
   - CodePush (5.7.0):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.7)
@@ -248,6 +250,7 @@ PODS:
   - yoga (0.60.5.React)
 
 DEPENDENCIES:
+  - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
   - CodePush (from `../node_modules/react-native-code-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBSDKCoreKit (~> 5.2.0)
@@ -318,6 +321,8 @@ SPEC REPOS:
     - SSZipArchive
 
 EXTERNAL SOURCES:
+  BVLinearGradient:
+    :path: "../node_modules/react-native-linear-gradient"
   CodePush:
     :path: "../node_modules/react-native-code-push"
   DoubleConversion:
@@ -398,6 +403,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CodePush: d2e54ad42df82a8db65b2d23d8191b950ba945e1
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBSDKCoreKit: 5154c35d9058fd7dfa0445ba19e194c4b172fc32

@@ -1,7 +1,4 @@
-import { LanguageType, Theme, i18n, THEME_LIGHT } from '@app/core';
-import { jsonSources } from '@app/assets';
-
-const defaultPrimaryColorCode = jsonSources.primaryColors()[0].code;
+import { LanguageType, Theme, i18n, THEME_LIGHT, colors } from '@app/core';
 
 export interface AppSettings {
   appLoaded: boolean;
@@ -14,6 +11,6 @@ export const initialAppSettings = {
   appLoaded: false,
   language: i18n.LANGUAGE_EN,
   theme: THEME_LIGHT,
-  primaryColorCode: defaultPrimaryColorCode,
+  primaryColorCode: colors.primaryColor,
   __typename: 'appSettings',
 };
