@@ -21,7 +21,7 @@ const APP_SETTINGS_AND_CURRENT_USER = gql`
   }
 `;
 
-export const Screen = (_props: Props): JSX.Element => {
+const BaseScreen = (_props: Props): JSX.Element => {
   const { data, loading } = useQuery(APP_SETTINGS_AND_CURRENT_USER);
   const language = _.get(data, 'appSettings.language');
   const isLoggedIn = _.get(data, 'currentUser.isLoggedIn');
@@ -45,3 +45,5 @@ export const Screen = (_props: Props): JSX.Element => {
 
   return <></>;
 };
+
+export const Screen = React.memo<Props>(BaseScreen);

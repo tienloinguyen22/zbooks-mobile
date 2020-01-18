@@ -6,7 +6,7 @@ import { Text } from 'react-native';
 
 type Props = ScreenProps;
 
-export const Screen = (_props: Props): JSX.Element => {
+const BaseScreen = (_props: Props): JSX.Element => {
   const { t } = useTranslation();
 
   return (
@@ -15,3 +15,5 @@ export const Screen = (_props: Props): JSX.Element => {
     </Container>
   );
 };
+
+export const Screen = React.memo<Props>(BaseScreen);

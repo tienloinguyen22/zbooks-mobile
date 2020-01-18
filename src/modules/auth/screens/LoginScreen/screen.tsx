@@ -43,7 +43,7 @@ const REGISTER_USER_WITH_TOKEN = gql`
   }
 `;
 
-export const Screen = (_props: Props): JSX.Element => {
+const BaseScreen = (_props: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -171,3 +171,5 @@ export const Screen = (_props: Props): JSX.Element => {
     </Container>
   );
 };
+
+export const Screen = React.memo<Props>(BaseScreen);

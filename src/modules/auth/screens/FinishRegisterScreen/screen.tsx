@@ -5,10 +5,12 @@ import { ScreenProps } from '@app/core';
 
 type Props = ScreenProps;
 
-export const Screen = (_props: Props): JSX.Element => {
+const BaseScreen = (_props: Props): JSX.Element => {
   return (
     <View>
       <Text>Finish register</Text>
     </View>
   );
 };
+
+export const Screen = React.memo<Props>(BaseScreen);
