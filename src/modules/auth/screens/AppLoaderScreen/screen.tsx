@@ -13,10 +13,10 @@ const APP_SETTINGS_AND_CURRENT_USER = gql`
   query GetAppSettingsAndCurrentUser {
     appSettings @client {
       language
+      primaryColorCode
     }
     currentUser @client {
       isLoggedIn
-      loginType
     }
   }
 `;
@@ -25,7 +25,6 @@ export const Screen = (_props: Props): JSX.Element => {
   const { data, loading } = useQuery(APP_SETTINGS_AND_CURRENT_USER);
   const language = _.get(data, 'appSettings.language');
   const isLoggedIn = _.get(data, 'currentUser.isLoggedIn');
-  const loginType = _.get(data, 'currentUser.loginType');
 
   useEffect(() => {
     if (loading) {
@@ -42,7 +41,7 @@ export const Screen = (_props: Props): JSX.Element => {
 
       SplashScreen.hide();
     })();
-  }, [isLoggedIn, language, loading, loginType]);
+  }, [isLoggedIn, language, loading]);
 
   return <></>;
 };

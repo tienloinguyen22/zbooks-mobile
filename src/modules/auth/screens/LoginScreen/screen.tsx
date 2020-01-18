@@ -3,27 +3,49 @@ import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
 import { ScreenProps, showNotification, commonStyles } from '@app/core';
 import { Image, Button, Text, Loading, Container, ImageIcon } from '@app/components';
-import { navigationService, authService, LoginResult } from '@app/services';
-import { User, apolloClient } from '@app/graphql';
+import { authService, LoginResult, navigationService } from '@app/services';
 import LinearGradient from 'react-native-linear-gradient';
 import { View } from 'react-native';
+import gql from 'graphql-tag';
+import { apolloClient, updateCurrentUser } from '@app/graphql';
+import _ from 'lodash';
 import { styles } from './styles';
 
 type Props = ScreenProps;
 
 const appIconSource = imageSources.loginIcon();
 
+const FIND_USER_BY_TOKEN = gql`
+  query findUserByToken($payload: FindUserByTokenQuery!) {
+    users {
+      findByToken(payload: $payload) {
+        id
+        fullName
+        email
+        avatarUrl
+        firebaseId
+      }
+    }
+  }
+`;
+
+const REGISTER_USER_WITH_TOKEN = gql`
+  mutation registerUserWithToken($payload: RegisterWithTokenPayload!) {
+    users {
+      registerWithToken(payload: $payload) {
+        id
+        email
+        fullName
+        avatarUrl
+        firebaseId
+      }
+    }
+  }
+`;
+
 export const Screen = (_props: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
-
-  const login = (user: User): void => {
-    apolloClient.cache.writeData({
-      data: {
-        currentUser: user,
-      },
-    });
-  };
 
   const performLogin = async (loginType: 'GOOGLE' | 'FACEBOOK'): Promise<void> => {
     let result: LoginResult | undefined;
@@ -35,6 +57,7 @@ export const Screen = (_props: Props): JSX.Element => {
         result = await authService.loginFacebook();
         break;
     }
+
     if (!result.isSuccessful) {
       if (result.errorMessage) {
         showNotification({
@@ -44,8 +67,50 @@ export const Screen = (_props: Props): JSX.Element => {
       }
       return;
     }
-    login(result.user);
-    navigationService.setRootHome();
+
+    const idToken = await authService.getIdToken();
+    const findUserByTokenResult = await apolloClient.query({
+      query: FIND_USER_BY_TOKEN,
+      variables: {
+        payload: {
+          token: idToken,
+        },
+      },
+    });
+
+    if (_.get(findUserByTokenResult, 'data.users.findByToken.id')) {
+      updateCurrentUser({
+        ..._.get(findUserByTokenResult, 'data.users.findByToken'),
+        isLoggedIn: true,
+      });
+      navigationService.setRootHome();
+    } else {
+      // User not exist => register
+      const currentUser = authService.getCurrentUser();
+      const fullName = _.get(currentUser, 'displayName', '');
+      const email = _.get(currentUser, 'email', '');
+
+      if (!fullName || !email) {
+        // Navigation to Finish register screen
+      } else {
+        const registerUserResult = await apolloClient.mutate({
+          mutation: REGISTER_USER_WITH_TOKEN,
+          variables: {
+            payload: {
+              token: idToken,
+              email,
+              fullName,
+            },
+          },
+        });
+
+        updateCurrentUser({
+          ..._.get(registerUserResult, 'data.users.registerWithToken'),
+          isLoggedIn: true,
+        });
+        navigationService.setRootHome();
+      }
+    }
   };
 
   const loginFacebook = async (): Promise<void> => {

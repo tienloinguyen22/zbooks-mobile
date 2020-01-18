@@ -1,5 +1,5 @@
 import { i18n, configureGoogleSignIn } from '@app/core';
-import '@app/graphql/apollo_client';
+import '@app/graphql';
 import { Sentry } from 'react-native-sentry';
 import { navigationService, appService } from '@app/services';
 import { registerModules } from '@app/modules';

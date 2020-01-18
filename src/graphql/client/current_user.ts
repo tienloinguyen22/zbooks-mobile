@@ -1,21 +1,29 @@
-import { LoginType } from '@app/core';
+import { apolloClient } from '../apollo_client';
 
 export interface User {
   id: string;
-  displayName?: string;
+  fullName: string;
+  email: string;
   avatarUrl?: string;
+  firebaseId: string;
   isLoggedIn: boolean;
-  email?: string;
-  emailVerified?: boolean;
-  loginType: LoginType;
 }
 
 export const initialCurrentUser = {
   id: '',
-  displayName: '',
-  avatarUrl: '',
-  isLoggedIn: false,
+  fullName: '',
   email: '',
-  emailVerified: false,
-  loginType: '',
+  avatarUrl: '',
+  firebaseId: '',
+  isLoggedIn: false,
+};
+
+export const updateCurrentUser = (userInfo: Partial<User>): void => {
+  apolloClient.cache.writeData({
+    data: {
+      currentUser: {
+        ...userInfo,
+      },
+    },
+  });
 };

@@ -7,6 +7,19 @@ import { initialCurrentUser } from './client/current_user';
 
 const cache = new InMemoryCache();
 
+cache.writeData({
+  data: {
+    appSettings: {
+      ...initialAppSettings,
+      __typename: 'appSettings',
+    },
+    currentUser: {
+      ...initialCurrentUser,
+      __typename: 'currentUser',
+    },
+  },
+});
+
 persistCache({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   cache: cache as any,
@@ -25,20 +38,8 @@ export const apolloClient = new ApolloClient({
       errorPolicy: 'all',
     },
     query: {
+      fetchPolicy: 'network-only',
       errorPolicy: 'all',
-    },
-  },
-});
-
-cache.writeData({
-  data: {
-    appSettings: {
-      ...initialAppSettings,
-      __typename: 'appSettings',
-    },
-    currentUser: {
-      ...initialCurrentUser,
-      __typename: 'currentUser',
     },
   },
 });

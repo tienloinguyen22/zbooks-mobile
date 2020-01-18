@@ -1,6 +1,5 @@
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import auth, { Auth } from '@react-native-firebase/auth';
-import { LoginType } from '@app/core';
 import { GoogleSignin } from 'react-native-google-signin';
 import { config } from '@app/config';
 import { User } from '@app/graphql';
@@ -18,39 +17,17 @@ interface LoginResultFail {
 
 export type LoginResult = LoginResultSuccess | LoginResultFail;
 
-const FACEBOOK_PROVIDER_ID = 'facebook.com';
-const GOOGLE_PROVIDER_ID = 'google.com';
-const PHONE_PROVIDER_ID = 'phone';
-
 const getUser = (user: Auth.User): User => {
   const avatarUrl =
     user.photoURL && user.photoURL.indexOf('facebook') > -1 ? `${user.photoURL}?height=500` : user.photoURL;
-  let loginType: LoginType = 'EMAIL';
-  if (user.providerData[0].providerId === FACEBOOK_PROVIDER_ID) {
-    loginType = 'FACEBOOK';
-  } else if (user.providerData[0].providerId === GOOGLE_PROVIDER_ID) {
-    loginType = 'GOOGLE';
-  } else if (user.providerData[0].providerId === PHONE_PROVIDER_ID) {
-    loginType = 'PHONE_NO';
-  } else {
-    loginType = 'EMAIL';
-  }
-  let displayName = user.displayName || undefined;
-  if (!displayName) {
-    if (loginType === 'PHONE_NO') {
-      displayName = (user.phoneNumber as unknown) as string;
-    } else if (loginType === 'EMAIL') {
-      displayName = (user.email as unknown) as string;
-    }
-  }
+
   return {
     id: user.uid,
-    displayName,
-    avatarUrl: avatarUrl || undefined,
+    email: user.email || '',
+    firebaseId: user.uid,
+    fullName: user.displayName || '',
+    avatarUrl: avatarUrl || '',
     isLoggedIn: true,
-    email: user.email || undefined,
-    emailVerified: user.emailVerified,
-    loginType,
   };
 };
 
@@ -84,6 +61,7 @@ const loginGoogle = async (): Promise<LoginResult> => {
     const { idToken, accessToken } = await GoogleSignin.getTokens();
     const credential = auth.GoogleAuthProvider.credential(idToken, accessToken);
     const { user } = await auth().signInWithCredential(credential);
+
     return {
       user: getUser(user),
       isSuccessful: true,
@@ -200,6 +178,15 @@ const sendPasswordResetEmail = async (email: string, language: string = config.i
   await auth().sendPasswordResetEmail(email);
 };
 
+const getIdToken = async (): Promise<string> => {
+  const { currentUser } = auth();
+  if (currentUser) {
+    const idToken = await currentUser.getIdToken();
+    return idToken;
+  }
+  return '';
+};
+
 export const authService = {
   loginFacebook,
   loginGoogle,
@@ -215,4 +202,5 @@ export const authService = {
   verifySmsCode,
   sendPasswordResetEmail,
   getUser,
+  getIdToken,
 };

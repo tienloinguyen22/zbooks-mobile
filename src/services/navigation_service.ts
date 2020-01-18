@@ -40,12 +40,7 @@ const APP_SETTINGS = gql`
 `;
 
 const setDefaultOptions = (): void => {
-  const { primaryColor } = colors;
   Navigation.setDefaultOptions({
-    statusBar: {
-      backgroundColor: primaryColor,
-      style: 'light',
-    },
     topBar: {
       drawBehind: true,
       visible: false,
