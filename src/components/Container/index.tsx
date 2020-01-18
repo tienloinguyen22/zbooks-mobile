@@ -27,6 +27,7 @@ interface Props {
   rowReverse?: boolean;
   columnReverse?: boolean;
 }
+
 export const Container = (props: Props): JSX.Element => {
   const { primaryColor, screenBackgroundColor } = useTheme();
   const goBack = (): void => {
@@ -38,14 +39,7 @@ export const Container = (props: Props): JSX.Element => {
 
   return (
     <>
-      <SafeAreaView
-        style={[
-          styles.rootContainerBackground,
-          {
-            backgroundColor: primaryColor,
-          },
-        ]}
-      />
+      <SafeAreaView style={[styles.rootContainerBackground]} />
       <SafeAreaView
         style={[
           styles.rootContainer,
@@ -55,7 +49,7 @@ export const Container = (props: Props): JSX.Element => {
         ]}
       >
         <ErrorBoundary>
-          <StatusBar backgroundColor={colors.lightBackgroundColor} barStyle='dark-content' />
+          <StatusBar translucent={true} backgroundColor={colors.lightBackgroundColor} barStyle='dark-content' />
           {props.showHeader && (
             <View
               style={[
