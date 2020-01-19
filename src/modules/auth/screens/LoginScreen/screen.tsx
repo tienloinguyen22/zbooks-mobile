@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { imageSources } from '@app/assets';
-import { ScreenProps, showNotification, commonStyles } from '@app/core';
-import { Image, Button, Text, Loading, Container, ImageIcon } from '@app/components';
+import { ScreenProps, showNotification, commonStyles, screenNames, NotificationTypes } from '@app/core';
+import { Image, Button, Text, Container, ImageIcon, View, LoadingModal } from '@app/components';
 import { authService, LoginResult, navigationService } from '@app/services';
 import LinearGradient from 'react-native-linear-gradient';
-import { View } from 'react-native';
 import gql from 'graphql-tag';
 import { apolloClient, updateCurrentUser } from '@app/graphql';
 import _ from 'lodash';
@@ -43,7 +42,7 @@ const REGISTER_USER_WITH_TOKEN = gql`
   }
 `;
 
-const BaseScreen = (_props: Props): JSX.Element => {
+const BaseScreen = (props: Props): JSX.Element => {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState<boolean>(false);
 
@@ -61,7 +60,7 @@ const BaseScreen = (_props: Props): JSX.Element => {
     if (!result.isSuccessful) {
       if (result.errorMessage) {
         showNotification({
-          type: 'ERROR',
+          type: NotificationTypes.ERROR,
           message: result.errorMessage,
         });
       }
@@ -92,6 +91,21 @@ const BaseScreen = (_props: Props): JSX.Element => {
 
       if (!fullName || !email) {
         // Navigation to Finish register screen
+        navigationService.navigateTo({
+          componentId: props.componentId,
+          screenName: screenNames.FinishRegisterScreen,
+          options: {
+            passProps: {
+              showHeader: true,
+              showBackButton: true,
+              headerTitle: t('finishRegisterScreen.headerTitle'),
+              userInfo: {
+                email,
+                fullName,
+              },
+            },
+          },
+        });
       } else {
         const registerUserResult = await apolloClient.mutate({
           mutation: REGISTER_USER_WITH_TOKEN,
@@ -132,11 +146,7 @@ const BaseScreen = (_props: Props): JSX.Element => {
   };
 
   if (isBusy) {
-    return (
-      <Container center centerVertical>
-        <Loading />
-      </Container>
-    );
+    return <LoadingModal />;
   }
 
   return (
@@ -147,12 +157,12 @@ const BaseScreen = (_props: Props): JSX.Element => {
 
       <View style={styles.welcomeContainer}>
         <View style={styles.titleContainer}>
-          <Text style={styles.textTitle}>Welcome!!</Text>
+          <Text h2 bold style={styles.textCenter}>
+            {t('loginScreen.welcome')}
+          </Text>
         </View>
         <View>
-          <Text style={styles.textCenter}>
-            Create your account to get started. After that, you can share books and make friends
-          </Text>
+          <Text style={styles.textCenter}>{t('loginScreen.wecomeDescription')}</Text>
         </View>
       </View>
 

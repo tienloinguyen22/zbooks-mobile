@@ -1,11 +1,9 @@
 import React, { ReactNode } from 'react';
 import { navigationService } from '@app/services';
-import { colors } from '@app/core';
+import { colors, commonStyles } from '@app/core';
 import { useTheme } from '@app/hooks';
-import { StatusBar, SafeAreaView } from 'react-native';
+import { StatusBar, SafeAreaView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Button } from '../Button';
-import { Left } from '../Left';
-import { Body } from '../Body';
 import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
 import { View } from '../View';
@@ -29,7 +27,7 @@ interface Props {
 }
 
 export const Container = (props: Props): JSX.Element => {
-  const { primaryColor, screenBackgroundColor } = useTheme();
+  const { screenBackgroundColor } = useTheme();
   const goBack = (): void => {
     props.componentId &&
       navigationService.goBack({
@@ -54,40 +52,40 @@ export const Container = (props: Props): JSX.Element => {
             <View
               style={[
                 styles.header,
+                commonStyles.boxShadow,
                 {
-                  backgroundColor: primaryColor,
+                  backgroundColor: screenBackgroundColor,
                 },
               ]}
             >
-              <Left>
-                {props.showBackButton && (
-                  <Button transparent style={styles.backButton} onPress={goBack}>
-                    <Icon name='chevron-left' color={colors.white} style={styles.icon} />
-                  </Button>
-                )}
-              </Left>
-              <Body style={styles.headerText}>
-                <Text h6 bold white>
-                  {props.headerTitle}
-                </Text>
-              </Body>
+              {props.showBackButton && (
+                <Button transparent style={styles.backButton} onPress={goBack}>
+                  <Icon name='arrow-left' color={colors.primaryColor} style={styles.icon} />
+                </Button>
+              )}
+              <Text h6 bold>
+                {props.headerTitle}
+              </Text>
               <Right />
             </View>
           )}
-          <View
-            flex={props.flex}
-            column={props.column}
-            row={props.row}
-            columnReverse={props.columnReverse}
-            rowReverse={props.rowReverse}
-            center={props.center}
-            centerVertical={props.centerVertical}
-            style={{
-              backgroundColor: screenBackgroundColor,
-            }}
-          >
-            {props.children}
-          </View>
+
+          <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View
+              flex={props.flex}
+              column={props.column}
+              row={props.row}
+              columnReverse={props.columnReverse}
+              rowReverse={props.rowReverse}
+              center={props.center}
+              centerVertical={props.centerVertical}
+              style={{
+                backgroundColor: screenBackgroundColor,
+              }}
+            >
+              {props.children}
+            </View>
+          </TouchableWithoutFeedback>
         </ErrorBoundary>
       </SafeAreaView>
     </>

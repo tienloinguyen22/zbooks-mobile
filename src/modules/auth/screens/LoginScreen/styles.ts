@@ -16,12 +16,13 @@ export const styles = StyleSheet.create({
     margin: 20,
   },
   button: {
-    marginBottom: 20,
     width: 300,
     borderRadius: 100,
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 24,
+    margin: 12,
+    marginBottom: 20,
   },
   facebookButton: {
     backgroundColor: colors.facebook,
@@ -37,11 +38,7 @@ export const styles = StyleSheet.create({
   },
   textCenter: {
     textAlign: 'center',
-  },
-  textTitle: {
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center',
+    paddingHorizontal: 12,
   },
   titleContainer: {
     marginBottom: 12,

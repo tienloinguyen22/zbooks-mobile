@@ -211,6 +211,8 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-extra-dimensions-android')
+    implementation project(':react-native-linear-gradient')
     implementation project(':react-native-sentry')
     implementation project(':react-native-code-push')
     implementation project(':react-native-orientation')

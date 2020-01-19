@@ -16,4 +16,6 @@ export * from './helpers/combine_styles';
 export * from './helpers/configure_google_sign_in';
 export * from './helpers/handle_error';
 export * from './helpers/format_date';
+export * from './helpers/get_layout';
+
 export * from './screen_names';

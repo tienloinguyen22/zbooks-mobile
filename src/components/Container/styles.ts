@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
   header: {
     height: 50,
     flexDirection: 'row',
-    alignSelf: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   headerText: {
     minWidth: 150,

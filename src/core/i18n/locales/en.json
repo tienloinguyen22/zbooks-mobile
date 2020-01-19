@@ -29,7 +29,8 @@
     "select": "Select",
     "settings": "Settings",
     "update": "Update",
-    "updateInstalled": "A new update arrived. Please restart the app"
+    "updateInstalled": "A new update arrived. Please restart the app",
+    "continue": "Continue"
   },
   "dialog": {
     "close": "Close",
@@ -84,6 +85,8 @@
     "hello": "Hello"
   },
   "loginScreen": {
+    "welcome": "Welcome!!",
+    "wecomeDescription": "Create your account to get started. After that, you can share books and make friends",
     "continueWith": "Continue with",
     "loginWith": "Login with",
     "loginWithEmail": "Login with email",
@@ -91,6 +94,16 @@
     "notHaveAccount": "Don't Have an Account?",
     "registerByEmail": "Register by email",
     "registerByPhoneNo": "Register by phone no"
+  },
+  "finishRegisterScreen": {
+    "pleaseInputEmail": "Please input your email address",
+    "pleaseInputFullName": "Please input your full name",
+    "invalidEmailAddress": "Invalid email address",
+    "emailPlaceholder": "Enter your email address",
+    "fullNamePlaceholder": "Enter your full name",
+    "title": "Almost done!!",
+    "description": "Enter your Full Name and your Email Address to finish setting up your account",
+    "headerTitle": "Complete register"
   },
   "month": {
     "april": "April",

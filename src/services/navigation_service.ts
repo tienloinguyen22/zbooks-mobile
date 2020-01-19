@@ -4,6 +4,7 @@ import { screenNames, Resource, THEME_DARK, colors } from '@app/core';
 import { getIconImageSource } from '@app/components/Icon';
 import gql from 'graphql-tag';
 import { apolloClient } from '@app/graphql';
+import _ from 'lodash';
 
 interface TabItem {
   screenName: string;
@@ -13,10 +14,24 @@ interface TabItem {
   selectedColor?: string;
 }
 
-const navigateTo = ({ screenName, componentId }: { screenName: string; componentId: string; options?: {} }): void => {
+interface NavigationToOptions {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  passProps?: { [key: string]: any };
+}
+
+const navigateTo = ({
+  screenName,
+  componentId,
+  options,
+}: {
+  screenName: string;
+  componentId: string;
+  options?: NavigationToOptions;
+}): void => {
   Navigation.push(componentId, {
     component: {
       name: screenName,
+      passProps: _.get(options, 'passProps', {}),
     },
   });
 };

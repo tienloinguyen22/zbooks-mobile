@@ -1,29 +1,33 @@
 import Toast from 'react-native-root-toast';
 import { colors } from '../themes/colors';
 
-export const showNotification = ({
-  type,
-  message,
-}: {
-  type: 'SUCCESS' | 'WARNING' | 'ERROR';
-  message: string;
-}): void => {
-  let backgroundColor: string;
+export enum NotificationTypes {
+  SUCCESS = 'SUCCESS',
+  WARNING = 'WARNING',
+  ERROR = 'ERROR',
+}
+
+export const showNotification = ({ type, message }: { type: NotificationTypes; message: string }): void => {
+  let textColor: string;
   switch (type) {
-    case 'ERROR':
-      backgroundColor = colors.red;
+    case NotificationTypes.ERROR:
+      textColor = colors.red;
       break;
-    case 'WARNING':
-      backgroundColor = colors.orange;
+    case NotificationTypes.WARNING:
+      textColor = colors.orange;
       break;
     default:
-      backgroundColor = colors.green;
+      textColor = colors.primaryColor;
       break;
   }
+
   Toast.show(message, {
-    position: Toast.positions.TOP,
-    backgroundColor,
+    position: 80,
+    textColor,
+    backgroundColor: colors.white,
+    opacity: 1,
     shadow: true,
+    shadowColor: colors.shadow,
     animation: true,
     hideOnPress: true,
     delay: 0,

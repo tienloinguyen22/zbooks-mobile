@@ -6,9 +6,10 @@ export const commonStyles = StyleSheet.create({
     shadowColor: colors.shadow,
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 2,
     },
-    shadowOpacity: 1,
-    shadowRadius: 10,
+    shadowOpacity: 0.6,
+    shadowRadius: 5,
+    elevation: 5,
   },
 });

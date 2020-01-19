@@ -34,8 +34,6 @@ interface Props {
   tooltipHeight?: number;
   tooltipWidth?: number;
   tooltipText?: string;
-  onChangeText?: (text: string) => void;
-  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
   secureTextEntry?: boolean;
   type?: 'text' | 'picker' | 'datepicker';
   pickerDataSources?: PickerDataItem<string>[];
@@ -45,6 +43,8 @@ interface Props {
   datePickerFromYear?: number;
   datePickerToYear?: number;
   inputTextColor?: string;
+  onChangeText?: (text: string) => void;
+  onBlur?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
 }
 
 export const Field = (props: Props): JSX.Element => {
