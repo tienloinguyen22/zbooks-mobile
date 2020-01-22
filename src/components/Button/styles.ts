@@ -19,6 +19,10 @@ export const styles = StyleSheet.create({
     width: 200,
     height: 45,
   },
+  small: {
+    width: 130,
+    height: 36,
+  },
   rounded: {
     borderRadius: 20,
   },

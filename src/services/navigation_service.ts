@@ -123,7 +123,8 @@ const getTabItem = ({ screenName, icon, color, text, selectedColor }: TabItem): 
 const setRootHome = async (currentTabIndex?: number): Promise<void> => {
   setDefaultOptions();
   const homeIcon = await getIconImageSource('home', 30);
-  const moreIcon = await getIconImageSource('dots-horizontal', 30);
+  const favoritesIcon = await getIconImageSource('heart', 30);
+  const settingsIcon = await getIconImageSource('settings', 30);
   const graphQlData = apolloClient.readQuery({
     query: APP_SETTINGS,
   });
@@ -158,8 +159,15 @@ const setRootHome = async (currentTabIndex?: number): Promise<void> => {
             selectedColor: primaryColor,
           }),
           getTabItem({
+            screenName: screenNames.FavoriteBooksScreen,
+            icon: favoritesIcon,
+            text: i18next.t('common.myFavorite'),
+            color: tabTextColor,
+            selectedColor: primaryColor,
+          }),
+          getTabItem({
             screenName: screenNames.SettingsScreen,
-            icon: moreIcon,
+            icon: settingsIcon,
             text: i18next.t('common.settings'),
             color: tabTextColor,
             selectedColor: primaryColor,

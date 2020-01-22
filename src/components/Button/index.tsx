@@ -7,6 +7,7 @@ import { styles } from './styles';
 
 interface Props extends ViewProps {
   children?: ReactNode;
+  small?: boolean;
   transparent?: boolean;
   outline?: boolean;
   disabled?: boolean;
@@ -16,7 +17,7 @@ interface Props extends ViewProps {
   info?: boolean;
   warning?: boolean;
   danger?: boolean;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 export const Button = (props: Props): JSX.Element => {
@@ -28,6 +29,7 @@ export const Button = (props: Props): JSX.Element => {
       backgroundColor: primaryColor,
       width: props.width ? props.width : 200,
     },
+    props.small && styles.small,
     props.transparent && styles.transparent,
     props.outline && styles.outline,
     props.outline && {
@@ -41,11 +43,7 @@ export const Button = (props: Props): JSX.Element => {
     rounded && styles.rounded,
     props.style,
   );
-  const boldStyle = {
-    fontWeight: 'bold',
-  };
   const addedStyle = {
-    style: boldStyle,
     numberOfLines: 1,
   };
   const childrenWithProps = React.Children.map(props.children, (child) =>

@@ -2,11 +2,10 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   default: {},
-  centerVertical: {
-    flex: 1,
+  center: {
     justifyContent: 'center',
   },
-  center: {
+  centerVertical: {
     alignItems: 'center',
   },
   row: {
@@ -20,5 +19,8 @@ export const styles = StyleSheet.create({
   },
   columnReverse: {
     flexDirection: 'column-reverse',
+  },
+  spread: {
+    justifyContent: 'space-between',
   },
 });

@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { config } from '@app/config';
-import { persistCache } from 'apollo-cache-persist';
+import { persistCache, CachePersistor } from 'apollo-cache-persist';
 import storage from '@react-native-community/async-storage';
 import { initialAppSettings } from './client/settings';
 import { initialCurrentUser } from './client/current_user';
@@ -18,6 +18,13 @@ cache.writeData({
       __typename: 'currentUser',
     },
   },
+});
+
+export const persistor = new CachePersistor({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  cache: cache as any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  storage: storage as any,
 });
 
 persistCache({

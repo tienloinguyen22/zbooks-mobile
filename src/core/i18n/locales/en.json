@@ -17,6 +17,7 @@
     "red": "Red"
   },
   "common": {
+    "myFavorite": "My favorites",
     "cancel": "Cancel",
     "close": "Close",
     "confirm": "Confirm",
@@ -132,6 +133,9 @@
     "verify": "Verify"
   },
   "settingsScreen": {
+    "profile": "Profile",
+    "genresPreferences": "Genres preferences",
+    "notifications": "Notifications",
     "about": "About",
     "author": "Author",
     "changePassword": "Change password",

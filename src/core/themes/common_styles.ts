@@ -12,4 +12,7 @@ export const commonStyles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
   },
+  textCenter: {
+    textAlign: 'center',
+  },
 });

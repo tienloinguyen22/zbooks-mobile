@@ -11,6 +11,7 @@ interface Props extends ViewProps {
   column?: boolean;
   rowReverse?: boolean;
   columnReverse?: boolean;
+  spread?: boolean;
   children?: React.ReactNode;
 }
 
@@ -18,6 +19,7 @@ export const View = (props: Props): JSX.Element => {
   const viewStyle = combineStyles(
     styles.default,
     props.style,
+    props.spread && styles.spread,
     props.center && styles.center,
     props.centerVertical && styles.centerVertical,
     props.row && styles.row,

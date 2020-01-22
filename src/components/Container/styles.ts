@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 20,
   },
   headerText: {
     minWidth: 150,
@@ -26,5 +27,10 @@ export const styles = StyleSheet.create({
   },
   backButton: {
     width: 50,
+  },
+  contentContainer: {
+    flex: 1,
+    paddingHorizontal: 30,
+    paddingTop: 16,
   },
 });

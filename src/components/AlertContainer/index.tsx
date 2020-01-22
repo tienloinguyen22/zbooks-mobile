@@ -1,7 +1,7 @@
 import React from 'react';
 import { ViewStyle } from 'react-native';
 import Modal from 'react-native-modal';
-import { combineStyles, colors, THEME_DARK } from '@app/core';
+import { combineStyles, colors, THEME_DARK, getLayout } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@app/hooks';
 import { Icon } from '../Icon';
@@ -26,6 +26,8 @@ interface AlertProps {
   onPressClose: () => void;
   closeable?: boolean;
 }
+
+const layouts = getLayout();
 
 export const AlertContainer = (props: AlertProps): JSX.Element => {
   const { primaryColor, theme } = useTheme();
@@ -79,7 +81,13 @@ export const AlertContainer = (props: AlertProps): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Modal isVisible={true} onBackButtonPress={closeModal} onBackdropPress={closeModal}>
+      <Modal
+        deviceWidth={layouts.deviceWidth}
+        deviceHeight={layouts.deviceHeight}
+        isVisible={true}
+        onBackButtonPress={closeModal}
+        onBackdropPress={closeModal}
+      >
         <View style={[styles.alertContainer, backgroundAlertStyle]}>
           <View style={titleContainerStyle}>
             <Icon name={iconName} color={colors.white} size={25} />
