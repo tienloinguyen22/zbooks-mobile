@@ -19,7 +19,7 @@ platform :android do
   lane :build do |options|
     gradle(task: 'clean', project_dir: 'android/')
     gradle(
-      task: 'bundle', 
+      task: 'assemble', 
       build_type: 'Release', 
       project_dir: 'android/',
     )

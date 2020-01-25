@@ -245,11 +245,6 @@
     "code": "CG"
   },
   {
-    "name": "Congo, The Democratic Republic of the Congo",
-    "dialCode": "+243",
-    "code": "CD"
-  },
-  {
     "name": "Cook Islands",
     "dialCode": "+682",
     "code": "CK"
@@ -495,7 +490,7 @@
     "code": "ID"
   },
   {
-    "name": "Iran, Islamic Republic of Persian Gulf",
+    "name": "Iran",
     "dialCode": "+98",
     "code": "IR"
   },
@@ -560,12 +555,12 @@
     "code": "KI"
   },
   {
-    "name": "Korea, Democratic People\"s Republic of Korea",
+    "name": "North Korea",
     "dialCode": "+850",
     "code": "KP"
   },
   {
-    "name": "Korea, Republic of South Korea",
+    "name": "South Korea",
     "dialCode": "+82",
     "code": "KR"
   },
@@ -695,7 +690,7 @@
     "code": "MX"
   },
   {
-    "name": "Micronesia, Federated States of Micronesia",
+    "name": "Micronesia",
     "dialCode": "+691",
     "code": "FM"
   },
@@ -825,7 +820,7 @@
     "code": "PW"
   },
   {
-    "name": "Palestinian Territory, Occupied",
+    "name": "Palestinian Territory",
     "dialCode": "+970",
     "code": "PS"
   },
@@ -905,7 +900,7 @@
     "code": "BL"
   },
   {
-    "name": "Saint Helena, Ascension and Tristan Da Cunha",
+    "name": "Saint Helena",
     "dialCode": "+290",
     "code": "SH"
   },
@@ -930,7 +925,7 @@
     "code": "PM"
   },
   {
-    "name": "Saint Vincent and the Grenadines",
+    "name": "Saint Vincent and Grenadines",
     "dialCode": "+1784",
     "code": "VC"
   },
@@ -1010,7 +1005,7 @@
     "code": "SS"
   },
   {
-    "name": "South Georgia and the South Sandwich Islands",
+    "name": "South Georgia",
     "dialCode": "+500",
     "code": "GS"
   },
@@ -1070,7 +1065,7 @@
     "code": "TJ"
   },
   {
-    "name": "Tanzania, United Republic of Tanzania",
+    "name": "Tanzania",
     "dialCode": "+255",
     "code": "TZ"
   },
@@ -1170,7 +1165,7 @@
     "code": "VU"
   },
   {
-    "name": "Venezuela, Bolivarian Republic of Venezuela",
+    "name": "Venezuela",
     "dialCode": "+58",
     "code": "VE"
   },

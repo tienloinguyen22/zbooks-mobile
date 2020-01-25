@@ -238,6 +238,8 @@ PODS:
   - RNGoogleSignin (2.0.0):
     - GoogleSignIn (~> 4.4.0)
     - React
+  - RNSpringScrollView (2.0.23):
+    - React
   - RNVectorIcons (6.6.0):
     - React
   - Sentry (4.1.3):
@@ -290,6 +292,7 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBConfig (from `../node_modules/@react-native-firebase/config`)"
   - RNGoogleSignin (from `../node_modules/react-native-google-signin`)
+  - RNSpringScrollView (from `../node_modules/react-native-spring-scrollview/ios`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - SentryReactNative (from `../node_modules/react-native-sentry`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -393,6 +396,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/config"
   RNGoogleSignin:
     :path: "../node_modules/react-native-google-signin"
+  RNSpringScrollView:
+    :path: "../node_modules/react-native-spring-scrollview/ios"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   SentryReactNative:
@@ -458,12 +463,13 @@ SPEC CHECKSUMS:
   RNFBAuth: 4fb5c33b1b71fa5558f8bd1b7e3942fb78d3668e
   RNFBConfig: 3ff6ba25e95b72cdda1b8f405fd8f87fc496b999
   RNGoogleSignin: d030c6c6591db24c3cee649f64c7babf0a1699a0
+  RNSpringScrollView: 8b0af44fda8b131d845b93bf5b1d0710152e4e61
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Sentry: 4e8a17b61ddd116f89536cc81d567fdee1ebca96
   SentryReactNative: 07237139c00366ea2e75ae3e5c566e7a71c27a90
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   yoga: 312528f5bbbba37b4dcea5ef00e8b4033fdd9411
 
-PODFILE CHECKSUM: e2fbb554d9927f955ee67892497544c441fb2b34
+PODFILE CHECKSUM: 9c13092049f0a0c625c9e90e109bb65f6ed94910
 
 COCOAPODS: 1.8.3

@@ -48,6 +48,8 @@ target 'mobile' do
 
   pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
 
+  pod 'RNSpringScrollView', :path => '../node_modules/react-native-spring-scrollview/ios'
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing

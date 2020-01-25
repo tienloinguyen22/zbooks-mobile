@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 10,
     padding: 16,
-    height: 400,
+    marginBottom: 42,
+    height: 320,
   },
   titleContainer: {
     paddingVertical: 20,
@@ -19,5 +20,15 @@ export const styles = StyleSheet.create({
   countryCodeButton: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  countryCodeContainer: {
+    flex: 1,
+    marginTop: 16,
+  },
+  countryCodeItem: {
+    borderBottomColor: colors.lightGrey,
+    borderBottomWidth: 1,
+    paddingHorizontal: 8,
+    paddingBottom: 8,
   },
 });

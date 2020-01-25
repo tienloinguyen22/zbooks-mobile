@@ -18,6 +18,7 @@ const Input = (props: Props): JSX.Element => {
         {props.addonBefore}
 
         <View style={styles.rightContent} row centerVertical>
+          <View style={styles.borderRight} />
           {props.icon ? <Icon name={props.icon} color={colors.grey} size={20} style={styles.icon} /> : <></>}
           <TextInput {...props} />
         </View>

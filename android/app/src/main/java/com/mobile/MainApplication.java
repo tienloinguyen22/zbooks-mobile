@@ -7,6 +7,7 @@ import com.facebook.react.PackageList;
 import com.facebook.hermes.reactexecutor.HermesExecutorFactory;
 import com.facebook.react.bridge.JavaScriptExecutorFactory;
 import com.facebook.react.ReactApplication;
+import com.bolan9999.SpringScrollViewPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import com.airbnb.android.react.lottie.LottiePackage;
 import io.sentry.RNSentryPackage;
@@ -36,6 +37,7 @@ import java.util.List;
 
 import com.BV.LinearGradient.LinearGradientPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
+import com.bolan9999.SpringScrollViewPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -81,7 +83,8 @@ public class MainApplication extends NavigationApplication {
       new CodePush("", MainApplication.this, BuildConfig.DEBUG),
       new RNSentryPackage(),
       new LinearGradientPackage(),
-      new ExtraDimensionsPackage()
+      new ExtraDimensionsPackage(),
+      new SpringScrollViewPackage()
     );
   }
 }

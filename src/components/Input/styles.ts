@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { colors } from '../../core';
 
 export const styles = StyleSheet.create({
@@ -11,12 +11,16 @@ export const styles = StyleSheet.create({
   },
   rightContent: {
     flex: 1,
+    marginLeft: 8,
+    height: '100%',
+  },
+  borderRight: {
     borderLeftWidth: 1,
     borderLeftColor: colors.grey,
-    marginLeft: 8,
+    paddingVertical: 12,
     paddingLeft: 8,
   },
   icon: {
-    marginRight: 8,
+    marginRight: Platform.OS === 'ios' ? 8 : 0,
   },
 });

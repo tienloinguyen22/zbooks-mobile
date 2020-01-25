@@ -171,7 +171,8 @@
     "pleaseInputPhoneNo": "Please input phone number",
     "enterYourPhoneNo": "Enter your phone number",
     "phoneNoPlaceholder": "Ex: 363394468",
-    "countryCodePlaceholder": "Country name or code"
+    "countryCodePlaceholder": "Country name or code",
+    "invalidPhoneNo": "Invalid phone number"
   },
   "theme": {
     "dark": "Dark",

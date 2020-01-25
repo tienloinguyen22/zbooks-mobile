@@ -211,6 +211,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':react-native-spring-scrollview')
     implementation project(':react-native-extra-dimensions-android')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-sentry')
