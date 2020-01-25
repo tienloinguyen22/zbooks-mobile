@@ -30,13 +30,18 @@ const fieldNames = {
 };
 
 const REGISTER_USER_WITH_TOKEN = gql`
-  mutation registerUserWithToken($payload: RegisterWithTokenPayload!) {
+  mutation RegisterUserWithToken($payload: RegisterWithTokenPayload!) {
     users {
       registerWithToken(payload: $payload) {
         id
         email
         fullName
+        countryCode
+        phoneNo
+        address
         avatarUrl
+        dob
+        gender
         firebaseId
       }
     }
@@ -97,12 +102,12 @@ const BaseScreen = (props: Props): JSX.Element => {
     >
       <View style={styles.welcomeContainer}>
         <View style={styles.titleContainer}>
-          <Text h2 bold style={styles.textCenter}>
+          <Text h2 bold textCenter>
             {t('finishRegisterScreen.title')}
           </Text>
         </View>
         <View>
-          <Text style={styles.textCenter}>{t('finishRegisterScreen.description')}</Text>
+          <Text textCenter>{t('finishRegisterScreen.description')}</Text>
         </View>
       </View>
 

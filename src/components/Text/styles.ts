@@ -51,4 +51,7 @@ export const styles = StyleSheet.create({
   danger: {
     color: colors.red,
   },
+  textCenter: {
+    textAlign: 'center',
+  },
 });

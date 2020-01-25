@@ -21,6 +21,7 @@ interface Props extends TextProps {
   info?: boolean;
   warning?: boolean;
   danger?: boolean;
+  textCenter?: boolean;
 }
 
 export const Text = (props: Props): JSX.Element => {
@@ -51,6 +52,7 @@ export const Text = (props: Props): JSX.Element => {
     props.info && styles.info,
     props.warning && styles.warning,
     props.danger && styles.danger,
+    props.textCenter && styles.textCenter,
   );
 
   return (

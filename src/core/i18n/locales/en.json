@@ -146,6 +146,33 @@
     "theme": "Theme",
     "version": "Version"
   },
+  "userProfileScreen": {
+    "headerTitle": "Edit profile",
+    "emailPlaceholder": "Ex: neoflies@flybooks.com",
+    "email": "E-mail",
+    "fullName": "Fullname",
+    "fullnamePlaceholder": "Ex: John Doe",
+    "phoneNo": "Phone number",
+    "phoneNoPlaceholder": "Ex: +84363394468"
+  },
+  "editEmailScreen": {
+    "headerTitle": "E-mail",
+    "enterYourEmail": "Enter your email address",
+    "emailPlaceholder": "Ex: neoflies@flybooks.com"
+  },
+  "editFullnameScreen": {
+    "headerTitle": "Fullname",
+    "enterYourFullname": "Enter your full name",
+    "fullnamePlaceholder": "Ex: John Doe"
+  },
+  "editPhoneNoScreen": {
+    "headerTitle": "Phone number",
+    "pleaseSelectCountryCode": "Please select country code",
+    "pleaseInputPhoneNo": "Please input phone number",
+    "enterYourPhoneNo": "Enter your phone number",
+    "phoneNoPlaceholder": "Ex: 363394468",
+    "countryCodePlaceholder": "Country name or code"
+  },
   "theme": {
     "dark": "Dark",
     "light": "Light"

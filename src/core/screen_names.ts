@@ -12,4 +12,8 @@ export const screenNames = {
   NewScreen: 'NewScreen',
   FinishRegisterScreen: 'FinishRegisterScreen',
   FavoriteBooksScreen: 'FavoriteBooksScreen',
+  UserProfileScreen: 'UserProfileScreen',
+  EditEmailScreen: 'EditEmailScreen',
+  EditFullnameScreen: 'EditFullnameScreen',
+  EditPhoneNoScreen: 'EditPhoneNoScreen',
 };

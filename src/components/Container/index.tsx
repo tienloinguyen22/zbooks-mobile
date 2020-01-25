@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { navigationService } from '@app/services';
 import { colors } from '@app/core';
 import { useTheme } from '@app/hooks';
-import { StatusBar, SafeAreaView, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StatusBar, SafeAreaView, TouchableWithoutFeedback, Keyboard, ActivityIndicator } from 'react-native';
 import { Button } from '../Button';
 import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
@@ -24,6 +24,10 @@ interface Props {
   column?: boolean;
   rowReverse?: boolean;
   columnReverse?: boolean;
+  rightIcon?: string;
+  rightIconColor?: string;
+  loading?: boolean;
+  onRightButtonPress?: () => void;
 }
 
 export const Container = (props: Props): JSX.Element => {
@@ -34,6 +38,21 @@ export const Container = (props: Props): JSX.Element => {
         componentId: props.componentId,
       });
   };
+
+  let rightItem = <Right />;
+  if (props.loading) {
+    rightItem = (
+      <Button transparent style={styles.backButton} onPress={props.onRightButtonPress}>
+        <ActivityIndicator size='small' color={colors.link} />
+      </Button>
+    );
+  } else if (props.rightIcon) {
+    rightItem = (
+      <Button transparent style={styles.backButton} onPress={props.onRightButtonPress}>
+        <Icon name={props.rightIcon} color={props.rightIconColor || colors.primaryColor} style={styles.icon} />
+      </Button>
+    );
+  }
 
   return (
     <>
@@ -48,28 +67,30 @@ export const Container = (props: Props): JSX.Element => {
       >
         <ErrorBoundary>
           <StatusBar translucent={true} backgroundColor={colors.lightBackgroundColor} barStyle='dark-content' />
-          <View style={styles.contentContainer}>
-            {props.showHeader && (
-              <View
-                style={[
-                  styles.header,
-                  {
-                    backgroundColor: screenBackgroundColor,
-                  },
-                ]}
-              >
+          {props.showHeader && (
+            <View
+              spread
+              style={[
+                styles.header,
+                {
+                  backgroundColor: screenBackgroundColor,
+                },
+              ]}
+            >
+              <View row centerVertical>
                 {props.showBackButton && (
                   <Button transparent style={styles.backButton} onPress={goBack}>
                     <Icon name='arrow-left' color={colors.primaryColor} style={styles.icon} />
                   </Button>
                 )}
-                <Text h3 bold>
+                <Text h4 bold style={styles.headerText}>
                   {props.headerTitle}
                 </Text>
-                <Right />
               </View>
-            )}
-
+              {rightItem}
+            </View>
+          )}
+          <View style={styles.contentContainer}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <View
                 flex={props.flex}

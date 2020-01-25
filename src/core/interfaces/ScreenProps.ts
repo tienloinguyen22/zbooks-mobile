@@ -3,4 +3,7 @@ export interface ScreenProps {
   showHeader?: boolean;
   showBackButton?: boolean;
   headerTitle?: string;
+  rightIcon?: string;
+  rightIconColor?: string;
+  onRightButtonPress: () => void;
 }

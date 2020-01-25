@@ -2,18 +2,28 @@ import { apolloClient } from '../apollo_client';
 
 export interface User {
   id: string;
-  fullName: string;
   email: string;
+  fullName: string;
+  countryCode?: string;
+  phoneNo?: string;
+  address?: string;
   avatarUrl?: string;
+  dob?: string;
+  gender?: string;
   firebaseId: string;
   isLoggedIn: boolean;
 }
 
 export const initialCurrentUser = {
   id: '',
-  fullName: '',
   email: '',
+  fullName: '',
+  countryCode: '',
+  phoneNo: '',
+  address: '',
   avatarUrl: '',
+  dob: '',
+  gender: '',
   firebaseId: '',
   isLoggedIn: false,
 };

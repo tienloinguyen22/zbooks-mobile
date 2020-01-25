@@ -13,10 +13,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
   },
   headerText: {
     minWidth: 150,
+    paddingHorizontal: 30,
   },
   title: {
     color: colors.white,

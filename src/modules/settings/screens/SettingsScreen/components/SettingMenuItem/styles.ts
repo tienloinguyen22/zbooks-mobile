@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.lightGrey,
     height: 50,
-    justifyContent: 'space-between',
     paddingRight: 4,
   },
 });

@@ -47,7 +47,7 @@ export const LogoutModal = (props: Props): JSX.Element => {
         <Text h4 style={styles.title}>
           Logout
         </Text>
-        <Text style={commonStyles.textCenter}>You will be return to the Login screen</Text>
+        <Text textCenter>You will be return to the Login screen</Text>
 
         <View row centerVertical spread style={styles.buttonsContainer}>
           <Button outline small style={commonStyles.boxShadow} onPress={closeLogoutModal} disabled={loading}>

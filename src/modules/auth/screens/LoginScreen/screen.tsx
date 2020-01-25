@@ -15,13 +15,18 @@ type Props = ScreenProps;
 const appIconSource = imageSources.loginIcon();
 
 const FIND_USER_BY_TOKEN = gql`
-  query findUserByToken($payload: FindUserByTokenQuery!) {
+  query FindUserByToken($payload: FindUserByTokenQuery!) {
     users {
       findByToken(payload: $payload) {
         id
-        fullName
         email
+        fullName
+        countryCode
+        phoneNo
+        address
         avatarUrl
+        dob
+        gender
         firebaseId
       }
     }
@@ -29,13 +34,18 @@ const FIND_USER_BY_TOKEN = gql`
 `;
 
 const REGISTER_USER_WITH_TOKEN = gql`
-  mutation registerUserWithToken($payload: RegisterWithTokenPayload!) {
+  mutation RegisterUserWithToken($payload: RegisterWithTokenPayload!) {
     users {
       registerWithToken(payload: $payload) {
         id
         email
         fullName
+        countryCode
+        phoneNo
+        address
         avatarUrl
+        dob
+        gender
         firebaseId
       }
     }
@@ -150,19 +160,19 @@ const BaseScreen = (props: Props): JSX.Element => {
   }
 
   return (
-    <Container center centerVertical>
+    <Container column center centerVertical>
       <LinearGradient colors={['#89f7fe', '#66a6ff']} style={styles.appIconContainer}>
         <Image style={styles.appIcon} source={appIconSource} />
       </LinearGradient>
 
       <View style={styles.welcomeContainer}>
         <View style={styles.titleContainer}>
-          <Text h2 bold style={styles.textCenter}>
+          <Text h2 bold textCenter>
             {t('loginScreen.welcome')}
           </Text>
         </View>
         <View>
-          <Text style={styles.textCenter}>{t('loginScreen.wecomeDescription')}</Text>
+          <Text textCenter>{t('loginScreen.wecomeDescription')}</Text>
         </View>
       </View>
 

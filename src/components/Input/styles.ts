@@ -9,4 +9,14 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.lightGrey,
     paddingHorizontal: 12,
   },
+  rightContent: {
+    flex: 1,
+    borderLeftWidth: 1,
+    borderLeftColor: colors.grey,
+    marginLeft: 8,
+    paddingLeft: 8,
+  },
+  icon: {
+    marginRight: 8,
+  },
 });

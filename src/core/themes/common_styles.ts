@@ -15,4 +15,7 @@ export const commonStyles = StyleSheet.create({
   textCenter: {
     textAlign: 'center',
   },
+  maxWidth: {
+    width: '100%',
+  },
 });

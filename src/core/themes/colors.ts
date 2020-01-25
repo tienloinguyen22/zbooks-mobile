@@ -13,6 +13,7 @@ export const colors = {
   orange: '#FDA929',
   green: '#24DF98',
   blue: '#1A97FC',
+  link: '#2492F4',
   google: '#DE5246', // color for facebook icon
   facebook: '#4267B2', // color for google icon
 };

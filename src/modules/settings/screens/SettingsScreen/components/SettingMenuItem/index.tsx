@@ -18,7 +18,7 @@ export const SettingMenuItem = (props: Props): JSX.Element => {
 
   return (
     <Touchable onPress={onPress}>
-      <View centerVertical row style={style}>
+      <View centerVertical row spread style={style}>
         <Text>{title}</Text>
         {showArrow ? <Icon name='chevron-right' size={24} /> : <View />}
       </View>

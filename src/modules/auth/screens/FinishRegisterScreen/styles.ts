@@ -16,6 +16,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
-    width: 300,
+    width: '100%',
   },
 });

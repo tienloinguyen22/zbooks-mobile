@@ -16,12 +16,33 @@ interface Props extends ViewProps {
 }
 
 export const View = (props: Props): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let centerStyle: any = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let centerVerticalStyle: any = {};
+
+  if (props.row) {
+    centerStyle = {
+      justifyContent: 'center',
+    };
+    centerVerticalStyle = {
+      alignItems: 'center',
+    };
+  } else if (props.column) {
+    centerStyle = {
+      alignItems: 'center',
+    };
+    centerVerticalStyle = {
+      justifyContent: 'center',
+    };
+  }
+
   const viewStyle = combineStyles(
     styles.default,
     props.style,
     props.spread && styles.spread,
-    props.center && styles.center,
-    props.centerVertical && styles.centerVertical,
+    props.center && centerStyle,
+    props.centerVertical && centerVerticalStyle,
     props.row && styles.row,
     props.column && styles.column,
     props.rowReverse && styles.rowReverse,

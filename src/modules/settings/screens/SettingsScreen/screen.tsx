@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { ScreenProps } from '@app/core';
+import { ScreenProps, screenNames } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@app/components';
+import { navigationService } from '@app/services';
 import { SettingMenuItem, LogoutModal } from './components';
 
 type Props = ScreenProps;
 
-const BaseScreen = (_props: Props): JSX.Element => {
+const BaseScreen = (props: Props): JSX.Element => {
   const { t } = useTranslation();
   const [logoutModalVisible, setLogoutModalVisible] = useState<boolean>(false);
 
@@ -19,7 +20,17 @@ const BaseScreen = (_props: Props): JSX.Element => {
   };
 
   const navigateToProfileScreen = (): void => {
-    //
+    navigationService.navigateTo({
+      componentId: props.componentId,
+      screenName: screenNames.UserProfileScreen,
+      options: {
+        passProps: {
+          showHeader: true,
+          showBackButton: true,
+          headerTitle: t('userProfileScreen.headerTitle'),
+        },
+      },
+    });
   };
 
   return (
