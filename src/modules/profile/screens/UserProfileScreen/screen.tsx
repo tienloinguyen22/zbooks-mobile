@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScreenProps, screenNames, colors } from '@app/core';
 import { useTranslation } from 'react-i18next';
-import { Container, View, FormItem, Input, Touchable } from '@app/components';
+import { Container, View, FormItem, Input, Touchable, ScrollView } from '@app/components';
 import { navigationService } from '@app/services';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
@@ -84,64 +84,100 @@ const BaseScreen = (props: Props): JSX.Element => {
     });
   };
 
+  const navigateToEditGenderScreen = (): void => {
+    navigationService.navigateTo({
+      componentId: props.componentId,
+      screenName: screenNames.EditGenderScreen,
+      options: {
+        passProps: {
+          showHeader: true,
+          showBackButton: true,
+          headerTitle: t('editGenderScreen.headerTitle'),
+          rightIcon: 'check',
+          rightIconColor: colors.link,
+          gender: _.get(data, 'currentUser.gender'),
+        },
+      },
+    });
+  };
+
   return (
     <Container {...props}>
-      <ProfilePicture />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ProfilePicture />
 
-      <View>
-        <Touchable
-          onPress={navigateToEditFullNameScreen}
-          hitSlop={{
-            bottom: 20,
-          }}
-        >
-          <FormItem label={t('userProfileScreen.fullName')}>
-            <Input
-              value={_.get(data, 'currentUser.fullName')}
-              editable={false}
-              pointerEvents='none'
-              placeholder={t('userProfileScreen.fullnamePlaceholder')}
-              style={styles.input}
-            />
-          </FormItem>
-        </Touchable>
+        <View>
+          <Touchable
+            onPress={navigateToEditFullNameScreen}
+            hitSlop={{
+              bottom: 20,
+            }}
+          >
+            <FormItem label={t('userProfileScreen.fullName')}>
+              <Input
+                value={_.get(data, 'currentUser.fullName')}
+                editable={false}
+                pointerEvents='none'
+                placeholder={t('userProfileScreen.fullnamePlaceholder')}
+                style={styles.input}
+              />
+            </FormItem>
+          </Touchable>
 
-        <Touchable
-          onPress={navigateToEditEmailScreen}
-          hitSlop={{
-            bottom: 20,
-          }}
-        >
-          <FormItem label={t('userProfileScreen.email')}>
-            <Input
-              value={_.get(data, 'currentUser.email')}
-              editable={false}
-              pointerEvents='none'
-              placeholder={t('userProfileScreen.emailPlaceholder')}
-              style={styles.input}
-              autoCapitalize='none'
-              keyboardType='email-address'
-            />
-          </FormItem>
-        </Touchable>
+          <Touchable
+            onPress={navigateToEditEmailScreen}
+            hitSlop={{
+              bottom: 20,
+            }}
+          >
+            <FormItem label={t('userProfileScreen.email')}>
+              <Input
+                value={_.get(data, 'currentUser.email')}
+                editable={false}
+                pointerEvents='none'
+                placeholder={t('userProfileScreen.emailPlaceholder')}
+                style={styles.input}
+                autoCapitalize='none'
+                keyboardType='email-address'
+              />
+            </FormItem>
+          </Touchable>
 
-        <Touchable
-          onPress={navigateToEditPhoneNoScreen}
-          hitSlop={{
-            bottom: 20,
-          }}
-        >
-          <FormItem label={t('userProfileScreen.phoneNo')}>
-            <Input
-              value={_.get(data, 'currentUser.phoneNo')}
-              editable={false}
-              pointerEvents='none'
-              placeholder={t('userProfileScreen.phoneNoPlaceholder')}
-              style={styles.input}
-            />
-          </FormItem>
-        </Touchable>
-      </View>
+          <Touchable
+            onPress={navigateToEditPhoneNoScreen}
+            hitSlop={{
+              bottom: 20,
+            }}
+          >
+            <FormItem label={t('userProfileScreen.phoneNo')}>
+              <Input
+                value={_.get(data, 'currentUser.phoneNo')}
+                editable={false}
+                pointerEvents='none'
+                placeholder={t('userProfileScreen.phoneNoPlaceholder')}
+                style={styles.input}
+              />
+            </FormItem>
+          </Touchable>
+
+          <Touchable
+            onPress={navigateToEditGenderScreen}
+            hitSlop={{
+              bottom: 20,
+            }}
+          >
+            <FormItem label={t('userProfileScreen.gender')}>
+              <Input
+                value={_.get(data, 'currentUser.gender') ? _.capitalize(_.get(data, 'currentUser.gender')) : ''}
+                editable={false}
+                pointerEvents='none'
+                placeholder={t('userProfileScreen.genderPlaceholder')}
+                style={styles.input}
+              />
+            </FormItem>
+          </Touchable>
+        </View>
+      </ScrollView>
     </Container>
   );
 };

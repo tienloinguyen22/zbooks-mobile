@@ -31,7 +31,10 @@
     "settings": "Settings",
     "update": "Update",
     "updateInstalled": "A new update arrived. Please restart the app",
-    "continue": "Continue"
+    "continue": "Continue",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
   },
   "dialog": {
     "close": "Close",
@@ -153,7 +156,9 @@
     "fullName": "Fullname",
     "fullnamePlaceholder": "Ex: John Doe",
     "phoneNo": "Phone number",
-    "phoneNoPlaceholder": "Ex: +84363394468"
+    "phoneNoPlaceholder": "Ex: +84363394468",
+    "gender": "Gender",
+    "genderPlaceholder": "Ex: Male"
   },
   "editEmailScreen": {
     "headerTitle": "E-mail",
@@ -173,6 +178,12 @@
     "phoneNoPlaceholder": "Ex: 363394468",
     "countryCodePlaceholder": "Country name or code",
     "invalidPhoneNo": "Invalid phone number"
+  },
+  "editGenderScreen": {
+    "headerTitle": "Gender",
+    "pleaseSelectGender": "Please select gender",
+    "invalidGender": "Invalid gender",
+    "selectYourGender": "Select your gender"
   },
   "theme": {
     "dark": "Dark",

@@ -35,3 +35,4 @@ export * from './WithApolloClient';
 export * from './ImageIcon';
 export * from './FormItem';
 export * from './LoadingModal';
+export * from './Radio';

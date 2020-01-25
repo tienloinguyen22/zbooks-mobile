@@ -16,4 +16,5 @@ export const screenNames = {
   EditEmailScreen: 'EditEmailScreen',
   EditFullnameScreen: 'EditFullnameScreen',
   EditPhoneNoScreen: 'EditPhoneNoScreen',
+  EditGenderScreen: 'EditGenderScreen',
 };

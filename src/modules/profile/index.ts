@@ -1,7 +1,7 @@
 import { WithScreen, WithApolloClient } from '@app/components';
 import { Navigation } from 'react-native-navigation';
 import { screenNames } from '@app/core';
-import { UserProfileScreen, EditEmailScreen, EditFullnameScreen, EditPhoneNoScreen } from './screens';
+import { UserProfileScreen, EditEmailScreen, EditFullnameScreen, EditPhoneNoScreen, EditGenderScreen } from './screens';
 
 const registerScreens = (): void => {
   Navigation.registerComponent(screenNames.UserProfileScreen, () =>
@@ -24,6 +24,12 @@ const registerScreens = (): void => {
   );
   Navigation.registerComponent(screenNames.EditPhoneNoScreen, () =>
     WithScreen(WithApolloClient(EditPhoneNoScreen), {
+      lazyLoad: true,
+      orientation: 'PORTRAIT',
+    }),
+  );
+  Navigation.registerComponent(screenNames.EditGenderScreen, () =>
+    WithScreen(WithApolloClient(EditGenderScreen), {
       lazyLoad: true,
       orientation: 'PORTRAIT',
     }),

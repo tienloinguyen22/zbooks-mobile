@@ -7,6 +7,7 @@ export * from './interfaces/ScreenProps';
 export * from './interfaces/LoginType';
 export * from './interfaces/Resource';
 export * from './interfaces/Theme';
+export * from './interfaces/Genders';
 
 export * from './helpers/show_notification';
 export * from './helpers/sleep';
