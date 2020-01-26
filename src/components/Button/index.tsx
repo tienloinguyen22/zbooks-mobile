@@ -51,10 +51,8 @@ export const Button = (props: Props): JSX.Element => {
   );
 
   return (
-    <>
-      <Touchable {...props} style={style}>
-        {childrenWithProps}
-      </Touchable>
-    </>
+    <Touchable {...props} style={style}>
+      {childrenWithProps}
+    </Touchable>
   );
 };

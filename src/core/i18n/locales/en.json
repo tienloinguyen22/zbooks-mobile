@@ -158,7 +158,9 @@
     "phoneNo": "Phone number",
     "phoneNoPlaceholder": "Ex: +84363394468",
     "gender": "Gender",
-    "genderPlaceholder": "Ex: Male"
+    "genderPlaceholder": "Ex: Male",
+    "selectPhoto": "Select photo",
+    "changeProfilePhoto": "Change Profile Photo"
   },
   "editEmailScreen": {
     "headerTitle": "E-mail",

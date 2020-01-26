@@ -1,8 +1,9 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { config } from '@app/config';
 import { persistCache, CachePersistor } from 'apollo-cache-persist';
 import storage from '@react-native-community/async-storage';
 import { setContext } from 'apollo-link-context';
+import { createUploadLink } from 'apollo-upload-client';
 import { initialAppSettings } from './client/settings';
 import { initialCurrentUser } from './client/current_user';
 import { authService } from '../services';
@@ -36,8 +37,7 @@ persistCache({
   storage: storage as any,
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const httpLink: any = new HttpLink({
+const uploadLink = createUploadLink({
   uri: config.apollo.uri,
 });
 
@@ -56,7 +56,7 @@ const authLink: any = setContext(async (_, { headers }) => {
 
 export const apolloClient = new ApolloClient({
   cache,
-  link: authLink.concat(httpLink),
+  link: authLink.concat(uploadLink),
   resolvers: {},
   defaultOptions: {
     mutate: {

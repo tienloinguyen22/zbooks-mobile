@@ -50,6 +50,8 @@ target 'mobile' do
 
   pod 'RNSpringScrollView', :path => '../node_modules/react-native-spring-scrollview/ios'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'mobileTests' do
     inherit! :search_paths
     # Pods for testing

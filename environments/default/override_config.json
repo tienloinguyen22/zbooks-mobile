@@ -20,6 +20,7 @@
   },
   "sentryDns": "",
   "apollo": {
-    "uri": ""
+    "uri": "",
+    "main": ""
   }
 }

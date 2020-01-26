@@ -104,7 +104,7 @@ const BaseScreen = (props: Props): JSX.Element => {
   return (
     <Container {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <ProfilePicture />
+        <ProfilePicture avatarUrl={_.get(data, 'currentUser.avatarUrl')} />
 
         <View>
           <Touchable

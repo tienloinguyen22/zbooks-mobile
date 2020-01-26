@@ -10,6 +10,13 @@ export const styles = StyleSheet.create({
     height: 128,
     borderRadius: 64,
   },
+  backgroundImage: {
+    width: 128,
+    height: 128,
+    borderRadius: 64,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   button: {
     marginTop: 6,
   },
