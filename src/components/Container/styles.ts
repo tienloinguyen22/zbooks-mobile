@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerText: {
-    minWidth: 150,
+    width: 200,
     paddingHorizontal: 30,
   },
   title: {

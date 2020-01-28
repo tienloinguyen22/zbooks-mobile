@@ -3,10 +3,10 @@ import { ScreenProps, screenNames, colors } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { Container, View, FormItem, Input, Touchable } from '@app/components';
 import { navigationService } from '@app/services';
+import { ScrollView } from 'react-native';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/client';
 import _ from 'lodash';
-import { SpringScrollView } from 'react-native-spring-scrollview';
 import { ProfilePicture } from './components';
 import { styles } from './styles';
 
@@ -104,7 +104,7 @@ const BaseScreen = (props: Props): JSX.Element => {
 
   return (
     <Container {...props}>
-      <SpringScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <ProfilePicture avatarUrl={_.get(data, 'currentUser.avatarUrl')} />
 
         <View>
@@ -178,7 +178,7 @@ const BaseScreen = (props: Props): JSX.Element => {
             </FormItem>
           </Touchable>
         </View>
-      </SpringScrollView>
+      </ScrollView>
     </Container>
   );
 };

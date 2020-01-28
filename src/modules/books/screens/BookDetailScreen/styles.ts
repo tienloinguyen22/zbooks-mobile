@@ -1,0 +1,30 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '@app/core';
+
+export const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 24,
+  },
+  coverContainer: {
+    padding: 12,
+  },
+  cover: {
+    width: 200,
+    height: 300,
+    borderRadius: 4,
+  },
+  nameContainer: {
+    marginVertical: 30,
+  },
+  author: {
+    marginTop: 8,
+  },
+  greyTitle: {
+    color: colors.grey,
+    marginTop: 20,
+    marginBottom: 12,
+  },
+  bookInfoContainer: {
+    paddingRight: 12,
+  },
+});

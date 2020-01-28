@@ -191,6 +191,12 @@
     "invalidGender": "Invalid gender",
     "selectYourGender": "Select your gender"
   },
+  "bookDetailScreen": {
+    "category": "Category",
+    "year": "Year",
+    "pages": "Pages",
+    "description": "Description"
+  },
   "theme": {
     "dark": "Dark",
     "light": "Light"

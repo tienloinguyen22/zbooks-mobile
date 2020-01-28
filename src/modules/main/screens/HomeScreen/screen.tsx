@@ -1,13 +1,13 @@
 import React from 'react';
-import { ScreenProps, Book } from '@app/core';
+import { ScreenProps, Book, screenNames } from '@app/core';
 import { Container, Text, Divider, View, BookCard } from '@app/components';
 // import { useEffectOnce } from '@app/hooks';
 // import { authService } from '@app/services';
 import { useTranslation } from 'react-i18next';
 import { useQuery, gql } from '@apollo/client';
 import _ from 'lodash';
-import { FlatList, ListRenderItemInfo } from 'react-native';
-import { SpringScrollView } from 'react-native-spring-scrollview';
+import { FlatList, ListRenderItemInfo, ScrollView } from 'react-native';
+import { navigationService } from '@app/services';
 import { styles } from './styles';
 
 type Props = ScreenProps;
@@ -21,6 +21,7 @@ const BOOKS_AND_CURRENT_USER = gql`
       find(payload: $trendingPayload) {
         data {
           id
+          title
           coverUrl
         }
       }
@@ -40,15 +41,7 @@ const BOOKS_AND_CURRENT_USER = gql`
 
 const keyExtractor = (_item: Book, index: number): string => `${index}`;
 
-const renderLargeItem = ({ item }: ListRenderItemInfo<Book>): JSX.Element => {
-  return <BookCard.Large coverUrl={item.coverUrl} />;
-};
-
-const renderSmallItem = ({ item }: ListRenderItemInfo<Book>): JSX.Element => {
-  return <BookCard.Small coverUrl={item.coverUrl} author={item.author} title={item.title} />;
-};
-
-const BaseScreen = ({ componentId }: Props): JSX.Element => {
+const BaseScreen = (props: Props): JSX.Element => {
   const { t } = useTranslation();
 
   const booksAndCurrentUserQuery = useQuery(BOOKS_AND_CURRENT_USER, {
@@ -66,6 +59,36 @@ const BaseScreen = ({ componentId }: Props): JSX.Element => {
     },
   });
 
+  const navigateToBookDetailScreen = (bookId: string, title: string): void => {
+    navigationService.navigateTo({
+      componentId: props.componentId,
+      screenName: screenNames.BookDetailScreen,
+      options: {
+        passProps: {
+          showHeader: true,
+          showBackButton: true,
+          headerTitle: title,
+          id: bookId,
+        },
+      },
+    });
+  };
+
+  const renderLargeItem = ({ item }: ListRenderItemInfo<Book>): JSX.Element => {
+    return <BookCard.Large coverUrl={item.coverUrl} onPress={() => navigateToBookDetailScreen(item.id, item.title)} />;
+  };
+
+  const renderSmallItem = ({ item }: ListRenderItemInfo<Book>): JSX.Element => {
+    return (
+      <BookCard.Small
+        coverUrl={item.coverUrl}
+        author={item.author}
+        title={item.title}
+        onPress={() => navigateToBookDetailScreen(item.id, item.title)}
+      />
+    );
+  };
+
   // const retrieveIdToken = async (): Promise<void> => {
   //   const idToken = await authService.getIdToken();
   //   console.log('TCL: idToken', idToken);
@@ -80,8 +103,8 @@ const BaseScreen = ({ componentId }: Props): JSX.Element => {
   }
 
   return (
-    <Container componentId={componentId}>
-      <SpringScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+    <Container componentId={props.componentId}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.container}>
         <Text h4 style={styles.title}>
           {t('homeScreen.hi')} {_.get(booksAndCurrentUserQuery, 'data.currentUser.fullName', '')},
         </Text>
@@ -119,7 +142,7 @@ const BaseScreen = ({ componentId }: Props): JSX.Element => {
           />
           <Divider />
         </View>
-      </SpringScrollView>
+      </ScrollView>
     </Container>
   );
 };

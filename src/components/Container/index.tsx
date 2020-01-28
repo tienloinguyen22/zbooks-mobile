@@ -83,7 +83,7 @@ export const Container = (props: Props): JSX.Element => {
                     <Icon name='arrow-left' color={colors.primaryColor} style={styles.icon} />
                   </Button>
                 )}
-                <Text h4 bold style={styles.headerText}>
+                <Text h4 bold style={styles.headerText} numberOfLines={1}>
                   {props.headerTitle}
                 </Text>
               </View>
