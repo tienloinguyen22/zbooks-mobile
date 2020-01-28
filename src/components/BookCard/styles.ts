@@ -2,6 +2,9 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../../core';
 
 export const styles = StyleSheet.create({
+  touchable: {
+    alignItems: 'center',
+  },
   largeCoverContainer: {
     margin: 12,
     backgroundColor: colors.lightGrey,

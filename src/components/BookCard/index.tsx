@@ -20,12 +20,7 @@ interface SmallProps {
 
 const Large = (props: LargeProps): JSX.Element => {
   return (
-    <Touchable
-      onPress={props.onPress}
-      style={{
-        alignItems: 'center',
-      }}
-    >
+    <Touchable onPress={props.onPress} style={styles.touchable}>
       <View style={[styles.largeCoverContainer, commonStyles.boxShadow]}>
         <Image
           source={{
