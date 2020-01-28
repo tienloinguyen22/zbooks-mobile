@@ -17,6 +17,7 @@
     "red": "Red"
   },
   "common": {
+    "youReachedTheEnd": "You reached the end",
     "myFavorite": "My favorites",
     "cancel": "Cancel",
     "close": "Close",
@@ -195,7 +196,12 @@
     "category": "Category",
     "year": "Year",
     "pages": "Pages",
-    "description": "Description"
+    "description": "Description",
+    "saveToFavorites": "Save to favorites",
+    "saved": "Saved"
+  },
+  "favoriteBooksScreen": {
+    "myFavorites": "My favorites"
   },
   "theme": {
     "dark": "Dark",

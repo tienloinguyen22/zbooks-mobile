@@ -31,6 +31,5 @@ export const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     paddingHorizontal: 30,
-    paddingTop: 16,
   },
 });

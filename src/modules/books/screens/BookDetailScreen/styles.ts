@@ -29,4 +29,17 @@ export const styles = StyleSheet.create({
   bookInfoContainer: {
     paddingRight: 12,
   },
+  saveButtonContainer: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  saveButton: {
+    width: '100%',
+  },
+  saveIcon: {
+    marginRight: 8,
+  },
+  saveText: {
+    color: colors.white,
+  },
 });

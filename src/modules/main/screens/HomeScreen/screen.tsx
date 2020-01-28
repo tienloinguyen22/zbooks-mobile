@@ -1,13 +1,12 @@
 import React from 'react';
 import { ScreenProps, Book, screenNames } from '@app/core';
 import { Container, Text, Divider, View, BookCard } from '@app/components';
-// import { useEffectOnce } from '@app/hooks';
-// import { authService } from '@app/services';
+import { navigationService } from '@app/services';
 import { useTranslation } from 'react-i18next';
 import { useQuery, gql } from '@apollo/client';
 import _ from 'lodash';
 import { FlatList, ListRenderItemInfo, ScrollView } from 'react-native';
-import { navigationService } from '@app/services';
+
 import { styles } from './styles';
 
 type Props = ScreenProps;

@@ -32,6 +32,12 @@ const navigateTo = ({
     component: {
       name: screenName,
       passProps: _.get(options, 'passProps', {}),
+      options: {
+        bottomTabs: {
+          visible: false,
+          drawBehind: true,
+        },
+      },
     },
   });
 };
@@ -59,6 +65,9 @@ const setDefaultOptions = (): void => {
     topBar: {
       drawBehind: true,
       visible: false,
+    },
+    bottomTabs: {
+      drawBehind: true,
     },
   });
 };

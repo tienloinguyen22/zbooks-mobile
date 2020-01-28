@@ -10,6 +10,7 @@ export * from './interfaces/Theme';
 export * from './interfaces/Genders';
 export * from './interfaces/IsoDate';
 export * from './interfaces/Book';
+export * from './interfaces/FavoriteBook';
 
 export * from './helpers/show_notification';
 export * from './helpers/sleep';

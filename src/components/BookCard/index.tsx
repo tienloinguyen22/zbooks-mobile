@@ -6,6 +6,8 @@ import { Touchable } from '../Touchable';
 
 interface LargeProps {
   coverUrl: string;
+  title?: string;
+  author?: string;
   onPress?: () => void;
 }
 
@@ -18,8 +20,13 @@ interface SmallProps {
 
 const Large = (props: LargeProps): JSX.Element => {
   return (
-    <Touchable onPress={props.onPress}>
-      <View style={[styles.coverContainer, commonStyles.boxShadow]}>
+    <Touchable
+      onPress={props.onPress}
+      style={{
+        alignItems: 'center',
+      }}
+    >
+      <View style={[styles.largeCoverContainer, commonStyles.boxShadow]}>
         <Image
           source={{
             uri: props.coverUrl,
@@ -27,6 +34,27 @@ const Large = (props: LargeProps): JSX.Element => {
           style={styles.largeImage}
         />
       </View>
+
+      {props.author || props.title ? (
+        <View style={styles.nameContainer}>
+          {props.title ? (
+            <Text textCenter bold numberOfLines={2}>
+              {props.title}
+            </Text>
+          ) : (
+            <></>
+          )}
+          {props.author ? (
+            <Text textCenter s2 style={styles.author} numberOfLines={1}>
+              {props.author}
+            </Text>
+          ) : (
+            <></>
+          )}
+        </View>
+      ) : (
+        <></>
+      )}
     </Touchable>
   );
 };
@@ -35,7 +63,7 @@ const Small = (props: SmallProps): JSX.Element => {
   return (
     <Touchable onPress={props.onPress}>
       <View style={styles.smallContainer}>
-        <View style={[styles.coverContainer, commonStyles.boxShadow]}>
+        <View style={[styles.smallCoverContainer, commonStyles.boxShadow]}>
           <Image
             source={{
               uri: props.coverUrl,
