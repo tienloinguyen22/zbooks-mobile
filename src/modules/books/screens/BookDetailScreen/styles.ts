@@ -6,7 +6,9 @@ export const styles = StyleSheet.create({
     paddingBottom: 24,
   },
   coverContainer: {
-    padding: 12,
+    margin: 12,
+    backgroundColor: colors.lightGrey,
+    borderRadius: 4,
   },
   cover: {
     width: 200,

@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../core';
 
 export const styles = StyleSheet.create({
   coverContainer: {
-    padding: 12,
+    margin: 12,
+    backgroundColor: colors.lightGrey,
+    borderRadius: 4,
   },
   largeImage: {
     width: 140,

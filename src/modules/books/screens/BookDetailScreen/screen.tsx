@@ -4,6 +4,7 @@ import { useQuery, gql } from '@apollo/client';
 import _ from 'lodash';
 import { Container, View, Image, Text, Divider, ScrollView } from '@app/components';
 import { useTranslation } from 'react-i18next';
+import HTML from 'react-native-render-html';
 import { styles } from './styles';
 
 type Props = {
@@ -89,7 +90,7 @@ const BaseScreen = (props: Props): JSX.Element => {
               {t('bookDetailScreen.year')}
             </Text>
             <Text bold numberOfLines={1}>
-              {bookInfo.year || 'N/A'}
+              {bookInfo.year ? bookInfo.year : 'N/A'}
             </Text>
             <View />
           </View>
@@ -98,7 +99,7 @@ const BaseScreen = (props: Props): JSX.Element => {
               {t('bookDetailScreen.pages')}
             </Text>
             <Text bold numberOfLines={1}>
-              {bookInfo.pages || 'N/A'}
+              {Number(bookInfo.pages) ? bookInfo.pages : 'N/A'}
             </Text>
             <View />
           </View>
@@ -108,7 +109,7 @@ const BaseScreen = (props: Props): JSX.Element => {
           <Text s2 style={styles.greyTitle}>
             {t('bookDetailScreen.description')}
           </Text>
-          <Text>{bookInfo.description || 'N/A'}</Text>
+          <HTML html={bookInfo.description ? bookInfo.description : 'N/A'} />
         </View>
       </ScrollView>
     </Container>
