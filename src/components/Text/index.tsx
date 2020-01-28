@@ -9,6 +9,7 @@ interface Props extends TextProps {
   children?: ReactNode;
   white?: boolean;
   bold?: boolean;
+  italic?: boolean;
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
@@ -40,6 +41,7 @@ export const Text = (props: Props): JSX.Element => {
       color: colors.white,
     },
     props.bold && styles.bold,
+    props.italic && styles.italic,
     props.h1 && styles.h1,
     props.h2 && styles.h2,
     props.h3 && styles.h3,

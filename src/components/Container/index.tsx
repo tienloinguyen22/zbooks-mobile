@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { navigationService } from '@app/services';
 import { colors } from '@app/core';
 import { useTheme } from '@app/hooks';
-import { StatusBar, SafeAreaView, TouchableWithoutFeedback, Keyboard, ActivityIndicator } from 'react-native';
+import { StatusBar, SafeAreaView, ActivityIndicator } from 'react-native';
 import { Button } from '../Button';
 import { Right } from '../Right';
 import { ErrorBoundary } from '../ErrorBoundary';
@@ -91,25 +91,23 @@ export const Container = (props: Props): JSX.Element => {
             </View>
           )}
           <View style={styles.contentContainer}>
-            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-              <View
-                flex={props.flex}
-                column={props.column}
-                row={props.row}
-                columnReverse={props.columnReverse}
-                rowReverse={props.rowReverse}
-                center={props.center}
-                centerVertical={props.centerVertical}
-                style={[
-                  {
-                    backgroundColor: screenBackgroundColor,
-                  },
-                  styles.rootContainer,
-                ]}
-              >
-                {props.children}
-              </View>
-            </TouchableWithoutFeedback>
+            <View
+              flex={props.flex}
+              column={props.column}
+              row={props.row}
+              columnReverse={props.columnReverse}
+              rowReverse={props.rowReverse}
+              center={props.center}
+              centerVertical={props.centerVertical}
+              style={[
+                {
+                  backgroundColor: screenBackgroundColor,
+                },
+                styles.rootContainer,
+              ]}
+            >
+              {props.children}
+            </View>
           </View>
         </ErrorBoundary>
       </SafeAreaView>

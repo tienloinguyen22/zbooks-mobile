@@ -8,6 +8,8 @@ export * from './interfaces/LoginType';
 export * from './interfaces/Resource';
 export * from './interfaces/Theme';
 export * from './interfaces/Genders';
+export * from './interfaces/IsoDate';
+export * from './interfaces/Book';
 
 export * from './helpers/show_notification';
 export * from './helpers/sleep';

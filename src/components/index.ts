@@ -36,3 +36,5 @@ export * from './ImageIcon';
 export * from './FormItem';
 export * from './LoadingModal';
 export * from './Radio';
+export * from './Divider';
+export * from './BookCard';

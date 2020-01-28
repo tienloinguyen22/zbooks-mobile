@@ -85,8 +85,12 @@
     "sendPasswordResetEmail": "Send Password Reset Email",
     "userNotFound": "User Not Found"
   },
-  "home": {
-    "hello": "Hello"
+  "homeScreen": {
+    "hello": "Hello",
+    "hi": "Hi",
+    "betweenThePagesOfABookIsALovelyPlaceToBe": "Between the pages of a book is a lovely place to be...",
+    "trending": "Trending",
+    "newUpdated": "New updated"
   },
   "loginScreen": {
     "welcome": "Welcome!!",

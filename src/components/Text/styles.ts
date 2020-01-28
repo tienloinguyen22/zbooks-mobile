@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  italic: {
+    fontStyle: 'italic',
+  },
   h1: {
     fontSize: 36,
     fontWeight: 'bold',
