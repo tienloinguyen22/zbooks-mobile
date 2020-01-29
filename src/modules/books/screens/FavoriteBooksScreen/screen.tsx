@@ -11,8 +11,8 @@ import { styles } from './styles';
 
 type Props = ScreenProps;
 
-const keyExtractor = (_item: FavoriteBook, index: number): string => `${index}`;
-const itemsPerPage = 4;
+const keyExtractor = (_item: FavoriteBook[], index: number): string => `${index}`;
+const itemsPerPage = 8;
 const orderBy = `createdAt_desc`;
 
 const FAVORITE_BOOKS = gql`
@@ -36,12 +36,30 @@ const FAVORITE_BOOKS = gql`
   }
 `;
 
+const formatFavoriteBookData = (data: FavoriteBook[]): FavoriteBook[][] => {
+  const result: FavoriteBook[][] = [];
+  let temporaryItem: FavoriteBook[] = [];
+  data.forEach((item) => {
+    if (temporaryItem.length < 2) {
+      temporaryItem.push(item);
+    } else {
+      result.push(temporaryItem);
+      temporaryItem = [];
+      temporaryItem.push(item);
+    }
+  });
+  result.push(temporaryItem);
+
+  return result;
+};
+
 const BaseScreen = (props: Props): JSX.Element => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState<boolean>(false);
   const [pageIndex, setPageIndex] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
-  const [favoriteBooks, setFavoriteBooks] = useState<FavoriteBook[]>([]);
+  const [numberOfFavoriteBooks, setNumberOfFavoriteBooks] = useState<number>(0);
+  const [favoriteBooks, setFavoriteBooks] = useState<FavoriteBook[][]>([]);
 
   const getFavoriteBooks = async (): Promise<void> => {
     try {
@@ -56,7 +74,10 @@ const BaseScreen = (props: Props): JSX.Element => {
           },
         },
       });
-      setFavoriteBooks([...favoriteBooks, ..._.get(getFavoriteBooksResult, 'data.favorite_books.find.data', [])]);
+
+      const data = _.get(getFavoriteBooksResult, 'data.favorite_books.find.data', []);
+      setFavoriteBooks([...favoriteBooks, ...formatFavoriteBookData(data)]);
+      setNumberOfFavoriteBooks(numberOfFavoriteBooks + data.length);
       setTotal(_.get(getFavoriteBooksResult, 'data.favorite_books.find.pagination.total'));
     } catch (error) {
       showNotification({
@@ -69,7 +90,7 @@ const BaseScreen = (props: Props): JSX.Element => {
   };
 
   const loadMoreData = (): void => {
-    if (favoriteBooks.length < total && !loading) {
+    if (numberOfFavoriteBooks < total && !loading) {
       setPageIndex(pageIndex + 1);
     }
   };
@@ -94,15 +115,29 @@ const BaseScreen = (props: Props): JSX.Element => {
     });
   };
 
-  const renderFavoriteBook = ({ item }: ListRenderItemInfo<FavoriteBook>): JSX.Element => {
+  const renderFavoriteBook = ({ item }: ListRenderItemInfo<FavoriteBook[]>): JSX.Element => {
     return (
-      <View center>
-        <BookCard.Large
-          coverUrl={_.get(item, 'book.coverUrl')}
-          author={_.get(item, 'book.author')}
-          title={_.get(item, 'book.title')}
-          onPress={() => navigateToBookDetailScreen(_.get(item, 'book.id'), _.get(item, 'book.title'))}
-        />
+      <View center row spread>
+        <View flex={1}>
+          <BookCard.Small
+            coverUrl={_.get(item, '0.book.coverUrl')}
+            author={_.get(item, '0.book.author')}
+            title={_.get(item, '0.book.title')}
+            onPress={() => navigateToBookDetailScreen(_.get(item, '0.book.id'), _.get(item, '0.book.title'))}
+          />
+        </View>
+        <View flex={1}>
+          {item[1] ? (
+            <BookCard.Small
+              coverUrl={_.get(item, '1.book.coverUrl')}
+              author={_.get(item, '1.book.author')}
+              title={_.get(item, '1.book.title')}
+              onPress={() => navigateToBookDetailScreen(_.get(item, '1.book.id'), _.get(item, '1.book.title'))}
+            />
+          ) : (
+            <></>
+          )}
+        </View>
       </View>
     );
   };
@@ -116,7 +151,7 @@ const BaseScreen = (props: Props): JSX.Element => {
       );
     }
 
-    if (favoriteBooks.length >= total) {
+    if (numberOfFavoriteBooks >= total) {
       return (
         <View center style={styles.loadingPadding}>
           <Text s2 italic style={styles.greyText} textCenter>
@@ -133,6 +168,7 @@ const BaseScreen = (props: Props): JSX.Element => {
     <Container showHeader headerTitle={t('favoriteBooksScreen.myFavorites')}>
       <FlatList
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.flatlist}
         keyExtractor={keyExtractor}
         data={favoriteBooks}
         renderItem={renderFavoriteBook}
