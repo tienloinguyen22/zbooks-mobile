@@ -12,7 +12,11 @@ import { styles } from './styles';
 type Props = ScreenProps;
 
 const BOOKS_AND_CURRENT_USER = gql`
-  query GetBooksAndCurrentUser($trendingPayload: FindBooksQuery!, $newReleasePayload: FindBooksQuery!) {
+  query GetBooksAndCurrentUser(
+    $trendingPayload: FindBooksQuery!
+    $newReleasePayload: FindBooksQuery!
+    $selectedForYouPayload: FindBooksQuery!
+  ) {
     currentUser @client {
       fullName
     }
@@ -27,6 +31,16 @@ const BOOKS_AND_CURRENT_USER = gql`
     }
     newReleaseBooks: books {
       find(payload: $newReleasePayload) {
+        data {
+          id
+          title
+          author
+          coverUrl
+        }
+      }
+    }
+    selectedForYouBooks: books {
+      findByUserPreferences(payload: $selectedForYouPayload) {
         data {
           id
           title
@@ -51,6 +65,11 @@ const BaseScreen = (props: Props): JSX.Element => {
         itemsPerPage: 10,
       },
       newReleasePayload: {
+        orderBy: 'createdAt_desc',
+        pageIndex: 0,
+        itemsPerPage: 10,
+      },
+      selectedForYouPayload: {
         orderBy: 'createdAt_desc',
         pageIndex: 0,
         itemsPerPage: 10,
@@ -140,6 +159,20 @@ const BaseScreen = (props: Props): JSX.Element => {
             renderItem={renderSmallItem}
           />
           <Divider />
+        </View>
+
+        <View>
+          <View style={styles.bookSectionTitleContainer}>
+            <Text bold>{t('homeScreen.selectedForYou')}</Text>
+          </View>
+          <FlatList
+            style={styles.flatlist}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            keyExtractor={keyExtractor}
+            data={_.get(booksAndCurrentUserQuery, 'data.selectedForYouBooks.findByUserPreferences.data', [])}
+            renderItem={renderSmallItem}
+          />
         </View>
       </ScrollView>
     </Container>

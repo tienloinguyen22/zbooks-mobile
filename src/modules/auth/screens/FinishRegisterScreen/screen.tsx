@@ -43,6 +43,7 @@ const REGISTER_USER_WITH_TOKEN = gql`
         dob
         gender
         firebaseId
+        preferenceCategories
       }
     }
   }

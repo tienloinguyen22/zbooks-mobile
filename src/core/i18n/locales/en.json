@@ -91,7 +91,8 @@
     "hi": "Hi",
     "betweenThePagesOfABookIsALovelyPlaceToBe": "Between the pages of a book is a lovely place to be...",
     "trending": "Trending",
-    "newUpdated": "New updated"
+    "newUpdated": "New updated",
+    "selectedForYou": "Selected for you"
   },
   "loginScreen": {
     "welcome": "Welcome!!",
@@ -202,6 +203,11 @@
   },
   "favoriteBooksScreen": {
     "myFavorites": "My favorites"
+  },
+  "categoryPreferenceScreen": {
+    "categoryPreferences": "Category preferences",
+    "selectYourFavoriteCategories": "Select your favorite categories",
+    "headerTitle": "Category preference"
   },
   "theme": {
     "dark": "Dark",

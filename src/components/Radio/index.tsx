@@ -14,7 +14,9 @@ export const Radio = (props: Props): JSX.Element => {
   return (
     <Touchable onPress={() => props.onSelect(props.value)}>
       <View row spread centerVertical style={styles.container}>
-        <Text>{props.label}</Text>
+        <View flex={1} style={styles.text}>
+          <Text numberOfLines={1}>{props.label}</Text>
+        </View>
         <View
           style={[
             styles.outerCircle,

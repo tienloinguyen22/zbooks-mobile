@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScreenProps, screenNames } from '@app/core';
+import { ScreenProps, screenNames, colors } from '@app/core';
 import { useTranslation } from 'react-i18next';
 import { Container } from '@app/components';
 import { navigationService } from '@app/services';
@@ -33,6 +33,22 @@ const BaseScreen = (props: Props): JSX.Element => {
     });
   };
 
+  const navigateToCategoryPreferenceScreen = (): void => {
+    navigationService.navigateTo({
+      componentId: props.componentId,
+      screenName: screenNames.CategoryPreferenceScreen,
+      options: {
+        passProps: {
+          showHeader: true,
+          showBackButton: true,
+          rightIcon: 'check',
+          rightIconColor: colors.link,
+          headerTitle: t('categoryPreferenceScreen.headerTitle'),
+        },
+      },
+    });
+  };
+
   return (
     <Container showHeader headerTitle={t('settingsScreen.settings')}>
       <SettingMenuItem
@@ -51,7 +67,7 @@ const BaseScreen = (props: Props): JSX.Element => {
         title={t('settingsScreen.genresPreferences')}
         showTopBorder={false}
         showArrow={true}
-        onPress={navigateToProfileScreen}
+        onPress={navigateToCategoryPreferenceScreen}
       />
       <SettingMenuItem
         title={t('settingsScreen.logout')}

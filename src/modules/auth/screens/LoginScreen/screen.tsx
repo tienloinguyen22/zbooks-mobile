@@ -28,6 +28,7 @@ const FIND_USER_BY_TOKEN = gql`
         dob
         gender
         firebaseId
+        preferenceCategories
       }
     }
   }
@@ -47,6 +48,7 @@ const REGISTER_USER_WITH_TOKEN = gql`
         dob
         gender
         firebaseId
+        preferenceCategories
       }
     }
   }

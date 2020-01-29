@@ -27,6 +27,7 @@ const getUser = (user: Auth.User): User => {
     firebaseId: user.uid,
     fullName: user.displayName || '',
     avatarUrl: avatarUrl || '',
+    preferenceCategories: [],
     isLoggedIn: true,
   };
 };

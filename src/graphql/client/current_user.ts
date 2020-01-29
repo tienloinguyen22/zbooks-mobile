@@ -12,6 +12,7 @@ export interface User {
   gender?: string;
   firebaseId: string;
   isLoggedIn: boolean;
+  preferenceCategories: string[];
 }
 
 export const initialCurrentUser = {
@@ -26,6 +27,7 @@ export const initialCurrentUser = {
   gender: '',
   firebaseId: '',
   isLoggedIn: false,
+  preferenceCategories: [],
 };
 
 export const updateCurrentUser = (userInfo: Partial<User>): void => {

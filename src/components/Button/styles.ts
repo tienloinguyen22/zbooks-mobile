@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     height: 45,
   },
   small: {
-    width: 130,
+    width: 105,
     height: 36,
   },
   rounded: {

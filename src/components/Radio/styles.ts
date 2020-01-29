@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
   container: {
     height: 45,
   },
+  text: {
+    marginRight: 12,
+  },
   outerCircle: {
     width: diameter,
     height: diameter,

@@ -18,4 +18,5 @@ export const screenNames = {
   EditPhoneNoScreen: 'EditPhoneNoScreen',
   EditGenderScreen: 'EditGenderScreen',
   BookDetailScreen: 'BookDetailScreen',
+  CategoryPreferenceScreen: 'CategoryPreferenceScreen',
 };
