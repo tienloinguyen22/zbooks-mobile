@@ -5,8 +5,8 @@ import _ from 'lodash';
 import { Container, View, Image, Text, Divider, ScrollView, Button, Icon } from '@app/components';
 import { useTranslation } from 'react-i18next';
 import HTML from 'react-native-render-html';
+import { apolloClient } from '@app/graphql';
 import { styles } from './styles';
-import { apolloClient } from '../../../../graphql';
 
 type Props = {
   id: string;
