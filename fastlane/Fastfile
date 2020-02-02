@@ -1,0 +1,126 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+platform :android do
+
+  desc 'Build the Android application.'
+  lane :build do |options|
+    gradle(task: 'clean', project_dir: 'android/')
+    gradle(
+      task: 'assemble', 
+      build_type: 'Release', 
+      project_dir: 'android/',
+    )
+ 
+  end
+
+  desc 'Ship to Playstore Alpha.'
+  lane :alpha do |options|
+    build
+    upload_to_play_store(
+      package_name: ENV['ANDROID_APPLICATION_ID'],
+      track: 'alpha',
+      json_key: 'fastlane/googlePlaySecretKey.json'
+    )
+  end
+
+  desc 'Ship to Playstore Beta.'
+  lane :beta do |options|
+    upload_to_play_store(
+      package_name: ENV['ANDROID_APPLICATION_ID'],
+      track: 'alpha',
+      track_promote_to: "beta",
+      json_key: 'fastlane/googlePlaySecretKey.json'
+    )
+  end
+
+  desc 'Ship to Playstore Production.'
+  lane :production do |options|
+    upload_to_play_store(
+      package_name: ENV['ANDROID_APPLICATION_ID'],
+      track: 'beta',
+      track_promote_to: "production",
+      json_key: 'fastlane/googlePlaySecretKey.json'
+    )
+  end
+end
+
+platform :ios do
+  # iOS Lanes
+  desc 'Fetch certificates and provisioning profiles'
+  lane :certificates do
+    # Before calling match, we make sure all our devices are registered on the Apple Developer Portal
+    create_keychain(
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
+ 
+    unlock_keychain(
+      path: ENV["MATCH_KEYCHAIN_NAME"],
+      add_to_search_list: :replace,
+      password: ENV['MATCH_KEYCHAIN_PASSWORD']
+    )
+
+    match(
+      readonly: true, 
+      type: 'appstore',
+      storage_mode: 'git',
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+      username: ENV['APPLE_USERNAME'],
+      app_identifier: ENV['IOS_APPLICATION_ID']
+    )
+  end
+
+  desc 'Build the iOS application.'
+  lane :build do
+    certificates
+    gym(
+      scheme: 'mobile', 
+      workspace: './ios/mobile.xcworkspace', 
+      include_bitcode: true
+    )
+  end
+
+  desc 'Upload symbols to Crashlytics.'
+  lane :uploadToCrashlytics do
+    upload_symbols_to_crashlytics(
+      dsym_path: "./mobile.app.dSYM.zip",
+      binary_path: "./mobile.ipa"
+    )
+  end
+  
+  desc 'Ship to Appstore Testflight.'
+  lane :uploadToTestflight do
+    # build
+    pilot(
+      skip_waiting_for_build_processing: true
+    )
+  end
+
+  desc 'Ship to Appstore Production.' 
+  lane :production do
+    deliver(
+      submit_for_review: true,
+      automatic_release: true,
+      force: true, # Skip HTMl report verification,
+      skip_binary_upload: true
+    )
+  end
+end

@@ -1,0 +1,216 @@
+{
+  "changePasswordScreen": {
+    "changePassword": "Change Password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordDoesNotMatch": "Confirm Password does not match",
+    "password": "Password",
+    "passwordChanged": "Password has been changed",
+    "requireRecentLogin": "This operation is sensitive and requires recent authentication. Log in again before retrying this request"
+  },
+  "color": {
+    "blue": "Blue",
+    "deepPurple": "Deep Purple",
+    "indigo": "Indigo",
+    "lightBlue": "Light Blue",
+    "pink": "Pink",
+    "purple": "Purple",
+    "red": "Red"
+  },
+  "common": {
+    "youReachedTheEnd": "You reached the end",
+    "myFavorite": "My favorites",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "home": "Home",
+    "newUpdate": "New Update",
+    "newVersionInAppStore": "New version is available in App Store",
+    "newVersionInPlayStore": "New version is available in Play Store",
+    "ok": "OK",
+    "passwordInfo": "Password must be at least 6 characters and must include at least one upper case letter, one lower case letter, one numeric digit and one special letter (!, @, #, $, %, ^, &, *)",
+    "select": "Select",
+    "settings": "Settings",
+    "update": "Update",
+    "updateInstalled": "A new update arrived. Please restart the app",
+    "continue": "Continue",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other"
+  },
+  "dialog": {
+    "close": "Close",
+    "error": "Error",
+    "info": "Info",
+    "success": "Success",
+    "warning": "Warning"
+  },
+  "emailLoginScreen": {
+    "email": "Email",
+    "forgotPassword": "Forgot Password?",
+    "login": "Login",
+    "password": "Password",
+    "userDisabled": "User is disabled",
+    "wrongEmailOrPassword": "Email or password is incorrect"
+  },
+  "emailRegisterScreen": {
+    "accountHasBeenCreated": "Account has been created",
+    "back": "Back",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordDoesNotMatch": "Confirm Password does not match",
+    "email": "Email",
+    "emailHasBeenAlreadyRegistered": "Email has been already registered",
+    "password": "Password",
+    "register": "Register"
+  },
+  "emailVerificationScreen": {
+    "check": "Check",
+    "emailNotVerified": "Your email is not verified yet",
+    "notice": "Your email {{email}} is not verified. Please check the your mailbox, verify it then click Check button below.",
+    "openMailbox": "Open Mailbox",
+    "resendEmailNotification": "Verification email is resent. Please check your mailbox",
+    "resendVerification": "Resend verification email",
+    "useAnotherAccount": "User another account",
+    "verifyEmail": "Verify Email"
+  },
+  "error": {
+    "invalid": "{{field}} is invalid",
+    "required": "{{field}} is required",
+    "somethingWentWrong": "Something went wrong",
+    "unexpectedErrorOccurred": "Unexpected error occurred",
+    "unexpectedErrorOccurredMessage": "We have reported this to our team! Please close the app and start again!"
+  },
+  "forgotPasswordScreen": {
+    "email": "Email",
+    "forgotPassword": "Forgot Password",
+    "passwordResetEmailSent": "Password reset email has been sent",
+    "sendPasswordResetEmail": "Send Password Reset Email",
+    "userNotFound": "User Not Found"
+  },
+  "homeScreen": {
+    "hello": "Hello",
+    "hi": "Hi",
+    "betweenThePagesOfABookIsALovelyPlaceToBe": "Between the pages of a book is a lovely place to be...",
+    "trending": "Trending",
+    "newUpdated": "New updated",
+    "selectedForYou": "Selected for you"
+  },
+  "loginScreen": {
+    "welcome": "Welcome!!",
+    "wecomeDescription": "Create your account to get started. After that, you can share books and make friends",
+    "continueWith": "Continue with",
+    "loginWith": "Login with",
+    "loginWithEmail": "Login with email",
+    "loginWithPhoneNo": "Login with phone no",
+    "notHaveAccount": "Don't Have an Account?",
+    "registerByEmail": "Register by email",
+    "registerByPhoneNo": "Register by phone no"
+  },
+  "finishRegisterScreen": {
+    "pleaseInputEmail": "Please input your email address",
+    "pleaseInputFullName": "Please input your full name",
+    "invalidEmailAddress": "Invalid email address",
+    "emailPlaceholder": "Enter your email address",
+    "fullNamePlaceholder": "Enter your full name",
+    "title": "Almost done!!",
+    "description": "Enter your Full Name and your Email Address to finish setting up your account",
+    "headerTitle": "Complete register"
+  },
+  "month": {
+    "april": "April",
+    "august": "August",
+    "december": "December",
+    "february": "February",
+    "january": "January",
+    "july": "July",
+    "june": "June",
+    "march": "March",
+    "may": "May",
+    "november": "November",
+    "october": "October",
+    "september": "September"
+  },
+  "phoneNoLoginScreen": {
+    "countryCode": "Country code",
+    "invalidVerificationCode": "Invalid verification code",
+    "login": "Login",
+    "phoneNo": "Phone No",
+    "resendCode": "Resend code",
+    "sendVerificationCode": "Send Verification Code",
+    "tooManyRequests": "We have blocked all requests from this device due to unusual activity. Try again later",
+    "userDisabled": "User is disabled",
+    "verificationCode": "Verification Code",
+    "verify": "Verify"
+  },
+  "settingsScreen": {
+    "profile": "Profile",
+    "genresPreferences": "Genres preferences",
+    "notifications": "Notifications",
+    "about": "About",
+    "author": "Author",
+    "changePassword": "Change password",
+    "language": "Language",
+    "logout": "Logout",
+    "primaryColor": "Primary color",
+    "settings": "Settings",
+    "theme": "Theme",
+    "version": "Version"
+  },
+  "userProfileScreen": {
+    "headerTitle": "Edit profile",
+    "emailPlaceholder": "Ex: neoflies@flybooks.com",
+    "email": "E-mail",
+    "fullName": "Fullname",
+    "fullnamePlaceholder": "Ex: John Doe",
+    "phoneNo": "Phone number",
+    "phoneNoPlaceholder": "Ex: +84363394468",
+    "gender": "Gender",
+    "genderPlaceholder": "Ex: Male",
+    "selectPhoto": "Select photo",
+    "changeProfilePhoto": "Change Profile Photo"
+  },
+  "editEmailScreen": {
+    "headerTitle": "E-mail",
+    "enterYourEmail": "Enter your email address",
+    "emailPlaceholder": "Ex: neoflies@flybooks.com"
+  },
+  "editFullnameScreen": {
+    "headerTitle": "Fullname",
+    "enterYourFullname": "Enter your full name",
+    "fullnamePlaceholder": "Ex: John Doe"
+  },
+  "editPhoneNoScreen": {
+    "headerTitle": "Phone number",
+    "pleaseSelectCountryCode": "Please select country code",
+    "pleaseInputPhoneNo": "Please input phone number",
+    "enterYourPhoneNo": "Enter your phone number",
+    "phoneNoPlaceholder": "Ex: 363394468",
+    "countryCodePlaceholder": "Country name or code",
+    "invalidPhoneNo": "Invalid phone number"
+  },
+  "editGenderScreen": {
+    "headerTitle": "Gender",
+    "pleaseSelectGender": "Please select gender",
+    "invalidGender": "Invalid gender",
+    "selectYourGender": "Select your gender"
+  },
+  "bookDetailScreen": {
+    "category": "Category",
+    "year": "Year",
+    "pages": "Pages",
+    "description": "Description",
+    "saveToFavorites": "Save to favorites",
+    "saved": "Saved"
+  },
+  "favoriteBooksScreen": {
+    "myFavorites": "My favorites"
+  },
+  "categoryPreferenceScreen": {
+    "categoryPreferences": "Category preferences",
+    "selectYourFavoriteCategories": "Select your favorite categories",
+    "headerTitle": "Category preference"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "android": {
+    "appName": "React Native Starter Kit",
+    "applicationId": "pro.thinhtran.treactnativestarterkit",
+    "codePush": {
+      "productionKey": "",
+      "stagingKey": ""
+    }
+  },
+  "fb": {
+    "id": ""
+  },
+  "ios": {
+    "appName": "React Native Starter Kit",
+    "bundleId": "pro.thinhtran.treactnativestarterkit",
+    "codePush": {
+      "productionKey": "",
+      "stagingKey": ""
+    }
+  },
+  "sentryDns": "",
+  "apollo": {
+    "uri": "",
+    "main": ""
+  }
+}
