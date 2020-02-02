@@ -1,1 +1,1 @@
-Books reading app
+Books reading app with graphql
