@@ -24,7 +24,7 @@
     "native-base": "^2.13.5",
     "react": "16.8.6",
     "react-i18next": "^10.12.2",
-    "react-native": "0.60.5",
+    "react-native": "0.62.3",
     "react-native-code-push": "^5.7.0",
     "react-native-exception-handler": "^2.10.8",
     "react-native-extra-dimensions-android": "^1.2.5",
